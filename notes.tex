@@ -297,7 +297,13 @@ We will be interested in functors that preserve \(\omega\)-(co)limits where \(\o
 
 \section{Other notations}
 
-\begin{no}
+\begin{notation}
+  When we are working with a category \(\A\) that has enough structure \footnote{i.e. that has all the (co)limits needed for our functor to work.} we will often define endofunctors \(F \colon \A \to \A\) by their action on objects only such as
+  \begin{equation*}
+    FX = X \times X + 1.
+  \end{equation*}
+  This means that the functor \(F\) sends objects \(A\) to \(A \times A + 1\) (where \(1\) is the terminal object of \(\A\)) and arrows \(f\) to \(f \times f + \id_1\).
+\end{notation}
 
 \chapter{Algebras for endofunctors}
 \newpage
