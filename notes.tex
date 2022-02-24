@@ -89,6 +89,8 @@
 \newcommand{\CPO}{\textsf{CPO}}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\A}{\mathscr{A}}
+\newcommand{\B}{\mathscr{B}}
+\newcommand{\D}{\mathscr{D}}
 \newcommand{\comma}{,}
 
 \newcommand{\outofcoprod}[2]{{[#1, #2]}}
@@ -281,6 +283,21 @@ It is most useful for performing calculations; we will use it without explicit r
   Initial objects, when they exist, are colimits of the functor from the empty category into \(\A\); as such they are all isomorphic and we speak of \emph{the} initial object.
   Dually terminal objects are limits of the functor from the empty category and are unique as well.
 \end{remark}
+
+\subsection{(Co)limit-preserving functors}
+
+\begin{definition}
+  A functor \(G \colon \A \to \B\) \textbf{preserve limits} \marginnote{limit preservation} if, for every small category \(\D\) and functor \(F \colon \D \to \A\), when the limit of \(F\) exists the limit of \(G \circ F\) is obtained by applying \(G\) to the limit cone.
+  That is: if \((L, (\pi_D)_{D \in \D})\) is the limit of \(F\) then \((GL, (G\pi_D)_{D \in \D})\) is the limit of \(G \circ F\).
+  As expected \(G\) is said to preserve colimits when, for every small category \(\D\) and functor \(F \colon \D \to \A\), when the colimit of \(F\) exists then the colimit of \(G \circ F\) is the image through \(G\) of the cocone.
+\end{definition}
+
+By limiting the definition above to a specific small category \(\D\) we obtain the notion of a functor that preserves \(\D\)-(co)limits.
+We will be interested in functors that preserve \(\omega\)-(co)limits where \(\omega\) is the set of natural numbers with the usual ordering regarded as a category.
+
+\section{Other notations}
+
+\begin{no}
 
 \chapter{Algebras for endofunctors}
 \newpage
