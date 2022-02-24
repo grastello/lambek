@@ -1,0 +1,11 @@
+#!/bin/sh
+
+if [ "$1" == "bib" ]; then
+    xelatex notes
+    biber notes
+    xelatex notes
+else
+    xelatex notes
+fi
+
+
