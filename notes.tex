@@ -227,6 +227,7 @@ In light of this proposition we write \(A \times B \times C\) and \(A + B + C\) 
 \end{notation}
 
 \begin{notation}
+  \label{not:product_arrows}
   Let \(A,B,C,D\) be objects of \(\A\) such that \(A \times B, C \times D\) exist and let \(f \colon A \to C, g \colon B \to D\) be arrows.
   With reference to the following diagram we denote \(\langle f \circ \pi_1, g \circ \pi_2\rangle\) by \(f \times g\).
   Dually if \(A + B, C + D\) exist we denote \([\sigma_1 \circ f, \sigma_2 \circ g]\) by \(f + g\).
@@ -780,7 +781,7 @@ Indeed we can see orders as categories in the usual way, order-preserving functi
     \end{tikzcd}
   \end{equation}
   The outer square in \ref{dia:recursion2} commutes because (1), (2) and (3) do.
-  Indeed (1) commutes because \(\overline{h}\) is an algebra homomorphism, (2) by (insert reference to the preliminaries) and (3) because of Notation \ref{not:brackets}.
+  Indeed (1) commutes because \(\overline{h}\) is an algebra homomorphism, (2) by Notation \ref{not:product_arrows} and (3) because of Notation \ref{not:brackets}.
   By functoriality of \(F\) we then have that \(\pi_2 \circ \overline{h}\) is an endomorphism on the initial algebra thus \(\pi_2 \circ \overline{h} = \id_{\mu F}\).
 
   Now set \(h \coloneqq \pi_1 \circ \overline{h}\) so \(\overline{h} = \intoprod{h}{\id_{\mu F}}\).
@@ -817,9 +818,6 @@ Indeed we can see orders as categories in the usual way, order-preserving functi
   \end{align*}
   so we conclude by Proposition \ref{prop:arrows_into_limit}.
 \end{proof}
-
-
-
 
 \printbibliography
 
