@@ -270,6 +270,18 @@ It is most useful for performing calculations; we will use it without explicit r
   \end{itemize}
 \end{proposition}
 
+\subsection{Initial and terminal objects}
+
+\begin{definition}
+  An \textbf{initial object} \marginnote{initial object} for a category \(\A\) is an object \(0 \in \A\) such that for every other object \(A \in \A\) there is exactly one arrow from \(0\) to \(\A\).
+  Dually a \textbf{terminal object} \marginnote{terminal object} for \(\A\) is an object \(1 \in \A\) such that for every other object \(A \in \A\) there is exactly one arrow from \(A\) to \(1\).
+\end{definition}
+
+\begin{remark}
+  Initial objects, when they exist, are colimits of the functor from the empty category into \(\A\); as such they are all isomorphic and we speak of \emph{the} initial object.
+  Dually terminal objects are limits of the functor from the empty category and are unique as well.
+\end{remark}
+
 \chapter{Algebras for endofunctors}
 \newpage
 
