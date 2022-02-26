@@ -894,12 +894,13 @@ Unsurprisingly we shall replace CPOs with bottom by categories with an initial o
   When \(n = 0\) the condition becomes \(! = \alpha_1 \circ !\) which is true because both sides are arrows out of the initial object.
   Now suppose the condition holds for \(n - 1\):
   \begin{align*}
-    \alpha_{n+1} \circ F^n! &= \alpha \circ F\alpha_n \circ F^k! & \text{definition of \(\alpha_{n+1}\)}\\
-    &= \alpha \circ F(\alpha_n \circ F^{n-1}!) & \text{functoriality of \(F\)}\\
-    &= \alpha \circ F\alpha_{n-1} & \text{inductive hypothesis}\\
-    &= \alpha_n & \text{definition of \(\alpha_n\)}.
+    \alpha_{n+1} \circ F^n! &= \alpha \circ F\alpha_n \circ F^k! && \text{definition of \(\alpha_{n+1}\)}\\
+    &= \alpha \circ F(\alpha_n \circ F^{n-1}!) && \text{functoriality of \(F\)}\\
+    &= \alpha \circ F\alpha_{n-1} && \text{inductive hypothesis}\\
+    &= \alpha_n && \text{definition of \(\alpha_n\)}.
   \end{align*}
 \end{remark}
+
 
 \printbibliography
 
