@@ -99,6 +99,10 @@
 % The document.
 \begin{document}
 
+\title{Notes on Initial Algebras}
+\author{Gabriele Rastello}
+\maketitle
+
 \pagestyle{mypagestyle}
 
 \tableofcontents
@@ -840,6 +844,62 @@ Indeed we can see orders as categories in the usual way, order-preserving functi
   \end{align*}
   so we conclude by Proposition \ref{prop:arrows_into_limit}.
 \end{proof}
+
+\chapter{Initial algebras from finitary iteration}
+\newpage
+
+\section{The initial-algebra \(\omega\)-chain}
+
+We begin this section by recalling Kleene's Fixed Point Theorem and its proof with the goal of generalizing it to the categorical setting.
+
+\begin{theorem}[Kleene's Fixed Point Theorem]
+  Let \(A\) be a CPO with bottom \(\bot\); then every continous function \(F \colon A \to A\) has a least fixed point \(\mu F = \sup_{n < \omega}F^n(\bot)\)\footnote{We write \(F^n\) for \(\underbrace{F \ldots F}_{n \text{ times}}\) and \(F^0\) is the identity function. We use a similar notation for functors.}.
+\end{theorem}
+
+\begin{proof}
+  Consider the \(\omega\)-chain \(\bot \leq F(\bot) \leq F^2(\bot) \leq \ldots\) and let \(\mu F\) be its join.
+  By continuity \(F(\mu F) = \bigvee_{n < \omega}F(F^n(\bot))\) but we know that \(\bigvee_{n < \omega}F^n(\bot) = \bigvee_{n < \omega}F^{n+1}(\bot)\) so \(\mu F = F(\mu F)\), a fixed point.
+
+  Now let \(F(x) \leq x\) be a pre-fixed point.
+  As \(\bot \leq x\) we have \(F(\bot) \leq F(x) \leq x\) and by induction we obtain that \(F^n(\bot) \leq x\) for all \(n < \omega\) so \(x\).
+  But this shows that \(x\) is an upper bound so \(\mu F \leq x\) by definition and, finally, \(\mu F\) must be the least fixed point because it is less than any pre-fixed point and fixed points are trivially pre-fixed points.
+\end{proof}
+
+Unsurprisingly we shall replace CPOs with bottom by categories with an initial obejct and endofunctions by
+\begin{tcolorbox}
+  TODO: write something decent here.
+\end{tcolorbox}
+
+\begin{definition}
+  The \textbf{initial-algebra \(\omega\)-chain}\marginnote{initial-algebra \(\omega\)-chain} of an endofunctor \(F\) is the diagram
+  \begin{equation}
+    \label{dia:initial_chain}
+    \begin{tikzcd}[sep = large]
+      0 \ar[r, "!"] & F0 \ar[r, "F!"] & F^20 \ar[r, "F^2!"] & F^30 \ar[r, "F^3!"] & \cdots
+    \end{tikzcd}
+  \end{equation}
+  where we denote by \(!\) the unique arrow out of the initial object.
+  This diagram can be realized as a functor from \(\omega\) regarded as a category.
+\end{definition}
+
+\begin{remark}
+  \label{rem:induced_cocone}
+  Let \((A, \alpha)\) be an \(F\)-algebra.
+  Then it induces a canonical cocone \((\alpha_n \colon F^n0 \to A)_{n < \omega}\) on (\ref{dia:initial_chain}) by
+  \begin{align*}
+    \alpha_0 &=\ !; \\
+    \alpha_{n+1} &= FF^n0 \xrightarrow{F\alpha_n} FA \xrightarrow{\alpha} A.
+  \end{align*}
+  To check that the \(\alpha_n\)s are a cocone we prove \(\alpha_n = \alpha_{n+1} \circ F^n!\) by induction on \(n\).
+  When \(n = 0\) the condition becomes \(! = \alpha_1 \circ !\) which is true because both sides are arrows out of the initial object.
+  Now suppose the condition holds for \(n - 1\):
+  \begin{align*}
+    \alpha_{n+1} \circ F^n! &= \alpha \circ F\alpha_n \circ F^k! & \text{definition of \(\alpha_{n+1}\)}\\
+    &= \alpha \circ F(\alpha_n \circ F^{n-1}!) & \text{functoriality of \(F\)}\\
+    &= \alpha \circ F\alpha_{n-1} & \text{inductive hypothesis}\\
+    &= \alpha_n & \text{definition of \(\alpha_n\)}.
+  \end{align*}
+\end{remark}
 
 \printbibliography
 
