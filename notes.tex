@@ -850,7 +850,7 @@ Indeed we can see orders as categories in the usual way, order-preserving functi
 \chapter{Initial algebras from finitary iteration}
 \newpage
 
-\section{The initial-algebra \(\omega\)-chain}
+\section{Adámek's Theorem}
 
 We begin this section by recalling Kleene's Fixed Point Theorem and its proof with the goal of generalizing it to the categorical setting.
 
@@ -928,7 +928,7 @@ We are ready to state and prove the main theorem of this chapter.
 
 \begin{proof}
   Let \((\mu F, (c_n \colon F^n0 \to \mu F)_{n < \omega})\) be the colimit of the initial-algebra \(\omega\)-chain.
-  Since \(F\) preserves \(\omega\)-colimits we have that \((F(\mu F), (Fc_n \colon F^{n+1} \to F(\mu F))_{n < \omega})\) is the colimit of (\ref{dia:initial_chain_F}) but \((c_{n+1} \colon F^{n+1}0 \to \mu F)_{n < \omega}\) is a cocone on (\ref{dia:initial_chain_F}) so there is a unique arrow \(\iota\) such that
+  Since \(F\) preserves \(\omega\)-colimits we have that \((F(\mu F), (Fc_n \colon F^{n+1} \to F(\mu F))_{n < \omega})\) is the colimit of (\ref{dia:initial_chain_F}) but \((c_{n+1} \colon F^{n+1}0 \to \mu F)_{n < \omega}\) is a cocone on (\ref{dia:initial_chain_F}) so there is a unique arrow \(\iota\) from \(F(\mu F)\) to \(\mu F\) such that
   \begin{equation}
     \label{eq:iota}
     \iota \circ Fc_n = c_{n + 1} \quad \text{for all \(n < \omega\).}
@@ -942,7 +942,7 @@ We are ready to state and prove the main theorem of this chapter.
   To prove that \( h \circ \iota = \alpha \circ Fh\) we check that both arrows are factorization morphisms for the cocone \((\alpha_{n + 1} \colon F^{n+1}0 \to A)_{n < \omega}\).
   In practice we shall check that
   \begin{equation*}
-    h \circ \iota \circ Fc_n = \alpha_{n + 1} = (\alpha \circ Fh) \circ Fc_n
+    h \circ \iota \circ Fc_n = \alpha_{n + 1} = \alpha \circ Fh \circ Fc_n
   \end{equation*}
   for all \(n < \omega\).
   For the first equality notice that \(h \circ \iota \circ Fc_n = h \circ c_{n+1} = \alpha_{n+1}\).
@@ -958,17 +958,18 @@ We are ready to state and prove the main theorem of this chapter.
   Then, as the whole square commutes, \(\alpha \circ Fh \circ Fc_n = \alpha_{n+1}\).
   This proves that \(h \colon \mu F \to A\) is a homomorphism of \(F\)-algebras.
 
-  To prove uniqueness suppose there is an arrow \(k \colon \mu F \to A\)such that it is also an \(F\)-algebra homomorphism i.e. \(k \circ \iota = \alpha \circ Fk\).
+  To prove uniqueness suppose there is an arrow \(k \colon \mu F \to A\) such that it is also an \(F\)-algebra homomorphism i.e. \(k \circ \iota = \alpha \circ Fk\).
   We will show that \(k \circ c_n = \alpha_n\) for all \(n < \omega\) and conclude by uniqueness of \(h\).
-  If \(n = 0\) \(k \circ c_0 = \alpha_0\) is trivial because both arrows are out of the initial object.
+  Working by induction, if \(n = 0\) then \(k \circ c_0 = \alpha_0\) is trivial because both arrows are out of the initial object.
   Now suppose that \(k \circ c_n = \alpha_n\):
   \begin{align*}
     k \circ c_{n+1} &= k \circ \iota \circ Fc_n && \text{(\ref{eq:iota})}\\
-    & \alpha \circ F(k \circ c_n) && \text{\(k\) homomorphism}\\
-    & \alpha \circ F\alpha_n && \text{inductive hypothesis}\\
-    & \alpha_{n+1} && \text{definition of \(\alpha_{n+1}\)}.
+    &= \alpha \circ Fk \circ Fc_n && \text{\(k\) homomorphism}\\
+    &= \alpha \circ F(k \circ c_n) && \text{\(F\) functor}\\
+    &= \alpha \circ F\alpha_n && \text{inductive hypothesis}\\
+    &= \alpha_{n+1} && \text{definition of \(\alpha_{n+1}\)}.
   \end{align*}
-  This concludes the uniqueness proof.
+  This concludes the proof.
 \end{proof}
 
 \printbibliography
