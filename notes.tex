@@ -922,6 +922,7 @@ Unsurprisingly we shall replace CPOs with bottom by categories with an initial o
 We are ready to state and prove the main theorem of this chapter.
 
 \begin{theorem}[Adámek]
+  \label{teo:adamek}
   let \(\A\) be a category with an initial object \(0\) and colimits of \(\omega\)-chains and \(F\) an endofunctor that preserves \(\omega\)-colimits.
   Then \(F\) has an initial algebra \(\mu F = \colim_{n < \omega}F^n0\).
 \end{theorem}
@@ -971,6 +972,11 @@ We are ready to state and prove the main theorem of this chapter.
   \end{align*}
   This concludes the proof.
 \end{proof}
+
+\begin{remark}
+  Looking at the proof of Theorem \ref{teo:adamek} we notice that it isn't really necessary for \(\A\) to have colimits of \emph{all} \(\omega\)-chains or for \(F\) to preserve all of them as we care for these properties only when applied to the initial-algebra \(\omega\)-chain.
+  However in practice it may be more convenient to check the general properties rather than the particular case.
+\end{remark}
 
 \printbibliography
 
