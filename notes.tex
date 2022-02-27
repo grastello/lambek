@@ -83,6 +83,8 @@
 % My commands.
 \newcommand{\marginnote}[1]{\marginpar{\footnotesize #1}}
 
+\DeclareMathOperator*\colim{colim}
+
 \newcommand{\id}{\textsf{id}}
 \newcommand{\alg}{\textsf{Alg}}
 \newcommand{\Set}{\textsf{Set}}
@@ -903,14 +905,71 @@ Unsurprisingly we shall replace CPOs with bottom by categories with an initial o
 
 \begin{remark}
   If we apply \(F\) to the inital-algebra \(\omega\)-chain we obtain
-  \begin{equation*}
+  \begin{equation}
+    \label{dia:initial_chain_F}
     \begin{tikzcd}[sep = large]
       F0 \ar[r, "F!"] & F^20 \ar[r, "F^2!"] & F^30 \ar[r, "F^3!"] & \cdots
     \end{tikzcd}.
-  \end{equation*}
+  \end{equation}
   This \(\omega\)-chain has the same colimit as the original one.
   Indeed since the first element of (\ref{dia:initial_chain}) is the initial object there is an obvious one-to-one correspondence between cocones on (\ref{dia:initial_chain}) and cocones on the new chain above; and the same factorization morphisms work.
 \end{remark}
+
+\begin{tcolorbox}
+  TODO: do we need the remark above?
+\end{tcolorbox}
+
+We are ready to state and prove the main theorem of this chapter.
+
+\begin{theorem}[Adámek]
+  let \(\A\) be a category with an initial object \(0\) and colimits of \(\omega\)-chains and \(F\) an endofunctor that preserves \(\omega\)-colimits.
+  Then \(F\) has an initial algebra \(\mu F = \colim_{n < \omega}F^n0\).
+\end{theorem}
+
+\begin{proof}
+  Let \((\mu F, (c_n \colon F^n0 \to \mu F)_{n < \omega})\) be the colimit of the initial-algebra \(\omega\)-chain.
+  Since \(F\) preserves \(\omega\)-colimits we have that \((F(\mu F), (Fc_n \colon F^{n+1} \to F(\mu F))_{n < \omega})\) is the colimit of (\ref{dia:initial_chain_F}) but \((c_{n+1} \colon F^{n+1}0 \to \mu F)_{n < \omega}\) is a cocone on (\ref{dia:initial_chain_F}) so there is a unique arrow \(\iota\) such that
+  \begin{equation}
+    \label{eq:iota}
+    \iota \circ Fc_n = c_{n + 1} \quad \text{for all \(n < \omega\).}
+  \end{equation}
+  This gives an \(F\)-algebra structure to \(\mu F\) that we now check is initial.
+
+  Let \((A, \alpha)\) be a generic \(F\)-algebra.
+  We have the induced cocone \((\alpha_n \colon F^n0 \to \mu F)_{n < \omega}\) as in Remark \ref{rem:induced_cocone} and this gives a unique arrow \(h \colon \mu F \to A\) such that \(h \circ c_n = \alpha_n\) for \(n < \omega\).
+  We shall now prove that \(h\) is a morphism of \(F\)-algebras and that it is unique.
+
+  To prove that \( h \circ \iota = \alpha \circ Fh\) we check that both arrows are factorization morphisms for the cocone \((\alpha_{n + 1} \colon F^{n+1}0 \to A)_{n < \omega}\).
+  In practice we shall check that
+  \begin{equation*}
+    h \circ \iota \circ Fc_n = \alpha_{n + 1} = (\alpha \circ Fh) \circ Fc_n
+  \end{equation*}
+  for all \(n < \omega\).
+  For the first equality notice that \(h \circ \iota \circ Fc_n = h \circ c_{n+1} = \alpha_{n+1}\).
+  For the second equality consider the following diagram
+  \begin{equation*}
+    \begin{tikzcd}[sep = large]
+      F^{n+1}0 \ar[r, "\alpha_{n+1}"] \ar[d, "Fc_n"'] \ar[dr, "F\alpha_n"] & A \\
+      F(\mu F) \ar[r, "Fh"] & FA \ar[u, "\alpha"']
+    \end{tikzcd}.
+  \end{equation*}
+  The upper-right triangle commutes by definition of \(\alpha_{n + 1}\) (see Remark \ref{rem:induced_cocone}).
+  The lower-left triangle commute because \(h\) is the factorization arrow and by functoriality of \(F\).
+  Then, as the whole square commutes, \(\alpha \circ Fh \circ Fc_n = \alpha_{n+1}\).
+  This proves that \(h \colon \mu F \to A\) is a homomorphism of \(F\)-algebras.
+
+  To prove uniqueness suppose there is an arrow \(k \colon \mu F \to A\)such that it is also an \(F\)-algebra homomorphism i.e. \(k \circ \iota = \alpha \circ Fk\).
+  We will show that \(k \circ c_n = \alpha_n\) for all \(n < \omega\) and conclude by uniqueness of \(h\).
+  If \(n = 0\) \(k \circ c_0 = \alpha_0\) is trivial because both arrows are out of the initial object.
+  Now suppose that \(k \circ c_n = \alpha_n\):
+  \begin{align*}
+    k \circ c_{n+1} &= k \circ \iota \circ Fc_n && \text{(\ref{eq:iota})}\\
+    & \alpha \circ F(k \circ c_n) && \text{\(k\) homomorphism}\\
+    & \alpha \circ F\alpha_n && \text{inductive hypothesis}\\
+    & \alpha_{n+1} && \text{definition of \(\alpha_{n+1}\)}.
+  \end{align*}
+  This concludes the uniqueness proof.
+\end{proof}
 
 \printbibliography
 
