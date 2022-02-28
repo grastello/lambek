@@ -328,7 +328,7 @@ As one should expect \(F\)-algebras form a category of their own.
   Given \(F\)-algebras \((A, \alpha)\) and \((B, \beta)\) a \textbf{morphism} between them is an arrow \(f\) of \(\mathscr{A}\) such that
   \begin{center}
     \begin{tikzcd}[sep=large]
-      FA \ar[r, "\alpha"] \ar[d, "Fh"] & A \ar[d, "f"] \\
+      FA \ar[r, "\alpha"] \ar[d, "Ff"] & A \ar[d, "f"] \\
       FB \ar[r, "\beta"] & B
     \end{tikzcd}
   \end{center}
@@ -342,16 +342,15 @@ As one should expect \(F\)-algebras form a category of their own.
 
 We call the category of \(F\)-algebras and morphisms of \(F\)-algebras \(\alg F\).
 \marginnote{\(\alg F\)}
-We will explore some of the properties of this category in Section \ref{}.
 
 \begin{example}
   \label{ex:prepoly1}
   In \(\Set\) let \(1\) be the terminal object \(\{*\}\) and consider the functor
-  \[FX = X + 1\]
-  To give an arrow \(\alpha \colon A + 1 \to A\) is equivalent to giving two functions \(\alpha_0 \colon 1 \to A, \alpha_1 \colon A \to A\) because \(\alpha\) is an arrow out of a coproduct.
-  We also write \(\alpha = [\alpha_1, \alpha_0]\).
-    So an algebra for \(F\) is set \(A\) with a constant \(\alpha_0\) and a unary operation \(\alpha_1\).
-
+  \begin{equation*}
+    FX = X + 1.
+  \end{equation*}
+  To give an arrow \(\alpha \colon A + 1 \to A\) is equivalent to giving two functions \(\alpha_0 \colon 1 \to A, \alpha_1 \colon A \to A\); that is \(\alpha = [\alpha_1, \alpha_0]\).
+  So an algebra for \(F\) is set \(A\) with a constant \(\alpha_0\) and a unary operation \(\alpha_1\).
   A morphism of \(F\)-algebras is a function \(f\) such that
   \begin{center}
     \begin{tikzcd}[sep=large]
@@ -371,7 +370,7 @@ We will explore some of the properties of this category in Section \ref{}.
   Morphisms of such algebras preserve the constant and commute with the operation.
   Indeed if \((A, a, \otimes_A)\) and \((B, b, \otimes_B)\) are two \(F\)-algebras a morphism \(f \colon A \to B\) is a function such that
   \begin{itemize}
-  \item[1.] \(fa = b\);
+  \item[1.] \(f(a) = b\);
   \item[2.] \(f(x \otimes_A y) = f(x) \otimes_B f(y)\) for all \(x, y \in A\).
   \end{itemize}
   This is reminiscent of structures such as groups and monoids.
@@ -418,14 +417,13 @@ To every signature we associate a \textbf{polynomial functor} \marginnote{polyno
   H_\Sigma X &= \coprod_{n < \omega} \Sigma_n \times X^n \\
   H_\Sigma f &= \coprod_{n < \omega} \id_{\Sigma_n} \times \underbrace{f \times \ldots \times f}_{\text{\(n\) times}}
 \end{align*}
-
 Then if \(A\) is a \(\Sigma\)-algebra we can define functions \(\alpha_n \colon \Sigma_n \times A^n \to A\) naturally as
 \begin{equation}
   \label{eq:algebra_equivalent_definition}
   \alpha_n(\sigma, x_1, \ldots, x_n) \coloneqq \sigma^A(x_1, \ldots, x_n)
 \end{equation}
 and then \(\alpha \coloneqq \left[\alpha_0, \alpha_1, \ldots \right]\) makes \(A\) into a \(H_\Sigma\)-algebra.
-Conversely if we have a \(H_\Sigma\)-algebra \((A, \alpha)\) we can define an interpretation of every symbol by reading \ref{eq:algebra_equivalent_definition} the other way around.
+Conversely if we have a \(H_\Sigma\)-algebra \((A, \alpha)\) we can define an interpretation of every symbol by reading (\ref{eq:algebra_equivalent_definition}) the other way around.
 
 For morphisms consider the following square that we know commutes if \(f\) is a morphism of \(H_\Sigma\)-algebras.
 \begin{center}
@@ -434,7 +432,7 @@ For morphisms consider the following square that we know commutes if \(f\) is a 
     \coprod_{n < \omega} \Sigma_n \times B^n \ar[r, "\beta"] & B
   \end{tikzcd}
 \end{center}
-Since the diagonal of the square is an arrow out of a coproduct we know from Proposition \ref{prop:arrows_from_colimit} that \(f \circ \alpha\) and \(\beta \circ H_\Sigma f\) are equal when composed with the coprojections of the cocone and this can happen if and only if conditions \ref{eq:sigma_morphism_condition1} and \ref{eq:sigma_morphism_condition2} hold.\\
+Since the diagonal of the square is an arrow out of a coproduct we know from Proposition \ref{prop:arrows_from_colimit} that \(f \circ \alpha\) and \(\beta \circ H_\Sigma f\) are equal when composed with the coprojections of the cocone and this can happen if and only if conditions (\ref{eq:sigma_morphism_condition1}) and (\ref{eq:sigma_morphism_condition2}) hold.\\
 
 %% Give a set \(S\) one can consider the category \(\Set^S\) \marginnote{\(\Set^S\)} of \(S\)-sorted sets where objects are \(S\)-indexed families of sets \((X_s)_{s \in S}\) and arrows from \((X_s)_{s \in S}\) to \((Y_s)_{s \in S}\) are \(S\)-indexed families of functions \((f_s)_{s \in S}\) such that \(f_s \colon X_s \to Y_s\).
 
@@ -459,11 +457,12 @@ We now turn to continous algebras.
   \begin{equation*}
     a_1 \sqsubseteq a_2 \sqsubseteq a_3 \sqsubseteq \ldots
   \end{equation*}
-  have a join i.e. a least upper bound.
+  have a join i.e. a least upper bound; we denote it by \(\bigvee_{n < \omega}a_n\).
   A function \(f \colon (A, \sqsubseteq) \to (B, \sqsubseteq)\) is \textbf{continous} \marginnote{continous function} if
   \begin{itemize}
   \item[1.] it is monotone i.e. \(a \sqsubseteq b\) in \(A\) implies \(f(a) \sqsubseteq f(b)\) in \(B\);
-  \item[2.] if \(\overline{a}\) is the join of \(a_1 \sqsubseteq a_2 \sqsubseteq \ldots\) in \(A\) then \(f(\overline{a})\) is the join of \(f(a_1) \sqsubseteq f(a_2) \sqsubseteq \ldots\) in B.
+  %% \item[2.] if \(\overline{a}\) is the join of \(a_1 \sqsubseteq a_2 \sqsubseteq \ldots\) in \(A\) then \(f(\overline{a})\) is the join of \(f(a_1) \sqsubseteq f(a_2) \sqsubseteq \ldots\) in B.
+  \item[2.] given an \(\omega\)-chain \(a_1 \sqsubseteq a_2 \sqsubseteq a_3 \sqsubseteq \ldots\) we have \(f(\bigvee_{n < \omega}a_n) = \bigvee_{n < \omega}f(a_n)\).
   \end{itemize}
 
   Note that by 1 any chain in \(A\) is preserved by \(f\) and since \(B\) is a CPO it must have a join; condition 2 forces that join to be the image of the join of the original chain under \(f\).
@@ -484,9 +483,9 @@ We now turn to continous algebras.
   \begin{equation*}
     a_1 \sqsubseteq a_2 \sqsubseteq a_3 \sqsubseteq \ldots \quad \text{and} \quad b_1 \sqsubseteq b_2 \sqsubseteq b_3 \sqsubseteq \ldots
   \end{equation*}
-  are chains with joins respectively \(\overline{a}\) and \(\overline{b}\) then \(\overline{a} \otimes \overline{b}\) is the join of
+  are chains then we have a chain \((a_1, b_1) \sqsubseteq (a_2, b_2) \sqsubseteq \ldots\) is a chain in the product and
   \begin{equation*}
-    \quad a_1 \otimes b_1 \sqsubseteq a_2 \otimes b_2 \sqsubseteq a_3 \otimes b_3 \sqsubseteq \ldots
+    \bigvee_{n < \omega}a_n \otimes \bigvee_{n < \omega}b_n = \bigvee_{n < \omega}a_n \otimes b_n.
   \end{equation*}
 \end{example}
 
@@ -499,15 +498,15 @@ We now turn to continous algebras.
     \end{cases}.
   \end{equation*}
   An algebra \((A, \alpha)\) for \(F\) has a unary continous function \(\alpha_1 \colon A \to A\) and a constant \(\alpha_\bot\) such that \(\alpha_\bot \sqsubseteq \alpha(a)\) for every \(a \in A\) by monotony of \(\alpha\).
-  Comparing this to Example \ref{ex:continous_algebras} we now have a condition on our constant.
+  Comparing this to Example \ref{ex:continous_algebras} by changing the functor we now have a condition on our constant.
 \end{example}
 
-Finally let \(\CPO_\bot\) be the category of CPOs with a bottom element and continous functions that preserve the bottom i.e. such that \(f\bot = \bot\).
+Finally let \(\CPO_\bot\) be the category of CPOs with a bottom element and continous functions that preserve the bottom i.e. such that \(f(\bot) = \bot\).
 \marginnote{strict continous function}
 We call such functions \textbf{strict continous functions}.
 
 \begin{remark}
-  In \(\CPO_\bot\) products work as in \(\CPO\) (the bottom element is naturally the one whose components are all \(\bot\)) but the construction of coproducts mush be changed.
+  In \(\CPO_\bot\) products work as in \(\CPO\) (the bottom element is naturally the one whose components are all \(\bot\)) but the construction of coproducts must be changed.
   Indeed coproducts in \(\CPO_\bot\) are formed as in \(\CPO\) but the bottoms of all the components are unified into a single element.
   The initial object is still the singleton as it clearly has a bottom.
 \end{remark}
@@ -515,7 +514,7 @@ We call such functions \textbf{strict continous functions}.
 \begin{remark}
   Notice that the functor \(FX = X + 1\) on \(\CPO_\bot\) is the identity functor so its algebras are CPOs with a bottom and a strict continous unary operation.
   If we want a constant on top of the unary operation we can consider the functor \(FX = X_\bot + 1_\bot\), \(Ff = f_\bot + \id_{1_\bot}\).
-  Indeed if \((A, \alpha)\) is an \(F\)-algebra then \(\alpha = \left(\begin{smallmatrix}\alpha_1 & \alpha_0\end{smallmatrix}\right)\) with \(\alpha_1 \colon A_\bot \to A\) and \(\alpha_0 \colon 1_\bot \to A\) are strict continous functions.
+  Indeed if \((A, \alpha)\) is an \(F\)-algebra then \(\alpha = \outofcoprod{\alpha_1}{\alpha_0}\) with \(\alpha_1 \colon A_\bot \to A\) and \(\alpha_0 \colon 1_\bot \to A\) are strict continous functions.
     Indeed \(\alpha_0\) picks an element of \(A\): we need the domain to be \(1_\bot\) because otherwise we would be forced to pick the bottom of \(A\) as the function is strict.
     Similarly \(\alpha_1\) gives a continous unary operation on \(A\) (not necessarily a strict one!) as adding a new bottom to \(A\) ``frees'' the first one from being preserved.
 \end{remark}
@@ -571,13 +570,13 @@ We will now look at some non-trivial examples of initial algebras.
   \begin{equation}
     \iota = [\alpha_1, \textsf{in}_0] \colon (\mathbb{N} \bullet A) + A \to \mathbb{N} \bullet A
   \end{equation}
-  where \(\alpha_1\) is obtained from the universal property of the coproduct applied to the cone \((\textsf{in}_k)_{k \geq 1}\).
-  We thus have that the following triangles commute for every \(k \in \mathbb{N}\)
+  where \(\alpha_1\) is obtained from the universal property of the coproduct applied to the cone \((\textsf{in}_k)_{1 < k < \omega}\).
+  We thus have that the following triangles commute for every \(k < \omega\).
   \begin{center}
     \begin{tikzcd}[sep = large]
       \mathbb{N} \bullet A \ar[rr, "\alpha_1"] & & \mathbb{N} \bullet A \\
       & A \ar[ul, "\textsf{in}_k"] \ar[ur, "\textsf{in}_{k+1}"']&
-    \end{tikzcd}.
+    \end{tikzcd}
   \end{center}
   Now let \((B, \beta)\) with \(\beta = [\beta_1, \beta_0]\) be an algebra and \(f\) a morphism from \((\mathbb{N} \bullet A, \iota)\).
   We have that the following square commutes.
@@ -690,7 +689,7 @@ Finally we describe initial algebras for polynomial functors in two equivalent w
 \begin{example}
   Consider \(FX = X_\bot\) on \(\CPO_\bot\).
   Let \(\mathbb{N}^\top\) be the set of the natural numbers with an added topmost element \(\infty\) ordered naturally.
-  Notice that \((\mathbb{N}^\top)_\bot\) is isomorphic (as an order) to \(\mathbb{N}^\top\) and consider then the successor function \(s \colon (\mathbb{N}^\top)_\bot \to \mathbb{N}^\top\) with \(s(\infty) = \infty\).
+  Notice that \((\mathbb{N}^\top)_\bot\) is isomorphic (as an order) to \(\mathbb{N}^\top\) and consider the successor function \(s \colon (\mathbb{N}^\top)_\bot \to \mathbb{N}^\top\) with \(s(\infty) = \infty\).
   We claim this is the initial algebra for \(F\).
 
   Let \((A, \alpha)\) be another \(F\)-algebra and \(f \colon (\N^\top, s) \to (A, \alpha)\) a morphism.
@@ -701,10 +700,6 @@ Finally we describe initial algebras for polynomial functors in two equivalent w
   \end{equation*}
   This implies that there is really a unique morphism from \((\N^\top, s)\) to \((A, \alpha)\) so \((\N^\top, s)\) is initial.
 \end{example}
-
-\begin{tcolorbox}
-  TODO: functor \(FX = (X \times X)_\bot + 1_\bot\).
-\end{tcolorbox}
 
 We conclude this section with the a classic lemma of Lambeck's which gives necessary conditions for functors to have an initial algebra.
 
