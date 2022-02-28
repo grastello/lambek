@@ -794,7 +794,7 @@ Indeed we can see orders as categories in the usual way, order-preserving functi
   \begin{equation*}
     \overline{\alpha} \colon F(A \times \mu F) \xrightarrow{\intoprod{\id_{F(A \times \mu F)}}{F\pi_2}} F(A \times \mu F) \times F(\mu F) \xrightarrow{\alpha \times \iota} A \times \mu F.
   \end{equation*}
-  This gives an algebra structure on \(A \times \mu F\) so let \(\overline{h} \colon \mu F \to A \times \mu F\) be the unique algebra homomorphism gi en by the initiality of \(\mu F\).
+  This gives an algebra structure on \(A \times \mu F\) so let \(\overline{h} \colon \mu F \to A \times \mu F\) be the unique algebra homomorphism given by the initiality of \(\mu F\).
   \begin{equation}
     \label{dia:recursion2}
     \begin{tikzcd}[row sep = large, column sep = 6 em]
@@ -803,7 +803,7 @@ Indeed we can see orders as categories in the usual way, order-preserving functi
       F(\mu F) \ar[rr, "\iota"] & & \mu F
     \end{tikzcd}
   \end{equation}
-  The outer square in \ref{dia:recursion2} commutes because (1), (2) and (3) do.
+  The outer square in (\ref{dia:recursion2}) commutes because (1), (2) and (3) do.
   Indeed (1) commutes because \(\overline{h}\) is an algebra homomorphism, (2) by Notation \ref{not:product_arrows} and (3) because of Notation \ref{not:brackets}.
   By functoriality of \(F\) we then have that \(\pi_2 \circ \overline{h}\) is an endomorphism on the initial algebra thus \(\pi_2 \circ \overline{h} = \id_{\mu F}\).
 
@@ -817,12 +817,12 @@ Indeed we can see orders as categories in the usual way, order-preserving functi
   \end{equation*}
   But notice that
   \begin{equation*}
-    \pi \circ (\alpha \times \iota) \circ \intoprod{\id_{F(A \times \mu F)}}{F\pi_2} = \pi_1 \circ \intoprod{\alpha}{\iota \circ F\pi_2} = \alpha.
+    \pi_1 \circ (\alpha \times \iota) \circ \intoprod{\id_{F(A \times \mu F)}}{F\pi_2} = \pi_1 \circ \intoprod{\alpha}{\iota \circ F\pi_2} = \alpha.
   \end{equation*}
-  so we have \ref{dia:recursion}.
+  so we have (\ref{dia:recursion}).
 
-  For uniqueness consider \(h \colon \mu F \to A\) homomorphism of algebras such that \ref{dia:recursion} commutes.
-  We claim that \(\overline{h} = \intoprod{h}{\id_{\mu F}}\) so that \(h = \pi_1 \circ \overline{h}\); proving uniqueness.
+  To prove uniqueness consider \(h \colon \mu F \to A\) homomorphism of algebras such that (\ref{dia:recursion}) commutes.
+  We claim that \(\overline{h} = \intoprod{h}{\id_{\mu F}}\) so that \(h = \pi_1 \circ \overline{h}\); thus uniqueness.
   In order to do it we show that \(\intoprod{h}{\id_{\mu F}}\) is an algebra homomorphism and conclude it must be \(\overline{h}\) by initiality of \(\mu F\).
   Indeed we have
   \begin{align*}
