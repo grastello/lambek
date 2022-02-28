@@ -850,6 +850,7 @@ Indeed we can see orders as categories in the usual way, order-preserving functi
 We begin this section by recalling Kleene's Fixed Point Theorem and its proof with the goal of generalizing it to the categorical setting.
 
 \begin{theorem}[Kleene's Fixed Point Theorem]
+  \label{teo:kleene}
   Let \(A\) be a CPO with bottom \(\bot\); then every continous function \(F \colon A \to A\) has a least fixed point \(\mu F = \sup_{n < \omega}F^n(\bot)\)\footnote{We write \(F^n\) for \(\underbrace{F \ldots F}_{n \text{ times}}\) and \(F^0\) is the identity function. We use a similar notation for functors.}.
 \end{theorem}
 
@@ -862,10 +863,8 @@ We begin this section by recalling Kleene's Fixed Point Theorem and its proof wi
   But this shows that \(x\) is an upper bound so \(\mu F \leq x\) by definition and, finally, \(\mu F\) must be the least fixed point because it is less than any pre-fixed point and fixed points are trivially pre-fixed points.
 \end{proof}
 
-Unsurprisingly we shall replace CPOs with bottom by categories with an initial obejct and endofunctions by
-\begin{tcolorbox}
-  TODO: write something decent here.
-\end{tcolorbox}
+Unsurprisingly we shall replace CPOs with bottom by categories with an initial obejct and endofunctions by endofunctors.
+The \(\omega\)-chain used in the proof of Theorem \ref{teo:kleene} becomes a diagram and the continuity condition become a colimit-preservation one.
 
 \begin{definition}
   The \textbf{initial-algebra \(\omega\)-chain}\marginnote{initial-algebra \(\omega\)-chain} of an endofunctor \(F\) is the diagram
@@ -884,10 +883,10 @@ Unsurprisingly we shall replace CPOs with bottom by categories with an initial o
   Let \((A, \alpha)\) be an \(F\)-algebra.
   Then it induces a canonical cocone \((\alpha_n \colon F^n0 \to A)_{n < \omega}\) on (\ref{dia:initial_chain}) by
   \begin{align*}
-    \alpha_0 &=\ !; \\
+    \alpha_0 &=\ ! \\
     \alpha_{n+1} &= FF^n0 \xrightarrow{F\alpha_n} FA \xrightarrow{\alpha} A.
   \end{align*}
-  To check that the \(\alpha_n\)s are a cocone we prove \(\alpha_n = \alpha_{n+1} \circ F^n!\) by induction on \(n\).
+  To check that the \(\alpha_n\)'s are a cocone we prove \(\alpha_n = \alpha_{n+1} \circ F^n!\) by induction on \(n\).
   When \(n = 0\) the condition becomes \(! = \alpha_1 \circ !\) which is true because both sides are arrows out of the initial object.
   Now suppose the condition holds for \(n - 1\):
   \begin{align*}
@@ -909,10 +908,6 @@ Unsurprisingly we shall replace CPOs with bottom by categories with an initial o
   This \(\omega\)-chain has the same colimit as the original one.
   Indeed since the first element of (\ref{dia:initial_chain}) is the initial object there is an obvious one-to-one correspondence between cocones on (\ref{dia:initial_chain}) and cocones on the new chain above; and the same factorization morphisms work.
 \end{remark}
-
-\begin{tcolorbox}
-  TODO: do we need the remark above?
-\end{tcolorbox}
 
 We are ready to state and prove the main theorem of this chapter.
 
@@ -969,7 +964,7 @@ We are ready to state and prove the main theorem of this chapter.
 \end{proof}
 
 \begin{remark}
-  Looking at the proof of Theorem \ref{teo:adamek} we notice that it isn't really necessary for \(\A\) to have colimits of \emph{all} \(\omega\)-chains or for \(F\) to preserve all of them as we care for these properties only when applied to the initial-algebra \(\omega\)-chain.
+  Looking at the proof of Theorem \ref{teo:adamek} we notice that it isn't really necessary for \(\A\) to have colimits of \emph{all} \(\omega\)-chains or for \(F\) to preserve \emph{all} of them as we care for these properties only when applied to the initial-algebra \(\omega\)-chain.
   However in practice it may be more convenient to check the general properties rather than the particular case.
 \end{remark}
 
