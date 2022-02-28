@@ -114,9 +114,9 @@
 
 \section{Limits and colimits}
 
-Through this section let \(\A, \mathscr{D}\) be categories. 
+Through this section let \(\A, \mathscr{D}\) be categories with \(\mathscr{D}\) small. 
 We recall what limits and colimits are, some significant examples (particularly products and coproducts) and some of their basic properties.
-We also introduce some related notation.
+We also introduce some notation.
 For detailed proofs see \cite[Chapter 2]{handbook1}.
 
 \begin{definition}
@@ -141,7 +141,7 @@ For detailed proofs see \cite[Chapter 2]{handbook1}.
   When a functor \(F\) has a limit that limit is unique (up to isomorphism).
 \end{proposition}
 
-The following proposition is a way of proving equality of two arrows into a product.
+The following proposition is a way of proving equality of two arrows into a limit.
 It is most useful when working in abstract categories where arrows are not (generally) functions.
 
 \begin{proposition}
@@ -225,7 +225,7 @@ In light of this proposition we write \(A \times B \times C\) and \(A + B + C\) 
   \begin{equation}
     f = \langle\rho_1, \rho_2, \rho_3, \ldots\rangle;
   \end{equation}
-  having chosen a convenient ordering on \(I\).
+  given a convenient ordering on \(I\).
 
   By a dual argument we obtain that arrows \(f \colon L \to C\) out of a coproduct \(L = \coprod_{i \in I}A_i\) are in one-to-one correspondence with families of arrows \((\tau_i \colon A_i \to C)\) and write
   \begin{equation}
@@ -255,7 +255,7 @@ In light of this proposition we write \(A \times B \times C\) and \(A + B + C\) 
 \end{notation}
 
 The next proposition shows how the notation introduced above for products interacts with the composition.
-It is most useful for performing calculations; we will use it without explicit reference particularly in the proof of the Primitive Recursion Theorem \ref{teo:primitive_recursion}.
+It is most useful for performing calculations; we will use it without explicit reference particularly in the proof of the Primitive Recursion Theorem (see \ref{teo:primitive_recursion}).
 
 \begin{proposition}
   Consider the following two diagrams.
@@ -273,8 +273,8 @@ It is most useful for performing calculations; we will use it without explicit r
   \end{center}
   We have that
   \begin{itemize}
-  \item[1.] \((g_1 \times g_2) \circ (f_1, f_2) = (g_1 \circ f_1, g_2 \circ f_2)\);
-  \item[2.] \((f_1, f_2) \circ g = (f_1 \circ g, f_2 \circ g)\).
+  \item[1.] \((g_1 \times g_2) \circ \intoprod{f_1}{f_2} = (g_1 \circ f_1, g_2 \circ f_2)\);
+  \item[2.] \(\intoprod{f_1}{f_2} \circ g = \intoprod{f_1 \circ g}{f_2 \circ g}\).
   \end{itemize}
 \end{proposition}
 
@@ -295,16 +295,16 @@ It is most useful for performing calculations; we will use it without explicit r
 \begin{definition}
   A functor \(G \colon \A \to \B\) \textbf{preserve limits} \marginnote{limit preservation} if, for every small category \(\D\) and functor \(F \colon \D \to \A\), when the limit of \(F\) exists the limit of \(G \circ F\) is obtained by applying \(G\) to the limit cone.
   That is: if \((L, (\pi_D)_{D \in \D})\) is the limit of \(F\) then \((GL, (G\pi_D)_{D \in \D})\) is the limit of \(G \circ F\).
-  As expected \(G\) is said to preserve colimits when, for every small category \(\D\) and functor \(F \colon \D \to \A\), when the colimit of \(F\) exists then the colimit of \(G \circ F\) is the image through \(G\) of the cocone.
+  As expected \(G\) \marginnote{colimit preservation} is said to preserve colimits when, for every small category \(\D\) and functor \(F \colon \D \to \A\), when the colimit of \(F\) exists then the colimit of \(G \circ F\) is the image through \(G\) of the colimit cocone.
 \end{definition}
 
-By limiting the definition above to a specific small category \(\D\) we obtain the notion of a functor that preserves \(\D\)-(co)limits.
+By restricting the definition above to a specific small category \(\D\) we obtain the notion of a functor that preserves \(\D\)-(co)limits.
 We will be interested in functors that preserve \(\omega\)-(co)limits where \(\omega\) is the set of natural numbers with the usual ordering regarded as a category.
 
 \section{Other notations}
 
 \begin{notation}
-  When we are working with a category \(\A\) that has enough structure \footnote{i.e. that has all the (co)limits needed for our functor to work.} we will often define endofunctors \(F \colon \A \to \A\) by their action on objects only such as
+  When we are working with a category \(\A\) that has enough structure \footnote{i.e. that has all the (co)limits needed for our definition to make sense.} we will often define endofunctors \(F \colon \A \to \A\) by their action on objects only such as
   \begin{equation*}
     FX = X \times X + 1.
   \end{equation*}
@@ -316,7 +316,7 @@ We will be interested in functors that preserve \(\omega\)-(co)limits where \(\o
 
 \section{\(F\)-algebras}
 
-Though this section fix an arbitrary category \(\mathscr{A}\) that we call the \textbf{base category} and an endofunctor \(F \colon \mathscr{A} \to \mathscr{A}\).
+Though this section let \(\mathscr{A}\) be an arbitrary category that we call the \textbf{base category} and \(F \colon \mathscr{A} \to \mathscr{A}\) an endofunctor.
 
 \begin{definition}
   An \textbf{algebra} for \(F\) (or an \textbf{\(F\)-algebra}) is a pair \((A, \alpha)\) where \(A\) is an object of \(\mathscr{A}\) (that we call the \textbf{carrier} or \textbf{base object}) \marginnote{\(F\)-algebra} and \(\alpha\) is an arrow of type \(FA \to A\) (that we call the \textbf{structure} of the algebra).
