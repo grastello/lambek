@@ -803,6 +803,8 @@ Here we show how one can use the concept of an initial algebra to provide a gene
   \end{equation*}
 \end{example}
 
+The following theorem is a generalization of the classic recursion with parameters theorem.
+
 \begin{theorem}[Primitive Recursion]
   \label{teo:primitive_recursion}
   Assume the base category \(\mathscr{A}\) to have finite products and let \(F\) be an endofunctor with an initial algebra \(\mu F\).
@@ -867,6 +869,45 @@ Here we show how one can use the concept of an initial algebra to provide a gene
     &= \pi_2 \circ \intoprod{h}{\id_{\mu F}} \circ \iota;
   \end{align*}
   so we conclude by Proposition \ref{prop:arrows_into_limit}.
+\end{proof}
+
+Recall the classic recursion with parametes theorem.
+We shall prove it using Theorem \ref{teo:primitive_recursion}; for a classical proof see \cite[Theorem 18.1]{andrettaelements}.
+
+\begin{theorem}[Recursion with parameters]
+  Let \(A\) be a set, \(a \in A\) and \(f \colon A \times \N \to A\) be a function.
+  Then there is a function \(g \colon \N \to A\) such that
+  \begin{equation*}
+    \begin{cases}
+      g(0) = a \\
+      g(n + 1) = f(g(n), n)
+    \end{cases}.
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  Consider the functor \(FX = X + 1\) on \(\Set\) and form the arrow
+  \begin{equation*}
+    \alpha \colon F(A \times \mu F) = A \times \N + 1 \xrightarrow{\outofcoprod{f}{a}} A.
+  \end{equation*}
+  Now by Theorem \ref{teo:primitive_recursion} there is a function \(g \colon \N \to A\) such that (\ref{dia:recursion}) commutes.
+  This gives us the diagram
+  \begin{equation}
+    \begin{tikzcd}[sep = large]
+      \N \times 1 \ar[r, "\outofcoprod{\iota_1}{\iota_0}"] \ar[d, "\intoprod{g}{\id_\N} + \id_1"] & \N \ar[d, "g"]\\
+      A \times \N + 1 \ar[r, "\outofcoprod{f}{a}"] & A
+    \end{tikzcd}
+  \end{equation}
+  that yields the conditions
+  \begin{enumerate}
+  \item[1.] \(g \circ \iota_0 = a \circ \id_1\);
+  \item[2.] \(g \circ \iota_1 = f \circ \intoprod{g}{\id_\N}\).
+  \end{enumerate}
+  Now 1 gives us \(g(0) = a\) and 2 that
+  \begin{equation*}
+    g(n + 1) = (g \circ \iota_1)(n) = (f \circ \intoprod{g}{\id_\N})(n) = f(g(n), n) \quad \text{for all \(n < \omega\).}
+  \end{equation*}
+  So \(g\) has the required properties.
 \end{proof}
 
 \chapter{Initial algebras from finitary iteration}
