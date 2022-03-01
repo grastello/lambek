@@ -615,6 +615,7 @@ Finally we describe initial algebras for polynomial functors in two equivalent w
 \end{remark}
 
 \begin{remark}
+  \label{rem:ev_function}
   Let \(A\) be a \(\Sigma\)-algebra and \(t\) a closed term.
   We can define an evaluation function \(\textsf{ev} \colon \mu H_\Sigma \to A\) as follows:
   \begin{itemize}
@@ -649,6 +650,7 @@ Finally we describe initial algebras for polynomial functors in two equivalent w
 \end{proof}
 
 \begin{example}
+  \label{ex:finite_binary_trees}
   By the discussion above the initial algebra for the functor \(FX = X \times X + 1\) on \(\Set\) is the algebra of all finite binary trees.
 \end{example}
 
@@ -772,9 +774,34 @@ Indeed we can see orders as categories in the usual way, order-preserving functi
 
 \section{Recursion and Induction}
 
-\begin{tcolorbox}
-  TODO: recursively specified morphisms, example, catamorphism?
-\end{tcolorbox}
+Recursion is a way of defining a function \(f\) on the natural numbers by specifying a value for \(f(0)\) and a way of deriving the value of \(f(n + 1)\) from the value of \(f(n)\).
+Recursion, however, can also be used to define functions on (among other things) trees; in this case it is usually called \emph{structural} induction (we have an example of this in Remark \ref{rem:ev_function}).
+Here we show how one can use the concept of an initial algebra to provide a general definition of recursion of which the cited examples as particular cases.
+
+\begin{definition}
+  Let \(F\) be an endofuctor and \(\mu F\) its initial algebra.
+  A morphism \(f \colon \mu F \to A\) is \textbf{recursively specified} \marginnote{recursively specified} if there exists an algebra structure \(\alpha \colon FA \to A\) on \(A\) that makes \(f\) into an algebra homomorphism (actually the unique algebra homomorphism).
+\end{definition}
+
+\begin{example}
+  Consider the functor \(FX = X \times X + 1\) on \(\Set\) and let \(T\) be its initial algebra that we know from Example \ref{ex:finite_binary_trees} is the algebra of finite binary trees with tree-tupling.
+  Let \(h \colon T \to \mathbb{N}\) be the function that assigns \(0\) to the root-only tree and, given a tree \(t\) obtained by tree-tupling of \(t_1\) and \(t_2\), \(h(t) = 1 + \max\{h(t_1), h(t_2)\}\).
+  We now show that \(h\) is recursively specified according to our definition.
+
+  We need an algebra structure on \(\mathbb{N}\) i.e. an arrow \(\alpha \colon \N \times \N + 1 \to \N\).
+  Since \(\alpha\) is an arrow out of a coproduct we have \(\alpha = [\alpha_1, \alpha_0]\) so we can let
+  \begin{align*}
+    \alpha_0 &= 0;\\
+    \alpha_1(n, m) &= 1 + \max\{n, m\}.
+  \end{align*}
+  Indeed if \(\iota_1\) is tree-tupling and \(\iota_0\) is the root-only tree the following square trivially commutes thus \(h\) is recursively specified.
+  \begin{equation*}
+    \begin{tikzcd}[sep = large]
+      T \times T + 1 \ar[r, "\outofcoprod{\iota_1}{\iota_0}"] \ar[d, "h \times h + \id_1"] & T \ar[d, "h"]\\
+      \N \times \N + 1 \ar[r, "\outofcoprod{\alpha_1}{\alpha_0}"] & \N
+    \end{tikzcd}
+  \end{equation*}
+\end{example}
 
 \begin{theorem}[Primitive Recursion]
   \label{teo:primitive_recursion}
