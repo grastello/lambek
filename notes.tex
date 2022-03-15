@@ -86,6 +86,7 @@
 \DeclareMathOperator*\colim{colim}
 
 \newcommand{\id}{\textsf{id}}
+\newcommand{\Ord}{\textsf{Ord}}
 \newcommand{\alg}{\textsf{Alg}}
 \newcommand{\Set}{\textsf{Set}}
 \newcommand{\CPO}{\textsf{CPO}}
@@ -1041,7 +1042,7 @@ We are ready to state and prove the main theorem of this chapter.
     &= \alpha \circ Fk \circ Fc_n && \text{\(k\) homomorphism}\\
     &= \alpha \circ F(k \circ c_n) && \text{\(F\) functor}\\
     &= \alpha \circ F\alpha_n && \text{inductive hypothesis}\\
-    &= \alpha_{n+1} && \text{definition of \(\alpha_{n+1}\)}.
+    &= \alpha_{n+1} && \text{definition of \(\alpha_{n+1}\)}.\\
   \end{align*}
   This concludes the proof.
 \end{proof}
@@ -1051,6 +1052,45 @@ We are ready to state and prove the main theorem of this chapter.
   However in practice it may be more convenient to check the general properties rather than the particular case.
 \end{remark}
 
-\printbibliography
+\chapter{Initial algebras from transfinite iteration}
+\newpage
 
+\section{Transfinite iteration}
+
+\begin{tcolorbox}
+  TODO: maybe intro on cardinals?
+  TODO: find better name for this section.
+\end{tcolorbox}
+
+Through this section we regard ordinals \(i \in \Ord\) as linear orders and thus as categories.
+An \(i\)-chain in some category \(\A\) is a functor \(C : i \to \A \)\marginnote{\(i\)-chain} and we say that \(\A\) has colimits of chains if for all \(i \in \Ord\) every \(i\)-chain has a colimit.
+This includes the existence of an initial object (as the colimit of the empty chain) but does not include colimits of \(\Ord\)-chain.
+
+The main result of this section, as it was for \ref{teo:adamek}, is a generalization to the categorical setting of an order-theoretic result; this time from Zermeleo.
+Let \(P\) be a chain-complete poset and \(f : P \to P\) an order-preserving map.
+We can define an \(\Ord\)-indexed sequence by transfinite recursion as follows
+\begin{align*}
+  f^0(\bot) = \bot && \text{base case;}\\
+  f^{j+1}(\bot) = f(f^j(\bot)) && \text{for all ordinals \(j\);} \\
+  f^j(\bot) = \bigvee_{i < j}f^i(\bot) && \text{for limit ordinals \(j\).}
+\end{align*}
+This sequence is clearly a chain.
+
+\begin{theorem}
+  \label{teo:zermeleo}
+  Let \(P\) be a chain-complete poset.
+  Then every order-preserving \(f : P \to P\) has a lest fixed point \(\mu f\) and \(\mu f = f^j(\bot)\) for some \(j \in \Ord\).
+\end{theorem}
+
+\begin{proof}
+  By Hartog's Lemma (insert here a reference) there is an ordinal \(i\) such that there is no injection \(i \to P\) (here use the tailed arrow).
+  Thus there are \(j < k < i\) such that \(f^j(\bot) = f^k(\bot)\) and we have \(f^j(\bot) \leq f^{j+1}(\bot) \leq f^k(\bot)\) because \((f^j(\bot))_{j\in\Ord}\) is a chain.
+  So \(f(f^j(\bot)) = f^{j+1}(\bot) = f^j(\bot)\) hence \(f^j(\bot)\) is a fixed point.
+
+  Now let \(x = f(x)\) be another fixed point.
+  By transfinite induction we can prove \(x \geq f^i(\bot)\) for all \(i \in \Ord\) (similarly to what we did in Theorem \ref{teo:kleene}) thus when \(i = j\) we obtain \(x \geq f^j(\bot)\).
+  This proves that \(f^j(\bot)\) is indeed the least fixed point of \(f\).
+\end{proof}
+
+\printbibliography
 \end{document}
