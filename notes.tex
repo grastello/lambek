@@ -1076,7 +1076,7 @@ We can define an \(\Ord\)-indexed sequence by transfinite recursion as follows
 \end{align*}
 This sequence is clearly a chain.
 
-\begin{theorem}
+\begin{theorem}[Zermeleo]
   \label{teo:zermeleo}
   Let \(P\) be a chain-complete poset.
   Then every order-preserving \(f : P \to P\) has a lest fixed point \(\mu f\) and \(\mu f = f^j(\bot)\) for some \(j \in \Ord\).
@@ -1091,6 +1091,72 @@ This sequence is clearly a chain.
   By transfinite induction we can prove \(x \geq f^i(\bot)\) for all \(i \in \Ord\) (similarly to what we did in Theorem \ref{teo:kleene}) thus when \(i = j\) we obtain \(x \geq f^j(\bot)\).
   This proves that \(f^j(\bot)\) is indeed the least fixed point of \(f\).
 \end{proof}
+
+In order to generalize this theorem and its proof we begin by defining a trasfinite version of the initial-algebra \(\omega\)-chain.
+This will be a functor \(W : \Ord \to \A\) into a category \(\A\) with colimits of chains.
+We denote the objects of the initial-algebra chain by \(W_i\) and the arrows by \(w_{i,j}\) for \(i,j \in \Ord\).
+They are defined as follows by transfinite recursion.
+\begin{align*}
+  W_0 = 0 && \text{base case};\\
+  W_{j+1} = FW_j && \text{for all ordinals \(j\)};\\
+  W_j = \colim_{i < j}W_i && \text{for all limit ordinals \(j\)}.\\
+\end{align*}
+As for arrows \(w_{0,1}\) is the unique arrow \(0 \to W_1 = F0\) and \(w_{i + 1, j+1} = Fw_{i,j}\) for all \(i, j \in \Ord\).
+When \(j\) is limit we have \(W_j = \colim_{i < j}W_i\) so we let \(\{w_{i,j}\}_{i < j}\) be the arrows forming the colimit cocone.
+We are only missing the arrows \(w_{j, j+1}\) for \(j\) limit that we obtain using the universal property of \(W_j = \colim_{i < j}W_{i}\).
+First notice that we can leave out the initial object \(0\) and all the limit ordinals without changing the colimit:
+\begin{equation*}
+  W_j = \colim_{i < j}W_i = \colim_{\substack{0 < i < j \\  \text{\(i\) not limit}}}W_i;
+\end{equation*}
+this because removing \(0\) and the limit ordinals from \(j\) leaves us with a diagram satisfying \ref{??} (insert here reference to final functors in preface).
+Now
+\begin{equation*}
+  (Fw_{i,j} : FW_i = W_{i+1} \to FW_{j} = W_{j+1})_{i < j}
+\end{equation*}
+is a cocone on this reduced diagram.
+Thus we obtain a unique factorization arrow \(W_j \to W_{j+1}\) that we declare to be our \(w_{j, j+1}\) so the definition of our transfinite chain can continue.
+Notice also that, being the factorization arrow, \(w_{j, j_+1}\) is such that
+\begin{equation}
+  \label{eq:omega-to-omega-plus-one}
+  w_{j, j+1} \circ w_{i+1, j} = Fw_{i, j} \quad \text{for all \(i < j\)}.
+\end{equation}
+
+We now generalize Remark \ref{rem:induced_cocone} to the transfinite case.
+
+\begin{remark}
+  \label{rem:induce-transfinite-cocone}
+  Let \((A, \alpha)\) be an \(F\)-algebra; then it induces a cocone \((\alpha_i : W_i \to A)_{i \in \Ord}\) on \(W\) as follows.
+  \begin{align*}
+    \alpha_0 &=\ ! && \text{base case};\\
+    \alpha_{i+1} &= \alpha \circ F\alpha_i && \text{for all ordinals i};
+  \end{align*}
+  for limit ordinals \(j\), provided that \((\alpha_i : W_i \to A)_{i < j}\) is a cocone, we let \(\alpha_{j}\) be the unique factorization arrow such that \(\alpha_j \circ w_{i,j} = \alpha_i\) for all \(i < j\).
+  In order of this construction to work we need to prove that \((\alpha_i : W_i \to A)_{i < j}\) is indeed a cocone i.e. that
+  \begin{equation}
+    \label{eq:cocone-condition}
+    \alpha_i \circ w_{k, i} = \alpha_{k}
+  \end{equation}
+  for all \(k < i < j\), for every limit ordinal \(j\).
+  Assume that all \(\alpha_i\)'s for \(i < j\) have been defined and observe that
+  \begin{itemize}
+  \item[1.] for \(w_{0,1}\) condition (\ref{eq:cocone-condition}) is trivial;
+  \item[2.] for \(w_{k, i}\) with \(i\) limit it is trivial by definition of \(\alpha_{i}\);
+  \item[3.] for \(w_{i, i+1}\) with \(i\) limit we can prove (\ref{eq:cocone-condition}) holds by showing
+    \[\alpha_{i+1} \circ w_{i, i+1} \circ w_{k, i} = \alpha_i \circ w_{k, i} =  \alpha_{k}\]
+    for all \(k < i\) and conclude by uniqueness of \(\alpha_i\).
+    It is enough to prove the relation for all \(k < i\) non-limits as those form a subsequence of \(i\)\footnote{Explain this through final fonctors.}; we have
+    \begin{align*}
+      \alpha_{i+1} \circ w_{i, i+1} \circ w_{k, i} &= \alpha \circ F\alpha_i \circ w_{i, i+1} \circ w_{k, i} && \text{definition of \(\alpha_{i+1}\)}\\
+                                      &= \alpha \circ F\alpha_i \circ Fw_{k-1, i} && \text{(\ref{eq:omega-to-omega-plus-one})} \\
+                                      &= \alpha \circ F(\alpha_i \circ w_{k-1, i}) && \text{functoriality of \(F\)}\\
+                                      &= \alpha \circ F\alpha_{k-1} && \text{definition of \(\alpha_{i}\)}\\
+                                      &= \alpha_k && \text{definition of \(\alpha_k\)}
+    \end{align*}
+    thus (\ref{eq:cocone-condition}) holds;
+  \item[4.] for \(w_{i,i+1}\) with \(i\) non-limit we proceed inductively like in Remark \ref{rem:induced_cocone}; the base case is provided by item 1 if \(i\) is a natural number and by item 3 otherwise.
+  \end{itemize}
+\end{remark}
+  
 
 \printbibliography
 \end{document}
