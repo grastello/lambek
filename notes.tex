@@ -1055,16 +1055,57 @@ We are ready to state and prove the main theorem of this chapter.
 \chapter{Initial algebras from transfinite iteration}
 \newpage
 
-\section{Transfinite iteration}
+
 
 \begin{tcolorbox}
   TODO: maybe intro on cardinals?
   TODO: find better name for this section.
 \end{tcolorbox}
 
-Through this section we regard ordinals \(i \in \Ord\) as linear orders and thus as categories.
-An \(i\)-chain in some category \(\A\) is a functor \(C : i \to \A \)\marginnote{\(i\)-chain} and we say that \(\A\) has colimits of chains if for all \(i \in \Ord\) every \(i\)-chain has a colimit.
+\section{Colimits of chains}
+
+Through this chapter we regard ordinals \(j \in \Ord\) as linear orders and thus as categories.
+A \(j\)-chain in some category \(\A\) is a functor \(C : j \to \A \)\marginnote{\(j\)-chain} and we say that \(\A\) has colimits of chains if for all \(j \in \Ord\) every \(j\)-chain has a colimit.
 This includes the existence of an initial object (as the colimit of the empty chain) but does not include colimits of \(\Ord\)-chain.
+
+When \(j\) is a limit ordinal we can calculate colimits and factorization arrows on a cofinal subchain of \(j\) rather than on
+
+\begin{lemma}
+  Let \(j\) be a limit ordinal and \(C : j \to \A\) a \(j\)-chain into a category \(\A\) with colimits of chains.
+  We denote the elements of the chain by \(C_i\), for \(i \in j\), and its arrows by \(c_{i,i'} : C_i \to C_{i'}\) for \(i \leq i' < j\).
+  Now let \(j' \subseteq j\) be cofinal i.e. such that for every \(i \in j\) there is some \(i' \in j'\) such that \(i \leq i'\) and denote by \(C'\) the restriction of \(C\) to \(j'\).
+  Then \(C\) and \(C'\) have the same colimit.
+\end{lemma}
+
+\begin{proof}
+  The first thing we notice is that there is a canonical bijection between cocones on \(C\) and cocones on \(C'\).
+  Given a cocone \((A, \alpha_i : C_i \to A)_{i \in j}\) on \(C\) throwing away all the indexes not in \(j'\) yields \((A, \alpha_i : C_i \to A)_{i \in j'}\); a cocone on \(C'\).
+  Conversely given \((A, \alpha_i : C_i \to A)_{i \in j'}\) we need to define \(\alpha_i : C_i \to A\) for all \(i \in j \setminus j'\); but there's only one way to do so.
+  Indeed by cofinality let \(i' \in j'\) be such that \(i \leq i'\); by the cocone condition we must set \(\alpha_i = \alpha_{i'} \circ c_{i,i'}\) so \((A, \alpha_{i}:C_i \to A)_{i \in j'}\) can be extended to the whole chain in only one way.
+
+  Let \((L, \sigma_i : C_i \to L)_{i \in j}\) be the colimit of \(C\); then \((L, \sigma_i : C_i \to L)_{i \in j'}\) is the colimit of \(C'\).
+  Let \((A, \alpha_i : C_i \to A)_{i \in j'}\) be a cocone on \(C'\) and then we extend it to a cocone on \(C\) as explained above.
+  Now, since \(L\) is the colimit, let \(m \colon L \to A\) be the unique factorization arrow i.e. we have
+  \begin{equation*}
+    m \circ \sigma_i = \alpha_i \quad \text{for all \(i \in j\)}.
+  \end{equation*}
+  Particularly for all \(i \in j'\) so \(m\) is a factorization of \((A, \alpha_i : C_i \to A)_{i \in j'}\) through \((L, \sigma_i : C_i \to L)_{i \in j'}\).
+  To prove it is unique let \(n \colon L \to A\) be such that \(n \circ \sigma_i = \alpha_i\) for all \(i \in j'\); we will show that \(n\) actually works for all \(i \in j\) and thus must be \(m\) by uniqueness.
+  Let \(i \in j \setminus j'\) and \(i' \in j'\) such that \(i \leq i'\) by cofinality, then we have
+  \begin{equation*}
+    n \circ \sigma_i = n \circ \sigma_{i'} \circ c_{i, i'} = \alpha_{i'} \circ c_{i,i'} = \alpha_i
+  \end{equation*}
+  and we are done.
+
+  For the converse let \((L, \sigma_i : C_i \to L)_{i \in j'}\) be the colimit of \(C'\).
+  One can prove that the unique extension \((L, \sigma_i : C_i \to L)_{i \in j}\) is the colimit of \(C\) by a similar argument.
+  Finally we have that \(C\) and \(C'\) have the same colimit (modulo restriction/extension) and that the factorization arrows are the same.
+\end{proof}
+
+Thanks to this lemma we can safely calculate colimits of chains, or apply Proposition \ref{prop:arrows_from_colimit}, on convenient cofinal subchains instead of on the full chain.
+This allows us to ``skip'' limit ordinals because given \(j\) limit the subset \(\{i \in j : \text{\(i\) successor}\}\) is cofinal in \(j\).
+
+\section{Transfinite iteration}
 
 The main result of this section, as it was for \ref{teo:adamek}, is a generalization to the categorical setting of an order-theoretic result; this time from Zermeleo.
 Let \(P\) be a chain-complete poset and \(f : P \to P\) an order-preserving map.
