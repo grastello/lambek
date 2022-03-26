@@ -1163,31 +1163,31 @@ We now generalize Remark \ref{rem:induced_cocone} to the transfinite case.
     \alpha_0 &=\ ! && \text{base case};\\
     \alpha_{i+1} &= \alpha \circ F\alpha_i && \text{for all ordinals i};
   \end{align*}
-  for limit ordinals \(j\), provided that \((\alpha_i : W_i \to A)_{i < j}\) is a cocone, we let \(\alpha_{j}\) be the unique factorization arrow such that \(\alpha_j \circ w_{i,j} = \alpha_i\) for all \(i < j\).
-  In order of this construction to work we need to prove that \((\alpha_i : W_i \to A)_{i < j}\) is indeed a cocone i.e. that
+  for limit ordinals \(j\) we define \(\alpha_{j} : W_j \to A\) to be the unique factorization arrow such that \(\alpha_j \circ w_{i,j} = \alpha_i\) for all \(i < j\).
+  In order for this construction to work we need to prove that, at stage \(j\), \((\alpha_i : W_i \to A)_{i < j}\) is a cocone i.e. that
   \begin{equation}
     \label{eq:cocone-condition}
     \alpha_i \circ w_{k, i} = \alpha_{k}
   \end{equation}
-  for all \(k < i < j\), for every limit ordinal \(j\).
-  Assume that all \(\alpha_i\)'s for \(i < j\) have been defined and observe that
+  for all \(k < i < j\).
+  Assuming that all \(\alpha_i\)'s for \(i < j\) have been constructed we have that:
   \begin{itemize}
   \item[1.] for \(w_{0,1}\) condition (\ref{eq:cocone-condition}) is trivial;
-  \item[2.] for \(w_{k, i}\) with \(i\) limit it is trivial by definition of \(\alpha_{i}\);
+  \item[2.] for \(w_{k, i}\) with \(i\) limit it is trivial by construction of \(\alpha_{i}\);
   \item[3.] for \(w_{i, i+1}\) with \(i\) limit we can prove (\ref{eq:cocone-condition}) holds by showing
     \[\alpha_{i+1} \circ w_{i, i+1} \circ w_{k, i} = \alpha_i \circ w_{k, i} =  \alpha_{k}\]
     for all \(k < i\) and conclude by uniqueness of \(\alpha_i\).
-    It is enough to prove the relation for all \(k < i\) non-limits as those form a subsequence of \(i\)\footnote{Explain this through final fonctors.}; we have
+    It is enough to prove the relation for all \(k < i\) successors by Lemma \ref{lemma:final_functors} and indeed we have
     \begin{align*}
       \alpha_{i+1} \circ w_{i, i+1} \circ w_{k, i} &= \alpha \circ F\alpha_i \circ w_{i, i+1} \circ w_{k, i} && \text{definition of \(\alpha_{i+1}\)}\\
                                       &= \alpha \circ F\alpha_i \circ Fw_{k-1, i} && \text{(\ref{eq:omega-to-omega-plus-one})} \\
                                       &= \alpha \circ F(\alpha_i \circ w_{k-1, i}) && \text{functoriality of \(F\)}\\
                                       &= \alpha \circ F\alpha_{k-1} && \text{definition of \(\alpha_{i}\)}\\
-                                      &= \alpha_k && \text{definition of \(\alpha_k\)}
+                                      &= \alpha_k && \text{definition of \(\alpha_k\)}.
     \end{align*}
-    thus (\ref{eq:cocone-condition}) holds;
   \item[4.] for \(w_{i,i+1}\) with \(i\) non-limit we proceed inductively like in Remark \ref{rem:induced_cocone}; the base case is provided by item 1 if \(i\) is a natural number and by item 3 otherwise.
   \end{itemize}
+  Finally we conclude that \((\alpha_i : W_i \to A)_{i \in \Ord}\) is well defined and a cocone on \(W\) since, as we just proved, for every \(j\) limit \((\alpha_i : W_i \to A)_{i < j}\) is a cocone.
 \end{remark}
   
 
