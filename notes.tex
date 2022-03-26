@@ -1069,6 +1069,7 @@ A \(j\)-chain in some category \(\A\) is a functor \(C : j \to \A \)\marginnote{
 We say that \(\A\) has colimits of chains if for all \(j \in \Ord\) every \(j\)-chain has a colimit; this includes the existence of an initial object (as the colimit of the empty chain) but does not include colimits of \(\Ord\)-chain.
 
 \begin{lemma}
+  \label{lemma:final_functors}
   Let \(j\) be an ordinal and \(C : j \to \A\) a \(j\)-chain into a category \(\A\) with colimits of chains. 
   Now let \(j' \subseteq j\) be cofinal i.e. such that for every \(i \in j\) there is some \(i' \in j'\) such that \(i \leq i'\) and denote by \(C'\) the restriction of \(C\) to \(j'\).
   Then \(C\) and \(C'\) have the same colimit.
@@ -1102,7 +1103,7 @@ This allows us to ``skip'' limit ordinals because given \(j\) limit the subset \
 
 \section{Transfinite iteration}
 
-The main result of this section, as it was for \ref{teo:adamek}, is a generalization to the categorical setting of an order-theoretic result; this time from Zermeleo.
+The main result of this section is again a generalization to the categorical setting of an order-theoretic result; this time from Zermeleo.
 Let \(P\) be a chain-complete poset and \(f : P \to P\) an order-preserving map.
 We can define an \(\Ord\)-indexed sequence by transfinite recursion as follows
 \begin{align*}
@@ -1119,7 +1120,7 @@ This sequence is clearly a chain.
 \end{theorem}
 
 \begin{proof}
-  By Hartog's Lemma (insert here a reference) there is an ordinal \(i\) such that there is no injection \(i \to P\) (here use the tailed arrow).
+  By Hartog's Lemma (insert here a reference) there is an ordinal \(i\) such that there is no injection \(i \rightarrowtail P\).
   Thus there are \(j < k < i\) such that \(f^j(\bot) = f^k(\bot)\) and we have \(f^j(\bot) \leq f^{j+1}(\bot) \leq f^k(\bot)\) because \((f^j(\bot))_{j\in\Ord}\) is a chain.
   So \(f(f^j(\bot)) = f^{j+1}(\bot) = f^j(\bot)\) hence \(f^j(\bot)\) is a fixed point.
 
@@ -1130,26 +1131,22 @@ This sequence is clearly a chain.
 
 In order to generalize this theorem and its proof we begin by defining a trasfinite version of the initial-algebra \(\omega\)-chain.
 This will be a functor \(W : \Ord \to \A\) into a category \(\A\) with colimits of chains.
-We denote the objects of the initial-algebra chain by \(W_i\) and the arrows by \(w_{i,j}\) for \(i,j \in \Ord\).
-They are defined as follows by transfinite recursion.
+It is defined by transfinite recursion as follows.
 \begin{align*}
   W_0 = 0 && \text{base case};\\
   W_{j+1} = FW_j && \text{for all ordinals \(j\)};\\
-  W_j = \colim_{i < j}W_i && \text{for all limit ordinals \(j\)}.\\
+  W_j = \colim_{i < j}W_i && \text{for all limit ordinals \(j\)}.
 \end{align*}
 As for arrows \(w_{0,1}\) is the unique arrow \(0 \to W_1 = F0\) and \(w_{i + 1, j+1} = Fw_{i,j}\) for all \(i, j \in \Ord\).
 When \(j\) is limit we have \(W_j = \colim_{i < j}W_i\) so we let \(\{w_{i,j}\}_{i < j}\) be the arrows forming the colimit cocone.
-We are only missing the arrows \(w_{j, j+1}\) for \(j\) limit that we obtain using the universal property of \(W_j = \colim_{i < j}W_{i}\).
-First notice that we can leave out the initial object \(0\) and all the limit ordinals without changing the colimit:
+We are only missing \(w_{j, j+1}\) for \(j\) limit.
+Such arrows are obtained using the universal property of \(W_j\).
+First notice that we can leave out the initial object \(0\) and all the limit ordinals without changing the colimit i.e.
 \begin{equation*}
-  W_j = \colim_{i < j}W_i = \colim_{\substack{0 < i < j \\  \text{\(i\) not limit}}}W_i;
+  W_j = \colim_{i < j}W_i = \colim_{\text{\(i < j\) successor}}W_i
 \end{equation*}
-this because removing \(0\) and the limit ordinals from \(j\) leaves us with a diagram satisfying \ref{??} (insert here reference to final functors in preface).
-Now
-\begin{equation*}
-  (Fw_{i,j} : FW_i = W_{i+1} \to FW_{j} = W_{j+1})_{i < j}
-\end{equation*}
-is a cocone on this reduced diagram.
+by Lemma \ref{lemma:final_functors}.
+Now \((Fw_{i,j} : FW_i = W_{i+1} \to FW_{j} = W_{j+1})_{i < j}\) is a cocone on this reduced diagram.
 Thus we obtain a unique factorization arrow \(W_j \to W_{j+1}\) that we declare to be our \(w_{j, j+1}\) so the definition of our transfinite chain can continue.
 Notice also that, being the factorization arrow, \(w_{j, j_+1}\) is such that
 \begin{equation}
