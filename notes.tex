@@ -91,6 +91,7 @@
 \newcommand{\Set}{\textsf{Set}}
 \newcommand{\Pos}{\textsf{Pos}}
 \newcommand{\CPO}{\textsf{CPO}}
+\newcommand{\MS}{\textsf{MS}}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\A}{\mathscr{A}}
 \newcommand{\B}{\mathscr{B}}
@@ -1138,6 +1139,20 @@ By looking at the diagram in question (the initial-algebra \(\omega\)-chain) we 
   So the \(n\)-th element of the \(\omega\)-chain can be thought of as the set \(n = \{0, \ldots, n-1\}\) with the natural order upon it while the arrows are inclusions.
   The colimit is \(\N\) with the standard ordering.
 \end{example}
+
+\begin{definition}
+  A function \(f : M \to M'\) between metric spaces \((M, d_M), (M', d_{M'})\) is \textbf{non-expanding} \marginnote{non-expanding map} if \(d_{M'}(f(x), f(y)) \leq d_M(x,y)\) for all \(x,y \in M\).
+  A metric space \((M, d_M)\) is \(1\)-bounded if \(d_M(x, y) \leq 1\) for all \(x,y \in M\).
+  We denote by \(\MS\) the category of \(1\)-bounded metric spaces and non-expanding maps \marginnote{\(\MS\)}.
+\end{definition}
+
+\begin{remark}
+  Coproducts in \(\MS\) are disjoint unions where each summand retains its metric and points in different summands have distance \(1\).
+  The product of \(M, M' \in \MS\) is the cartesian product \(M \times M'\) endowed with the maximum metric
+  \begin{equation*}
+    d_{M \times M'}((x, x'), (y, y')) = \max\{d_M(x, y), d_{M'}(x', y')\}.
+  \end{equation*}
+\end{remark}
 
 \chapter{Initial algebras from transfinite iteration}
 \newpage
