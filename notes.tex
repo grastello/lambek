@@ -1107,6 +1107,27 @@ By looking at the diagram in question (the initial-algebra \(\omega\)-chain) we 
   By a similar argument one can show that all polynomial functors preserve colimits of \(\omega\)-chains.
 \end{remark}
 
+\begin{example}
+  In a category with binary coproducts and an initial object 1 the initial algebra for \(FX = X + 1\), if it exists, is called the \textbf{natural numbers object} (or \textbf{NNO}) \marginnote{natural numbers object} of the category.
+  Notice that a NNO, being an initial algebra, is unique so the use of ``the'' is justified.
+
+  Explicitly a NNO is a tuple \((N, \iota:N+1 \to N)\) such that for every other \((A, \alpha = [\alpha_0, \alpha_1]:A+1 \to A)\) there is a unique \(h:N\to A\) such that
+  \begin{equation*}
+    \begin{tikzcd}[sep = large]
+      N + 1 \ar[r, "\iota"] \ar[d, "h + \id_1"] & N \ar[d, "h"]\\
+      A + 1 \ar[r, "\alpha"] & A
+    \end{tikzcd}
+  \end{equation*}
+  commutes.
+  By Adámek's Theorem the NNO is the colimit of the \(\omega\)-chain
+  \begin{equation*}
+    \begin{tikzcd}[sep = large]
+      0 \ar[r] & 1 \ar[r] & 1 + 1 \ar[r] & 1 + 1 + 1 \ar[r] & \cdots
+    \end{tikzcd}.
+  \end{equation*}
+  So if \(\A = \Set\) the chain above becomes the sequence of natural numbers, where each \(n \in \N\) is regarded as the set \(\{0, \ldots, n-1\}\), and \(N\) will thus be exactly \(\N\) hence the name ``natural numbers object''. 
+\end{example}
+
 \chapter{Initial algebras from transfinite iteration}
 \newpage
 
