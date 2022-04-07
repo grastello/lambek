@@ -89,6 +89,7 @@
 \newcommand{\Ord}{\textsf{Ord}}
 \newcommand{\alg}{\textsf{Alg}}
 \newcommand{\Set}{\textsf{Set}}
+\newcommand{\Pos}{\textsf{Pos}}
 \newcommand{\CPO}{\textsf{CPO}}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\A}{\mathscr{A}}
@@ -1126,6 +1127,16 @@ By looking at the diagram in question (the initial-algebra \(\omega\)-chain) we 
     \end{tikzcd}.
   \end{equation*}
   So if \(\A = \Set\) the chain above becomes the sequence of natural numbers, where each \(n \in \N\) is regarded as the set \(\{0, \ldots, n-1\}\), and \(N\) will thus be exactly \(\N\) hence the name ``natural numbers object''. 
+\end{example}
+
+\begin{example}
+  On \(\Pos\), the category of partially ordered sets and order-preserving functions, consider the functor \(FX = X_\bot\).
+  Its initial-algebra \(\omega\)-chain is
+  \begin{tcolorbox}
+    DIAGRAM HERE
+  \end{tcolorbox}
+  So the \(n\)-th element of the \(\omega\)-chain can be thought of as the set \(n = \{0, \ldots, n-1\}\) with the natural order upon it while the arrows are inclusions.
+  The colimit is \(\N\) with the standard ordering.
 \end{example}
 
 \chapter{Initial algebras from transfinite iteration}
