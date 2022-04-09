@@ -1059,6 +1059,7 @@ We urge the reader to notice that the Theorem does not only guarantee the existe
 By looking at the diagram in question (the initial-algebra \(\omega\)-chain) we can often build an intuition of how the initial algebra works.
 
 \begin{remark}
+  \label{rem:omega_preservation}
   We shall prove that in a category \(\A\) with binary coproducts, a terminal object and colimits of \(\omega\)-chains, the functor \(FXX = X + 1\) preserves colimits of \(\omega\)-chains.\\
 
   Consider an \(\omega\)-chain
@@ -1152,7 +1153,33 @@ By looking at the diagram in question (the initial-algebra \(\omega\)-chain) we 
   \begin{equation*}
     d_{M \times M'}((x, x'), (y, y')) = \max\{d_M(x, y), d_{M'}(x', y')\}.
   \end{equation*}
+  Moreover \(\MS\) has a terminal object \(1 = \{*\}\) i.e. the singleton with its unique metric.
 \end{remark}
+
+\begin{example}
+  We can now consider \(FX = X + 1\) on \(\MS\).
+  The objects of the initial-algebra \(\omega\)-chain are again the natural numbers \(n = \{0, \ldots, n-1\}\), but this time regarded as discrete spaces (that is: spaces where all points have distance \(1\)) and the connecting arrows are the inclusions.
+  Thus the colimit, and initial algebra of \(F\), is \(\N\) endowed with the discrete metric.
+
+  Now consider the functor \(FX = \frac{1}{2}X + 1\) where we denote by \(\frac{1}{2}X\) the space obtained by scaling the metric of \(X\) by a factor of \(\frac{1}{2}\).
+  This functor preserves colimits of \(\omega\)-chains by Remark \ref{rem:omega_preservation}, mutatis mutandis.
+  Its initial-algebra \(\omega\)-chain in the following sequence
+  \begin{tcolorbox}
+    diagram
+  \end{tcolorbox}
+  where 0 always denotes the new point added by the functor.
+  The metric on \(F^n0\) is
+  \begin{equation*}
+    d(i, j) =
+    \begin{cases}
+      0 & \text{if \(i = j\)}\\
+      2^{-\min\{i, j\}} & \text{otherwise}
+    \end{cases}
+  \end{equation*}
+  and the connecting morphisms are (non-expanding) inclusions.
+  We then obtain that \(\mu G\) is again \(\N\), but this time endowed with the metric \(d\) above.
+  Adámek's Theorem allows us to look at ``finite pieces'' of the initial algebra.
+\end{example}
 
 \chapter{Initial algebras from transfinite iteration}
 \newpage
