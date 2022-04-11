@@ -639,6 +639,7 @@ Finally we describe initial algebras for polynomial functors in two equivalent w
 \end{remark}
 
 \begin{proposition}
+  \label{prop:finite_sigma_trees}
   The initial algebra \(\mu H_\Sigma\) is the algebra of finite \(\Sigma\)-trees with tree-tupling.
 \end{proposition}
 
@@ -1184,6 +1185,7 @@ In the previous examples we have seen how Adámek's Theorem allows us to look at
 The next one shows that we can use it also to understand how the structure on the initial algebra works.
 
 \begin{example}
+  \label{ex:iota_by_pieces}
   Consider \(FX = X \times X + 1\) on \(\Set\).
   This functor preserves colimits of \(\omega\)-chains and we know from Example \ref{ex:finite_binary_trees} that \(\mu F\) is the algebra of all finite binary trees.
   We will now apply Adámek's Theorem to obtain a ``constructive'' reason for why this is so.
@@ -1210,6 +1212,18 @@ The next one shows that we can use it also to understand how the structure on th
     \iota \circ Fc_{k-1}((t_1, t_2)) &= \iota(\underbrace{(t_1, t_2)}_{\in \mu F \times \mu F + 1})
   \end{align*}
   so by (\ref{eq:cocone_condition}) \(\iota\) is indeed tree-tupling.
+\end{example}
+
+\begin{example}
+  For a finite signature \(\Sigma\) the associated polynomial functor \(H_\Sigma\) preserves colimits of \(\omega\)-chains so we can build \(\mu F\), the set of finite \(\Sigma\)-trees, as the colimit of
+  \begin{equation*}
+    \begin{tikzcd}[sep = large]
+      0 \ar[r] & H_\Sigma0 \ar[r] & H_\Sigma^20 \ar[r] & H_\Sigma^30 \ar[r] & \cdots .
+    \end{tikzcd}
+  \end{equation*}
+  Now \(H^n_\Sigma0\) can be regarded as the set of finite \(\Sigma\)-trees of height less than \(n\) while the connecting arrows of the chain are inclusions; thus \(\mu F = \bigcup_{n < \omega}H^n_\Sigma0\) i.e. \(\mu F\) is the set of all finite \(\Sigma\)-trees.
+  By an argument similar to that of Example \ref{ex:iota_by_pieces} one can show that the structure \(\iota : H_\Sigma\mu F
+  \to \mu F\) is really tree-tupling, as we know from Proposition \ref{prop:finite_sigma_trees}.
 \end{example}
 
 \chapter{Initial algebras from transfinite iteration}
