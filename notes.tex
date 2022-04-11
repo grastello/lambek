@@ -1178,7 +1178,38 @@ By looking at the diagram in question (the initial-algebra \(\omega\)-chain) we 
   \end{equation*}
   and the connecting morphisms are (non-expanding) inclusions.
   We then obtain that \(\mu G\) is again \(\N\), but this time endowed with the metric \(d\) above.
-  Adámek's Theorem allows us to look at ``finite pieces'' of the initial algebra.
+\end{example}
+
+In the previous examples we have seen how Adámek's Theorem allows us to look at ``finite pieces'' of the initial algebra.
+The next one shows that we can use it also to understand how the structure on the initial algebra works.
+
+\begin{example}
+  Consider \(FX = X \times X + 1\) on \(\Set\).
+  This functor preserves colimits of \(\omega\)-chains and we know from Example \ref{ex:finite_binary_trees} that \(\mu F\) is the algebra of all finite binary trees.
+  We will now apply Adámek's Theorem to obtain a ``constructive'' reason for why this is so.
+
+  If we denote the pair \((x, y) \in X \times X\) by the tree [TREE] we have that
+  \begin{tcolorbox}
+    DIAGRAM
+  \end{tcolorbox}
+  so \(F^n0\) is the set of binary trees of height less than \(n\).
+  The connecting arrows \(F^n0 \to F^{n+1}0\) are inclusions and so the colimit of the chain, and thus the initial algebra, is the union \(\bigcup_{n<\omega}F^n0\) i.e. the set of all finite binary trees.
+
+  Recall (again from Example \ref{ex:finite_binary_trees}) that the structure \(\iota : \mu F \times \mu F + 1 \to \mu F\) is given by tree-tupling.
+  This information too can be obtained by Adámek's Theorem.
+  Recall from the proof that, if \((\mu F, c_n: F^n0 \to \mu F)_{i<\omega}\) is the colimit of the initial-algebra \(\omega\)-chain, then \(\iota\) is the unique arrow such that
+  \begin{equation}
+    \label{eq:cocone_condition}
+    c_n = \iota \circ Fc_{n-1} \quad \text{for all \(0 < n < \omega\)}
+  \end{equation}
+  and, moreover, the \(c_n\)'s are inclusions.
+  Now fix \(0 < k < \omega\) and consider a tree [TREE \(t_1\), \(t_2\)] in \(F^k0\) that we also regard as the pair \((t_1, t_2)\) for \(t_1, t_2 \in F^{k-1}0\).
+  We have
+  \begin{align*}
+    c_k([TREE t_1, t_2]) &= [TREE t_1, t_2] \in \mu F\\
+    \iota \circ Fc_{k-1}((t_1, t_2)) &= \iota(\underbrace{(t_1, t_2)}_{\in \mu F \times \mu F + 1})
+  \end{align*}
+  so by (\ref{eq:cocone_condition}) \(\iota\) is indeed tree-tupling.
 \end{example}
 
 \chapter{Initial algebras from transfinite iteration}
