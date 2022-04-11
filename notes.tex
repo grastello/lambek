@@ -560,7 +560,7 @@ We will now look at some non-trivial examples of initial algebras.
   This functor sends a set \(X\) to \(\mathcal{P}_\textsf{f}X = \{Z \subseteq X \colon Z\ \text{is finite}\}\) and a function \(f \colon X \to Y\) to the function \(\mathcal{P}_\textsf{f}f\) that sends a finite subset of \(X\) to its (obviously finite) \(f\)-image in \(Y\).
   Let \(V_\omega\) be the set of hereditarily finite sets.
   That is: the set containing the empty set and all finite sets whose elements are hereditarily finite sets as well.
-  We will see in Section ?? that \((V_\omega, \id)\) is the initial algebra of \(\mathcal{P}_\textsf{f}\).
+  We will see in Example \ref{ex:finite_powerset_adamek} that \((V_\omega, \id)\) is the initial algebra of \(\mathcal{P}_\textsf{f}\).
 \end{example}
 
 \begin{example}
@@ -1224,6 +1224,29 @@ The next one shows that we can use it also to understand how the structure on th
   Now \(H^n_\Sigma0\) can be regarded as the set of finite \(\Sigma\)-trees of height less than \(n\) while the connecting arrows of the chain are inclusions; thus \(\mu F = \bigcup_{n < \omega}H^n_\Sigma0\) i.e. \(\mu F\) is the set of all finite \(\Sigma\)-trees.
   By an argument similar to that of Example \ref{ex:iota_by_pieces} one can show that the structure \(\iota : H_\Sigma\mu F
   \to \mu F\) is really tree-tupling, as we know from Proposition \ref{prop:finite_sigma_trees}.
+\end{example}
+
+\begin{example}
+  \label{ex:finite_powerset_adamek}
+  The finite power-set functor \(\mathcal{P}_\textsf{f} \colon \Set \to \Set\) preserves colimits of \(\omega\)-chains [REALLY?] so it has an initial algebra \(\mu \mathcal{P}_\textsf{f}\) that is the colimit of the following \(\omega\)-chain
+  \begin{equation*}
+    \begin{tikzcd}[sep = large]
+      \emptyset \ar[r] & \{\emptyset\} \ar[r] & \{\emptyset, \{\emptyset\}\} \ar[r] & \{\emptyset, \{\emptyset\}, \{\emptyset, \{\emptyset\}\}\} \ar[r] & \cdots
+    \end{tikzcd}
+  \end{equation*}
+  where the arrows are inclusions.
+  We thus obtain that \(\mu F = \bigcup_{n<\omega} \mathcal{P}_\textsf{f}^n0 = V_\omega\); moreover notice that \(\mathcal{P}_\textsf{f}V_\omega\) is precisely \(V_\omega\).
+  Now let \((V_\omega, c_n : V_n \to V_\omega)_{i < \omega}\) be the colimit cocone; we know that \(c_n = \iota \circ \mathcal{P}_\textsf{f}c_{n-1}\) for all \(0 < n < \omega\).
+  Fix \(0 < n < \omega\) and consider \(\{A_1, \ldots, A_k\} \in V_n\); we have
+  \begin{equation*}
+    \mathcal{P}_\textsf{f}c_{n-1}(\{A_1, \ldots, A_k\}) = \{c_{n-1}(A_1), \ldots, c_{n-1}(A_k)\} = \{A_1, \ldots, A_k\}
+  \end{equation*}
+  because \(c_{n - 1}: V_{n-1} \to V_\omega\) is an inclusion.
+  Then
+  \begin{equation*}
+    \iota \circ \mathcal{P}_\textsf{f}c_{n-1}(\{A_1, \ldots, A_k\}) = c_n(\{A_1, \ldots, A_k\}) \Rightarrow \iota(\{A_1, \ldots, A_k\}) = \{A_1, \ldots, A_k\}
+  \end{equation*}
+  so we obtain \(\iota = \id_{V_\omega}\).
 \end{example}
 
 \chapter{Initial algebras from transfinite iteration}
