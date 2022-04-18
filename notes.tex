@@ -90,6 +90,7 @@
 \newcommand{\alg}{\textsf{Alg}}
 \newcommand{\Set}{\textsf{Set}}
 \newcommand{\Pos}{\textsf{Pos}}
+\newcommand{\op}{\text{op}}
 \newcommand{\CPO}{\textsf{CPO}}
 \newcommand{\MS}{\textsf{MS}}
 \newcommand{\N}{\mathbb{N}}
@@ -714,6 +715,7 @@ We conclude this section with the a classic lemma of Lambeck's which gives neces
 \end{definition}
 
 \begin{lemma}[Lambeck's Lemma]
+  \label{lemma:lambeck}
   An initial algebra for \(F\) is always a fixed point.
 \end{lemma}
 
@@ -764,6 +766,7 @@ Lambeck's lemma can be seen as a generalization of the following order-theoretic
 This lemma then gives us the following well-known theorem for free.
 
 \begin{theorem}[Knaster-Tarski Theorem]
+  \label{teo:knaster_tarski}
   Let \((L, \sqsubseteq)\) be a complete lattice.
   Then every monotone function of \(L\) has a fixed point.
 \end{theorem}
@@ -1248,6 +1251,48 @@ The next one shows that we can use it also to understand how the structure on th
   \end{equation*}
   so we obtain \(\iota = \id_{V_\omega}\).
 \end{example}
+
+\section{Algebraically Complete Categories}
+
+\begin{definition}
+  A category \(\A\) is \textbf{algebraically complete} \marginnote{algebraically complete category} if every endofunctor on it has an initial algebra.
+\end{definition}
+
+\begin{remark}
+  By the Knaster-Tarski Theorem (see Theorem \ref{teo:knaster_tarski}) every complete lattice is an algebraically complete category.
+\end{remark}
+
+The following Theorem shows that, even for categories with very little structure (the existence of products), being algebraically complete is a very strong condition.
+The theorem was first proven by Adámek and Koubek in 1979; we present a neat proof by Freyd, published in 1991.
+
+\begin{theorem}
+  Let \(\A\) be an algebraically complete category with products.
+  Then \(\A\) is a preorder.
+\end{theorem}
+
+\begin{proof}
+  Towards a contradiction suppose \(\A\) is not a preorder i.e. there is some hom-set \(\A(A, B)\) that has at least two elements.
+  Consider the endofunctor
+  \begin{equation*}
+    \begin{tikzcd}[sep=large]
+      F : \A \ar[r, "{\A(A, -)}"] & \Set \ar[r, "{\Set(-, 2)}"] & \Set^\op \ar[r, "B^{(-)}"] & \A
+    \end{tikzcd}
+  \end{equation*}
+  where \(B^{(-)}: \Set^\op \to \A\) is the functor that takes a set \(M\) to the object
+  \begin{equation*}
+    \underbrace{B \times \ldots \times B}_{|M| \text{ times}}.
+  \end{equation*}
+  We will write \(FD = B^{S(D)}\) for \(S(D) = 2^{\A(A, D)}\).
+  Note that \(F\) has no fixed point.
+  Indeed assume \(D \cong FD\) then we have
+  \begin{align*}
+    \A(A, D) & \cong \A(A, FD) && \text{functors preserve isomorphisms}\\
+             & \cong \A(A, B^{S(D)}) &&\\
+             & \cong \A(A, B)^{S(D)} && \text{hom-functor preserves limits}
+  \end{align*}
+  but the cardinality of the right hand-side is at least \(2^{S(D)} = 2^{2^{\A(A, D)}}\) that it impossible by Cantor's Theorem.
+  Hence, by Lambeck's Lemma (see Lemma \ref{lemma:lambeck}), \(\A\) is not algebraically complete; contradiction.
+\end{proof}
 
 \chapter{Initial algebras from transfinite iteration}
 \newpage
