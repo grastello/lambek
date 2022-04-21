@@ -1064,7 +1064,7 @@ By looking at the diagram in question (the initial-algebra \(\omega\)-chain) we 
 
 \begin{remark}
   \label{rem:omega_preservation}
-  We shall prove that in a category \(\A\) with binary coproducts, a terminal object and colimits of \(\omega\)-chains, the functor \(FXX = X + 1\) preserves colimits of \(\omega\)-chains.\\
+  We shall prove that in a category \(\A\) with binary coproducts, a terminal object \(1\) and colimits of \(\omega\)-chains, the functor \(FX = X + 1\) preserves colimits of \(\omega\)-chains.\\
 
   Consider an \(\omega\)-chain
   \begin{equation}
@@ -1083,7 +1083,7 @@ By looking at the diagram in question (the initial-algebra \(\omega\)-chain) we 
   \end{equation}
   By functoriality of \(F\) we have immediately that it is a cocone on (\ref{eq:om_chain2}) so we only need to show it is universal.
   Let \((B, \beta_i: A_i + 1 \to B)_{i<\omega}\) be a cocone on (\ref{eq:om_chain2}) and note that for all \(i < \omega, \beta_i = [\beta_i^1, \beta_i^2]\) with \(\beta_i^1:A_i \to B\) and \(\beta_i^2: 1 \to B\).
-  By composition with the coprojections of \(A_i + 1\) we obtain that
+  By composition with the coprojections of the \(A_i + 1\)'s we obtain that
   \begin{itemize}
   \item[1.] \((B, \beta_i^1)_{i<\omega}\) is a cocone on (\ref{eq:om_chain});
   \item[2.] \((B, \beta_i^2)_{i<\omega}\) is a cocone on
@@ -1111,6 +1111,7 @@ By looking at the diagram in question (the initial-algebra \(\omega\)-chain) we 
   Then from the factorization condition we obtain \([n^1 \circ \alpha_i, n^2 \circ \id_1] = [\beta_i^1, \beta_i^2]\) and, by composing with the coprojects, \(n^1 \circ \alpha_i = \beta_i^1\) and \(n^2 \circ \id_1 = \beta_i^2\) for all \(i < \omega\).
   But now we must have \(n^1 = m^1\) and \(n^2 = m^2\) because \(m^1, m^2\) are unique.
   Finally \(n = m\) and \(F\) preserves colimits of \(\omega\)-chains.\\
+
   By a similar argument one can show that all polynomial functors preserve colimits of \(\omega\)-chains.
 \end{remark}
 
