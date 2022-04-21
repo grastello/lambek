@@ -1488,12 +1488,26 @@ We are now ready to state and prove the transfinite version of Adámek's Theorem
   This concludes the proof.
 \end{proof}
 
-\begin{tcolorbox}
-  Adamek's theorem as a special case.
-\end{tcolorbox}
+\begin{corollary}
+  Let \(\A\) be a category with colimits of chains and \(F\) an endofuctor.
+  If \(F\) preserves colimits of \(\lambda\)-chains for some ordinal \(\lambda\) then the initial algebra chain of \(F\) converges in \(\lambda\) steps.
+  Therefore we have \(\mu F = W_\lambda\).
+\end{corollary}
 
-We now give an example of a functor that has initial-algebra convergent in more than \(\omega\) steps.
-Such functor thus has an initial-algebra not obtainable via Adamek's Theorem. 
+\begin{proof}
+  Since \(W_\lambda = \colim_{i < \lambda} W_i\) and \(F\) preservers colimits of \(\lambda\)-chains we have that \(FW_\lambda = \colim_{i < \lambda} FW_i\) with colimit cocone \((Fw_{i, \lambda} = w_{i+1, \lambda + 1}: W_{i+1} \to W_{\lambda+1} = FW_\lambda)_{i < \lambda}\).
+  We thus obtain a unique morphism \(\iota : W_{\lambda+1} = FW_\lambda \to W_\lambda\) such that \(\iota \circ Fw_{i, \lambda} = w_{i+1, \lambda}\) for all \(i < \lambda\) (similarly to the proof of Theorem \ref{teo:adamek}).
+  Combining this universal property with that of \(w_{\lambda, \lambda + 1}\) (see \ref{eq:omega-to-omega-plus-one}) we obtain the following two identities for all \(i < \lambda\).
+  \begin{align*}
+    \iota \circ Fw_{i, \lambda} = w_{i+1, \lambda} & \implies \iota \circ w_{\lambda, \lambda + 1} \circ w_{i+1, \lambda} = \id_{W_\lambda} \circ w_{i+1, \lambda} \\
+    w_{\lambda, \lambda+1} \circ w_{i+1, \lambda} = Fw_{i, \lambda} &\implies w_{\lambda, \lambda+1} \circ \iota \circ Fw_{i, \lambda} = \id_{W_{\lambda+1}} \circ Fw_{i, \lambda}
+  \end{align*}
+  And, by Proposition \ref{prop:arrows_from_colimit}, \(\iota \circ w_{\lambda, \lambda+1} = \id_{W_\lambda}\) and \(w_{\lambda, \lambda+1} \circ \iota = \id_{W_{\lambda+1}}\) so the inital-algebra chain converges in \(\lambda\) steps.
+  We conclude by Theorem \ref{teo:adamek_transfinite}.
+\end{proof}
+
+Clearly for \(\lambda = \omega\) we obtain Adámek's Theorem.
+We now give an example of a functor that has initial-algebra convergent in more than \(\omega\) steps; showing that Theorem \ref{teo:adamek_transfinite} is more powerful than Adámek's Theorem.
 
 \begin{example}
   Trees with no infinite paths are called \textbf{well-founded}.\marginnote{well-founded tree}
@@ -1507,7 +1521,7 @@ Such functor thus has an initial-algebra not obtainable via Adamek's Theorem.
     Drawing of trees.
   \end{tcolorbox}
 
-  Conside now the functor \(FX = X^\omega + 1\).
+  Conside now the functor \(FX = X^\omega + 1\) on \(\Set\).
   Its initial-algebra chain is given by
   \begin{equation*}
     W_i = \{\text{all countably branching trees \(t\) such that \(h(t) < i\)}\}
