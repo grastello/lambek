@@ -1118,8 +1118,7 @@ By looking at the diagram in question (the initial-algebra \(\omega\)-chain) we 
 \begin{example}
   In a category with binary coproducts and an initial object 1 the initial algebra for \(FX = X + 1\), if it exists, is called the \textbf{natural numbers object} (or \textbf{NNO}) \marginnote{natural numbers object} of the category.
   Notice that a NNO, being an initial algebra, is unique so the use of ``the'' is justified.
-
-  Explicitly a NNO is a tuple \((N, \iota:N+1 \to N)\) such that for every other \((A, \alpha = [\alpha_0, \alpha_1]:A+1 \to A)\) there is a unique \(h:N\to A\) such that
+  Explicitly a NNO is a pair \((N, \iota:N+1 \to N)\) such that for every other pair \((A, \alpha : A+1 \to A)\) there is a unique \(h:N\to A\) such that
   \begin{equation*}
     \begin{tikzcd}[sep = large]
       N + 1 \ar[r, "\iota"] \ar[d, "h + \id_1"] & N \ar[d, "h"]\\
