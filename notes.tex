@@ -1138,10 +1138,29 @@ By looking at the diagram in question (the initial-algebra \(\omega\)-chain) we 
 \begin{example}
   On \(\Pos\), the category of partially ordered sets and order-preserving functions, consider the functor \(FX = X_\bot\).
   Its initial-algebra \(\omega\)-chain is
-  \begin{tcolorbox}
-    DIAGRAM HERE
-  \end{tcolorbox}
-  So the \(n\)-th element of the \(\omega\)-chain can be thought of as the set \(n = \{0, \ldots, n-1\}\) with the natural order upon it while the arrows are inclusions.
+  \begin{equation*}
+    \begin{tikzpicture}[every node/.style={outer sep=0.5cm}]
+      \node (1) at (0, 0){\(\emptyset\)};
+      \node (2) at (2, 0){\(\bot\)};
+      \node (3) at (4, 0.5){\(\bullet\)};
+      \node (4) at (4, -0.5){\(\bot\)};
+      \node (5) at (6, 1){\(\bullet\)};
+      \node (6) at (6, 0){\(\bullet\)};
+      \node (7) at (6, -1){\(\bot\)};
+      \node (8) at (8, 0){\(\cdots\)};
+      \node (9) at (4, 0){};
+
+      \draw[-] (3) -- (4);
+      \draw[-] (5) -- (6) -- (7);
+
+      \draw[->] (0.35, 0) to (1.65, 0);
+      \draw[->] (2.35, 0) to (3.65, 0);
+      \draw[->] (4.35, 0) to (5.65, 0);
+      \draw[->] (6.35, 0) to (7.65, 0);
+      
+    \end{tikzpicture}
+  \end{equation*}
+  So the \(n\)-th element of the \(\omega\)-chain can be thought of as the set \(n = \{0, \ldots, n-1\}\) with the natural order upon it while the connecting morphisms are inclusions.
   The colimit is \(\N\) with the standard ordering.
 \end{example}
 
