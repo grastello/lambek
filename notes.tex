@@ -1186,10 +1186,31 @@ By looking at the diagram in question (the initial-algebra \(\omega\)-chain) we 
 
   Now consider the functor \(FX = \frac{1}{2}X + 1\) where we denote by \(\frac{1}{2}X\) the space obtained by scaling the metric of \(X\) by a factor of \(\frac{1}{2}\).
   This functor preserves colimits of \(\omega\)-chains by Remark \ref{rem:omega_preservation}, mutatis mutandis.
-  Its initial-algebra \(\omega\)-chain in the following sequence
-  \begin{tcolorbox}
-    diagram
-  \end{tcolorbox}
+  Its initial-algebra \(\omega\)-chain in the following sequence of spaces
+  \begin{equation*}
+    \begin{tikzpicture}[every node/.style={outer sep=0.5cm}]
+      \node (1) at (0, 0){\(\emptyset\)};
+    \end{tikzpicture},\quad
+    \begin{tikzpicture}[every node/.style={outer sep=0.5cm}]
+      \node (1) at (0, 0){\(0\)};
+    \end{tikzpicture},\quad
+    \begin{tikzpicture}
+      \node (1) at (0, 0){\(0\)};
+      \node (2) at (2, 0){\(1\)};
+      \node (3) at (1, 0)[above]{\small 1};
+      \draw[dashed] (1) to (2);
+    \end{tikzpicture},\quad
+    \begin{tikzpicture}[baseline=-0.25cm]
+      \node (1) at (0, 0){\(0\)};
+      \node (2) at (2, 1){\(2\)};
+      \node (3) at (2, -1){\(1\)};
+      
+      \draw[dashed] (1) -- (2) node[midway, above]{\small 1};
+      \draw[dashed] (1) -- (3) node[midway, below]{\small 1};
+      \draw[dashed] (2) -- (3) node[midway, right]{\small \(\frac{1}{2}\)};
+    \end{tikzpicture},\quad
+    \ldots
+  \end{equation*}
   where 0 always denotes the new point added by the functor.
   The metric on \(F^n0\) is
   \begin{equation*}
