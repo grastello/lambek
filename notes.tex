@@ -1419,7 +1419,7 @@ We say that \(\A\) has colimits of chains if for all \(j \in \Ord\) every \(j\)-
 \begin{lemma}
   \label{lemma:final_functors}
   Let \(j\) be an ordinal and \(C : j \to \A\) a \(j\)-chain into a category \(\A\) with colimits of chains.
-  Now let \(j' \subseteq j\) be cofinal i.e. such that for every \(i \in j\) there is some \(i' \in j'\) such that \(i \leq i'\) and denote by \(C'\) the restriction of \(C\) to \(j'\).
+  Now let \(j' \subseteq j\) be cofinal in \(j\) i.e. such that for every \(i \in j\) there is some \(i' \in j'\) such that \(i \leq i'\) and denote by \(C'\) the restriction of \(C\) to \(j'\).
   Then \(C\) and \(C'\) have the same colimit.
 \end{lemma}
 
@@ -1442,12 +1442,12 @@ We say that \(\A\) has colimits of chains if for all \(j \in \Ord\) every \(j\)-
     n \circ \sigma_i = n \circ \sigma_{i'} \circ c_{i, i'} = \alpha_{i'} \circ c_{i,i'} = \alpha_i.
   \end{equation*}
   For the converse let \((L, \sigma_i : C_i \to L)_{i \in j'}\) be the colimit of \(C'\).
-  One can prove that the unique extension \((L, \sigma_i : C_i \to L)_{i \in j}\) is the colimit of \(C\) by a similar argument.
-  Finally we have that \(C\) and \(C'\) have the same colimit (modulo restriction/extension) and that the factorization arrows are the same.
+  One can prove that its unique extension \((L, \sigma_i : C_i \to L)_{i \in j}\) is the colimit of \(C\) by an argument similar to the one above.
+  Finally we have that \(C\) and \(C'\) have the same colimit (modulo restriction/extension) and, moreover, the factorization arrows are the same.
 \end{proof}
 
-Thanks to this lemma we can safely calculate colimits of chains, or apply Proposition \ref{prop:arrows_from_colimit}, on convenient cofinal subchains instead of on the full chain.
-This allows us to ``skip'' limit ordinals because given \(j\) limit the subset \(\{i \in j : \text{\(i\) successor}\}\) is cofinal in \(j\).
+Thanks to this lemma we can safely calculate colimits of chains, or apply Proposition \ref{prop:arrows_from_colimit}, on convenient cofinal subchains instead of on a full chain.
+This will allow us to ``skip'' limit ordinals because given \(j\) limit the subset \(\{i \in j : \text{\(i\) successor}\}\) is cofinal in \(j\).
 
 \section{Transfinite iteration}
 
