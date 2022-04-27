@@ -1233,10 +1233,60 @@ The next one shows that we can use it also to understand how the structure on th
   This functor preserves colimits of \(\omega\)-chains and we know from Example \ref{ex:finite_binary_trees} that \(\mu F\) is the algebra of all finite binary trees.
   We will now apply Adámek's Theorem to obtain a ``constructive'' reason for why this is so.
 
-  If we denote the pair \((x, y) \in X \times X\) by the tree [TREE] we have that
-  \begin{tcolorbox}
-    DIAGRAM
-  \end{tcolorbox}
+  If we denote the pair \((x, y) \in X \times X\) by the tree
+  \begin{tikzpicture}[baseline=0cm]
+    \node (1) at (-0.25, 0)[below]{\(x\)};
+    \node (2) at (+0.25, 0)[below]{\(y\)};
+
+    \draw[-] (-0.25, 0) -- (0, 0.5) -- (+0.25, 0);
+  \end{tikzpicture}
+  we have that
+  \begin{equation*}
+    F^00 = \emptyset,
+  \end{equation*}
+  \begin{equation*}
+    F^10 = \emptyset \times \emptyset + 1 = 1 = \{ \bullet \},
+  \end{equation*}
+  \begin{equation*}
+    F^20 = 1 \times 1 + 1 = \left\{ \bullet, \begin{tikzpicture}[baseline=0cm]
+      \draw[-] (-0.25, 0) -- (0, 0.5) -- (+0.25, 0);
+      \fill (-0.25, 0) circle (2pt);
+      \fill (0.25, 0) circle (2pt);
+    \end{tikzpicture}\right\},
+  \end{equation*}
+    \begin{equation*}
+      F^30 = (1 \times 1 + 1) \times (1 \times 1 + 1) + 1 = \left\{ \bullet, \begin{tikzpicture}[baseline=0cm]
+      \draw[-] (-0.25, 0) -- (0, 0.5) -- (+0.25, 0);
+      \fill (-0.25, 0) circle (2pt);
+      \fill (0.25, 0) circle (2pt);
+    \end{tikzpicture},
+    \begin{tikzpicture}[baseline=0cm]
+      \fill (-0.75, 0) circle (2pt);
+      \fill (-0.25, 0) circle (2pt);
+      \fill (0.25, 0) circle (2pt);
+      \fill (0.75, 0) circle (2pt);
+
+      \draw (-0.75, 0) -- (-0.5, 0.5) -- (-0.25, 0);
+      \draw (0.75, 0) -- (0.5, 0.5) -- (0.25, 0);
+      \draw (-0.5, 0.5) -- (0, 1) -- (0.5, 0.5);
+    \end{tikzpicture},
+    \begin{tikzpicture}[baseline=0cm]
+      \fill (0, 0.5) circle (2pt);
+      \fill (0.5, 0) circle (2pt);
+      \fill (1, 0) circle (2pt);
+
+      \draw (0, 0.5) -- (0.25, 1) -- (0.75, 0.5);
+      \draw (0.5, 0) -- (0.75, 0.5) -- (1, 0);
+    \end{tikzpicture},
+        \begin{tikzpicture}[baseline=0cm]
+      \fill (0, 0.5) circle (2pt);
+      \fill (-0.5, 0) circle (2pt);
+      \fill (-1, 0) circle (2pt);
+
+      \draw (0, 0.5) -- (-0.25, 1) -- (-0.75, 0.5);
+      \draw (-0.5, 0) -- (-0.75, 0.5) -- (-1, 0);
+    \end{tikzpicture}\right\}, \ldots
+  \end{equation*}
   so \(F^n0\) is the set of binary trees of height less than \(n\).
   The connecting arrows \(F^n0 \to F^{n+1}0\) are inclusions and so the colimit of the chain, and thus the initial algebra, is the union \(\bigcup_{n<\omega}F^n0\) i.e. the set of all finite binary trees.
 
@@ -1248,10 +1298,28 @@ The next one shows that we can use it also to understand how the structure on th
     c_n = \iota \circ Fc_{n-1} \quad \text{for all \(0 < n < \omega\)}
   \end{equation}
   and, moreover, the \(c_n\)'s are inclusions.
-  Now fix \(0 < k < \omega\) and consider a tree [TREE \(t_1\), \(t_2\)] in \(F^k0\) that we also regard as the pair \((t_1, t_2)\) for \(t_1, t_2 \in F^{k-1}0\).
+  Now fix \(0 < k < \omega\) and consider a tree
+  \begin{tikzpicture}[baseline=0cm]
+    \node (1) at (-0.25, 0)[below]{\(t_1\)};
+    \node (2) at (+0.25, 0)[below]{\(t_2\)};
+    \draw[-] (-0.25, 0) -- (0, 0.5) -- (+0.25, 0);
+  \end{tikzpicture}
+  in \(F^k0\) that we also regard as the pair \((t_1, t_2)\) for \(t_1, t_2 \in F^{k-1}0\).
   We have
   \begin{align*}
-    c_k([TREE t_1, t_2]) &= [TREE t_1, t_2] \in \mu F\\
+    c_k(
+    \begin{tikzpicture}[baseline=0cm]
+      \node (1) at (-0.25, 0)[below]{\(t_1\)};
+      \node (2) at (+0.25, 0)[below]{\(t_2\)};
+      \draw[-] (-0.25, 0) -- (0, 0.5) -- (+0.25, 0);
+    \end{tikzpicture}
+    ) &=
+        \begin{tikzpicture}[baseline=0cm]
+          \node (1) at (-0.25, 0)[below]{\(t_1\)};
+          \node (2) at (+0.25, 0)[below]{\(t_2\)};
+          \draw[-] (-0.25, 0) -- (0, 0.5) -- (+0.25, 0);
+        \end{tikzpicture}
+         \in \mu F\\
     \iota \circ Fc_{k-1}((t_1, t_2)) &= \iota(\underbrace{(t_1, t_2)}_{\in \mu F \times \mu F + 1})
   \end{align*}
   so by (\ref{eq:cocone_condition}) \(\iota\) is indeed tree-tupling.
