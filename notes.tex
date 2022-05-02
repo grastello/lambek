@@ -262,23 +262,23 @@ The next proposition shows how the notation introduced above for products intera
 It is most useful for performing calculations; we will use it without explicit reference particularly in the proof of the Primitive Recursion Theorem (see \ref{teo:primitive_recursion}).
 
 \begin{proposition}
-  Consider the following two diagrams.
+  Consider the following diagram.
   \begin{center}
     \begin{tikzcd}[sep = large]
-      & A \ar[r, "g_1"] & D \\
-      C \ar[ur, "f_1"] \ar[rd, "f_2"'] \ar[r, "\intoprod{f_1}{f_2}"] & A \times B \ar[u] \ar[d] \ar[r, "g_1 \times g_2"] & D \times E \ar[u] \ar[d]\\
-      & B \ar[r, "g_2"]& E
+      & & A \ar[r, "g_1"] & D \\
+      D \ar[r, "h"] & C \ar[ur, "f_1"] \ar[rd, "f_2"'] \ar[r, "\intoprod{f_1}{f_2}"] & A \times B \ar[u] \ar[d] \ar[r, "g_1 \times g_2"] & D \times E \ar[u] \ar[d]\\
+      & & B \ar[r, "g_2"]& E
     \end{tikzcd}\quad
-    \begin{tikzcd}[sep = large]
-      & & A \\
-      D \ar[r, "g"] & C \ar[ur, "f_1"] \ar[rd, "f_2"'] \ar[r, "\intoprod{f_1}{f_2}"] & A \times B \ar[u] \ar[d] \\
-      & & B
-    \end{tikzcd}
+    % \begin{tikzcd}[sep = large]
+    %   & & A \\
+    %   D \ar[r, "g"] & C \ar[ur, "f_1"] \ar[rd, "f_2"'] \ar[r, "\intoprod{f_1}{f_2}"] & A \times B \ar[u] \ar[d] \\
+    %   & & B
+    % \end{tikzcd}
   \end{center}
   We have that
   \begin{itemize}
-  \item[1.] \((g_1 \times g_2) \circ \intoprod{f_1}{f_2} = (g_1 \circ f_1, g_2 \circ f_2)\);
-  \item[2.] \(\intoprod{f_1}{f_2} \circ g = \intoprod{f_1 \circ g}{f_2 \circ g}\).
+  \item[1.] \((g_1 \times g_2) \circ \intoprod{f_1}{f_2} = \intoprod{g_1 \circ f_1}{g_2 \circ f_2}\);
+  \item[2.] \(\intoprod{f_1}{f_2} \circ h = \intoprod{f_1 \circ h}{f_2 \circ h}\).
   \end{itemize}
 \end{proposition}
 
