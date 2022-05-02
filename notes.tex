@@ -557,7 +557,11 @@ We will now look at some non-trivial examples of initial algebras.
   Let \(\mathcal{P}_\textsf{f} \colon \Set \to \Set\) be the finite power-set functor. \marginnote{finite power-set functor}
   This functor sends a set \(X\) to \(\mathcal{P}_\textsf{f}X = \{Z \subseteq X \colon Z\ \text{is finite}\}\) and a function \(f \colon X \to Y\) to the function \(\mathcal{P}_\textsf{f}f\) that sends a finite subset of \(X\) to its (obviously finite) \(f\)-image in \(Y\).
   Let \(V_\omega\) be the set of hereditarily finite sets.
-  That is: the set containing the empty set and all finite sets whose elements are hereditarily finite sets as well.
+  That is:
+  \begin{itemize}
+  \item[1.] \(\emptyset \in V_\omega\);
+  \item[2.] if \(X_1, \ldots, X_n \in V_\omega\) then \(\{X_1, \ldots, X_n\} \in V_\omega\).
+  \end{itemize}
   We will see in Example \ref{ex:finite_powerset_adamek} that \((V_\omega, \id)\) is the initial algebra of \(\mathcal{P}_\textsf{f}\).
 \end{example}
 
