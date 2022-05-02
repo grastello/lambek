@@ -632,6 +632,46 @@ Finally we describe initial algebras for polynomial functors in two equivalent w
 
 \begin{definition}
   Given a signature \(\Sigma\) a \textbf{\(\Sigma\)-tree} is an ordered tree where every node of \(k\) children is labelled by a \(k\)-ary symbol of \(\Sigma\).
+  As an example if \(\sigma_0\) is a constant symbol, \(\sigma_1\) a 2-ary symbol, \(\sigma_2\) a 3-ary symbol and \(\sigma_3\) a 1-ary symbol then the following are valid \(\Sigma\)-trees.
+  \begin{equation*}
+    \begin{tikzpicture}
+      \node (1) at (0, 1){\(\sigma_1\)};
+      \node (2) at (-0.75, 0){\(\sigma_0\)};
+      \node (3) at (0.75, 0){\(\sigma_0\)};
+
+      \draw[-] (1) -- (2);
+      \draw[-] (1) -- (3);
+    \end{tikzpicture}\quad\quad
+    \begin{tikzpicture}
+      \node (1) at (0, 1){\(\sigma_1\)};
+      \node (2) at (-0.75, 0){\(\sigma_0\)};
+      \node (3) at (0.75, 0){\(\sigma_0\)};
+      \node (4) at (0.75, 2){\(\sigma_1\)};
+      \node (5) at (1.5, 1){\(\sigma_0\)};
+      
+      \draw[-] (1) -- (2);
+      \draw[-] (1) -- (3);
+      \draw[-] (4) -- (5);
+      \draw[-] (4) -- (1);
+    \end{tikzpicture}\quad\quad
+    \begin{tikzpicture}
+      \node (1) at (0, 1){\(\sigma_2\)};
+      \node (2) at (-1, 0){\(\sigma_0\)};
+      \node (3) at (0, 0){\(\sigma_0\)};
+      \node (4) at (1, 0){\(\sigma_0\)};
+
+      \draw[-] (1) -- (2);
+      \draw[-] (1) -- (3);
+      \draw[-] (1) -- (4);
+    \end{tikzpicture}\quad\quad
+    \begin{tikzpicture}
+      \node (1) at (0, 0){\(\sigma_0\)};
+      \node (2) at (0, 1){\(\sigma_3\)};
+      \node (3) at (0, 2){\(\sigma_3\)};
+
+      \draw[-] (1) -- (2) -- (3);
+    \end{tikzpicture}
+  \end{equation*}
 \end{definition}
 
 \begin{remark}
