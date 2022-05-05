@@ -969,13 +969,14 @@ We shall prove it using Theorem \ref{teo:primitive_recursion}; for a classical p
 \begin{proof}
   Consider the functor \(FX = X + 1\) on \(\Set\) and form the arrow
   \begin{equation*}
-    \alpha \colon F(A \times \mu F) = A \times \N + 1 \xrightarrow{\outofcoprod{f}{a}} A.
+    \alpha \colon F(A \times \mu F) = A \times \N + 1 \xrightarrow{\outofcoprod{f}{a}} A
   \end{equation*}
+  where we abuse notation and let \(a : 1 \to A\) be the function that picks \(a \in A\).
   Now by Theorem \ref{teo:primitive_recursion} there is a function \(g \colon \N \to A\) such that (\ref{dia:recursion}) commutes.
   This gives us the diagram
   \begin{equation}
     \begin{tikzcd}[sep = large]
-      \N \times 1 \ar[r, "\outofcoprod{\iota_1}{\iota_0}"] \ar[d, "\intoprod{g}{\id_\N} + \id_1"] & \N \ar[d, "g"]\\
+      \N + 1 \ar[r, "\outofcoprod{\iota_1}{\iota_0}"] \ar[d, "\intoprod{g}{\id_\N} + \id_1"] & \N \ar[d, "g"]\\
       A \times \N + 1 \ar[r, "\outofcoprod{f}{a}"] & A
     \end{tikzcd}
   \end{equation}
