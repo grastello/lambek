@@ -998,11 +998,10 @@ We call subalgebras subobjects in \(\alg F\).
 
 \begin{theorem}[Induction Principle]
   Let \(F\) be an endofunctor and \(\mu F\) its initial algebra.
-  Then every subalgebra of \(F\) is an isomorphism.
+  Then every \(m \colon (B, \beta) \to (\mu F, \iota)\) monic is an isomorphism.
 \end{theorem}
 
 \begin{proof}
-  Let \(m \colon (B, \beta) \to (\mu F, \iota)\) be a subalgebra.
   By initiality there is a unique homomorphism of \(F\)-algebras \(h \colon (\mu F, \iota) \to (B, \beta)\).
   Now \(m \circ h\) is an endomorphism of the initial object of \(\alg F\) so \(m \circ h = \id_{\mu F}\), but notice that we have \(m\) monic and split-epi thus an isomorphism.
 \end{proof}
