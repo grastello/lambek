@@ -676,8 +676,39 @@ Finally we describe initial algebras for polynomial functors in two equivalent w
 
 \begin{remark}
   Every \(n\)-ary symbol of \(\Sigma\) defines an \(n\)-ary operation on \(\Sigma\)-trees which takes \(n\) trees to the tree obtained by connecting each root to a new node labelled by \(\sigma\), which becomes the root of a new tree.
-  We call this operation \textbf{tree-tupling}.\marginnote{tree-tupling}
+  We call this operation \textbf{tree-tupling} (below an example of tree-tupling induced by a 3-ary symbol \(\sigma\)).\marginnote{tree-tupling}
   Note that the order of the trees matters.
+  \begin{equation*}
+    \begin{tikzpicture}
+      \node (t) at (0,0){\(t_1\)};
+      \draw[-] (0,0.5) -- (.5, -.25) -- (-.5, -.25) -- (0, .5);
+    \end{tikzpicture}\quad
+    \begin{tikzpicture}
+      \node (t) at (0,0){\(t_2\)};
+      \draw[-] (0,0.5) -- (.5, -.25) -- (-.5, -.25) -- (0, .5);
+    \end{tikzpicture}\quad
+    \begin{tikzpicture}
+      \node (t) at (0,0){\(t_3\)};
+      \draw[-] (0,0.5) -- (.5, -.25) -- (-.5, -.25) -- (0, .5);
+    \end{tikzpicture}\quad
+    \begin{tikzpicture}
+      \node (t) at (0, 3){\(\rightsquigarrow\)};
+    \end{tikzpicture}\quad
+    \begin{tikzpicture}
+      \node (t1) at (0,0){\(t_1\)};
+      \node (t2) at (1.5,0){\(t_2\)};
+      \node (t3) at (3,0){\(t_3\)};
+      \node (s) at (1.5, 1.5){\(\sigma\)};
+      
+      \draw[-] (0,0.5) -- (.5, -.25) -- (-.5, -.25) -- (0, .5);
+      \draw[-] (1.5,0.5) -- (2, -.25) -- (1, -.25) -- (1.5, .5);
+      \draw[-] (3,0.5) -- (3.5, -.25) -- (2.5, -.25) -- (3, .5);
+
+      \draw[-] (s) -- (0,0.5);
+      \draw[-] (s) -- (1.5,0.5);
+      \draw[-] (s) -- (3,0.5);
+    \end{tikzpicture}
+  \end{equation*}
 \end{remark}
 
 \begin{proposition}
