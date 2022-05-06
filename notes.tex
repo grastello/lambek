@@ -1498,13 +1498,13 @@ We say that \(\A\) has colimits of chains if for all \(j \in \Ord\) every \(j\)-
 \end{lemma}
 
 \begin{proof}
-  The first thing we notice is that there is a canonical bijection between cocones on \(C\) and cocones on \(C'\).
+  Notice that there is a canonical bijection between cocones on \(C\) and cocones on \(C'\).
   Given a cocone \((A, \alpha_i : C_i \to A)_{i \in j}\) on \(C\) throwing away all the indexes not in \(j'\) yields \((A, \alpha_i : C_i \to A)_{i \in j'}\): a cocone on \(C'\).
   Conversely given \((A, \alpha_i : C_i \to A)_{i \in j'}\) we need to define \(\alpha_i : C_i \to A\) for all \(i \in j \setminus j'\); but there's only one way to do so.
   Indeed by cofinality let \(i' \in j'\) be such that \(i \leq i'\); then by the cocone condition we must set \(\alpha_i = \alpha_{i'} \circ c_{i,i'}\) so \((A, \alpha_{i}:C_i \to A)_{i \in j'}\) can be extended to the whole chain in only one way.
 
   Let \((L, \sigma_i : C_i \to L)_{i \in j}\) be the colimit of \(C\); then \((L, \sigma_i : C_i \to L)_{i \in j'}\) is the colimit of \(C'\).
-  Let \((A, \alpha_i : C_i \to A)_{i \in j'}\) be a cocone on \(C'\) that we extend to a cocone on \(C\) as explained above.
+  Indeed let \((A, \alpha_i : C_i \to A)_{i \in j'}\) be a cocone on \(C'\) that we extend to a cocone on \(C\) as explained above.
   Now, since \(L\) is the colimit, let \(m \colon L \to A\) be the unique factorization arrow such that
   \begin{equation*}
     m \circ \sigma_i = \alpha_i \quad \text{for all \(i \in j\)}.
@@ -1520,7 +1520,7 @@ We say that \(\A\) has colimits of chains if for all \(j \in \Ord\) every \(j\)-
   Finally we have that \(C\) and \(C'\) have the same colimit (modulo restriction/extension) and, moreover, the factorization arrows are the same.
 \end{proof}
 
-Thanks to this lemma we can safely calculate colimits of chains, or apply Proposition \ref{prop:arrows_from_colimit}, on convenient cofinal subchains instead of on a full chain.
+Thanks to this lemma we can safely calculate colimits of chains, or apply Proposition \ref{prop:arrows_from_colimit}, on convenient cofinal subchains.
 This will allow us to ``skip'' limit ordinals because given \(j\) limit the subset \(\{i \in j : \text{\(i\) successor}\}\) is cofinal in \(j\).
 
 \section{Transfinite iteration}
