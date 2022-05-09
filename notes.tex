@@ -1413,7 +1413,7 @@ The next one shows that we can use it also to understand how the structure on th
 
 \begin{example}
   \label{ex:finite_powerset_adamek}
-  The finite power-set functor \(\mathcal{P}_\textsf{f} \colon \Set \to \Set\) preserves colimits of \(\omega\)-chains [REALLY?] so it has an initial algebra \(\mu \mathcal{P}_\textsf{f}\) that is the colimit of the following \(\omega\)-chain
+  The finite power-set functor \(\mathcal{P}_\textsf{f} \colon \Set \to \Set\) preserves colimits of \(\omega\)-chains so it has an initial algebra \(\mu \mathcal{P}_\textsf{f}\) that is the colimit of the following \(\omega\)-chain
   \begin{equation*}
     \begin{tikzcd}[sep = large]
       \emptyset \ar[r] & \{\emptyset\} \ar[r] & \{\emptyset, \{\emptyset\}\} \ar[r] & \{\emptyset, \{\emptyset\}, \{\emptyset, \{\emptyset\}\}\} \ar[r] & \cdots
@@ -1444,7 +1444,7 @@ The next one shows that we can use it also to understand how the structure on th
   By the Knaster-Tarski Theorem (see Theorem \ref{teo:knaster_tarski}) every complete lattice is an algebraically complete category.
 \end{remark}
 
-The following Theorem shows that, even for categories with very little structure (the existence of products), being algebraically complete is a very strong condition.
+The following Theorem shows that, even for categories with very little structure (the existence of products is enough), being algebraically complete is a very strong condition.
 The theorem was first proven by Adámek and Koubek in 1979; we present a neat proof by Freyd, published in 1991.
 
 \begin{theorem}
@@ -1478,11 +1478,6 @@ The theorem was first proven by Adámek and Koubek in 1979; we present a neat pr
 
 \chapter{Initial algebras from transfinite iteration}
 \newpage
-
-\begin{tcolorbox}
-  TODO: maybe intro on cardinals?
-  TODO: find better name for this section.
-\end{tcolorbox}
 
 \section{Colimits of chains}
 
