@@ -1788,5 +1788,64 @@ We now give an example of a functor that has initial-algebra convergent in more 
   So the initial-algebra \(\mu F\) is the set of all well-founded countable branching trees.
 \end{example}
 
+\section{Smooth monomorphisms and a converse to Lambeck's Lemma}
+
+Are all initial algebras obtainable by iteration i.e. by the convergence of the initial-algebra chain?
+
+We recall what subobjects are.
+
+\begin{definition}
+  For an object \(A\) in a category \(\A\) a \textbf{subobject} is represented by a monomorphism \(m: B \to A\) \marginnote{subobject}.
+  If we have two monomorphisms \(m_B : B \to A, m_C : C \to A\) we write \(m_B \leq m_C\) if there is some \(k : B \to C\) such that \(m_B = m_C \circ k\) (notice that this \(k\) too is mono).
+  When we have \(m_B \leq m_C \leq m_B\) the \(k\) above is an isomorphism and we say \(m_B\) and \(m_C\) represent the same subobject.
+  Thus we can consider the collection of equivalence classes of subobjects of \(A\) that is partially ordered by \(\leq\).
+  If \(\A\) is such that every object \(A \in \A\) has only a set of subobjects then \(\A\) is called \textbf{well-powered} \marginnote{well-powered category}.
+\end{definition}
+
+We can restrict ourselves to a class \(\mathcal{M}\) of monomorphism and speak of \(\mathcal{M}\)-subobjects i.e. subobjects represented by mono in \(\mathcal{M}\).
+When a given object \(A\) has only a set of \(\mathcal{M}\)-subobjects we write \(\text{Sub}_\mathcal{M}(A, \leq)\) for the poset of \(\mathcal{M}\)-subobjects of \(A\).
+However we do not require the monomorphism that witness \(\leq\) to be in \(\mathcal{M}\).
+
+From here onwards let \(\mathcal{M}\) denote a class of monomorphisms (of some generic category \(\A\) or otherwise clear from the context) containing all isomorphisms and closed under composition.
+
+\begin{definition}
+  We say that an object \(A\) has \textbf{smooth} \(\mathcal{M}\)\textbf{-subobjects} if \(\text{Sub}_\mathcal{M}(A, \leq)\) \marginnote{smooth\\ \(\mathcal{M}\)-subobjects} is a chain-complete poset (particularly it is a set and not a proper class) where joins of chains are given by colimits of the corresponding chain of subobjects.
+  We say that the class \(\mathcal{M}\) itself is \textbf{smooth} \marginnote{smooth class of monomorphisms} if every object has smooth \(\mathcal{M}\)-subobjects.
+  When the class of all monomorphisms of a given category is smooth we say that the category has \textbf{smooth monomorphisms}.
+\end{definition}
+
+\begin{remark}
+  \label{rem:classes_and_initial}
+  To be more precise consider an ordinal \(\lambda\) and \(m_i : A_i \to A\) for \(i < \lambda\) be a chain of \(\mathcal{M}\)-subobjects i.e. we have arrows \(a_{i,j} : A_i \to A_j\) (that need not be in \(\mathcal{M}\)) that withness \(m_i \leq m_j\) for \(i \leq j < \lambda\).
+  By definition if \(A\) has smooth \(\mathcal{M}\)-subobjects then there is an \(\mathcal{M}\)-subobject \(m : C \to A\) that is the join of our chain in \(\text{Sub}_\mathcal{M}(A, \leq)\).
+  Particularly we have that \(m_i \leq m\) for all \(i < \lambda\) so there are monomorphisms \(c_i : A_i \to C\) such that \(m \circ c_i = m_i\) for all \(i < \lambda\).
+  For \(A\) to really have smooth \(\mathcal{M}\)-subobjects it is moreover necessary that these \(c_i : A_i \to C\) form a colimit cocone.
+\end{remark}
+
+\begin{remark}
+  Given an object \(A\) with smooth \(\mathcal{M}\)-subobjects then \(\text{Sub}_\mathcal{M}(A, \leq)\) must have a join of the empty chain.
+  Such join has to be the colimit of the empty chain in the category, thus the category must have an initial object \(0\).
+  Moreover the unique arrow \(0 \to A\) must be in \(\mathcal{M}\).
+  We conclude that for a category to have a smooth class of mono \(\mathcal{M}\) it is necessary for it to have an initial object and all arrows out of such initial object must be in \(\mathcal{M}\).
+\end{remark}
+
+\begin{example}
+  \(\Set\) has smooth monomorphisms.
+\end{example}
+
+\begin{example}
+  The category of monoids has smooth monomorphisms.
+  Indeed it is well-powered, so \(\text{Sub}(M, \leq)\) is always a set, and we know that, given a chain of submonoids of a given monoid \(M\), the union of the chain (i.e. its colimit) is again a submonoid of \(M\) and clearly the join of the chain in \(\text{Sub}(M, \leq)\).
+  Moreover the trivial monoid \(\{*\}\) is the initial object of the category.
+
+  Similarly the categories of groups and vector spaces have smooth monomorphisms.
+\end{example}
+
+\begin{example}
+  On the other hand monomorphisms are not smooth in the category of rings.
+  Indeed its initial object is \(\mathbb{Z}\) and there are non-monomorphisms with domain \(\mathbb{Z}\) (e.g. \(\mathbb{Z} \to \mathbb{Z}_n\) for some \(n \in \mathbb{N}\)) so by Remark \ref{rem:classes_and_initial} the category of rings does not have smooth monomorphisms.
+  One can also notice that having smooth monomorphisms implies that every object of the category must have the initial object as a subobject; this clearly does not happen with rings (again think of \(\mathbb{Z}_n\)).
+\end{example}
+
 \printbibliography
 \end{document}
