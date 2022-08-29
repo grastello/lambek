@@ -88,7 +88,9 @@
 \newcommand{\id}{\textsf{id}}
 \newcommand{\Ord}{\textsf{Ord}}
 \newcommand{\alg}{\textsf{Alg}}
+\newcommand{\Alg}{\textsf{Alg}}
 \newcommand{\Set}{\textsf{Set}}
+\newcommand{\Sub}{\textsf{Sub}}
 \newcommand{\Pos}{\textsf{Pos}}
 \newcommand{\op}{\text{op}}
 \newcommand{\CPO}{\textsf{CPO}}
@@ -1790,42 +1792,54 @@ We now give an example of a functor that has initial-algebra convergent in more 
 
 \section{Smooth monomorphisms and a converse to Lambeck's Lemma}
 
-Are all initial algebras obtainable by iteration i.e. by the convergence of the initial-algebra chain?
+We have seen that convergence of the initial-algebra chain implies existence of the initial algebra; but what about the converse?
+Are all initial algebras obtainable by iteration?
+As the following example shows this is not the case.
 
-We recall what subobjects are.
+\begin{example}
+  ADD EXAMPLE.
+\end{example}
+
+However we'd like to investigate some sufficient conditions for the initial-algebra chain to converge.
+Our investigations will eventually lead some conditions on the category \(\A\) and the functor \(F\) so that convergence of the initial-algebra chain and existence of the initial algebra are equivalent.
+
+In order to proceed we need to recall what subobjects are.
 
 \begin{definition}
-  For an object \(A\) in a category \(\A\) a \textbf{subobject} is represented by a monomorphism \(m: B \to A\) \marginnote{subobject}.
-  If we have two monomorphisms \(m_B : B \to A, m_C : C \to A\) we write \(m_B \leq m_C\) if there is some \(k : B \to C\) such that \(m_B = m_C \circ k\) (notice that this \(k\) too is mono).
+  Fixed an object \(A\) in a category \(\A\) a \textbf{subobject} of \(A\) is represented by a monomorphism \(m: B \rightarrowtail A\) \marginnote{subobject}.
+  If we have two monomorphisms \(m_B : B \rightarrowtail A, m_C : C \rightarrowtail A\) we write \(m_B \leq m_C\) if there is some \(k : B \to C\) such that \(m_B = m_C \circ k\) (notice that this \(k\) too is mono).
   When we have \(m_B \leq m_C \leq m_B\) the \(k\) above is an isomorphism and we say \(m_B\) and \(m_C\) represent the same subobject.
   Thus we can consider the collection of equivalence classes of subobjects of \(A\) that is partially ordered by \(\leq\).
   If \(\A\) is such that every object \(A \in \A\) has only a set of subobjects then \(\A\) is called \textbf{well-powered} \marginnote{well-powered category}.
 \end{definition}
-
 We can restrict ourselves to a class \(\mathcal{M}\) of monomorphism and speak of \(\mathcal{M}\)-subobjects i.e. subobjects represented by mono in \(\mathcal{M}\).
-When a given object \(A\) has only a set of \(\mathcal{M}\)-subobjects we write \(\text{Sub}_\mathcal{M}(A, \leq)\) for the poset of \(\mathcal{M}\)-subobjects of \(A\).
-However we do not require the monomorphism that witness \(\leq\) to be in \(\mathcal{M}\).
+When a given object \(A\) has only a set of \(\mathcal{M}\)-subobjects we write \(\Sub_\mathcal{M}(A, \leq)\) \marginnote{\(\Sub_\mathcal{M}(A, \leq)\)} for the poset of \(\mathcal{M}\)-subobjects of \(A\); if \(\mathcal{M}\) is the class of all monomorphisms we also write simply \(\Sub(A, \leq)\).
+Notice that we do not require the monomorphisms that witness \(\leq\) to be in \(\mathcal{M}\).
 
-From here onwards let \(\mathcal{M}\) denote a class of monomorphisms (of some generic category \(\A\) or otherwise clear from the context) containing all isomorphisms and closed under composition.
+From here onwards let \(\mathcal{M}\) denote \marginnote{\(\mathcal{M}\)} a class of monomorphisms (of some generic category \(\A\) or otherwise clear from the context) containing all isomorphisms and closed under composition.
 
 \begin{definition}
-  We say that an object \(A\) has \textbf{smooth} \(\mathcal{M}\)\textbf{-subobjects} if \(\text{Sub}_\mathcal{M}(A, \leq)\) \marginnote{smooth\\ \(\mathcal{M}\)-subobjects} is a chain-complete poset (particularly it is a set and not a proper class) where joins of chains are given by colimits of the corresponding chain of subobjects.
+  \label{def:smooth-subobjects}
+  We say that an object \(A\) has \textbf{smooth} \(\mathcal{M}\)\textbf{-subobjects} if \(\Sub_\mathcal{M}(A, \leq)\) \marginnote{smooth\\ \(\mathcal{M}\)-subobjects} is a chain-complete poset (particularly it is a set and not a proper class) where joins of chains are given by colimits of the corresponding chain of subobjects.
   We say that the class \(\mathcal{M}\) itself is \textbf{smooth} \marginnote{smooth class of monomorphisms} if every object has smooth \(\mathcal{M}\)-subobjects.
   When the class of all monomorphisms of a given category is smooth we say that the category has \textbf{smooth monomorphisms}.
 \end{definition}
 
 \begin{remark}
   \label{rem:classes_and_initial}
-  To be more precise consider an ordinal \(\lambda\) and \(m_i : A_i \to A\) for \(i < \lambda\) be a chain of \(\mathcal{M}\)-subobjects i.e. we have arrows \(a_{i,j} : A_i \to A_j\) (that need not be in \(\mathcal{M}\)) that withness \(m_i \leq m_j\) for \(i \leq j < \lambda\).
-  By definition if \(A\) has smooth \(\mathcal{M}\)-subobjects then there is an \(\mathcal{M}\)-subobject \(m : C \to A\) that is the join of our chain in \(\text{Sub}_\mathcal{M}(A, \leq)\).
-  Particularly we have that \(m_i \leq m\) for all \(i < \lambda\) so there are monomorphisms \(c_i : A_i \to C\) such that \(m \circ c_i = m_i\) for all \(i < \lambda\).
-  For \(A\) to really have smooth \(\mathcal{M}\)-subobjects it is moreover necessary that these \(c_i : A_i \to C\) form a colimit cocone.
+  To be more precise consider an ordinal \(\lambda\) and \((m_i : A_i \rightarrowtail A)_{i < \lambda}\) be a chain of \(\mathcal{M}\)-subobjects i.e. we have arrows \(a_{i,j} : A_i \to A_j\) (that need not be in \(\mathcal{M}\)) that withness \(m_i \leq m_j\) for \(i \leq j < \lambda\).
+  By definition if \(A\) has smooth \(\mathcal{M}\)-subobjects then there is an \(\mathcal{M}\)-subobject \(m : C \rightarrowtail A\) that is the join of our chain in \(\Sub_\mathcal{M}(A, \leq)\).
+  Particularly we have that \(m_i \leq m\) for all \(i < \lambda\) so there are morphisms \(c_i : A_i \to C\) such that \(m \circ c_i = m_i\) for all \(i < \lambda\).
+  We thus have a cocone \((c_i : A_i \to C)_{i < \lambda}\) over our chain that, for \(A\) to have smooth \(\mathcal{M}\)-subobjects, must be a colimit in \(\A\).
+
+  This gives us another way of interpreting Definition \ref{def:smooth-subobjects}.
+  If we consider \(\Sub_\mathcal{M}(A, \leq)\) as a subcategory of \(\A\) then \(A\) has smooth \(\mathcal{M}\)-subobjects when \(\Sub_\mathcal{M}(A, \leq)\) has colimits of chains (i.e. joins) and these colimits do not change once we move from \(\Sub_\mathcal{M}(A, \leq)\) to the whole category \(\A\).
 \end{remark}
 
 \begin{remark}
-  Given an object \(A\) with smooth \(\mathcal{M}\)-subobjects then \(\text{Sub}_\mathcal{M}(A, \leq)\) must have a join of the empty chain.
-  Such join has to be the colimit of the empty chain in the category, thus the category must have an initial object \(0\).
-  Moreover the unique arrow \(0 \to A\) must be in \(\mathcal{M}\).
+  Given an object \(A\) with smooth \(\mathcal{M}\)-subobjects then \(\Sub_\mathcal{M}(A, \leq)\) must have a join for the empty chain.
+  Such join has to be the colimit of the empty chain in \(\A\) and thus the ambient category must have an initial object \(0\).
+  Moreover the unique arrow \(0 \to A\) is in \(\mathcal{M}\).
   We conclude that for a category to have a smooth class of mono \(\mathcal{M}\) it is necessary for it to have an initial object and all arrows out of such initial object must be in \(\mathcal{M}\).
 \end{remark}
 
@@ -1834,18 +1848,129 @@ From here onwards let \(\mathcal{M}\) denote a class of monomorphisms (of some g
 \end{example}
 
 \begin{example}
-  The category of monoids has smooth monomorphisms.
-  Indeed it is well-powered, so \(\text{Sub}(M, \leq)\) is always a set, and we know that, given a chain of submonoids of a given monoid \(M\), the union of the chain (i.e. its colimit) is again a submonoid of \(M\) and clearly the join of the chain in \(\text{Sub}(M, \leq)\).
-  Moreover the trivial monoid \(\{*\}\) is the initial object of the category.
-
+  The category \(\textsf{Mon}\) of monoids has smooth monomorphisms.
+  Indeed it is well-powered (\(\Sub(M, \leq)\) is always a set) and we know that, given a chain of submonoids of a given monoid \(M\), the union of the chain (i.e. its colimit in \(\textsf{Mon}\)) is again a submonoid of \(M\) and clearly the join of the chain in \(\Sub(M, \leq)\).
   Similarly the categories of groups and vector spaces have smooth monomorphisms.
 \end{example}
 
 \begin{example}
   On the other hand monomorphisms are not smooth in the category of rings.
-  Indeed its initial object is \(\mathbb{Z}\) and there are non-monomorphisms with domain \(\mathbb{Z}\) (e.g. \(\mathbb{Z} \to \mathbb{Z}_n\) for some \(n \in \mathbb{N}\)) so by Remark \ref{rem:classes_and_initial} the category of rings does not have smooth monomorphisms.
-  One can also notice that having smooth monomorphisms implies that every object of the category must have the initial object as a subobject; this clearly does not happen with rings (again think of \(\mathbb{Z}_n\)).
+  Indeed its initial object is \(\mathbb{Z}\) and there are non-monomorphisms with domain \(\mathbb{Z}\) (e.g. \(\mathbb{Z} \to \mathbb{Z}/n\mathbb{Z}\) for some \(n \in \mathbb{N}\)) so by Remark \ref{rem:classes_and_initial} the category of rings does not have smooth monomorphisms.
 \end{example}
+
+We now work our way towards a sufficient condition for the convergence of the initial-algebra chain.
+
+\begin{definition}
+  Given \marginnote{\(\mathcal{M}\)-preserving functor} a category and a class \(\mathcal{M}\) of monomorphisms we say that an endofunctor \(F\) is \textbf{\(\mathcal{M}\)-preserving}  if for every \(m \in \mathcal{M}\) we have \(Fm \in \mathcal{M}\).
+\end{definition}
+
+\begin{definition}
+  An \textbf{\(\mathcal{M}\)-pre-fixed point}   \marginnote{\(\mathcal{M}\)-pre-fixed point} of an endofunctor \(F\) is an object \(A\) together with a monomorphism \(FA \rightarrowtail A\) in \(\mathcal{M}\).
+\end{definition}
+
+\begin{theorem}
+  \label{teo:M-pre-fixed}
+  Let \(F\) be an \(\mathcal{M}\)-preserving endofunctor over a well-powered category with smooth \(\mathcal{M}\)-subobjects and \(A\) an \(\mathcal{M}\)-pre-fixed point of \(F\).
+  Then the initial-algebra chain of \(F\) converges.
+\end{theorem}
+
+\begin{proof}
+  Let's call \(\alpha\) the monomorphism in \(\mathcal{M}\) that makes \(A\) into an \(\mathcal{M}\)-pre-fixed point of \(F\) i.e. \(\alpha : FA \rightarrowtail A\) and consider the function \(f : \Sub_{\mathcal{M}}(A, \leq) \to \Sub_{\mathcal{M}}(A, \leq)\) defined by
+  \begin{equation*}
+    f(B \overset{u}{\rightarrowtail} A) = (FB \overset{Fu}{\rightarrowtail} FA \overset{\alpha}{\rightarrowtail} A).
+  \end{equation*}
+  Notice that this function is well-defined as \(F\) preserves \(\mathcal{M}\) and \(\mathcal{M}\) is by definition closed under composition; moreover \(f\) is also monotone.
+  Indeed let \(B \leq C\) be two \(\mathcal{M}\)-subojects of \(A\) and \(w : B \rightarrowtail C\) that witnesses \(B \leq C\) i.e
+  \begin{equation*}
+    \begin{tikzcd}[sep=large]
+      B \ar[r, tail, "u"] \ar[d, tail, "w"] & A \\
+      C \ar[ru, tail, "v"]&
+    \end{tikzcd}
+  \end{equation*}
+  commutes.
+  By applying \(F\) and adjoining \(\alpha\) we obtain
+  \begin{equation*}
+    \begin{tikzcd}[sep=large]
+      FB \ar[r, tail, "Fu"] \ar[d, "Fw"] & FA \ar[r, tail, "\alpha"] & A \\
+      FC \ar[ru, tail, "Fv"]
+    \end{tikzcd}
+  \end{equation*}
+  with \(Fu, Fw\) mono because \(F\) preserves \(\mathcal{M}\) and \(Fu = Fv \circ Fw\); so \(f(B) \leq f(C)\) in \(\Sub_\mathcal{M}(A, \leq)\).
+
+  Now by assumption \(\Sub_{\mathcal{M}}(A, \leq)\) is chain-complete and we can apply Zermeleo's Fixed Point Theorem \ref{teo:zermeleo} to obtain that \(f\) has a fixed point \(\mu f = f^i(\bot)\) for some ordinal \(i\).
+  Moreover the canonical cocone \((\alpha_j : W_j \to A)_{j\in\Ord}\) induced as in \ref{rem:induce-transfinite-cocone} by the algebra \(\alpha : FA \rightarrowtail A\) is such that \(\alpha_j = f^j(\bot)\) for all \(j \in \Ord\); this is clear for the successor step, while the limit step follows from the fact that joins of chains in \(\Sub_\mathcal{M}(A, \leq)\) are colimits of the corresponding chains of subobjects because \(A\) has smooth \(\mathcal{M}\)-subobjects.
+  Then from \(f(f^i(\bot)) = f^i(\bot)\), the definition of fixed point, we obtain that \(\alpha_i\) and \(\alpha_{i+1}\) represent the same subobject of \(A\).
+  Finally we know that \(\alpha_i = \alpha_{i+1} \circ w_{i, i+1}\) and that, as \(\alpha_i\) and \(\alpha_{i+1}\) represent the same subobject, there is an arrow \(v : W_{i+1} \to W_i\) such that \(\alpha_{i+1} = \alpha_i \circ v\) (witnessing \(\alpha_{i+1} \leq \alpha_i\)).
+  The situation is as in the following diagram.
+  \begin{equation*}
+    \begin{tikzcd}[sep=large]
+      & A & \\
+      W_i \ar[ur, tail, "\alpha_i"] \ar[rr, shift left=.75ex, "w_{i, i+1}"] & & W_{i+1} \ar[lu, tail, "\alpha_{i+1}"] \ar[ll, shift left=.75ex, "v"]
+    \end{tikzcd}
+  \end{equation*}
+  Now from the following calculations and \(\alpha_i, \alpha_{i+1}\) being monomorphisms we obtain that \(v\) is the inverse of \(w_{i, i+1}\) and thus the initial-algebra chain converges.
+  \begin{equation*}
+    \alpha_i \circ v \circ w_{i, i+1} = \alpha_{i+1} \circ w_{i, i+1} = \alpha_i \implies \id_{W_i} = v \circ w_{i,i+1}
+  \end{equation*}
+  \begin{equation*}
+    \alpha_{i+1} \circ w_{i, i+1} \circ v = \alpha_i \circ v = \alpha_{i+1} \implies \id_{W_{i+1}} = w_{i, i+1} \circ v
+  \end{equation*}
+\end{proof}
+
+None of the hypothesis of Theorem \ref{teo:M-pre-fixed} can be dropped, as the following examples show.
+
+\begin{example}
+  Consider \(\Ord^\top\): the category of all ordinals ordered by inclusion and with an extra object \(\top\) bigger than any other.
+  As endofunctor consider \(F\lambda = \lambda+1\) for \(\lambda \in \Ord\) and \(F\top = \top\) and take \(\mathcal{M}\) to be the class of all mono that, in this case, is simply the class of all arrows thus preserved by \(F\).
+  The initial-algebra chain is the chain of all ordinals that clearly does not converge.
+  Theorem \ref{teo:M-pre-fixed} cannot be applied to \(\Ord^\top\) and \(F\) because \(\Ord^\top\) is not well-powered; indeed \(\top\) has a proper class of subobjects (all the ordinals).
+\end{example}
+
+\begin{example}
+  Consider the endofunctor \(FX = X + 1\) on \(\Set\) and the category \(\Alg F\) of \(F\)-algebras and their morphisms; recall that \((\N, s, 0)\), where \(s\) is the successor function, is the initial algebra for \(F\).
+  Then \(\Alg F\) does not have smooth monomorphisms as there are \(F\)-algebras, such as \((\mathbb{Z}/n\mathbb{Z}, - + 1, 0)\), that do not have \(\N\) as subobject.
+  Thus the hypothesis of Theorem \ref{teo:M-pre-fixed} do not hold and indeed we can find a functor on \(\Alg F\) that has no initial algebra while having a fixed point and preserving monomorphisms.
+
+  Denote by \(\mathcal{P}_o(X)\) the power set of \(X\) without the empty set \(\emptyset\), this is a functor on \(\Set\) with the natural blabla on arrows.
+  This construction gives a functor on \(\Alg F\) that sends an algebra \((A, f, c)\) to \((\mathcal{P}_0(A), \mathcal{P}_0f, \{c\})\).
+  Now \(\mathcal{P}_o\) preserves monomorphisms and the terminal algebra \(\{*\}\) is a fixed point and, up to isomorphism, the only one (CHECK).
+  However \(\{*\}\) is not initial as given any algebra \((A, f, c)\) such that \(f(c) \neq c\) there can be no \(\mathcal{P}_o\)-algebra momorphisms from \(\{*\}\) to \(A\) since there is no \(F\)-algebra morphism from \(\{*\}\) to \(A\).
+  \marginnote{check notation and use of parenthesis}
+\end{example}
+
+\begin{example}
+  Consider the category \(\Set \times \Set\) that is well-powered and has smooth monomorphism (WHY?).
+  As functor take
+  \begin{equation}
+    F(X, Y) = \begin{cases}
+      (\emptyset, 1) & \text{if } X \neq \emptyset \\
+      (\emptyset, \mathcal{P}Y) & \text{if } X = \emptyset
+    \end{cases}
+  \end{equation}
+  defined on arrows by using \(\mathcal{P}\) when we fall under the second case.
+  \(F\) does not preserve monomorphisms (WHY?) but has pre-fixed points such as \(F(1, 1) = (\emptyset, 1) \rightarrowtail (1, 1)\).
+  However \(F\) cannot have any fixed point (thus any initial-algebra and so the initial-algebra chain cannot converge) because, if \(X \neq 0\), \(F(X, Y) = (\emptyset, 1)\) is never isomorphic to \((X, Y)\) and, if \(X = \emptyset\), \(F(X, Y) = (\emptyset, \mathcal{P}Y)\) and \((X, Y)\) can't be isomorphic by Cantor's Theorem. 
+\end{example}
+
+Finally we can put all our work so far into a single theorem, the Initial Algebra Theorem which is, among other things a converse to Lambeck's Lemma.
+
+\begin{theorem}
+  \label{teo:initial-algebra-theorem}
+  Let \(\A\) be a well-powered category, \(\mathcal{M}\) a smooth class of monomorphisms and \(F\) a functor preserving \(\mathcal{M}\).
+  Then the following consitions are equivalent:
+  \begin{itemize}
+  \item[1.] the initial-algebra chain for \(F\) converges;
+  \item[2.] \(F\) has an initial-algebra;
+  \item[3.] \(F\) has a fixed point;
+  \item[4.] \(F\) has a pre-fixed point.
+  \end{itemize}
+  Moreover, if any of the above equivalent conditions holds, \(\mu F\) is an \(\mathcal{M}\)-subobject of every \(\mathcal{M}\)-pre-fixed point of \(F\).
+\end{theorem}
+
+\begin{proof}
+  We have that 1 implies 2 by Theorem \ref{teo:adamek_transfinite}; 2 implies 3 by Lambeck's Lemma and 3 implies 4 since, by definition, \(\mathcal{M}\) contains all isomorphisms.
+  Finally 4 implies 1 is exactly Theorem \ref{teo:M-pre-fixed} and from its proof we obtain that \(\mu F\) is an \(\mathcal{M}\)-subobject of every \(\mathcal{M}\)-pre-fixed point of \(F\).
+\end{proof}
 
 \printbibliography
 \end{document}
