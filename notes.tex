@@ -1927,28 +1927,28 @@ None of the hypothesis of Theorem \ref{teo:M-pre-fixed} can be dropped, as the f
 \end{example}
 
 \begin{example}
-  Consider the endofunctor \(FX = X + 1\) on \(\Set\) and the category \(\Alg F\) of \(F\)-algebras and their morphisms; recall that \((\N, s, 0)\), where \(s\) is the successor function, is the initial algebra for \(F\).
-  Then \(\Alg F\) does not have smooth monomorphisms as there are \(F\)-algebras, such as \((\mathbb{Z}/n\mathbb{Z}, - + 1, 0)\), that do not have \(\N\) as subobject.
-  Thus the hypothesis of Theorem \ref{teo:M-pre-fixed} do not hold and indeed we can find a functor on \(\Alg F\) that has no initial algebra while having a fixed point and preserving monomorphisms.
+  Consider the endofunctor \(FX = X + 1\) on \(\Set\) and the category \(\Alg F\) of \(F\)-algebras and their morphisms; recall that  \((\N, s, 0)\), where \(s\) is the successor function, is the initial algebra for \(F\).
+  Then \(\Alg F\) does not have smooth monomorphisms as there are \(F\)-algebras, such as \((\mathbb{Z}/n\mathbb{Z}, s, 0)\), that do not have \(\N\) as subobject; thus the hypothesis of Theorem \ref{teo:M-pre-fixed} do not hold.
+  Indeed we can find a functor on \(\Alg F\) that has no initial algebra while having a fixed point and preserving monomorphisms.
 
-  Denote by \(\mathcal{P}_o(X)\) the power set of \(X\) without the empty set \(\emptyset\), this is a functor on \(\Set\) with the natural blabla on arrows.
-  This construction gives a functor on \(\Alg F\) that sends an algebra \((A, f, c)\) to \((\mathcal{P}_0(A), \mathcal{P}_0f, \{c\})\).
-  Now \(\mathcal{P}_o\) preserves monomorphisms and the terminal algebra \(\{*\}\) is a fixed point and, up to isomorphism, the only one (CHECK).
-  However \(\{*\}\) is not initial as given any algebra \((A, f, c)\) such that \(f(c) \neq c\) there can be no \(\mathcal{P}_o\)-algebra momorphisms from \(\{*\}\) to \(A\) since there is no \(F\)-algebra morphism from \(\{*\}\) to \(A\).
-  \marginnote{check notation and use of parenthesis}
+  Denote by \(\mathcal{P}_0X\) the power set of \(X\) without the empty set \(\emptyset\).
+  This is a functor on \(\Set\) with the natural assignment on arrows that sends \(f : X \to Y\) to \(\mathcal{P}_0f : \mathcal{P}_0X \to \mathcal{P}_0Y\) mapping \(A \in \mathcal{P}_0X\) to \(F(A)\).
+  This construction gives a functor on \(\Alg F\) that sends an algebra \((A, f, c)\) to \((\mathcal{P}_0A, \mathcal{P}_0f, \{c\})\).
+  Now \(\mathcal{P}_0\) preserves monomorphisms, the terminal algebra \(\{*\}\) is a fixed point and, up to isomorphism, the only one by cardinality arguments.
+  However \(\{*\}\), as \(\mathcal{P}_0\)-algebra, is not initial: if \((A, f, c)\) is such that \(f(c) \neq c\) then there is no \(F\)-algebra morphism from \(\{*\}\) to \(A\) and thus no \(\mathcal{P}_0\)-algebra morphism from \(\{*\}\) (as \(\mathcal{P}_0\)-algebra) to any \(\mathcal{P}_0\)-algebra with carrier \((A, f, c)\).
 \end{example}
 
 \begin{example}
-  Consider the category \(\Set \times \Set\) that is well-powered and has smooth monomorphism (WHY?).
+  Consider the category \(\Set \times \Set\) that is well-powered and has smooth monomorphism.
   As functor take
-  \begin{equation}
+  \begin{equation*}
     F(X, Y) = \begin{cases}
       (\emptyset, 1) & \text{if } X \neq \emptyset \\
       (\emptyset, \mathcal{P}Y) & \text{if } X = \emptyset
     \end{cases}
-  \end{equation}
+  \end{equation*}
   defined on arrows by using \(\mathcal{P}\) when we fall under the second case.
-  \(F\) does not preserve monomorphisms (WHY?) but has pre-fixed points such as \(F(1, 1) = (\emptyset, 1) \rightarrowtail (1, 1)\).
+  \(F\) does not preserve monomorphisms (e.g. the mono \((\emptyset, 2) \rightarrowtail (3, 3)\) maps to \((\emptyset, \mathcal{P}2) \to (\emptyset, 1)\) that is not a mono) but has pre-fixed points such as \(F(1, 1) = (\emptyset, 1) \rightarrowtail (1, 1)\).
   However \(F\) cannot have any fixed point (thus any initial-algebra and so the initial-algebra chain cannot converge) because, if \(X \neq 0\), \(F(X, Y) = (\emptyset, 1)\) is never isomorphic to \((X, Y)\) and, if \(X = \emptyset\), \(F(X, Y) = (\emptyset, \mathcal{P}Y)\) and \((X, Y)\) can't be isomorphic by Cantor's Theorem. 
 \end{example}
 
