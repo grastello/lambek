@@ -1797,7 +1797,27 @@ Are all initial algebras obtainable by iteration?
 As the following example shows this is not the case.
 
 \begin{example}
-  ADD EXAMPLE.
+  A graph \(G\) is a pair \((V_G, E_G)\) where \(V_G\) is a set of vertexes and \(E_G\) a binary relation on \(V_G\).
+  A graph morphism is a function \(f : G \to G'\) such that \(x E_G y\) implies \(f(x) E_{G'} f(y)\) for every \(x, y \in V_G\).
+  Graphs and graph morphisms form the category \(\textsf{Gra}\).
+
+  We say that a graph \(G\) has a loop if there is some vertex \(x\) such that \(x E_G x\) and that it is loop-free otherwise.
+  For a cardinal \(\kappa\) we denote by \(K_\kappa\) the biggest loop-free graph on \(\kappa\) vertexes; these graphs are also called complete graphs.
+  Given a loop-free graph \(G\) we define its chromatic number \(\chi(G)\) to be the smallest cardinal such that there is a morphism from \(G\) to \(K_{\chi(G)}\); notice that \(\chi(K_\kappa) = \kappa\).
+  Finally we can consider the following endofunctor on \(\textsf{Gra}\)
+  \begin{equation*}
+    FG = \begin{cases}
+      1 & \text{if \(G\) has loops}\\
+      K_{\kappa^+} & \text{if \(G\) is loop-free and \(\kappa = \chi(G) + \aleph_1\)}
+    \end{cases}
+  \end{equation*}
+  where \(1\) is the loop on a single vertex and \(\kappa^+\) is the smallest ordinal bigger than \(\kappa\).
+  As for arrows if we have \(f: G \to G'\) and \(G, G'\) are loop-free then \(Ff\) is the inclusion between complete graphs, otherwise if \(G\) has loops so must \(G'\) and \(Ff\) is \(\text{id}_1\), finally if \(G\) is loop-free and \(G'\) has a loop then \(Ff\) is the constant function to 1.
+
+  If \(G\) is loop-free there can be no arrows from \(FG\) to \(G\) because \(\chi(FG) > \chi(G)\) and, if such a morphisms \(FG \to G\) where to exist, then by composition we can get \(FG \to G \to K_{\chi(G)}\) that implies \(\chi(FG) \leq \chi(G)\).
+  Then every \(F\)-algebra is of the form \(1 \to G\) with \(G\) a graph that has a loop.
+  This means that \(F\)-algebras are graphs \(G\) with a marked loop and it is clear that \(\id_1 : F1 = 1 \to 1\) is the initial algebra.
+  However the initial-algebra chain of \(F\) never converges because all its elements have different cardinalities.
 \end{example}
 
 However we'd like to investigate some sufficient conditions for the initial-algebra chain to converge.
