@@ -1820,10 +1820,75 @@ As the following example shows this is not the case.
   However the initial-algebra chain of \(F\) never converges because all its elements have different cardinalities.
 \end{example}
 
-However we'd like to investigate some sufficient conditions for the initial-algebra chain to converge.
-Our investigations will eventually lead some conditions on the category \(\A\) and the functor \(F\) so that convergence of the initial-algebra chain and existence of the initial algebra are equivalent.
+However, in the case of \(\Set\), we have the following result that, together with Lambeck's Lemma, immediately implies that every initial algebra over \(\Set\) is obtained by iteration.
 
-In order to proceed we need to recall what subobjects are.
+\begin{theorem}
+  \label{teo:set_lambeck_converse}
+  Let \(F\) be an endofunctor over \(\Set\) such that there is some set \(A\) and an injective function \(\alpha : FA \rightarrowtail A\); then the initial-algebra chain of \(F\) converges.
+\end{theorem}
+
+\begin{proof}
+  The implication is trivial if \(F\emptyset = \emptyset\) (Remark \ref{rem:trivial_initial_algebra}) so we only need to prove the theorem under the assumption that \(F\emptyset \neq \emptyset\).
+
+  Our \(\alpha : FA \rightarrowtail A\) is an \(F\)-algebra so it induces a canonical cocone \((\alpha_i:W_i \to A)_{i \in \Ord}\) over the initial-algebra chain \((W_i)_{i \in \Ord}\) as of Remark \ref{rem:induce-transfinite-cocone}; we will prove that \(\alpha_\omega\) is injective.
+  
+  Since \(F\emptyset \neq \emptyset\) then, upon the action of the functor, we obtain a function \(F\emptyset \to FA\) with non-empty domain from the unique \(\emptyset \to A\) so \(FA \neq \emptyset\) and, as we have \(\alpha\), by the same argument we get that \(A \neq \emptyset\).
+  Now we have that  \(\alpha\) splits i.e. there exists \(\alpha': A \to FA\) such that \(\alpha' \circ \alpha = \id_{FA}\) and, since \(F\emptyset \neq \emptyset\), let \(u_0\) be any function of type \(A \to F\emptyset\).
+  Then we define
+  \begin{equation*}
+    u_{n+1} = Fu_n \circ \alpha' \quad \text{for \(0 < n < \omega\)}
+  \end{equation*}
+  and obtain the following situation.
+  \begin{equation*}
+    \begin{tikzcd}[sep=huge]
+      & & A \ar[dl, bend right=10, "u_0"'] \ar[d, shift right=1, "u_1"'] \ar[dr, bend right=10, "u_2"'] & &\\
+      \emptyset \ar[urr, bend left=10, "\alpha_0"] \ar[r, "w_{0,1}"'] & F\emptyset \ar[r, "w_{1,2}"'] \ar[ru, bend right=10, "\alpha_1"'] & F^2\emptyset \ar[r, "w_{2, 3}"'] \ar[u, shift right=1, "\alpha_2"'] & F^3\emptyset \ar[r, "w_{3, 4}"'] \ar[lu, bend right=10, "\alpha_3"'] & \cdots
+    \end{tikzcd}
+  \end{equation*}
+  
+  We have that \(w_{n, n+1} = u_n \circ \alpha_n\) holds for \(n < \omega\) by induction.
+  The base case is obtained by noticing that \(u_0 \circ \alpha_0\) and \(w_{0,1}\) are both arrows of type \(\emptyset \to F\emptyset\) and \(\emptyset\) is the initial object.
+  The inductive step follows from the following calculation using the definitions of \(\alpha'\), \(u_{n+1}\), \(\alpha_{n+1}\) and the inductive hypothesis:
+  \begin{equation*}
+    w_{n+1, n+2} = Fw_{n, n+1} = Fu_n \circ F\alpha_n = (Fu_n \circ \alpha') \circ (\alpha \circ F\alpha_n) = u_{n+1} \circ \alpha_{n+1}.
+  \end{equation*}
+  Finally let \(x, y \in W_\omega\) such that \(\alpha_\omega(x) = \alpha_\omega(y)\).
+  Since \(W_\omega = \colim_{n < \omega}F^n\emptyset\) there is some \(k < \omega\) and \(x', y' \in F^k\emptyset\) such that \(w_{k, \omega}(x') = x\) and \(w_{k, \omega}(y') = y\).
+  Then, as \((\alpha_i: W_i \to A)_{i \in \Ord}\) is a cocone, \(\alpha_k = \alpha_\omega \circ w_{k, \omega}\) so \(\alpha_k(x') = \alpha_k(y')\) and we have
+  \begin{equation*}
+    w_{k+1, \omega} \circ u_k \circ \alpha_k = w_{k+1, \omega} \circ w_{k, k+1} = w_{k, \omega}
+  \end{equation*}
+  that implies
+  \begin{equation*}
+    x = w_{k, \omega}(x') = (w_{k+1, \omega} \circ u_k \circ \alpha_k)(x') = (w_{k+1, \omega} \circ u_k \circ \alpha_k)(y') = w_{k, \omega}(y') = y
+  \end{equation*}
+  and this completes the proof that \(\alpha_\omega\) is injective.
+  Now we can prove that the initial-algebra chain converges.
+
+  Since \(\alpha_\omega\) is injective and has non-empty domain there is a function  \(\beta : A \to W_\omega\) such that \(\alpha_\omega \circ \beta = \id_A\).
+  Because of this \(F\alpha_\omega\) is also injective (functors preserve identities and composition) and so must be \(\alpha_{\omega + 1} = \alpha \circ F\alpha_\omega\).
+  If we define \(v = \beta \circ \alpha_{\omega + 1}\) we obtain
+  \begin{equation*}
+    \alpha_\omega \circ v = \alpha_\omega \circ \beta \circ \alpha_{\omega + 1} = \alpha_{\omega + 1}
+  \end{equation*}
+  \begin{equation*}
+    \begin{tikzcd}[sep=huge]
+      & A \ar[dl, bend left=10, "\beta"] &\\
+      W_\omega \ar[rr, shift left=1, "w_{\omega, \omega + 1}"] \ar[ur, bend left=10, tail, "\alpha_\omega"] & & W_{\omega + 1} \ar[lu, bend right=10, tail, "\alpha_{\omega + 1}"'] \ar[ll, shift left=1, "v"]
+    \end{tikzcd}.
+  \end{equation*}
+  Finally we can carry out the following calculations using the relation above, the fact that \((\alpha_i)_{i \in \Ord}\) is a cocone over the initial-algebra chain and injectivity of \(\alpha_\omega, \alpha_{\omega + 1}\)\footnote{to be more precise we use that \(\alpha_\omega, \alpha_{\omega +1}\) are mono, but in \(\Set\) all injective functions are mono.}.
+  \begin{equation*}
+     \alpha_\omega \circ v \circ w_{\omega, \omega + 1} = \alpha_{\omega + 1} \circ w_{\omega, \omega + 1} = \alpha_\omega \implies v \circ w_{\omega, \omega + 1} = \id_{W_\omega};
+  \end{equation*}
+  \begin{equation*}
+    \alpha_{\omega + 1} \circ w_{\omega, \omega + 1} \circ v = \alpha_{\omega} \circ v = \alpha_{\omega + 1} \implies  w_{\omega, \omega + 1} \circ v = \id_{W_{\omega + 1}}.
+  \end{equation*}
+  So \(w_{\omega, \omega + 1}\) is an isomorphism and the initial-algebra chain converges.
+\end{proof}
+
+Now we'd like to generalize Theorem \ref{teo:set_lambeck_converse}.
+Notice that \(\alpha, \alpha_\omega\) and \(\alpha_{\omega + 1}\) being injective (thus mono) plays a crucial role in the argument above; this suggests that we should look into monomorphisms and, particularly, subobjects.
 
 \begin{definition}
   Fixed an object \(A\) in a category \(\A\) a \textbf{subobject} of \(A\) is represented by a monomorphism \(m: B \rightarrowtail A\) \marginnote{subobject}.
@@ -1991,6 +2056,9 @@ Finally we can put all the work we have done so far into a single theorem, the I
   We have that 1 implies 2 by Theorem \ref{teo:adamek_transfinite}; 2 implies 3 by Lambeck's Lemma and 3 implies 4 since, by definition, \(\mathcal{M}\) contains all isomorphisms.
   Finally 4 implies 1 is exactly Theorem \ref{teo:M-pre-fixed} and from its proof we obtain that \(\mu F\) is an \(\mathcal{M}\)-subobject of every \(\mathcal{M}\)-pre-fixed point of \(F\).
 \end{proof}
+
+In the particular case of \(\Set\) the four conditions of Theorem \ref{teo:initial-algebra-theorem} are equivalent with no need to require the functor to preserve \(\mathcal{M}\).
+
 
 \printbibliography
 \end{document}
