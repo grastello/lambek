@@ -1888,7 +1888,7 @@ However, in the case of \(\Set\), we have the following result that, together wi
 \end{proof}
 
 Now we'd like to generalize Theorem \ref{teo:set_lambeck_converse}.
-Notice that \(\alpha, \alpha_\omega\) and \(\alpha_{\omega + 1}\) being injective (thus mono) plays a crucial role in the argument above; this suggests that we should look into monomorphisms and, particularly, subobjects.
+Notice that \(\alpha, \alpha_\omega\) and \(\alpha_{\omega + 1}\) being injective (mono) plays a crucial role in the argument above; this suggests that we should look into monomorphisms and, particularly, subobjects.
 
 \begin{definition}
   Fixed an object \(A\) in a category \(\A\) a \textbf{subobject} of \(A\) is represented by a monomorphism \(m: B \rightarrowtail A\) \marginnote{subobject}.
@@ -1905,17 +1905,22 @@ From here onwards let \(\mathcal{M}\) denote \marginnote{\(\mathcal{M}\)} a clas
 
 \begin{definition}
   \label{def:smooth-subobjects}
-  We say that an object \(A\) has \textbf{smooth} \(\mathcal{M}\)\textbf{-subobjects} if \(\Sub_\mathcal{M}(A, \leq)\) \marginnote{smooth\\ \(\mathcal{M}\)-subobjects} is a chain-complete poset (particularly it is a set and not a proper class) where joins of chains are given by colimits of the corresponding chain of subobjects.
+  We say that an object \(A\) has \textbf{smooth} \(\mathcal{M}\)\textbf{-subobjects} if \(\Sub_\mathcal{M}(A, \leq)\) \marginnote{smooth\\ \(\mathcal{M}\)-subobjects} is a chain-complete poset (particularly it is a set) where joins of chains are given by colimits of the corresponding chain of subobjects.
   We say that the class \(\mathcal{M}\) itself is \textbf{smooth} \marginnote{smooth class of monomorphisms} if every object has smooth \(\mathcal{M}\)-subobjects.
   When the class of all monomorphisms of a given category is smooth we say that the category has \textbf{smooth monomorphisms}.
 \end{definition}
 
 \begin{remark}
   \label{rem:classes_and_initial}
-  To be more precise consider an ordinal \(\lambda\) and \((m_i : A_i \rightarrowtail A)_{i < \lambda}\) be a chain of \(\mathcal{M}\)-subobjects i.e. we have arrows \(a_{i,j} : A_i \to A_j\) (that need not be in \(\mathcal{M}\)) that withness \(m_i \leq m_j\) for \(i \leq j < \lambda\).
+  To be more precise consider an ordinal \(\lambda\) and a chain of \(\mathcal{M}\)-subobjects \((m_i : A_i \rightarrowtail A)_{i < \lambda}\) i.e. we have arrows \(a_{i,j} : A_i \to A_j\) (that need not be in \(\mathcal{M}\)) that withness \(m_i \leq m_j\) for \(i \leq j < \lambda\).
   By definition if \(A\) has smooth \(\mathcal{M}\)-subobjects then there is an \(\mathcal{M}\)-subobject \(m : C \rightarrowtail A\) that is the join of our chain in \(\Sub_\mathcal{M}(A, \leq)\).
   Particularly we have that \(m_i \leq m\) for all \(i < \lambda\) so there are morphisms \(c_i : A_i \to C\) such that \(m \circ c_i = m_i\) for all \(i < \lambda\).
-  We thus have a cocone \((c_i : A_i \to C)_{i < \lambda}\) over our chain that, for \(A\) to have smooth \(\mathcal{M}\)-subobjects, must be a colimit in \(\A\).
+  These morphisms form a cocone over our chain: given \(a_{i, j}\) for \(i < j\) we have
+  \begin{equation*}
+    m \circ c_j \circ a_{i, j} = m_j \circ a_{i, j} = m_i = m \circ c_i
+  \end{equation*}
+  and so \(c_j \circ a_{i, j} = c_i\) because \(m\) is mono.
+  In order to have smooth \(\mathcal{M}\)-subobjects this cocone must be a colimit in \(\A\).
 
   This gives us another way of interpreting Definition \ref{def:smooth-subobjects}.
   If we consider \(\Sub_\mathcal{M}(A, \leq)\) as a subcategory of \(\A\) then \(A\) has smooth \(\mathcal{M}\)-subobjects when \(\Sub_\mathcal{M}(A, \leq)\) has colimits of chains (i.e. joins) and these colimits do not change once we move from \(\Sub_\mathcal{M}(A, \leq)\) to the whole category \(\A\).
@@ -1946,7 +1951,7 @@ From here onwards let \(\mathcal{M}\) denote \marginnote{\(\mathcal{M}\)} a clas
 We now work our way towards a sufficient condition for the convergence of the initial-algebra chain.
 
 \begin{definition}
-  Given \marginnote{\(\mathcal{M}\)-preserving functor} a category and a class \(\mathcal{M}\) of monomorphisms we say that an endofunctor \(F\) is \textbf{\(\mathcal{M}\)-preserving}  if for every \(m \in \mathcal{M}\) we have \(Fm \in \mathcal{M}\).
+  Given \marginnote{\(\mathcal{M}\)-preserving functor} a category and a class \(\mathcal{M}\) of monomorphisms we say that an endofunctor \(F\) \textbf{preserves \(\mathcal{M}\)} if for every \(m \in \mathcal{M}\) we have \(Fm \in \mathcal{M}\).
 \end{definition}
 
 \begin{definition}
@@ -1985,7 +1990,7 @@ We now work our way towards a sufficient condition for the convergence of the in
   Now by assumption \(\Sub_{\mathcal{M}}(A, \leq)\) is chain-complete and we can apply Zermeleo's Fixed Point Theorem \ref{teo:zermeleo} to obtain that \(f\) has a fixed point \(\mu f = f^i(\bot)\) for some ordinal \(i\).
   Moreover the canonical cocone \((\alpha_j : W_j \to A)_{j\in\Ord}\) induced as in \ref{rem:induce-transfinite-cocone} by the algebra \(\alpha : FA \rightarrowtail A\) is such that \(\alpha_j = f^j(\bot)\) for all \(j \in \Ord\); this is clear for the successor step, while the limit step follows from the fact that joins of chains in \(\Sub_\mathcal{M}(A, \leq)\) are colimits of the corresponding chains of subobjects because \(A\) has smooth \(\mathcal{M}\)-subobjects.
   Then from \(f(f^i(\bot)) = f^i(\bot)\), the definition of fixed point, we obtain that \(\alpha_i\) and \(\alpha_{i+1}\) represent the same subobject of \(A\).
-  Finally we know that \(\alpha_i = \alpha_{i+1} \circ w_{i, i+1}\) and that, as \(\alpha_i\) and \(\alpha_{i+1}\) represent the same subobject, there is an arrow \(v : W_{i+1} \to W_i\) such that \(\alpha_{i+1} = \alpha_i \circ v\) (witnessing \(\alpha_{i+1} \leq \alpha_i\)).
+  Finally we know that \(\alpha_i = \alpha_{i+1} \circ w_{i, i+1}\) and that, since \(\alpha_i\) and \(\alpha_{i+1}\) represent the same subobject, there is an arrow \(v : W_{i+1} \to W_i\) such that \(\alpha_{i+1} = \alpha_i \circ v\) (witnessing \(\alpha_{i+1} \leq \alpha_i\)).
   The situation is as in the following diagram.
   \begin{equation*}
     \begin{tikzcd}[sep=large]
@@ -1993,13 +1998,7 @@ We now work our way towards a sufficient condition for the convergence of the in
       W_i \ar[ur, tail, "\alpha_i"] \ar[rr, shift left=.75ex, "w_{i, i+1}"] & & W_{i+1} \ar[lu, tail, "\alpha_{i+1}"] \ar[ll, shift left=.75ex, "v"]
     \end{tikzcd}
   \end{equation*}
-  Now from the following calculations and \(\alpha_i, \alpha_{i+1}\) being monomorphisms we obtain that \(v\) is the inverse of \(w_{i, i+1}\) and thus the initial-algebra chain converges.
-  \begin{equation*}
-    \alpha_i \circ v \circ w_{i, i+1} = \alpha_{i+1} \circ w_{i, i+1} = \alpha_i \implies \id_{W_i} = v \circ w_{i,i+1}
-  \end{equation*}
-  \begin{equation*}
-    \alpha_{i+1} \circ w_{i, i+1} \circ v = \alpha_i \circ v = \alpha_{i+1} \implies \id_{W_{i+1}} = w_{i, i+1} \circ v
-  \end{equation*}
+  Now the final part of the proof of Theorem \ref{teo:set_lambeck_converse} applies mutatis mutandis.
 \end{proof}
 
 None of the hypothesis of Theorem \ref{teo:M-pre-fixed} can be dropped, as the following examples show.
@@ -2017,7 +2016,7 @@ None of the hypothesis of Theorem \ref{teo:M-pre-fixed} can be dropped, as the f
   Indeed we can find a functor on \(\Alg F\) that has no initial algebra while having a fixed point and preserving monomorphisms.
 
   Denote by \(\mathcal{P}_0X\) the power set of \(X\) without the empty set \(\emptyset\).
-  This is a functor on \(\Set\) with the natural assignment on arrows that sends \(f : X \to Y\) to \(\mathcal{P}_0f : \mathcal{P}_0X \to \mathcal{P}_0Y\) mapping \(A \in \mathcal{P}_0X\) to \(F(A)\).
+  This is a functor on \(\Set\) with the natural assignment on arrows that sends \(f : X \to Y\) to \(\mathcal{P}_0f : \mathcal{P}_0X \to \mathcal{P}_0Y\) mapping \(A \in \mathcal{P}_0X\) to \(f(A)\).
   This construction gives a functor on \(\Alg F\) that sends an algebra \((A, f, c)\) to \((\mathcal{P}_0A, \mathcal{P}_0f, \{c\})\).
   Now \(\mathcal{P}_0\) preserves monomorphisms, the terminal algebra \(\{*\}\) is a fixed point and, up to isomorphism, the only one by cardinality arguments.
   However \(\{*\}\), as \(\mathcal{P}_0\)-algebra, is not initial: if \((A, f, c)\) is such that \(f(c) \neq c\) then there is no \(F\)-algebra morphism from \(\{*\}\) to \(A\) and thus no \(\mathcal{P}_0\)-algebra morphism from \(\{*\}\) (as \(\mathcal{P}_0\)-algebra) to any \(\mathcal{P}_0\)-algebra with carrier \((A, f, c)\).
@@ -2057,7 +2056,6 @@ Finally we can put all the work we have done so far into a single theorem, the I
   Finally 4 implies 1 is exactly Theorem \ref{teo:M-pre-fixed} and from its proof we obtain that \(\mu F\) is an \(\mathcal{M}\)-subobject of every \(\mathcal{M}\)-pre-fixed point of \(F\).
 \end{proof}
 
-In the particular case of \(\Set\) the four conditions of Theorem \ref{teo:initial-algebra-theorem} are equivalent with no need to require the functor to preserve \(\mathcal{M}\).
 
 
 \printbibliography
