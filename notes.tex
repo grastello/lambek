@@ -1804,7 +1804,7 @@ As the following example shows this is not the case.
   We say that a graph \(G\) has a loop if there is some vertex \(x\) such that \(x E_G x\) and that it is loop-free otherwise.
   For a cardinal \(\kappa\) we denote by \(K_\kappa\) the biggest loop-free graph on \(\kappa\) vertexes; these graphs are also called complete graphs.
   Given a loop-free graph \(G\) we define its chromatic number \(\chi(G)\) to be the smallest cardinal such that there is a morphism from \(G\) to \(K_{\chi(G)}\); notice that \(\chi(K_\kappa) = \kappa\).
-  Finally we can consider the following endofunctor on \(\textsf{Gra}\)
+  Finally we can consider the following endofunctor on \(\textsf{Gra}\):
   \begin{equation*}
     FG = \begin{cases}
       1 & \text{if \(G\) has loops}\\
@@ -2038,7 +2038,7 @@ None of the hypothesis of Theorem \ref{teo:M-pre-fixed} can be dropped, as the f
 
 Finally we can put all the work we have done so far into a single theorem, the Initial Algebra Theorem which is, among other things a converse to Lambeck's Lemma.
 
-\begin{theorem}
+\begin{theorem}[Initial Algebra Theorem]
   \label{teo:initial-algebra-theorem}
   Let \(\A\) be a well-powered category, \(\mathcal{M}\) a smooth class of monomorphisms and \(F\) a functor preserving \(\mathcal{M}\).
   Then the following conditions are equivalent:
