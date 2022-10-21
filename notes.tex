@@ -89,6 +89,7 @@
 \newcommand{\Ord}{\textsf{Ord}}
 \newcommand{\alg}{\textsf{Alg}}
 \newcommand{\Alg}{\textsf{Alg}}
+\newcommand{\Coalg}{\textsf{Coalg}}
 \newcommand{\Set}{\textsf{Set}}
 \newcommand{\Sub}{\textsf{Sub}}
 \newcommand{\Pos}{\textsf{Pos}}
@@ -2056,7 +2057,57 @@ Finally we can put all the work we have done so far into a single theorem, the I
   Finally 4 implies 1 is exactly Theorem \ref{teo:M-pre-fixed} and from its proof we obtain that \(\mu F\) is an \(\mathcal{M}\)-subobject of every \(\mathcal{M}\)-pre-fixed point of \(F\).
 \end{proof}
 
+\chapter{Coalgebras for endofunctors}
+\newpage
 
+\section{\(F\)-coalgebras}
+
+BLABLABLA we dualize
+
+\begin{definition}
+  A \textbf{coalgebra} for \(F\) (or a \(F\)-\textbf{-coalgebra})\marginnote{\(F\)-coalgebra} is a pair \((A, \alpha)\) where \(A\) is an object of \(\A\) and \(\alpha\) is an arrow of type \(A \to FA\).
+\end{definition}
+
+The notion of morphism between coalgebras is as expected.
+
+\begin{definition}
+  \label{def:coalgebra-morphism}
+  Given \(F\)-coalgebras \((A, \alpha), (B, \beta)\) a morphism between them is an arrow \(f : A \to B\) of \(\A\) such that
+  \begin{center}
+    \begin{tikzcd}[sep=large]
+      A \ar[r, "\alpha"] \ar[d, "Ff"] & FA \ar[d, "f"] \\
+      B \ar[r, "\beta"] & FB
+    \end{tikzcd}
+  \end{center}
+  commutes.
+\end{definition}
+
+As with algebras, coalgebras on \(F\) also form a category that we indicate with \(\Coalg F\).
+
+\begin{example}
+  On \(\Set\) coalgebras for \(FX = X + 1\) are called \textbf{systems with termination}\marginnote{systems with termination}.
+  Given a coalgebra \(\alpha: A \to A + 1\) we think of \(A\) as a set of \textbf{states} and of \(\alpha\) as the \textbf{dynamics} of the system.
+  Indeed to give an arrow \(\alpha:A \to A+1\) is, for every \(a \in A\), to deem it a \textbf{terminal state} if \(\alpha(a)\) is in the right summand or to specify a \textbf{next state} \(\alpha(a)\) in the left summand.
+  We can represent such systems with directed graphs as follows, with terminal states represented by \(\bullet^T\).
+  \begin{center}
+    \begin{tikzcd}[sep=large]
+      \bullet \ar[d, bend right=20] & \bullet \ar[r] & \bullet \ar[d] \\
+      \bullet \ar[u, bend right=20] & \bullet \ar[u] & \bullet^T \\
+    \end{tikzcd}
+  \end{center}
+  If \((A, \alpha), (B, \beta)\) are two systems with termination a morphism between them is, according to Definition \ref{def:coalgebra-morphism} a function \(f\) such that
+  \begin{center}
+    \begin{tikzcd}[sep=large]
+      A \ar[r, "\alpha"] \ar[d, "f"] & A + 1 \ar[d, "f + \id_1"] \\
+      B \ar[r, "\beta"] & B + 1
+    \end{tikzcd}
+  \end{center}
+  commutes i.e. a function \(f\) such that
+  \begin{itemize}
+  \item[1.] \(a \in A\) is terminal if and only if \(f(a) \in B\) is;
+  \item[2.] if \(a\) is not terminal then \(\beta(f(a)) = f(\alpha(a))\) i.e. the next state relationship is preserved by \(f\).
+  \end{itemize}
+\end{example}
 
 \printbibliography
 \end{document}
