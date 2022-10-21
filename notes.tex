@@ -2116,5 +2116,16 @@ As with algebras, coalgebras on \(F\) also form a category that we indicate with
   Similarly if we fix a set \(\Sigma\) of possible inputs and consider the functor \(FX = \Sigma \times X + 1\) we obtain, as coalgebras, systems with termination with the next state based on inputs from \(\Sigma\).
 \end{example}
 
+\begin{example}
+  Let \(\Sigma\) be a set on inputs.
+  A \textbf{deterministic automata}\marginnote{deterministic automata} is composed of a set \(S\) of states, a transition function \(\delta_s : S \to S\) for every \(s \in \Sigma\) and a set \(A \subset S\) of accepting states.
+  In order to obtain deterministic automata as coalgebras for a functor we curry the \(\delta_s\)'s into a single function \(\delta:S \to S^\Sigma\) and consider \(\chi : S \to \{0, 1\}\) the characteristic function of \(A\).
+  So deterministic automata are coalgebras for the functor
+  \begin{equation*}
+    FX = \{0, 1\} \times X^\Sigma
+  \end{equation*}
+  over \(\Set\).
+\end{example}
+
 \printbibliography
 \end{document}
