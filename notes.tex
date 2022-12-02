@@ -86,6 +86,9 @@
 \DeclareMathOperator*\colim{colim}
 
 \newcommand{\id}{\textsf{id}}
+\newcommand{\head}{\textsf{head}}
+\newcommand{\tail}{\textsf{tail}}
+\newcommand{\body}{\textsf{body}}
 \newcommand{\Ord}{\textsf{Ord}}
 \newcommand{\alg}{\textsf{Alg}}
 \newcommand{\Alg}{\textsf{Alg}}
@@ -400,6 +403,7 @@ This captures the idea of a \(\Sigma\)-algebra from universal algebra and provid
 \end{definition}
 
 \begin{definition}
+  \label{def:sigma-algebra}
   Given a signature \(\Sigma\) a \textbf{\(\Sigma\)-algebra} is a set \(A\) together with interpretations for every symbol of \(\Sigma\).
   \marginnote{\(\Sigma\)-algebra}
   That is: to every \(\sigma \in \Sigma_0\) we associate a fixed element of \(A\) and to every \(\sigma \in \Sigma_n\) an \(n\)-ary function on \(A\).
@@ -2085,6 +2089,7 @@ The notion of morphism between coalgebras is as expected.
 As with algebras, coalgebras on \(F\) also form a category that we indicate with \(\Coalg F\).
 
 \begin{example}
+  \label{ex:systems-with-termination}
   On \(\Set\) coalgebras for \(FX = X + 1\) are called \textbf{systems with termination}\marginnote{systems with termination}.
   Given a coalgebra \(\alpha: A \to A + 1\) we think of \(A\) as a set of \textbf{states} and of \(\alpha\) as the \textbf{dynamics} of the system.
   Indeed to give an arrow \(\alpha:A \to A+1\) is, for every \(a \in A\), to deem it a \textbf{terminal state} if \(\alpha(a)\) is in the right summand or to specify a \textbf{next state} \(\alpha(a)\) in the left summand.
@@ -2117,15 +2122,155 @@ As with algebras, coalgebras on \(F\) also form a category that we indicate with
 \end{example}
 
 \begin{example}
+  \label{ex:deterministic-automata}
   Let \(\Sigma\) be a set on inputs.
   A \textbf{deterministic automata}\marginnote{deterministic automata} is composed of a set \(S\) of states, a transition function \(\delta_s : S \to S\) for every \(s \in \Sigma\) and a set \(A \subset S\) of accepting states.
-  In order to obtain deterministic automata as coalgebras for a functor we curry the \(\delta_s\)'s into a single function \(\delta:S \to S^\Sigma\) and consider \(\chi : S \to \{0, 1\}\) the characteristic function of \(A\).
+  In order to obtain deterministic automata as coalgebras for a functor we curry the \(\delta_s\)'s into a single function \(\delta:S \to S^\Sigma\) and consider the characteristic function \(\chi : S \to \{0, 1\}\) of \(A\).
   So deterministic automata are coalgebras for the functor
   \begin{equation*}
     FX = \{0, 1\} \times X^\Sigma
   \end{equation*}
   over \(\Set\).
 \end{example}
+
+\begin{example}
+  Given a set \(\Sigma\) of inputs and a set \(\Gamma\) of outputs a coalgebra for the functor \(FX = \Gamma \times X^\Sigma\) over \(\Set\) is called a \textbf{Moore automata}.
+  Every state \(x\) of such a coalgebra is labeled by an element \(\gamma \in \Gamma\), we say that \(x\) emits output \(\gamma\), and has next states based on inputs in \(\Sigma\) like in a deterministic automata.
+\end{example}
+
+\begin{example}
+  Now consider a signature \(\Sigma\) and its associated polynomial functor \(H_\Sigma\) as in Definition \ref{def:sigma-algebra}.
+  A coalgebra for \(H_\Sigma\) is given by an arrow
+  \begin{equation*}
+    \alpha : A \to H_\Sigma A = \coprod_{n < \omega}\Sigma_n \times A^n
+  \end{equation*}
+  that, in the case of \(\Set\), we think of as made of two functions:
+  \begin{itemize}
+  \item a function \(\head : A \to \coprod_{n < \omega}\Sigma_n\) that assigns to each state \(a \in A\) a symbol of \(\Sigma\);
+  \item a function \(\body : A \to A^{<\omega}\) that assigs to a state \(a \in A\) a sequence \((y_0, \ldots, y_{n-1})\) of next states where \(n\) is the arity of \(\head(a)\). We also write \(\body(a, i)\) for \(y_i\).
+  \end{itemize}
+
+  Systems with termination (Example \ref{ex:systems-with-termination}) are obtained when the signature has one constant symbol and one unary symbol.
+  If \(\Sigma\) is the (finite) set of inputs of a deterministic automata (Example \ref{ex:deterministic-automata}) the signature with two \(|\Sigma|\)-ary symbols can be used to realize deterministic automata as a coalgebras for a polynomial functor.
+  Similarly Moore automata can be recovered as coalgebras for appropriate polynomial functors.
+\end{example}
+
+\begin{example}
+  Examples on \(\CPO\).
+\end{example}
+
+\section{Terminal Coalgebras}
+
+\begin{definition}
+  A \textbf{terminal coalgebra}\marginnote{terminal coalgebra} for an endofuctor \(F\) is a terminal object in \(\Coalg F\).
+  When it exists we usually denote it by \((\eta F, \tau)\).
+\end{definition}
+
+[WE PUT EXAMPLES HERE]
+
+\begin{example}
+  \(FX = X + 1\) has terminal coalgebra \(\mathbb{N}^\bot\) with the following structure
+  \begin{center}
+    \begin{tikzcd}[sep=large]
+      0 & 1 \ar[l] & 2 \ar[l] & \ldots \ar[l] & \infty \ar[loop right]
+    \end{tikzcd}
+  \end{center}
+  with \(0\) terminal state.
+  Given any other system with termination (\(F\)-coalgebra) \(A\) we have \(b_A : A \to \mathbb{N}^\bot\) defined as follows.
+  For every \(x \in A\) we set
+  \begin{itemize}
+  \item[1.] \(b_A(x) = 0\) if \(x\) is a terminal state;
+  \item[2.] \(b_A(x) = n\) if there is a finite chain \((x, x_1, x_2, \ldots, x_n)\) such that \(x_{i+1}\) is the next state of \(x_i\) and \(x_n\) is terminal;
+  \item[3.] \(b_A(x) = \infty\) otherwise.
+  \end{itemize}
+  This function clearly preserves terminal and next states so it is a morphism of coalgebras; moreover it is unique because \(\mathbb{N}^\bot\) has exactly one terminal state, exactly one sequence of \(n\) next states ending in a terminal state for every \(n\) and exactly one infinite sequence of next states.
+  This proves that \(\mathbb{N}^\bot\) is indeed the terminal coalgebra for \(F\).
+  We call \(b_A(x)\) the \textbf{behaviour} of the state \(x\) of \(A\).
+\end{example}
+
+\begin{example}
+  \label{ex:transition_systems_with_outputs}
+  Coalgebras for \(FX = \Sigma \times X\) on \(\Set\) are transition systems with outputs: each state \(x \in A\) has a next state \(\alpha_1(x) \in A\) and emits an output \(\alpha_0(x) \in \Sigma\); thus the coalgebra structure is given by \(\alpha = \intoprod{\alpha_0}{\alpha_1} : A \to \Sigma \times A\).
+  Notice that every state \(x \in A\) genetas an infinite sequence
+  \begin{equation*}
+    (x_n)_{n < \omega} = (x_0 = \alpha_0(x), x_1 = (\alpha_0 \circ \alpha_1)(x), x_2 = (\alpha_0 \circ \alpha_1 \circ \alpha_1)(x), \ldots)
+  \end{equation*}
+  of outputs; this is an element of \(\Sigma^\omega\), the set of infinite sequences (also called \textbf{streams}) over \(\Sigma\).
+  We can make \(\Sigma^\omega\) into an \(F\)-coalgebra with
+  \begin{equation*}
+    \tau = \intoprod{\head}{\tail} : \Sigma^\omega \to \Sigma \times \Sigma^\omega
+  \end{equation*}
+  where \(\head(x_n)_{n < \omega} = x_0\) and \(\tail(x_n)_{n < \omega} = (x_n)_{0 < n < \omega}\).
+  Thus the function \(b_A\) that sends \(x \in A\) to \((x_n)_{n < \omega} \in \Sigma^\omega\) makes
+  \begin{center}
+    \begin{tikzcd}[sep=large]
+      A \ar[r, "\intoprod{\alpha_0}{\alpha_1}"] \ar[d, "b_A"] & \Sigma \times A  \ar[d, "\id_\Sigma \times b_A"] \\
+      \Sigma^\omega \ar[r, "\intoprod{\head}{\tail}"] & \Sigma \times \Sigma^\omega
+    \end{tikzcd}
+  \end{center}
+  commute so it is a coalgebra morphism. WRITE SOMETHING FOR UNIQUENESS
+\end{example}
+
+\begin{example}
+  For a little variation consider the functor \(FX = \Sigma \times X + 1\) over \(\Set\) with \(\Sigma \in \Set\).
+  Coalgebras for \(F\) can be thinked of as systems with termination where non-terminal states emit an output in \(\Sigma\).
+
+  Tracing a state gives either a finite word over \(\Sigma\), if we enetually hit a terminal state, or a stream over \(\Sigma\) if we hit none.
+  Let \(\Sigma^\infty = \Sigma^* \times \Sigma^{<\omega}\) where \(\Sigma^*\) is the set of finite words over \(\Sigma\).
+  Again \(\intoprod{\head}{\tail} : \Sigma^\infty \to \Sigma \times \Sigma^\infty + 1\) as in Example \ref{ex:transition_systems_with_outputs} with the added caveat of sending the empty word to \(*\) in the right summand is the terminal coalgebra.
+
+  [FIX THE ARROW CALLING IT \(\tau\) and doing some magic]
+\end{example}
+
+\begin{example}
+  As in Example \ref{ex:deterministic-automata} consider a set of inputs \(\Sigma\) and the functor \(FX = \{0, 1\} \times X^\Sigma\) over \(\Set\) which realizes deterministic automata as coalgebras.
+  Consider \(\mathcal{P}(\Sigma^*)\) the set of formal languages over \(\Sigma\).
+  We say \(L\in \mathcal{P}(\Sigma^*)\) is an accepting language if it contains the empty word \(\varepsilon\).
+  Given a language \(L \in \mathcal{P}(\Sigma^*)\) and an input \(s \in \Sigma\) we define its next state as its Brozozowski derivative
+  \begin{equation*}
+    s^{-1}L = \{w \in \Sigma^* : sw \in L\};
+  \end{equation*}
+  this makes \(\mathcal{P}(\Sigma^*)\) into a coalgebra.
+
+  Now if \(A\) is an automata and \(x_0 \in A\) a state we can consider the language \(L(x_0)\) accepted by \(x_0\); that is the set of words \(w = w_1\ldots w_n \in \Sigma^*\) such that the sequence
+  \begin{equation}
+    \label{eq:sequence}
+    \begin{tikzcd}[sep=normal]
+      x_0 \ar[r, "\delta_{w_1}"] & x_1 \ar[r, "\delta_{w_2}"] & \ldots \ar[r, "w_{n}"] & x_n
+    \end{tikzcd}
+  \end{equation}
+  ends in a terminal state.
+  We notice that
+  \begin{itemize}
+  \item[1.] \(L(x)\) is accepting in \(\mathcal{P}(\Sigma^*)\) if and only if \(x\) is accepting in \(A\);
+  \item[2.] for every input \(s \in \Sigma\) if \(y = \delta_s(x)\) then \(L(y) = s^{-1}L(x)\);
+  \end{itemize}
+  so \(L: A \to \mathcal{P}(\Sigma^*)\) is a morphism of coalgebras. Moreover \(L\) is unique: let \(f: A \to \mathcal{P}(\Sigma^*)\) be a morphism of coalgebras; the following points show that \(f(x_0) \subseteq L(x_0)\) and \(L(x_0) \subseteq f(x_0)\) for a fixed \(x_0 \in A\). Thus \(f(x_0) = L(x_0)\) for every \(x_0 \in A\) and \(f = L\).
+  We have that \(\mathcal{P}(\Sigma^*)\) is the terminal coalgebra for \(F\).
+  \begin{itemize}
+  \item[a.] Let \(w_1\ldots w_n = w \in f(x_0)\); in order to prove that \(w \in L(x_0)\) we need to show that (\ref{eq:sequence}) ends in a terminal state.
+    We have that \(f(x_1) = f(\delta_{w_1}(x_0)) = w_1^{-1}f(x_0)\) because \(f\) is a morphism and, by iterating, we obtain \(f(x_n) = x_n^{-1}\ldots w_1^{-1}f(x_0)\).
+    Finally since \(w \in f(x_0)\) we have \(\varepsilon \in f(x_n)\) so \(x_n\) is accepting again \(f\) is a morphism.
+  \item[b.] Let \(w_1\ldots w_n = w \in L(x_0)\) thus we know that (\ref{eq:sequence}) ends in an accepting state; \(x_n\) accepting gives \(f(x_n)\) accepting, because \(f\) is a morphism, and thus \(\varepsilon \in f(x_n)\).
+    Moreover, again because \(f\) is a morphism, we have \(f(x_n) = f(\delta_{w_{n-1}}(x_{n-1})) = w_n^{-1}f(x_{n-1})\) and, since \(\varepsilon \in f(x_n)\), we obtain \(w_n \in f(x_{n-1})\).
+    Iteration of this argument gives \(w_1 \ldots w_n = w \in f(x_0)\).
+  \end{itemize}
+\end{example}
+
+Lambeck's Lemma \ref{lemma:lambeck} dualizes as well.
+
+\begin{lemma}
+  A terminal algebra for \(F\) is always a fixed point.
+\end{lemma}
+
+\begin{remark}
+  As for algebras the power-set functor \(\mathcal{P}\) has no terminal coalgebra because it has no fixed point.
+\end{remark}
+
+\begin{remark}
+  A converse like Theorem \ref{teo:initial-algebra-theorem} for the case of coalgebras does not exists.
+  [Scan the paper given on the other book]
+\end{remark}
 
 \printbibliography
 \end{document}
