@@ -2257,6 +2257,38 @@ As with algebras, coalgebras on \(F\) also form a category that we indicate with
   \end{itemize}
 \end{example}
 
+\begin{example}
+  Recall from Example \ref{} that Moore automata are coalgebras for \(FX = \Gamma \times X^\Sigma\) over \(\Set\).
+  Consider the set \(\Gamma^{\Sigma^*}\) of functions from \(\Sigma^*\) to \(\Gamma\) with the following coalgebra structure: \(f\in \Gamma^{\Sigma^*}\) emits output \(f(\varepsilon)\) and, for input \(s \in \Sigma\), has next state \(g \in \Gamma^{\Sigma^*}\) such that \(g(w) = f(sw)\).
+  The reader can check for himself that this coalgebra is terminal or derive it from the following example.
+\end{example}
+
+\begin{proposition}
+  Let \(\Sigma\) be a signature and let \(\nu H_\Sigma\) be the set of all \(\Sigma\)-trees (finite and infinite ones) equipped with the \(H_\Sigma\)-coalgebra structure that sends a tree
+  \begin{equation*}
+    \begin{tikzpicture}
+      \node (t1) at (0,-0.5){\(t_0\)};
+      \node (t2) at (1.5,0){\(\ldots\)};
+      \node (t3) at (3,-0.5){\(t_{n-1}\)};
+      \node (s) at (1.5, 1.5){\(\sigma\)};
+      
+      \draw[-] (0,0.5) -- (.5, -.25) -- (-.5, -.25) -- (0, .5);
+      % \draw[-] (1.5,0.5) -- (2, -.25) -- (1, -.25) -- (1.5, .5);
+      \draw[-] (3,0.5) -- (3.5, -.25) -- (2.5, -.25) -- (3, .5);
+
+      \draw[-] (s) -- (0,0.5);
+      % \draw[-] (s) -- (1.5,0.5);
+      \draw[-] (s) -- (3,0.5);
+    \end{tikzpicture}
+  \end{equation*}
+  to the element \((\sigma, (t_0, \ldots, t_{n-1}))\) of \(H_\Sigma(\nu H_\Sigma)\).
+  This is the terminal coalgebra of \(H_\Sigma\).
+\end{proposition}
+
+\begin{proof}
+  VA FATTA
+\end{proof}
+
 Lambeck's Lemma \ref{lemma:lambeck} dualizes as well.
 
 \begin{lemma}
