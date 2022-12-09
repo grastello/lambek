@@ -2166,8 +2166,6 @@ As with algebras, coalgebras on \(F\) also form a category that we indicate with
   When it exists we usually denote it by \((\eta F, \tau)\).
 \end{definition}
 
-[WE PUT EXAMPLES HERE]
-
 \begin{example}
   \(FX = X + 1\) has terminal coalgebra \(\mathbb{N}^\bot\) with the following structure
   \begin{center}
@@ -2260,11 +2258,11 @@ As with algebras, coalgebras on \(F\) also form a category that we indicate with
 \begin{example}
   Recall from Example \ref{} that Moore automata are coalgebras for \(FX = \Gamma \times X^\Sigma\) over \(\Set\).
   Consider the set \(\Gamma^{\Sigma^*}\) of functions from \(\Sigma^*\) to \(\Gamma\) with the following coalgebra structure: \(f\in \Gamma^{\Sigma^*}\) emits output \(f(\varepsilon)\) and, for input \(s \in \Sigma\), has next state \(g \in \Gamma^{\Sigma^*}\) such that \(g(w) = f(sw)\).
-  The reader can check for himself that this coalgebra is terminal or derive it from the following example.
+  The reader can check for himself that this coalgebra is terminal or derive it from the following proposition.
 \end{example}
 
 \begin{proposition}
-  Let \(\Sigma\) be a signature and let \(\nu H_\Sigma\) be the set of all \(\Sigma\)-trees (finite and infinite ones) equipped with the \(H_\Sigma\)-coalgebra structure that sends a tree
+  Let \(\Sigma\) be a signature and let \(T_\Sigma\) be the set of all \(\Sigma\)-trees (finite and infinite ones) equipped with the \(H_\Sigma\)-coalgebra structure that sends a tree
   \begin{equation*}
     \begin{tikzpicture}
       \node (t1) at (0,-0.5){\(t_0\)};
@@ -2281,28 +2279,84 @@ As with algebras, coalgebras on \(F\) also form a category that we indicate with
       \draw[-] (s) -- (3,0.5);
     \end{tikzpicture}
   \end{equation*}
-  to the element \((\sigma, (t_0, \ldots, t_{n-1}))\) of \(H_\Sigma(\nu H_\Sigma)\).
-  This is the terminal coalgebra of \(H_\Sigma\).
+  to the element \((\sigma, (t_0, \ldots, t_{n-1}))\) of \(H_\Sigma(T_\Sigma)\).
+  Notice that this is the inverse of tree-tupling so let is be denoted by \(\tau^{-1}\).
+  The terminal coalgebra of \(H_\Sigma\) is \((T_\Sigma, \tau^{-1})\).
 \end{proposition}
 
 \begin{proof}
-  VA FATTA
+  Let \((A, \alpha)\) be a \(H_\Sigma\)-coalgebra and consider the function \(h: A \to T_\Sigma\) that sends \(x \in A\) to the tree \(t_x\) constructed recursively as
+  \begin{equation*}
+    \begin{tikzpicture}
+      \node (t1) at (0,-0.5){\(t_{y_0}\)};
+      \node (t2) at (1.5,0){\(\ldots\)};
+      \node (t3) at (3,-0.5){\(t_{y_{n-1}}\)};
+      \node (s) at (1.5, 1.5){\(\sigma\)};
+      
+      \draw[-] (0,0.5) -- (.5, -.25) -- (-.5, -.25) -- (0, .5);
+      % \draw[-] (1.5,0.5) -- (2, -.25) -- (1, -.25) -- (1.5, .5);
+      \draw[-] (3,0.5) -- (3.5, -.25) -- (2.5, -.25) -- (3, .5);
+
+      \draw[-] (s) -- (0,0.5);
+      % \draw[-] (s) -- (1.5,0.5);
+      \draw[-] (s) -- (3,0.5);
+    \end{tikzpicture}
+  \end{equation*}
+  where \(\alpha(x) = (\sigma, y_0, \ldots, y_{n-1})\).
+  This is clearly a function such that
+  \begin{equation*}
+    \begin{tikzcd}[sep=large]
+      A \ar[r, "\alpha"] \ar[d, "h"] & H_\Sigma A \ar[d, "H_\Sigma h"] \\
+      T_\Sigma \ar[r, "\tau^{-1}"] & H_\Sigma T_\Sigma
+    \end{tikzcd}
+  \end{equation*}
+  commutes i.e. \(h\) is a coalgebra morphism.
+  Now let \(g:A \to T_\Sigma\) be another morphism and \(x \in A\) such that \(\alpha(x) = (\sigma, y_0, \ldots, y_{n-1})\) as above.
+  Then \(g(x)\) is a tree
+  \begin{equation*}
+    \begin{tikzpicture}
+      \node (t1) at (0,-0.5){\(g(x)_0\)};
+      \node (t2) at (1.5,0){\(\ldots\)};
+      \node (t3) at (3,-0.5){\(g(x)_{n-1}\)};
+      \node (s) at (1.5, 1.5){\(\gamma\)};
+      
+      \draw[-] (0,0.5) -- (.5, -.25) -- (-.5, -.25) -- (0, .5);
+      % \draw[-] (1.5,0.5) -- (2, -.25) -- (1, -.25) -- (1.5, .5);
+      \draw[-] (3,0.5) -- (3.5, -.25) -- (2.5, -.25) -- (3, .5);
+
+      \draw[-] (s) -- (0,0.5);
+      % \draw[-] (s) -- (1.5,0.5);
+      \draw[-] (s) -- (3,0.5);
+    \end{tikzpicture}
+  \end{equation*}
+  such that
+  \begin{equation*}
+    (\gamma, g(x)_0, \ldots, g(x)_{n-1}) = (\tau^{-1} \circ g)(x) = (H_\Sigma g \circ \alpha)(x) = (\sigma, g(y_0), \ldots, g(y_{n-1}))
+  \end{equation*}
+  so \(\gamma = \sigma\) and \(g(x)_i = g(y_i)\) for \(i < n\) i.e. \(g(x)\) and \(t_x\) have the same root and the \(i\)-th subtree of \(g(x)\) is \(g(y_i)\).
+  We can iterate this process to obtain that \(g(x) = t_x\), thus \(g\) must be \(h\), and \((T_\Sigma, \tau^{-1})\) is the terminal coalgebra.
 \end{proof}
 
-Lambeck's Lemma \ref{lemma:lambeck} dualizes as well.
+EXAMPLES OVER CPO?
 
-\begin{lemma}
-  A terminal algebra for \(F\) is always a fixed point.
+The necessary condition of Lambeck's Lemma \ref{lemma:lambeck} dualizes and we can use it to find examples of functors that do not have a terminal coalgebra.
+
+\begin{lemma}[Lambeck's Lemma]
+  A terminal coalgebra for \(F\), if it exists, is always a fixed point.
 \end{lemma}
 
 \begin{remark}
-  As for algebras the power-set functor \(\mathcal{P}\) has no terminal coalgebra because it has no fixed point.
+  The power-set functor \(\mathcal{P}\) has no terminal coalgebra because it has no fixed point.
+  Similarly the functor \(FX = \{0, 1\} \times (\mathbb{P}X)^\Sigma\), which gives \textbf{non-deterministic automata} [ADD NDA ABOVE] as coalgebras, does not have a terminal coalgebra.
 \end{remark}
 
 \begin{remark}
-  A converse like Theorem \ref{teo:initial-algebra-theorem} for the case of coalgebras does not exists.
-  [Scan the paper given on the other book]
+  By Theorem \ref{teo:set_lambeck_converse} and Lambeck's Lemma we have that, for functors over \(\Set\), the existence of a terminal coalgebra implies the existence of an initial algebra.
+  The converse is false since, as it was found in \cite[Example 3.14]{Adamek-2016} by Adámek and Koubek, there are two set functors that coincide on all objects (but not all morphisms) such that one has a terminal coalgebra and the other one does not (WE MAY BE ABLE TO SEE THIS EXAMPLE LATER ON ONCE WE HAVE THE TERMINAL COALGEBRA COCHAIN).
+  Thus the existence of a terminal coalgebra, even for set functors, is a more complicated question than the existence of an initial algebra.
 \end{remark}
+
+FIXARE LA COSA DEGLI ACCENTI
 
 \printbibliography
 \end{document}
