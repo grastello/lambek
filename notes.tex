@@ -2181,6 +2181,7 @@ As with algebras, coalgebras on \(F\) also form a category that we indicate with
 \end{definition}
 
 \begin{example}
+  \label{ex:terminalcoalgebra1}
   \(FX = X + 1\) has terminal coalgebra \(\mathbb{N}^\bot\) with the following structure
   \begin{center}
     \begin{tikzcd}[sep=large]
@@ -2197,7 +2198,7 @@ As with algebras, coalgebras on \(F\) also form a category that we indicate with
   \end{itemize}
   This function clearly preserves terminal and next states so it is a morphism of coalgebras; moreover it is unique because \(\mathbb{N}^\bot\) has exactly one terminal state, exactly one sequence of \(n\) next states ending in a terminal state for every \(n\) and exactly one infinite sequence of next states.
   This proves that \(\mathbb{N}^\bot\) is indeed the terminal coalgebra for \(F\).
-  We call \(b_A(x)\) the \textbf{behaviour} of the state \(x\) of \(A\).
+  We call \(b_A(x)\) the \textbf{behaviour} of the state \(x\) of \(A\) and it corresponds with the number of iterations needed to reach a terminal state starting from \(x\) (or \(\infty\) if we cannot reach a terminal state starting from \(x\)).
 \end{example}
 
 \begin{example}
@@ -2380,6 +2381,27 @@ Initial words on corecursion.
   Let \(F\) be an endofuctor over some category \(\A\) with a terminal coalgebra \(\nu F\).
   A morphism \(f: A \to \nu F\) of \(\A\) is \textbf{corecursively specified} \marginnote{corecursively specified morphism} if there is a coalgebra structure \(\alpha : A \to FA\) on \(A\) that makes \(f\) into a morphism of coalgebras (actually \(f\) is unique since \(\nu F\) is terminal).
 \end{definition}
+
+\begin{example}
+  \label{ex:corecursive-specification-of-addition}
+  As for Example \ref{ex:terminalcoalgebra1} the terminal coalgebra for \(FX = X + 1\) over \(\Set\) is \((\mathbb{N}^\top, \tau)\).
+  We shall see that the function \(\textsf{add} : \mathbb{N}^\top \times \mathbb{N}^\top \to \mathbb{N}^\top\) defined as addition of natural numbers extended by \(x + \infty = \infty, \infty + x = \infty\) and \(\infty + \infty = \infty\) is corecursively specified.
+  In order to do so we need a coalgebra structure on \(\mathbb{N}^\top \times \mathbb{N}^\top\) that induces \(\textsf{add}\) as the unique coalgebra morphism to \(\mathbb{N}^\top\).
+  Consider then the coalgebra given by the following structure \(\alpha: \mathbb{N}^\top \times \mathbb{N}^\top \to \mathbb{N}^\top \times \mathbb{N}^\top + 1\):
+  \begin{itemize}
+  \item[1.] the only terminal state is \((0, 0)\);
+  \item[2.] if \((x, y)\) is not terminal then we set
+    \begin{equation*}
+      \alpha(x, y) =
+      \begin{cases}
+        (0, \tau(y)) & \text{if } x = 0\\
+        (\tau(x), y) & \text{if } x \neq 0
+      \end{cases}.
+    \end{equation*}
+  \end{itemize}
+  Now let \(b_A : \mathbb{N}^\top \times \mathbb{N}^\top \to \mathbb{N}^\top\) be the unique morphism to the terminal coalgebra and notice that a state \((x, y)\), under iterated applications of \(\alpha\), either reaches \((0, 0)\) in \(x + y\) steps or generates an infinite sequence exactly when \(x = \infty\) or \(y = \infty\).
+  Thus we have that \(b_A = \textsf{add}\).
+\end{example}
 
 \printbibliography
 \end{document}
