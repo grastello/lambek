@@ -867,8 +867,8 @@ Recursion, however, can also be used to define functions on (among other things)
 Here we show how one can use the concept of an initial algebra to provide a general definition of recursion of which the cited examples as particular cases.
 
 \begin{definition}
-  Let \(F\) be an endofuctor with an initial algebra \(\mu F\).
-  A morphism \(f \colon \mu F \to A\) is \textbf{recursively specified} \marginnote{recursively specified morphism} if there exists an algebra structure \(\alpha \colon FA \to A\) on \(A\) that makes \(f\) into an algebra homomorphism (actually the unique algebra homomorphism).
+  Let \(F\) be an endofuctor over \(\A\) with an initial algebra \(\mu F\).
+  A morphism \(f \colon \mu F \to A\) of \(\A\) is \textbf{recursively specified} \marginnote{recursively specified morphism} if there exists an algebra structure \(\alpha \colon FA \to A\) on \(A\) that makes \(f\) into an algebra homomorphism (actually the unique algebra homomorphism).
 \end{definition}
 
 \begin{example}
@@ -2134,7 +2134,21 @@ As with algebras, coalgebras on \(F\) also form a category that we indicate with
 \end{example}
 
 \begin{example}
-  Given a set \(\Sigma\) of inputs and a set \(\Gamma\) of outputs a coalgebra for the functor \(FX = \Gamma \times X^\Sigma\) over \(\Set\) is called a \textbf{Moore automata}.
+  \label{ex:NDA}
+  As above let \(\Sigma\) be a set of inputs. A \textbf{non-deterministic automata} \marginnote{non-deterministic automata}, like a deterministic one, is made of a set of states \(S\) with a subset \(A\) of accepting states but the transition functions have codomain \(\mathcal{P}(S)\) i.e.
+  \begin{equation*}
+    \delta_s : S \to \mathcal{P}(S) \quad \text{for every \(s \in \Sigma\)}.
+  \end{equation*}
+  Non-deterministic automata are coalgebras for the functor
+  \begin{equation*}
+    FX = \{0, 1\} \times (\mathcal{P}(S))^\Sigma
+  \end{equation*}
+  over \(\Set\).
+\end{example}
+
+
+\begin{example}
+  Given a set \(\Sigma\) of inputs and a set \(\Gamma\) of outputs a coalgebra for the functor \(FX = \Gamma \times X^\Sigma\) over \(\Set\) is called a \textbf{Moore automata} \marginnote{Moore automata}.
   Every state \(x\) of such a coalgebra is labeled by an element \(\gamma \in \Gamma\), we say that \(x\) emits output \(\gamma\), and has next states based on inputs in \(\Sigma\) like in a deterministic automata.
 \end{example}
 
@@ -2347,16 +2361,25 @@ The necessary condition of Lambeck's Lemma \ref{lemma:lambeck} dualizes and we c
 
 \begin{remark}
   The power-set functor \(\mathcal{P}\) has no terminal coalgebra because it has no fixed point.
-  Similarly the functor \(FX = \{0, 1\} \times (\mathbb{P}X)^\Sigma\), which gives \textbf{non-deterministic automata} [ADD NDA ABOVE] as coalgebras, does not have a terminal coalgebra.
+  Similarly the functor \(FX = \{0, 1\} \times (\mathbb{P}X)^\Sigma\), which gives non-deterministic automata as coalgebras (see Example \ref{ex:NDA}), does not have a terminal coalgebra.
 \end{remark}
 
 \begin{remark}
   By Theorem \ref{teo:set_lambeck_converse} and Lambeck's Lemma we have that, for functors over \(\Set\), the existence of a terminal coalgebra implies the existence of an initial algebra.
-  The converse is false since, as it was found in \cite[Example 3.14]{Adamek-2016} by Adámek and Koubek, there are two set functors that coincide on all objects (but not all morphisms) such that one has a terminal coalgebra and the other one does not (WE MAY BE ABLE TO SEE THIS EXAMPLE LATER ON ONCE WE HAVE THE TERMINAL COALGEBRA COCHAIN).
+  The converse is false since, as it was found in \cite[Example 3.14]{Adamek-2016} by Adámek, Koubek and Palm, there are two set functors that coincide on all objects (but not all morphisms) such that one has a terminal coalgebra and the other one does not (WE MAY BE ABLE TO SEE THIS EXAMPLE LATER ON ONCE WE HAVE THE TERMINAL COALGEBRA COCHAIN).
   Thus the existence of a terminal coalgebra, even for set functors, is a more complicated question than the existence of an initial algebra.
 \end{remark}
 
 FIXARE LA COSA DEGLI ACCENTI
+
+\section{Corecursion and Bisimulation}
+
+Initial words on corecursion.
+
+\begin{definition}
+  Let \(F\) be an endofuctor over some category \(\A\) with a terminal coalgebra \(\nu F\).
+  A morphism \(f: A \to \nu F\) of \(\A\) is \textbf{corecursively specified} \marginnote{corecursively specified morphism} if there is a coalgebra structure \(\alpha : A \to FA\) on \(A\) that makes \(f\) into a morphism of coalgebras (actually \(f\) is unique since \(\nu F\) is terminal).
+\end{definition}
 
 \printbibliography
 \end{document}
