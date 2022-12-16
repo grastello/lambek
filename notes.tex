@@ -108,6 +108,11 @@
 \newcommand{\outofcoprod}[2]{{[#1, #2]}}
 \newcommand{\intoprod}[2]{{\langle #1, #2\rangle}}
 
+\newcommand{\fundef}[5]{\begin{align*}
+    #1\colon\begin{tikzcd}[sep=large]#2\end{tikzcd} &\longrightarrow \begin{tikzcd}[sep=large]#3\end{tikzcd}\\
+      \begin{tikzcd}[sep=large]#4\end{tikzcd} &\longmapsto \begin{tikzcd}[sep=large]#5\end{tikzcd}
+\end{align*}}
+
 % The document.
 \begin{document}
 
@@ -1004,6 +1009,7 @@ Recall that a subobject in a category is represented by a monomorphism.
 We call subalgebras subobjects in \(\alg F\).
 
 \begin{theorem}[Induction Principle]
+  \label{th:induction_principle}
   Let \(F\) be an endofunctor and \(\mu F\) its initial algebra.
   Then every \(m \colon (B, \beta) \to (\mu F, \iota)\) monic is an isomorphism.
 \end{theorem}
@@ -2208,7 +2214,7 @@ As with algebras, coalgebras on \(F\) also form a category that we indicate with
   \begin{equation*}
     (x_n)_{n < \omega} = (x_0 = \alpha_0(x), x_1 = (\alpha_0 \circ \alpha_1)(x), x_2 = (\alpha_0 \circ \alpha_1 \circ \alpha_1)(x), \ldots)
   \end{equation*}
-  of outputs; this is an element of \(\Sigma^\omega\), the set of infinite sequences (also called \textbf{streams}) over \(\Sigma\).
+  of outputs; this is an element of \(\Sigma^\omega\), the set of infinite sequences (also called \textbf{streams}\marginnote{streams}) over \(\Sigma\).
   We can make \(\Sigma^\omega\) into an \(F\)-coalgebra with
   \begin{equation*}
     \tau = \intoprod{\head}{\tail} : \Sigma^\omega \to \Sigma \times \Sigma^\omega
@@ -2401,6 +2407,148 @@ Initial words on corecursion.
   \end{itemize}
   Now let \(b_A : \mathbb{N}^\top \times \mathbb{N}^\top \to \mathbb{N}^\top\) be the unique morphism to the terminal coalgebra and notice that a state \((x, y)\), under iterated applications of \(\alpha\), either reaches \((0, 0)\) in \(x + y\) steps or generates an infinite sequence exactly when \(x = \infty\) or \(y = \infty\).
   Thus we have that \(b_A = \textsf{add}\).
+\end{example}
+
+\begin{example}
+  Consider the functor \(FX = \Sigma \times X\) over \(\Set\) with \(\Sigma\) a fixed set of outputs.
+  We know from Example \ref{ex:transition_systems_with_outputs} that the terminal coalgebra for \(F\) is \(\Omega^\infty\), the set of \(\Sigma\)-streams, with structure given by \(\tau = \intoprod{\head}{\tail}\).
+
+  A single stream can be identified with the function \(f : 1 \to \Sigma^\infty\) that picks it so we say that a stream is corecursively specified if its \(f : 1 \to \Sigma^\infty\) is corecursively specified.
+  Coalgebra structures on \(1\) are functions \(\alpha: 1 \to \Sigma \times 1\) so the only corecursively specifiable streams are the constant ones.
+
+  Other kinds of streams can be corecursively specified as well.
+  For example consider the set \(2\) with the coalgebra structure given by \(\alpha : 2 \to \Sigma \times 2\) defined by \(\alpha(0) = (x, 1)\) and \(\alpha(1) = (y, 0)\) for \(x, y \in \Sigma\).
+  Graphically this coalgebra can be represented as
+  \begin{equation*}
+    \begin{tikzcd}[sep = large]
+      0 \ar[r, bend left, "x"] & 1 \ar[l, bend left, "y"]
+    \end{tikzcd}.
+  \end{equation*}
+  Since \(\Sigma^\omega\) is the terminal coalgebra there is a unique \(h : 2 \to \Sigma^\omega\) such that
+  \begin{equation*}
+    \intoprod{\head}{\tail} \circ h = \alpha \circ (\id \times h)
+  \end{equation*}
+  from which we obtain the following relations
+  \begin{itemize}
+  \item[1.] \(\head(h(0)) = \alpha(0) = x\) and \(\head(h(1)) = \alpha(1) = y\);
+  \item[2.] \(\tail(h(0)) = h(\alpha(0)) = h(1)\) and \(\tail(h(1)) = h(\alpha(1)) = h(0)\);
+  \end{itemize}
+  and thus we must have
+  \begin{equation*}
+    h(0) = (x, y, x, y, \ldots) \text{ and } h(1) = (y, x, y, x, \ldots).
+  \end{equation*}
+  So alternating streams are also sort of corecursively specifiable.
+
+  Finally we look at an example of a corecursively specifiable function on streams: the \(\textsf{zip}\) function.
+  Given two streams \(x = (x_0, x_1, \ldots), y = (y_0, y_1, \ldots)\) we define a new stream
+  \begin{equation*}
+    \textsf{zip}(x, y) = (x_0, y_0, x_1, y_1, \ldots).
+  \end{equation*}
+  We give \(\Sigma^\omega \times \Sigma^\omega\) a coalgebra structure \(\alpha = \intoprod{\alpha_\head}{\alpha_\tail}\) by defining
+  \fundef{\alpha_\head}{\Sigma^\omega \times \Sigma^\omega}{\Sigma}{(x, y)}{\head(x)}
+  \fundef{\alpha_\tail}{\Sigma^\omega \times \Sigma^\omega}{\Sigma^\omega \times \Sigma^\omega}{(x, y)}{(y, \tail(x))}
+  and notice that the following squares commute
+  \begin{equation*}
+    \begin{tikzcd}[sep = large]
+      \Sigma^\omega \times \Sigma^\omega \ar[r, "\alpha_\head"] \ar[d, "\textsf{zip}"] & \Sigma \ar[d, "\id"] \\
+      \Sigma^\omega \ar[r, "\head"] & \Sigma
+    \end{tikzcd}\quad
+    \begin{tikzcd}[sep = large]
+      \Sigma^\omega \times \Sigma^\omega \ar[r, "\alpha_\tail"] \ar[d, "\textsf{zip}"] & \Sigma^\omega \times \Sigma^\omega \ar[d, "\textsf{zip}"] \\
+      \Sigma^\omega \ar[r, "\alpha_\tail"] & \Sigma^\omega
+    \end{tikzcd}.
+  \end{equation*}
+  Thus we have that \(\textsf{zip}\) is corecursively specified.
+\end{example}
+
+\begin{theorem}[Primitive Corecursion]
+  \label{th:primitive_corecursion}
+  Assume the category \(\A\) has finitite coproducts and \(F\) is an endofuctor on \(\A\) with a terminal coalgebra.
+  Then for every \(\alpha : X \to F(X + \nu F)\) there is a unique \(h : X \to \nu F\) such that the following square commutes
+  \begin{equation*}
+    \begin{tikzcd}[sep = large]
+      X \ar[r, "\alpha"] \ar[d, "h"] & F(X + \nu F) \ar[d, "F\outofcoprod{h}{\id_{\nu F}}"]\\
+      \nu F \ar[r, "\tau"] & F(\nu F)
+    \end{tikzcd}.
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  Dual to that of Theorem \ref{teo:primitive_recursion}.
+\end{proof}
+
+We are now left with dualizing the Induction Principle (Theorem \ref{th:induction_principle}).
+However, instead of doing it directly, we first introduce the concept of a bisimulation (WHY?).
+
+\begin{definition}
+  \label{def:bisimulation}
+  Let \((A, \alpha)\) and \((B, \beta)\) be two \(F\)-coalgebras for a functor \(F\) over a category \(\A\) with binary products.
+  A \textbf{bisimulation} \marginnote{bisimulation} between them is a relation
+  \begin{equation*}
+    \intoprod{r_A}{r_B} : R \rightarrowtail A \times B
+  \end{equation*}
+  together with a coalgebra structure \(\rho\) on \(R\) that makes \(r_A\) and \(r_B\) into morphisms of coalgebras i.e. the following squares
+  \begin{equation*}
+    \begin{tikzcd}[sep = large]
+      R \ar[r, "\rho"] \ar[d, "r_A"] & FR \ar[d, "Fr_A"] \\
+      A \ar[r, "\alpha"] & FA
+    \end{tikzcd}\quad
+    \begin{tikzcd}[sep = large]
+      R \ar[r, "\rho"] \ar[d, "r_B"] & FR \ar[d, "Fr_B"] \\
+      B \ar[r, "\beta"] & FB
+    \end{tikzcd}
+  \end{equation*}
+  commute.
+  When the two coalgebras are the same, say \((A, \alpha)\), we speak of a bisimulation on \((A, \alpha)\).
+\end{definition}
+
+\begin{remark}
+  In the above definition by saying that \(\intoprod{r_A}{r_B}\) is a relation we simply mean that it is a monomorphism i.e. it represents a subobject of \(A \times B\).
+  Moreover we recall that \(\intoprod{r_A}{r_B}\) is monic if and only if both \(r_A\) and \(r_B\) are.
+\end{remark}
+
+The intuition behind the definition is that two states in two different coalgebras related by a bisimulation have the same behaviour.
+Some examples should clarify the matter.
+
+\begin{example}
+  Consider a pair of systems with termination (see Example ??)
+  \begin{equation*}
+    \alpha: A \to A + 1 \text{ and } \beta: B \to B + 1.
+  \end{equation*}
+  Then a bisimulation between them is a relation \(R \subseteq A \times B\), with coalgebra structure \(\rho\) on \(R\), such that if \(x R y\) then
+  \begin{itemize}
+  \item[1.] \(x\) is terminal if and only if \(y\) is terminal;
+  \item[2.] if \(x, y\) are not terminal and \(x', y'\) are their respective next states then \(x' R y'\).
+  \end{itemize}
+  Indeed by the definition of bisimulation we have that the following squares in \(\Set\) commute.
+  \begin{equation}
+    \label{dia:fooooo}
+    \begin{tikzcd}[sep = large]
+      R \ar[r, "\rho"] \ar[d, "r_A"] & R + 1 \ar[d, "r_A + \id_1"] \\
+      A \ar[r, "\alpha"] & A + 1
+    \end{tikzcd}\quad
+    \begin{tikzcd}[sep = large]
+      R \ar[r, "\rho"] \ar[d, "r_B"] & R + 1 \ar[d, "r_B + \id_1"] \\
+      B \ar[r, "\beta"] & B + 1
+    \end{tikzcd}
+  \end{equation}
+  Recall moreover that \(x R y\) means that \((x, y) \in R\) so:
+  \begin{itemize}
+  \item[a.] since \(r_A\) is a coalgebra morphism we have \((x, y)\) is terminal in \(R\) if and only if \(x\) is terminal in \(A\) and, similarly using \(r_B\), \((x, y)\) is terminal in \(R\) if and only if \(y\) is terminal in \(B\); thus we obtain \(1\) above;
+  \item[b.] if \(x, y\) are not terminal then, since \(r_A, r_B\) are morphisms, we obtain
+    \begin{equation*}
+      (r_A \circ \rho)(x, y) = (\alpha \circ r_A)(x, y) = \alpha(x) = x',
+    \end{equation*}
+    \begin{equation*}
+      (r_B \circ \rho)(x, y) = (\beta \circ r_B)(x, y) = \beta(y) = y'.
+    \end{equation*}
+    Thus \(\rho(x, y) = (x', y')\) and we have 2.
+  \end{itemize}
+
+  On the other hand if 1 and 2 hold we can make \(R\) into a coalgebra \(\rho : R \to R + 1\) such that \(\rho(x, y) = (x', y')\) if \(x\) is not terminal and \(\rho(x, y) = *\) in the right summand if \(x\) is terminal.
+  The projections \(r_A, r_B\) are clearly make the squares \ref{dia:fooooo} commute since they preserve next-states and preserve and reflect terminal ones.
+
+  In virtue of conditions 1 and 2 we obtain immediately that the unique morphisms \(b_A : A \to \mathbb{N}^\top, b_B : B \to \mathbb{N}^\bot\) into the terminal coalgebra are such that, for every bisimulation \(R\), \(x R y\) implies \(b_A(x) = b_B(y)\) which formalizes the idea of bisimulations ``linking'' states with the same behaviour.
 \end{example}
 
 \printbibliography
