@@ -1710,13 +1710,15 @@ Clearly for \(\lambda = \omega\) we obtain Adámek's Theorem.
 We now give an example of a functor that has initial-algebra convergent in more than \(\omega\) steps; showing that Theorem \ref{teo:adamek_transfinite} is more powerful than Adámek's Theorem.
 
 \begin{example}
+  Recall that trees are simple graphs such that every two distinct vertexes are connected by a unique path; we generally mark one vertex as the \textbf{root} of the tree and draw them with the root on top as we have been doing so far.
   Trees with no infinite paths are called \textbf{well-founded}.\marginnote{well-founded tree}
-  When a tree \(t\) is well-founded we define its \textbf{height} by
+  When a tree \(t\) is well-founded we define its \textbf{height}\marginnote{height of a tree} by
   \begin{equation*}
-    h(t) = \sup \{h(t') + 1 : t' \quad \text{maximal proper subtree of \(t\)}\}.
+    h(t) = \sup \{h(t') + 1 : \quad t' \text{ maximal proper subtree of \(t\)}\}.
   \end{equation*}
   Thus finite trees (that are always well-founded) have height equal to the maximum length of a root-to-leaf path.
-  For other trees (such as the ones below) the height is an infinite ordinal.
+  For other trees the height is an infinite ordinal: \(T_1\) below is constructed by linking to the root a copy of every path of finite length; thus the height of \(T_1\) is \(\omega\).
+  On the other hand \(T_2\) has \(T_1\) as the only maximal proper subtree so its height is \(\omega + 1\).
   \setlength{\tabcolsep}{20pt}
   \begin{center}
     \begin{tabular}{ c c }
@@ -1750,7 +1752,7 @@ We now give an example of a functor that has initial-algebra convergent in more 
         \draw (0.75 ,0.75) -- (0.75, -0.75);
         \draw (0.75 ,0.75) -- (1.5, 0) -- (1.5, -1.5);
       \end{tikzpicture} \\
-      \(\omega\) & \(\omega+1\)
+      \(T_1\) & \(T_2\)
     \end{tabular}
   \end{center}
   Consider now the functor \(FX = X^\omega + 1\) on \(\Set\).
