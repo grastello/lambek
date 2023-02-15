@@ -1514,7 +1514,12 @@ We say that \(\A\) has colimits of chains if for all \(j \in \Ord\) every \(j\)-
   Notice that there is a canonical bijection between cocones on \(C\) and cocones on \(C'\).
   Given a cocone \((A, \alpha_i : C_i \to A)_{i \in j}\) on \(C\) throwing away all the indexes not in \(j'\) yields \((A, \alpha_i : C_i \to A)_{i \in j'}\): a cocone on \(C'\).
   Conversely given \((A, \alpha_i : C_i \to A)_{i \in j'}\) we need to define \(\alpha_i : C_i \to A\) for all \(i \in j \setminus j'\); but there's only one way to do so.
-  Indeed by cofinality let \(i' \in j'\) be such that \(i \leq i'\); then by the cocone condition we must set \(\alpha_i = \alpha_{i'} \circ c_{i,i'}\) so \((A, \alpha_{i}:C_i \to A)_{i \in j'}\) can be extended to the whole chain in only one way.
+  Indeed by cofinality let \(i' \in j'\) be such that \(i \leq i'\); then by the cocone condition we must set \(\alpha_i = \alpha_{i'} \circ c_{i,i'}\).
+  This is independent of the choice of \(i'\) since if \(i \leq i' < i''\) with \(i', i'' \in j'\) then we have
+  \begin{equation*}
+    \alpha_i = \alpha_{i'} \circ c_{i, i'} = \alpha_{i''} \circ c_{i', i''} \circ c_{i, i'} = \alpha_{i''} \circ c_{i, i''}.
+  \end{equation*}
+  Thus \((A, \alpha_{i}:C_i \to A)_{i \in j'}\) can be extended to the whole chain in only one way.
 
   Let \((L, \sigma_i : C_i \to L)_{i \in j}\) be the colimit of \(C\); then \((L, \sigma_i : C_i \to L)_{i \in j'}\) is the colimit of \(C'\).
   Indeed let \((A, \alpha_i : C_i \to A)_{i \in j'}\) be a cocone on \(C'\) that we extend to a cocone on \(C\) as explained above.
