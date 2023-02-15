@@ -1543,7 +1543,7 @@ This will allow us to ``skip'' limit ordinals because given \(j\) limit the subs
 
 \section{Transfinite iteration}
 
-The main result of this section is again a generalization to the categorical setting of an order-theoretic result; this time from Zermeleo.
+The main result of this section is again a generalization to the categorical setting of an order-theoretic result; this time from Zermelo.
 Let \(P\) be a chain-complete poset and \(f : P \to P\) an order-preserving map.
 We can define an \(\Ord\)-indexed sequence by transfinite recursion as follows
 \begin{align*}
@@ -1553,8 +1553,8 @@ We can define an \(\Ord\)-indexed sequence by transfinite recursion as follows
 \end{align*}
 This sequence is clearly a chain.
 
-\begin{theorem}[Zermeleo]
-  \label{teo:zermeleo}
+\begin{theorem}[Zermelo]
+  \label{teo:Zermelo}
   Let \(P\) be a chain-complete poset.
   Then every order-preserving \(f : P \to P\) has a lest fixed point \(\mu f\) and \(\mu f = f^j(\bot)\) for some \(j \in \Ord\).
 \end{theorem}
@@ -2008,7 +2008,7 @@ We now work our way towards a sufficient condition for the convergence of the in
   \end{equation*}
   with \(Fu, Fw\) mono because \(F\) preserves \(\mathcal{M}\) and \(Fu = Fv \circ Fw\); so \(f(B) \leq f(C)\) in \(\Sub_\mathcal{M}(A, \leq)\).
 
-  Now by assumption \(\Sub_{\mathcal{M}}(A, \leq)\) is chain-complete and we can apply Zermeleo's Fixed Point Theorem \ref{teo:zermeleo} to obtain that \(f\) has a fixed point \(\mu f = f^i(\bot)\) for some ordinal \(i\).
+  Now by assumption \(\Sub_{\mathcal{M}}(A, \leq)\) is chain-complete and we can apply Zermelo's Fixed Point Theorem \ref{teo:Zermelo} to obtain that \(f\) has a fixed point \(\mu f = f^i(\bot)\) for some ordinal \(i\).
   Moreover the canonical cocone \((\alpha_j : W_j \to A)_{j\in\Ord}\) induced as in \ref{rem:induce-transfinite-cocone} by the algebra \(\alpha : FA \rightarrowtail A\) is such that \(\alpha_j = f^j(\bot)\) for all \(j \in \Ord\); this is clear for the successor step, while the limit step follows from the fact that joins of chains in \(\Sub_\mathcal{M}(A, \leq)\) are colimits of the corresponding chains of subobjects because \(A\) has smooth \(\mathcal{M}\)-subobjects.
   Then from \(f(f^i(\bot)) = f^i(\bot)\), the definition of fixed point, we obtain that \(\alpha_i\) and \(\alpha_{i+1}\) represent the same subobject of \(A\).
   Finally we know that \(\alpha_i = \alpha_{i+1} \circ w_{i, i+1}\) and that, since \(\alpha_i\) and \(\alpha_{i+1}\) represent the same subobject, there is an arrow \(v : W_{i+1} \to W_i\) such that \(\alpha_{i+1} = \alpha_i \circ v\) (witnessing \(\alpha_{i+1} \leq \alpha_i\)).
