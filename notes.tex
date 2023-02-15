@@ -1479,7 +1479,7 @@ The theorem was first proven by Adámek and Koubek in \cite{Adamek-Koubek-1979} 
   \end{equation*}
   where \(B^{(-)}: \Set^\op \to \A\) is the functor that takes a set \(M\) to the object
   \begin{equation*}
-    \underbrace{B \times \ldots \times B}_{|M| \text{ times}}.
+    B^M = \underbrace{B \times \ldots \times B}_{|M| \text{ times}}.
   \end{equation*}
   We will write \(FD = B^{S(D)}\) for \(S(D) = 2^{\A(A, D)}\).
   Note that \(F\) has no fixed point.
@@ -1489,8 +1489,8 @@ The theorem was first proven by Adámek and Koubek in \cite{Adamek-Koubek-1979} 
              & \cong \A(A, B^{S(D)}) &&\\
              & \cong \A(A, B)^{S(D)} && \text{hom-functor preserves limits}
   \end{align*}
-  but the cardinality of the right hand-side is at least \(2^{S(D)} = 2^{2^{\A(A, D)}}\) that it impossible by Cantor's Theorem.
-  Hence, by Lambeck's Lemma (see Lemma \ref{lemma:lambeck}), \(\A\) is not algebraically complete; contradiction.
+  but the cardinality of the latter is at least \(2^{|S(D)|} = 2^{2^{|\A(A, D)|}}\) that is impossible by Cantor's Theorem.
+  Now Lambeck's Lemma (see Lemma \ref{lemma:lambeck}) gives that \(F\) has no initial algebra thus \(\A\) is not algebraically complete; contradiction.
 \end{proof}
 
 \chapter{Initial algebras from transfinite iteration}
