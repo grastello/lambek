@@ -1,3 +1,5 @@
+%% TODO: coalgebra examples on CPO
+
 \documentclass[letterpaper, 11pt, oneside]{memoir}
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
@@ -687,6 +689,7 @@ Finally we describe initial algebras for polynomial functors in two equivalent w
 \end{definition}
 
 \begin{remark}
+  \label{rem:treetupling}
   Every \(n\)-ary symbol of \(\Sigma\) defines an \(n\)-ary operation on \(\Sigma\)-trees which takes \(n\) trees to the tree obtained by connecting each root to a new node labelled by \(\sigma\), which becomes the root of a new tree.
   We call this operation \textbf{tree-tupling} (below an example of tree-tupling induced by a 3-ary symbol \(\sigma\)).\marginnote{tree-tupling}
   Note that the order of the trees matters.
@@ -866,6 +869,7 @@ The generalization of order theoretic results such as Lemma \ref{lemma:order_the
 Indeed we can see orders as categories in the usual way, order-preserving functions as functors and pre-fixed points as algebras for these functors.
 
 \section{Recursion and Induction}
+\label{sec:recursion_and_induction}
 
 Recursion is a way of defining a function \(f\) on the natural numbers by specifying a value for \(f(0)\) and a way of deriving the value of \(f(n + 1)\) from the value of \(f(n)\).
 Recursion, however, can also be used to define functions on (among other things) trees; in this case it is usually called \emph{structural} induction (we have an example of this in Remark \ref{rem:ev_function}).
@@ -1577,7 +1581,7 @@ First notice that we can leave out the initial object \(0\) and all the limit or
 \end{equation*}
 by Lemma \ref{lemma:final_functors}.
 Now \((Fw_{i,j} : FW_i = W_{i+1} \to FW_{j} = W_{j+1})_{i < j}\) is a cocone on this reduced diagram.
-Thus we obtain a unique factorization arrow \(W_j \to W_{j+1}\) that we declare to be our \(w_{j, j+1}\) so the definition of our transfinite chain can continue.
+Thus we obtain a unique factorization arrow \(W_j \to W_{j+1}\) that we clare to be our \(w_{j, j+1}\) so the definition of our transfinite chain can continue.
 Notice also that, being the factorization arrow, \(w_{j, j_+1}\) is such that
 \begin{equation}
   \label{eq:omega-to-omega-plus-one}
@@ -2072,10 +2076,11 @@ Finally we can put all the work we have done so far into a single theorem, the I
 
 \section{\(F\)-coalgebras}
 
-BLABLABLA we dualize
+Though this section let \(\A\) be an arbitrary base category and \(F : A → A\) an endofunctor.
+We shall study \(F\)-coalgebras, the dual concept to \(F\)-algebras.
 
 \begin{definition}
-  A \textbf{coalgebra} for \(F\) (or a \(F\)-\textbf{-coalgebra})\marginnote{\(F\)-coalgebra} is a pair \((A, \alpha)\) where \(A\) is an object of \(\A\) and \(\alpha\) is an arrow of type \(A \to FA\).
+  A \textbf{coalgebra} for \(F\) (or a \(F\)\textbf{-coalgebra})\marginnote{\(F\)-coalgebra} is a pair \((A, \alpha)\) where \(A\) is an object of \(\A\) and \(\alpha\) is an arrow of type \(A \to FA\).
 \end{definition}
 
 The notion of morphism between coalgebras is as expected.
@@ -2092,12 +2097,12 @@ The notion of morphism between coalgebras is as expected.
   commutes.
 \end{definition}
 
-As with algebras, coalgebras on \(F\) also form a category that we indicate with \(\Coalg F\).
+As with algebras, coalgebras on \(F\) also form a category that we indicate with \(\Coalg F\)\marginnote{\(\Coalg F\)}.
 
 \begin{example}
   \label{ex:systems-with-termination}
   On \(\Set\) coalgebras for \(FX = X + 1\) are called \textbf{systems with termination}\marginnote{systems with termination}.
-  Given a coalgebra \(\alpha: A \to A + 1\) we think of \(A\) as a set of \textbf{states} and of \(\alpha\) as the \textbf{dynamics} of the system.
+  Given a coalgebra \(\alpha: A \to A + 1\) we think of \(A\) as a set of \textbf{states} and of \(\alpha\) as the \textbf{dynamic} of the system.
   Indeed to give an arrow \(\alpha:A \to A+1\) is, for every \(a \in A\), to deem it a \textbf{terminal state} if \(\alpha(a)\) is in the right summand or to specify a \textbf{next state} \(\alpha(a)\) in the left summand.
   We can represent such systems with directed graphs as follows, with terminal states represented by \(\bullet^T\).
   \begin{center}
@@ -2106,7 +2111,7 @@ As with algebras, coalgebras on \(F\) also form a category that we indicate with
       \bullet \ar[u, bend right=20] & \bullet \ar[u] & \bullet^T \\
     \end{tikzcd}
   \end{center}
-  If \((A, \alpha), (B, \beta)\) are two systems with termination a morphism between them is, according to Definition \ref{def:coalgebra-morphism} a function \(f\) such that
+  If \((A, \alpha), (B, \beta)\) are two systems with termination a morphism between them is, according to Definition \ref{def:coalgebra-morphism}, a function \(f\) such that
   \begin{center}
     \begin{tikzcd}[sep=large]
       A \ar[r, "\alpha"] \ar[d, "f"] & A + 1 \ar[d, "f + \id_1"] \\
@@ -2121,15 +2126,15 @@ As with algebras, coalgebras on \(F\) also form a category that we indicate with
 \end{example}
 
 \begin{example}
-  Coalgebras on \(FX = X \times X + 1\) on \(\Set\) we obtain a system in which a given state \(x\) either is terminal or has two possible next states \((x_0, x_1)\).
+  As coalgebras for \(FX = X \times X + 1\) on \(\Set\) we obtain a system in which a given state \(x\) either is terminal or has two possible next states \((x_0, x_1)\).
   We can think of such systems as having next states based on a binary input.
 
-  Similarly if we fix a set \(\Sigma\) of possible inputs and consider the functor \(FX = \Sigma \times X + 1\) we obtain, as coalgebras, systems with termination with the next state based on inputs from \(\Sigma\).
+  Similarly if we fix a set \(\Sigma\) of possible inputs and consider the functor \(FX = X^\Sigma + 1\) we obtain systems with termination with the next state based on inputs in \(\Sigma\).
 \end{example}
 
 \begin{example}
   \label{ex:deterministic-automata}
-  Let \(\Sigma\) be a set on inputs.
+  Let \(\Sigma\) be a set of inputs.
   A \textbf{deterministic automata}\marginnote{deterministic automata} is composed of a set \(S\) of states, a transition function \(\delta_s : S \to S\) for every \(s \in \Sigma\) and a set \(A \subset S\) of accepting states.
   In order to obtain deterministic automata as coalgebras for a functor we curry the \(\delta_s\)'s into a single function \(\delta:S \to S^\Sigma\) and consider the characteristic function \(\chi : S \to \{0, 1\}\) of \(A\).
   So deterministic automata are coalgebras for the functor
@@ -2154,6 +2159,7 @@ As with algebras, coalgebras on \(F\) also form a category that we indicate with
 
 
 \begin{example}
+  \label{ex:Moore}
   Given a set \(\Sigma\) of inputs and a set \(\Gamma\) of outputs a coalgebra for the functor \(FX = \Gamma \times X^\Sigma\) over \(\Set\) is called a \textbf{Moore automata} \marginnote{Moore automata}.
   Every state \(x\) of such a coalgebra is labeled by an element \(\gamma \in \Gamma\), we say that \(x\) emits output \(\gamma\), and has next states based on inputs in \(\Sigma\) like in a deterministic automata.
 \end{example}
@@ -2175,11 +2181,13 @@ As with algebras, coalgebras on \(F\) also form a category that we indicate with
   Similarly Moore automata can be recovered as coalgebras for appropriate polynomial functors.
 \end{example}
 
-\begin{example}
-  Examples on \(\CPO\).
-\end{example}
+%  \begin{example}
+%  Examples on \(\CPO\).
+%  \end{example}
 
 \section{Terminal Coalgebras}
+
+We have seen that the initial \(F\)-algebra is quite interesting and we will see now that its dual, the terminal \(F\)-coalgebra, is interesting as well.
 
 \begin{definition}
   A \textbf{terminal coalgebra}\marginnote{terminal coalgebra} for an endofuctor \(F\) is a terminal object in \(\Coalg F\).
@@ -2194,7 +2202,7 @@ As with algebras, coalgebras on \(F\) also form a category that we indicate with
       0 & 1 \ar[l] & 2 \ar[l] & \ldots \ar[l] & \infty \ar[loop right]
     \end{tikzcd}
   \end{center}
-  with \(0\) terminal state.
+  and \(0\) as terminal state.
   Given any other system with termination (\(F\)-coalgebra) \(A\) we have \(b_A : A \to \mathbb{N}^\bot\) defined as follows.
   For every \(x \in A\) we set
   \begin{itemize}
@@ -2214,20 +2222,23 @@ As with algebras, coalgebras on \(F\) also form a category that we indicate with
   \begin{equation*}
     (x_n)_{n < \omega} = (x_0 = \alpha_0(x), x_1 = (\alpha_0 \circ \alpha_1)(x), x_2 = (\alpha_0 \circ \alpha_1 \circ \alpha_1)(x), \ldots)
   \end{equation*}
-  of outputs; this is an element of \(\Sigma^\omega\), the set of infinite sequences (also called \textbf{streams}\marginnote{streams}) over \(\Sigma\).
+  of outputs; this is an element of \(\Sigma^\omega\), the set of infinite sequences (also called \textbf{streams}\marginnote{\(\Sigma\)-streams}) over \(\Sigma\).
   We can make \(\Sigma^\omega\) into an \(F\)-coalgebra with
   \begin{equation*}
     \tau = \intoprod{\head}{\tail} : \Sigma^\omega \to \Sigma \times \Sigma^\omega
   \end{equation*}
   where \(\head(x_n)_{n < \omega} = x_0\) and \(\tail(x_n)_{n < \omega} = (x_n)_{0 < n < \omega}\).
   Thus the function \(b_A\) that sends \(x \in A\) to \((x_n)_{n < \omega} \in \Sigma^\omega\) makes
-  \begin{center}
+  \begin{equation}
+    \label{dia:gram}
     \begin{tikzcd}[sep=large]
       A \ar[r, "\intoprod{\alpha_0}{\alpha_1}"] \ar[d, "b_A"] & \Sigma \times A  \ar[d, "\id_\Sigma \times b_A"] \\
       \Sigma^\omega \ar[r, "\intoprod{\head}{\tail}"] & \Sigma \times \Sigma^\omega
     \end{tikzcd}
-  \end{center}
-  commute so it is a coalgebra morphism. WRITE SOMETHING FOR UNIQUENESS
+  \end{equation}
+  commute so it is a coalgebra morphism.
+  This \(b_A\) is unique since, if a second morphism \(g\) that makes (\ref{dia:gram}) commute exists, one can prove that \(b_A(x)\) and \(g(x)\) are equal by induction over the indexes of the streams.
+  Thus \((\Sigma^\omega, \intoprod{\head}{\tail})\) is the terminal coalgebra.
 \end{example}
 
 \begin{example}
@@ -2235,17 +2246,15 @@ As with algebras, coalgebras on \(F\) also form a category that we indicate with
   Coalgebras for \(F\) can be thinked of as systems with termination where non-terminal states emit an output in \(\Sigma\).
 
   Tracing a state gives either a finite word over \(\Sigma\), if we enetually hit a terminal state, or a stream over \(\Sigma\) if we hit none.
-  Let \(\Sigma^\infty = \Sigma^* \times \Sigma^{<\omega}\) where \(\Sigma^*\) is the set of finite words over \(\Sigma\).
-  Again \(\intoprod{\head}{\tail} : \Sigma^\infty \to \Sigma \times \Sigma^\infty + 1\) as in Example \ref{ex:transition_systems_with_outputs} with the added caveat of sending the empty word to \(*\) in the right summand is the terminal coalgebra.
-
-  [FIX THE ARROW CALLING IT \(\tau\) and doing some magic]
+  Let \(\Sigma^\infty = \Sigma^* + \Sigma^{<\omega}\) where \(\Sigma^*\) is the set of finite words over \(\Sigma\).
+  Again \(\tau = \intoprod{\head}{\tail} : \Sigma^\infty \to \Sigma \times \Sigma^\infty + 1\) as in Example \ref{ex:transition_systems_with_outputs}, with the added caveat of sending the empty word to \(*\) in the right summand, is the terminal coalgebra.
 \end{example}
 
 \begin{example}
   As in Example \ref{ex:deterministic-automata} consider a set of inputs \(\Sigma\) and the functor \(FX = \{0, 1\} \times X^\Sigma\) over \(\Set\) which realizes deterministic automata as coalgebras.
   Consider \(\mathcal{P}(\Sigma^*)\) the set of formal languages over \(\Sigma\).
   We say \(L\in \mathcal{P}(\Sigma^*)\) is an accepting language if it contains the empty word \(\varepsilon\).
-  Given a language \(L \in \mathcal{P}(\Sigma^*)\) and an input \(s \in \Sigma\) we define its next state as its Brozozowski derivative
+  Given a language \(L \in \mathcal{P}(\Sigma^*)\) and an input \(s \in \Sigma\) we define its next state as its Brzozowski derivative
   \begin{equation*}
     s^{-1}L = \{w \in \Sigma^* : sw \in L\};
   \end{equation*}
@@ -2277,7 +2286,7 @@ As with algebras, coalgebras on \(F\) also form a category that we indicate with
 \end{example}
 
 \begin{example}
-  Recall from Example \ref{} that Moore automata are coalgebras for \(FX = \Gamma \times X^\Sigma\) over \(\Set\).
+  Recall from Example \ref{ex:Moore} that Moore automata are coalgebras for \(FX = \Gamma \times X^\Sigma\) over \(\Set\).
   Consider the set \(\Gamma^{\Sigma^*}\) of functions from \(\Sigma^*\) to \(\Gamma\) with the following coalgebra structure: \(f\in \Gamma^{\Sigma^*}\) emits output \(f(\varepsilon)\) and, for input \(s \in \Sigma\), has next state \(g \in \Gamma^{\Sigma^*}\) such that \(g(w) = f(sw)\).
   The reader can check for himself that this coalgebra is terminal or derive it from the following proposition.
 \end{example}
@@ -2301,7 +2310,7 @@ As with algebras, coalgebras on \(F\) also form a category that we indicate with
     \end{tikzpicture}
   \end{equation*}
   to the element \((\sigma, (t_0, \ldots, t_{n-1}))\) of \(H_\Sigma(T_\Sigma)\).
-  Notice that this is the inverse of tree-tupling so let is be denoted by \(\tau^{-1}\).
+  Notice that this is the inverse of tree-tupling (see Remark \ref{rem:treetupling}) so let is be denoted by \(\tau^{-1}\).
   The terminal coalgebra of \(H_\Sigma\) is \((T_\Sigma, \tau^{-1})\).
 \end{proposition}
 
@@ -2331,7 +2340,7 @@ As with algebras, coalgebras on \(F\) also form a category that we indicate with
       T_\Sigma \ar[r, "\tau^{-1}"] & H_\Sigma T_\Sigma
     \end{tikzcd}
   \end{equation*}
-  commutes i.e. \(h\) is a coalgebra morphism.
+  commutes i.e. a coalgebra morphism.
   Now let \(g:A \to T_\Sigma\) be another morphism and \(x \in A\) such that \(\alpha(x) = (\sigma, y_0, \ldots, y_{n-1})\) as above.
   Then \(g(x)\) is a tree
   \begin{equation*}
@@ -2358,30 +2367,52 @@ As with algebras, coalgebras on \(F\) also form a category that we indicate with
   We can iterate this process to obtain that \(g(x) = t_x\), thus \(g\) must be \(h\), and \((T_\Sigma, \tau^{-1})\) is the terminal coalgebra.
 \end{proof}
 
-EXAMPLES OVER CPO?
-
-The necessary condition of Lambeck's Lemma \ref{lemma:lambeck} dualizes and we can use it to find examples of functors that do not have a terminal coalgebra.
+The necessary condition of Lambeck's Lemma \ref{lemma:lambeck} dualizes as well.
 
 \begin{lemma}[Lambeck's Lemma]
+  \label{lemma:colambeck}
   A terminal coalgebra for \(F\), if it exists, is always a fixed point.
 \end{lemma}
+
+\begin{proof}
+  Dual to that of Lemma \ref{lemma:lambeck}.
+\end{proof}
 
 \begin{remark}
   The power-set functor \(\mathcal{P}\) has no terminal coalgebra because it has no fixed point.
   Similarly the functor \(FX = \{0, 1\} \times (\mathbb{P}X)^\Sigma\), which gives non-deterministic automata as coalgebras (see Example \ref{ex:NDA}), does not have a terminal coalgebra.
 \end{remark}
 
+Lambeck's Lemma for coalgebras can be interpreted as a generalization of an order-theoretic lemma just as its version for algebras.
+
+\begin{definition}
+  Let \((P, \sqsubseteq)\) be a poset and \(f: P \to P\) a monotone function.
+  An element \(x \in P\) is a \textbf{post-fixed point} if \(x \sqsubseteq f(x)\).
+\end{definition}
+
+\begin{lemma}
+  Given a poset \((P, \sqsubseteq)\) and a monotone function \(f: P \to P\) let \(A = \{x \in P : x \sqsubseteq f(x)\}\) be the set of post-fixed points of \(f\).
+  If \(\overline{a}\) is the join of \(A\) then \(\overline{a}\) is the biggest fixed-point of \(f\).
+\end{lemma}
+
+\begin{proof}
+  A classical proof can be obtained by dualizing the one of Lemma \ref{lemma:order_theory}.
+  Otherwise it follows from Lambeck's Lemma \ref{lemma:colambeck} once one notices that post-fixed points for \(f\) are just \(f\)-coalgebras.
+\end{proof}
+
+The Knaster-Tarski Theorem \ref{teo:knaster_tarski} obviously follows from this version of the lemma as well since the hypothesis guarantee the existence of the join of \(A\).
+
 \begin{remark}
   By Theorem \ref{teo:set_lambeck_converse} and Lambeck's Lemma we have that, for functors over \(\Set\), the existence of a terminal coalgebra implies the existence of an initial algebra.
-  The converse is false since, as it was found in \cite[Example 3.14]{Adamek-2016} by Adámek, Koubek and Palm, there are two set functors that coincide on all objects (but not all morphisms) such that one has a terminal coalgebra and the other one does not (WE MAY BE ABLE TO SEE THIS EXAMPLE LATER ON ONCE WE HAVE THE TERMINAL COALGEBRA COCHAIN).
-  Thus the existence of a terminal coalgebra, even for set functors, is a more complicated question than the existence of an initial algebra.
+  The converse is false since, as it was found in \cite[Example 3.14]{Adamek-2016} by Adámek, Koubek and Palm, there are two set functors that coincide on all objects (but not all morphisms) such that one has a terminal coalgebra and the other one does not (we shall see this in Section [TO DO]).
+  Thus the existence of a terminal coalgebra, even for set functors, is a more complicated matter than the existence of an initial algebra.
 \end{remark}
-
-FIXARE LA COSA DEGLI ACCENTI
 
 \section{Corecursion and Bisimulation}
 
-Initial words on corecursion.
+We strive now to dualize what we have seen about recursion and induction in Section \ref{sec:recursion_and_induction}.
+Recursion is dualized straightforwardly but we don't do the same for induction.
+Instead of coinduction we will discuss bisimulation, a concept that has many applications, for instance, in computer science and modal logic.
 
 \begin{definition}
   Let \(F\) be an endofuctor over some category \(\A\) with a terminal coalgebra \(\nu F\).
@@ -2411,7 +2442,7 @@ Initial words on corecursion.
 
 \begin{example}
   Consider the functor \(FX = \Sigma \times X\) over \(\Set\) with \(\Sigma\) a fixed set of outputs.
-  We know from Example \ref{ex:transition_systems_with_outputs} that the terminal coalgebra for \(F\) is \(\Omega^\infty\), the set of \(\Sigma\)-streams, with structure given by \(\tau = \intoprod{\head}{\tail}\).
+  We know from Example \ref{ex:transition_systems_with_outputs} that the terminal coalgebra for \(F\) is \(\Sigma^\infty\), the set of \(\Sigma\)-streams, with structure given by \(\tau = \intoprod{\head}{\tail}\).
 
   A single stream can be identified with the function \(f : 1 \to \Sigma^\infty\) that picks it so we say that a stream is corecursively specified if its \(f : 1 \to \Sigma^\infty\) is corecursively specified.
   Coalgebra structures on \(1\) are functions \(\alpha: 1 \to \Sigma \times 1\) so the only corecursively specifiable streams are the constant ones.
@@ -2426,7 +2457,7 @@ Initial words on corecursion.
   \end{equation*}
   Since \(\Sigma^\omega\) is the terminal coalgebra there is a unique \(h : 2 \to \Sigma^\omega\) such that
   \begin{equation*}
-    \intoprod{\head}{\tail} \circ h = \alpha \circ (\id \times h)
+    \intoprod{\head}{\tail} \circ h = (\id \times h) \circ \alpha
   \end{equation*}
   from which we obtain the following relations
   \begin{itemize}
@@ -2437,7 +2468,7 @@ Initial words on corecursion.
   \begin{equation*}
     h(0) = (x, y, x, y, \ldots) \text{ and } h(1) = (y, x, y, x, \ldots).
   \end{equation*}
-  So alternating streams are also sort of corecursively specifiable.
+  So alternating streams can also be corecursively constructed.
 
   Finally we look at an example of a corecursively specifiable function on streams: the \(\textsf{zip}\) function.
   Given two streams \(x = (x_0, x_1, \ldots), y = (y_0, y_1, \ldots)\) we define a new stream
@@ -2477,9 +2508,6 @@ Initial words on corecursion.
   Dual to that of Theorem \ref{teo:primitive_recursion}.
 \end{proof}
 
-We are now left with dualizing the Induction Principle (Theorem \ref{th:induction_principle}).
-However, instead of doing it directly, we first introduce the concept of a bisimulation (WHY?).
-
 \begin{definition}
   \label{def:bisimulation}
   Let \((A, \alpha)\) and \((B, \beta)\) be two \(F\)-coalgebras for a functor \(F\) over a category \(\A\) with binary products.
@@ -2504,14 +2532,13 @@ However, instead of doing it directly, we first introduce the concept of a bisim
 
 \begin{remark}
   In the above definition by saying that \(\intoprod{r_A}{r_B}\) is a relation we simply mean that it is a monomorphism i.e. it represents a subobject of \(A \times B\).
-  Moreover we recall that \(\intoprod{r_A}{r_B}\) is monic if and only if both \(r_A\) and \(r_B\) are.
+%   Moreover we recall that \(\intoprod{r_A}{r_B}\) is monic if and only if both \(r_A\) and \(r_B\) are.
 \end{remark}
 
 The intuition behind the definition is that two states in two different coalgebras related by a bisimulation have the same behaviour.
-Some examples should clarify the matter.
-
+An example should clarify the matter.
 \begin{example}
-  Consider a pair of systems with termination (see Example ??)
+  Consider a pair of systems with termination (see Example \ref{ex:systems-with-termination})
   \begin{equation*}
     \alpha: A \to A + 1 \text{ and } \beta: B \to B + 1.
   \end{equation*}
@@ -2550,6 +2577,31 @@ Some examples should clarify the matter.
 
   In virtue of conditions 1 and 2 we obtain immediately that the unique morphisms \(b_A : A \to \mathbb{N}^\top, b_B : B \to \mathbb{N}^\bot\) into the terminal coalgebra are such that, for every bisimulation \(R\), \(x R y\) implies \(b_A(x) = b_B(y)\) which formalizes the idea of bisimulations ``linking'' states with the same behaviour.
 \end{example}
+
+\begin{definition}
+  The \textbf{diagonal subobject} \marginnote{diagonal subobject} \(\Delta_A\) of \(A \times A\) is the one represented by \(\intoprod{\id_A}{\id_A}: A \rightarrowtail A \times A\).
+\end{definition}
+
+\begin{remark}
+  The diagonal subobject \(\Delta_A\) is always a bisimulation on any coalgebra \((A, \alpha)\).
+  A bisibulation not contained in \(\Delta_A\) is a \textbf{proper bisimulation}\marginnote{proper bisimulation}.
+  Moreover notice that a relation \(\intoprod{r_1}{r_2}: R \rightarrowtail A \times A\) is proper if \(r_1 = r_2\).
+\end{remark}
+
+Finally we can state and prove the coinduction principle.
+
+\begin{theorem}[Coinduction Principle]
+  Let \(F\) be an endofunctor with a terminal coalgebra \(\nu F\).
+  There are no proper bisimulations on \(\nu F\).
+\end{theorem}
+
+\begin{proof}
+  Let \(r = \intoprod{r_1}{r_2}: R \rightarrowtail \nu F \times \nu F\) be a bisimulation i.e. \(R\) has a coalgebra structure such that \(r_1\) and \(r_2\) are coalgebra morphisms.
+  By terminality of \(\nu F\) we must have \(r_1 = r_2\) and thus the bisimulation is proper.
+\end{proof}
+
+The coinduction principle ties into our interpretation of bisimulations linking states that have the same behaviour by saying that no two states in the terminal coalgebra have the same behaviour.
+Terminal coalgebras we can thus think of as containing all possible behaviours and nothing more.
 
 \printbibliography
 \end{document}
