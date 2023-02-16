@@ -1857,7 +1857,7 @@ However, in the case of \(\Set\), we have the following result that, together wi
   Our \(\alpha : FA \rightarrowtail A\) is an \(F\)-algebra so it induces a canonical cocone \((\alpha_i:W_i \to A)_{i \in \Ord}\) over the initial-algebra chain \((W_i)_{i \in \Ord}\) as of Remark \ref{rem:induce-transfinite-cocone}; we will prove that \(\alpha_\omega\) is injective.
   
   Since \(F\emptyset \neq \emptyset\) then, upon the action of the functor, we obtain a function \(F\emptyset \to FA\) with non-empty domain from the unique \(\emptyset \to A\) so \(FA \neq \emptyset\) and, as we have \(\alpha\), by the same argument we get that \(A \neq \emptyset\).
-  Now we have that  \(\alpha\) splits i.e. there exists \(\alpha': A \to FA\) such that \(\alpha' \circ \alpha = \id_{FA}\) and, since \(F\emptyset \neq \emptyset\), let \(u_0\) be any function of type \(A \to F\emptyset\).
+  Now \(\alpha\) is injective so it splits i.e. there exists \(\alpha': A \to FA\) such that \(\alpha' \circ \alpha = \id_{FA}\) and, since \(F\emptyset \neq \emptyset\), let \(u_0\) be any function of type \(A \to F\emptyset\).
   Then we define
   \begin{equation*}
     u_{n+1} = Fu_n \circ \alpha' \quad \text{for \(0 < n < \omega\)}
@@ -1889,19 +1889,13 @@ However, in the case of \(\Set\), we have the following result that, together wi
   and this completes the proof that \(\alpha_\omega\) is injective.
   Now we can prove that the initial-algebra chain converges.
 
-  Since \(\alpha_\omega\) is injective and has non-empty domain there is a function  \(\beta : A \to W_\omega\) such that \(\alpha_\omega \circ \beta = \id_A\).
-  Because of this \(F\alpha_\omega\) is also injective (functors preserve identities and composition) and so must be \(\alpha_{\omega + 1} = \alpha \circ F\alpha_\omega\).
+  Since \(\alpha_\omega\) is injective and has non-empty domain there is a function  \(\beta : A \to W_\omega\) such that \(\beta \circ \alpha_\omega  = \id_A\).
+  Because of this \(F\alpha_\omega\) is also injective (functors preserve identities and composition)\footnote{\color{teal} Qui usiamo che da \( F\beta \circ F\alpha_\omega = \id_{FA}\) segue che \(F\alpha_\omega\) deve essere iniettiva perché \(\id_{FA}\) lo è. Va detto esplicitamente o basta quanto c'è tra parentesi (con l'uguaglianza prima corretta).} and so must be \(\alpha_{\omega + 1} = \alpha \circ F\alpha_\omega\).
   If we define \(v = \beta \circ \alpha_{\omega + 1}\) we obtain
   \begin{equation*}
     \alpha_\omega \circ v = \alpha_\omega \circ \beta \circ \alpha_{\omega + 1} = \alpha_{\omega + 1}
   \end{equation*}
-  \begin{equation*}
-    \begin{tikzcd}[sep=huge]
-      & A \ar[dl, bend left=10, "\beta"] &\\
-      W_\omega \ar[rr, shift left=1, "w_{\omega, \omega + 1}"] \ar[ur, bend left=10, tail, "\alpha_\omega"] & & W_{\omega + 1} \ar[lu, bend right=10, tail, "\alpha_{\omega + 1}"'] \ar[ll, shift left=1, "v"]
-    \end{tikzcd}.
-  \end{equation*}
-  Finally we can carry out the following calculations using the relation above, the fact that \((\alpha_i)_{i \in \Ord}\) is a cocone over the initial-algebra chain and injectivity of \(\alpha_\omega, \alpha_{\omega + 1}\)\footnote{to be more precise we use that \(\alpha_\omega, \alpha_{\omega +1}\) are mono, but in \(\Set\) all injective functions are mono.}.
+  from which
   \begin{equation*}
      \alpha_\omega \circ v \circ w_{\omega, \omega + 1} = \alpha_{\omega + 1} \circ w_{\omega, \omega + 1} = \alpha_\omega \implies v \circ w_{\omega, \omega + 1} = \id_{W_\omega};
   \end{equation*}
