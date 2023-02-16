@@ -41,6 +41,7 @@
 \definecolor{blue}{rgb}{0.3,0.77,1}
 \definecolor{myred}{rgb}{0.6,0,0}
 \usepackage[a4paper,colorlinks,citecolor=blue,linkcolor=orange,urlcolor=orange,pdfpagemode=None]{hyperref}
+\renewcommand{\UrlFont}{\ttfamily\scriptsize}
 
 % Color boxes (for notes).
 \usepackage{tcolorbox}
@@ -551,6 +552,7 @@ We call such functions \textbf{strict continous functions}.
 We will now look at some non-trivial examples of initial algebras.
 
 \begin{example}
+  \label{ex:N}
   Consider the functor \(FX = X + 1\) on \(\Set\).
   The initial algebra for \(F\) is \((\mathbb{N}, \iota)\) where \(\iota = [\iota_1, \iota_0]\) with \(\iota_0 = 0\) and \(\iota_1\) the successor function on the naturals.
   Indeed let \((B, \beta)\) be another algebra with \(\beta = [\beta_1, \beta_0]\) and consider the function \(f \colon \mathbb{N} \to B\) defined as
@@ -1915,7 +1917,7 @@ Notice that \(\alpha, \alpha_\omega\) and \(\alpha_{\omega + 1}\) being injectiv
   Thus we can consider the collection of equivalence classes of subobjects of \(A\) that is partially ordered by \(\leq\).
   If \(\A\) is such that every object \(A \in \A\) has only a set of subobjects then \(\A\) is called \textbf{well-powered} \marginnote{well-powered category}.
 \end{definition}
-We can restrict ourselves to a class \(\mathcal{M}\) of monomorphism and speak of \(\mathcal{M}\)-subobjects i.e. subobjects represented by mono in \(\mathcal{M}\).
+We can restrict ourselves to a class \(\mathcal{M}\) of monomorphisms and speak of \(\mathcal{M}\)-subobjects i.e. subobjects represented by mono in \(\mathcal{M}\).
 When a given object \(A\) has only a set of \(\mathcal{M}\)-subobjects we write \(\Sub_\mathcal{M}(A, \leq)\) \marginnote{\(\Sub_\mathcal{M}(A, \leq)\)} for the poset of \(\mathcal{M}\)-subobjects of \(A\); if \(\mathcal{M}\) is the class of all monomorphisms we also write simply \(\Sub(A, \leq)\).
 Notice that we do not require the monomorphisms that witness \(\leq\) to be in \(\mathcal{M}\).
 
@@ -2000,22 +2002,15 @@ We now work our way towards a sufficient condition for the convergence of the in
   \begin{equation*}
     \begin{tikzcd}[sep=large]
       FB \ar[r, tail, "Fu"] \ar[d, "Fw"] & FA \ar[r, tail, "\alpha"] & A \\
-      FC \ar[ru, tail, "Fv"]
+      FC \ar[ru, tail, "Fv"']
     \end{tikzcd}
   \end{equation*}
   with \(Fu, Fw\) mono because \(F\) preserves \(\mathcal{M}\) and \(Fu = Fv \circ Fw\); so \(f(B) \leq f(C)\) in \(\Sub_\mathcal{M}(A, \leq)\).
 
   Now by assumption \(\Sub_{\mathcal{M}}(A, \leq)\) is chain-complete and we can apply Zermelo's Fixed Point Theorem \ref{teo:Zermelo} to obtain that \(f\) has a fixed point \(\mu f = f^i(\bot)\) for some ordinal \(i\).
-  Moreover the canonical cocone \((\alpha_j : W_j \to A)_{j\in\Ord}\) induced as in \ref{rem:induce-transfinite-cocone} by the algebra \(\alpha : FA \rightarrowtail A\) is such that \(\alpha_j = f^j(\bot)\) for all \(j \in \Ord\); this is clear for the successor step, while the limit step follows from the fact that joins of chains in \(\Sub_\mathcal{M}(A, \leq)\) are colimits of the corresponding chains of subobjects because \(A\) has smooth \(\mathcal{M}\)-subobjects.
+  Moreover the canonical cocone \((\alpha_j : W_j \to A)_{j\in\Ord}\) induced as in \ref{rem:induce-transfinite-cocone} by the algebra \(\alpha : FA \rightarrowtail A\) is such that \(\alpha_j = f^j(\bot)\) for all \(j \in \Ord\)\footnote{\color{teal} Non dipende dall'ordinale \(i\). Qui stiamo solo osservando che la \(j\)-esima freccia del cocono \((\alpha_j : W_j \to A)_{j \in \Ord}\) è esattamente \(f^j(\bot)\). \(i\) è l'ordinale dove la catena \(f^j(\bot)\) si stabilizza.}; this is clear for the successor step, while the limit step follows from the fact that joins of chains in \(\Sub_\mathcal{M}(A, \leq)\) are colimits of the corresponding chains of subobjects because \(A\) has smooth \(\mathcal{M}\)-subobjects.
   Then from \(f(f^i(\bot)) = f^i(\bot)\), the definition of fixed point, we obtain that \(\alpha_i\) and \(\alpha_{i+1}\) represent the same subobject of \(A\).
   Finally we know that \(\alpha_i = \alpha_{i+1} \circ w_{i, i+1}\) and that, since \(\alpha_i\) and \(\alpha_{i+1}\) represent the same subobject, there is an arrow \(v : W_{i+1} \to W_i\) such that \(\alpha_{i+1} = \alpha_i \circ v\) (witnessing \(\alpha_{i+1} \leq \alpha_i\)).
-  The situation is as in the following diagram.
-  \begin{equation*}
-    \begin{tikzcd}[sep=large]
-      & A & \\
-      W_i \ar[ur, tail, "\alpha_i"] \ar[rr, shift left=.75ex, "w_{i, i+1}"] & & W_{i+1} \ar[lu, tail, "\alpha_{i+1}"] \ar[ll, shift left=.75ex, "v"]
-    \end{tikzcd}
-  \end{equation*}
   Now the final part of the proof of Theorem \ref{teo:set_lambeck_converse} applies mutatis mutandis.
 \end{proof}
 
@@ -2029,7 +2024,7 @@ None of the hypothesis of Theorem \ref{teo:M-pre-fixed} can be dropped, as the f
 \end{example}
 
 \begin{example}
-  Consider the endofunctor \(FX = X + 1\) on \(\Set\) and the category \(\Alg F\) of \(F\)-algebras and their morphisms; recall that  \((\N, s, 0)\), where \(s\) is the successor function, is the initial algebra for \(F\).
+  Consider the endofunctor \(FX = X + 1\) on \(\Set\) and the category \(\Alg F\) of \(F\)-algebras and their morphisms; recall from Example \ref{ex:N} that  \((\N, s, 0)\), where \(s\) is the successor function, is the initial algebra for \(F\).
   Then \(\Alg F\) does not have smooth monomorphisms as there are \(F\)-algebras, such as \((\mathbb{Z}/n\mathbb{Z}, s, 0)\), that do not have \(\N\) as subobject; thus the hypothesis of Theorem \ref{teo:M-pre-fixed} do not hold.
   Indeed we can find a functor on \(\Alg F\) that has no initial algebra while having a fixed point and preserving monomorphisms.
 
@@ -2050,11 +2045,11 @@ None of the hypothesis of Theorem \ref{teo:M-pre-fixed} can be dropped, as the f
     \end{cases}
   \end{equation*}
   defined on arrows by using \(\mathcal{P}\) when we fall under the second case.
-  \(F\) does not preserve monomorphisms (e.g. the mono \((\emptyset, 2) \rightarrowtail (3, 3)\) maps to \((\emptyset, \mathcal{P}2) \to (\emptyset, 1)\) that is not a mono) but has pre-fixed points such as \(F(1, 1) = (\emptyset, 1) \rightarrowtail (1, 1)\).
-  However \(F\) cannot have any fixed point (thus any initial-algebra and so the initial-algebra chain cannot converge) because, if \(X \neq 0\), \(F(X, Y) = (\emptyset, 1)\) is never isomorphic to \((X, Y)\) and, if \(X = \emptyset\), \(F(X, Y) = (\emptyset, \mathcal{P}Y)\) and \((X, Y)\) can't be isomorphic by Cantor's Theorem. 
+  \(F\) does not preserve monomorphisms (e.g. if we denote with \(1, 2, 3\) the sets of cardinality \(1, 2, 3\) then the mono \((\emptyset, 2) \rightarrowtail (3, 3)\) maps to \((\emptyset, \mathcal{P}2) \to (\emptyset, 1)\) that is not a mono) but has pre-fixed points such as \(F(1, 1) = (\emptyset, 1) \rightarrowtail (1, 1)\).
+  However \(F\) cannot have any fixed point (thus any initial-algebra and so the initial-algebra chain cannot converge) because, if \(X \neq \emptyset\), \(F(X, Y) = (\emptyset, 1)\) is never isomorphic to \((X, Y)\) and, if \(X = \emptyset\), \(F(X, Y) = (\emptyset, \mathcal{P}Y)\) and \((X, Y)\) can't be isomorphic by Cantor's Theorem. 
 \end{example}
 
-Finally we can put all the work we have done so far into a single theorem, the Initial Algebra Theorem which is, among other things a converse to Lambeck's Lemma.
+Finally we can put all the work we have done so far into a single theorem, the Initial Algebra Theorem which is, among other things, a converse to Lambeck's Lemma.
 
 \begin{theorem}[Initial Algebra Theorem]
   \label{teo:initial-algebra-theorem}
