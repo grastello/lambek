@@ -2176,7 +2176,7 @@ As with algebras, coalgebras on \(F\) also form a category that we indicate with
   \end{itemize}
 
   Systems with termination (Example \ref{ex:systems-with-termination}) are obtained when the signature has one constant symbol and one unary symbol.
-  If \(\Sigma\) is the (finite) set of inputs of a deterministic automata (Example \ref{ex:deterministic-automata}) the signature with two \(|\Sigma|\)-ary symbols can be used to realize deterministic automata as a coalgebras for a polynomial functor.
+  If \(\Sigma\) is the (finite) set of inputs of a deterministic automata (Example \ref{ex:deterministic-automata}) the signature with two \(|\Sigma|\)-ary symbols can be used to realize deterministic automatas as a coalgebras for a polynomial functor.
   Similarly Moore automata can be recovered as coalgebras for appropriate polynomial functors.
 \end{example}
 
@@ -2250,7 +2250,7 @@ We have seen that the initial \(F\)-algebra is quite interesting and we will see
 \end{example}
 
 \begin{example}
-  As in Example \ref{ex:deterministic-automata} consider a set of inputs \(\Sigma\) and the functor \(FX = \{0, 1\} \times X^\Sigma\) over \(\Set\) which realizes deterministic automata as coalgebras.
+  As in Example \ref{ex:deterministic-automata} consider a set of inputs \(\Sigma\) and the functor \(FX = \{0, 1\} \times X^\Sigma\) over \(\Set\) which realizes deterministic automatas as coalgebras.
   Consider \(\mathcal{P}(\Sigma^*)\) the set of formal languages over \(\Sigma\).
   We say \(L\in \mathcal{P}(\Sigma^*)\) is an accepting language if it contains the empty word \(\varepsilon\).
   Given a language \(L \in \mathcal{P}(\Sigma^*)\) and an input \(s \in \Sigma\) we define its next state as its Brzozowski derivative
@@ -2263,7 +2263,7 @@ We have seen that the initial \(F\)-algebra is quite interesting and we will see
   \begin{equation}
     \label{eq:sequence}
     \begin{tikzcd}[sep=normal]
-      x_0 \ar[r, "\delta_{w_1}"] & x_1 \ar[r, "\delta_{w_2}"] & \ldots \ar[r, "w_{n}"] & x_n
+      x_0 \ar[r, "\delta_{w_1}"] & x_1 \ar[r, "\delta_{w_2}"] & \ldots \ar[r, "\delta_{w_{n}}"] & x_n
     \end{tikzcd}
   \end{equation}
   ends in a terminal state.
@@ -2276,10 +2276,10 @@ We have seen that the initial \(F\)-algebra is quite interesting and we will see
   We have that \(\mathcal{P}(\Sigma^*)\) is the terminal coalgebra for \(F\).
   \begin{itemize}
   \item[a.] Let \(w_1\ldots w_n = w \in f(x_0)\); in order to prove that \(w \in L(x_0)\) we need to show that (\ref{eq:sequence}) ends in a terminal state.
-    We have that \(f(x_1) = f(\delta_{w_1}(x_0)) = w_1^{-1}f(x_0)\) because \(f\) is a morphism and, by iterating, we obtain \(f(x_n) = x_n^{-1}\ldots w_1^{-1}f(x_0)\).
-    Finally since \(w \in f(x_0)\) we have \(\varepsilon \in f(x_n)\) so \(x_n\) is accepting again \(f\) is a morphism.
+    We have that \(f(x_1) = f(\delta_{w_1}(x_0)) = w_1^{-1}f(x_0)\) because \(f\) is a morphism and, by iterating, we obtain \(f(x_n) = w_n^{-1}\ldots w_1^{-1}f(x_0)\).
+    Finally since \(w \in f(x_0)\) we have \(\varepsilon \in f(x_n)\) so \(x_n\) is accepting again because \(f\) is a morphism.
   \item[b.] Let \(w_1\ldots w_n = w \in L(x_0)\) thus we know that (\ref{eq:sequence}) ends in an accepting state; \(x_n\) accepting gives \(f(x_n)\) accepting, because \(f\) is a morphism, and thus \(\varepsilon \in f(x_n)\).
-    Moreover, again because \(f\) is a morphism, we have \(f(x_n) = f(\delta_{w_{n-1}}(x_{n-1})) = w_n^{-1}f(x_{n-1})\) and, since \(\varepsilon \in f(x_n)\), we obtain \(w_n \in f(x_{n-1})\).
+    Moreover, again because \(f\) is a morphism, we have \(f(x_n) = f(\delta_{w_{n}}(x_{n-1})) = w_n^{-1}f(x_{n-1})\) and, since \(\varepsilon \in f(x_n)\), we obtain \(w_n \in f(x_{n-1})\).
     Iteration of this argument gives \(w_1 \ldots w_n = w \in f(x_0)\).
   \end{itemize}
 \end{example}
