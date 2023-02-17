@@ -2245,7 +2245,7 @@ We have seen that the initial \(F\)-algebra is quite interesting and we will see
   Coalgebras for \(F\) can be thinked of as systems with termination where non-terminal states emit an output in \(\Sigma\).
 
   Tracing a state gives either a finite word over \(\Sigma\), if we enetually hit a terminal state, or a stream over \(\Sigma\) if we hit none.
-  Let \(\Sigma^\infty = \Sigma^* + \Sigma^{<\omega}\) where \(\Sigma^*\) is the set of finite words over \(\Sigma\).
+  Let \(\Sigma^\infty = \Sigma^* + \Sigma^\omega\) where \(\Sigma^*\) is the set of finite words over \(\Sigma\).
   Again \(\tau = \intoprod{\head}{\tail} : \Sigma^\infty \to \Sigma \times \Sigma^\infty + 1\) as in Example \ref{ex:transition_systems_with_outputs}, with the added caveat of sending the empty word to \(*\) in the right summand, is the terminal coalgebra.
 \end{example}
 
@@ -2411,7 +2411,7 @@ The Knaster-Tarski Theorem \ref{teo:knaster_tarski} obviously follows from this 
 
 We strive now to dualize what we have seen about recursion and induction in Section \ref{sec:recursion_and_induction}.
 Recursion is dualized straightforwardly but we don't do the same for induction.
-Instead of coinduction we will discuss bisimulation, a concept that has many applications, for instance, in computer science and modal logic.
+Instead of coinduction we will discuss bisimulation, a concept that has many applications, for instance, in modal logic (see \cite[Section 3]{BLACKBURN20071}).
 
 \begin{definition}
   Let \(F\) be an endofuctor over some category \(\A\) with a terminal coalgebra \(\nu F\).
@@ -2441,7 +2441,7 @@ Instead of coinduction we will discuss bisimulation, a concept that has many app
 
 \begin{example}
   Consider the functor \(FX = \Sigma \times X\) over \(\Set\) with \(\Sigma\) a fixed set of outputs.
-  We know from Example \ref{ex:transition_systems_with_outputs} that the terminal coalgebra for \(F\) is \(\Sigma^\infty\), the set of \(\Sigma\)-streams, with structure given by \(\tau = \intoprod{\head}{\tail}\).
+  We know from Example \ref{ex:transition_systems_with_outputs} that the terminal coalgebra for \(F\) is \(\Sigma^\omega\), the set of \(\Sigma\)-streams, with structure given by \(\tau = \intoprod{\head}{\tail}\).
 
   A single stream can be identified with the function \(f : 1 \to \Sigma^\infty\) that picks it so we say that a stream is corecursively specified if its \(f : 1 \to \Sigma^\infty\) is corecursively specified.
   Coalgebra structures on \(1\) are functions \(\alpha: 1 \to \Sigma \times 1\) so the only corecursively specifiable streams are the constant ones.
