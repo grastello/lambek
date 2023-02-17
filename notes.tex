@@ -1821,16 +1821,15 @@ We now give an example of a functor that has initial-algebra convergent in more 
 
 From Theorem \ref{teo:adamek_transfinite} we know that convergence of the initial-algebra chain implies existence of the initial algebra; but what about the converse?
 Are all initial algebras obtainable by iteration?
-As the following example shows this is not the case.
-
+The following example shows that this is not the case.
 \begin{example}
   A graph \(G\) is a pair \((V_G, E_G)\) where \(V_G\) is a set of vertexes and \(E_G\) a symmetric binary relation on \(V_G\).
-  When \(x E_g y\) we say that \(x\) and \(y\) are adjacent.
+  When \(x E_G y\) we say that \(x\) and \(y\) are adjacent.
   A graph morphism is a function \(f : G \to G'\) such that \(x E_G y\) implies \(f(x) E_{G'} f(y)\) for every \(x, y \in V_G\).
   Graphs and graph morphisms form the category \(\textsf{Gra}\).
 
   We say that a graph \(G\) has a loop if there is some vertex \(x\) such that \(x E_G x\) and that it is loop-free otherwise.
-  For a cardinal \(\kappa\) we denote by \(K_\kappa\) the loop-free graph on \(\kappa\) vertexes such that any two distinct vertexes are always adjacent; these graphs are also called complete graphs.
+  For a cardinal \(\kappa\) we denote by \(K_\kappa\) the loop-free graph on \(\kappa\) vertexes such that any two distinct vertexes are always adjacent; these graphs are called complete graphs.
   Given a loop-free graph \(G\) we define its chromatic number \(\chi(G)\) to be the smallest cardinal such that there is a morphism from \(G\) to \(K_{\chi(G)}\); notice that \(\chi(K_\kappa) = \kappa\).
   Finally we can consider the following endofunctor on \(\textsf{Gra}\):
   \begin{equation*}
@@ -1845,7 +1844,7 @@ As the following example shows this is not the case.
   If \(G\) is loop-free then there are no arrows from \(FG\) to \(G\) because the existence of such an arrow implies \(\chi(FG) \leq \chi(G)\) but we have \(\chi(FG) > \chi(G)\) by construction of \(F\).
   Then every \(F\)-algebra is of the form \(1 \to G\) with \(G\) a graph that has a loop.
   This means that \(F\)-algebras are graphs \(G\) with a marked loop and it is clear that \(\id_1 : F1 = 1 \to 1\) is the initial algebra.
-  However the initial-algebra chain of \(F\) never converges because all its elements have increasing cardinalities.
+  However the initial-algebra chain of \(F\) never converges because its elements have increasing cardinalities.
 \end{example}
 
 However, in the case of \(\Set\), we have the following result that, together with Lambeck's Lemma, immediately implies that every initial algebra over \(\Set\) is obtained by iteration.
