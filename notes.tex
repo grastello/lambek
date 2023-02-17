@@ -2558,9 +2558,9 @@ An example should clarify the matter.
       B \ar[r, "\beta"] & B + 1
     \end{tikzcd}
   \end{equation}
-  Recall moreover that \(x R y\) means that \((x, y) \in R\) so:
+  Since we are working in \(\Set\) and \(R \subseteq A \times B\) we can assume that \(r_A, r_B\) are (restrictions of) the projections  on \(A\) and \(B\) so
   \begin{itemize}
-  \item[a.] since \(r_A\) is a coalgebra morphism we have \((x, y)\) is terminal in \(R\) if and only if \(x\) is terminal in \(A\) and, similarly using \(r_B\), \((x, y)\) is terminal in \(R\) if and only if \(y\) is terminal in \(B\); thus we obtain \(1\) above;
+  \item[a.] since \(r_A\) is a coalgebra morphism we have that \((x, y)\) is terminal in \(R\) if and only if \(x\) is terminal in \(A\) and, similarly using \(r_B\), \((x, y)\) is terminal in \(R\) if and only if \(y\) is terminal in \(B\); thus we obtain \(1\) above;
   \item[b.] if \(x, y\) are not terminal then, since \(r_A, r_B\) are morphisms, we obtain
     \begin{equation*}
       (r_A \circ \rho)(x, y) = (\alpha \circ r_A)(x, y) = \alpha(x) = x',
@@ -2572,7 +2572,7 @@ An example should clarify the matter.
   \end{itemize}
 
   On the other hand if 1 and 2 hold we can make \(R\) into a coalgebra \(\rho : R \to R + 1\) such that \(\rho(x, y) = (x', y')\) if \(x\) is not terminal and \(\rho(x, y) = *\) in the right summand if \(x\) is terminal.
-  The projections \(r_A, r_B\) are clearly make the squares \ref{dia:fooooo} commute since they preserve next-states and preserve and reflect terminal ones.
+  The projections \(r_A, r_B\) then clearly make the squares \ref{dia:fooooo} commute since they preserve next-states and preserve and reflect terminal ones.
 
   In virtue of conditions 1 and 2 we obtain immediately that the unique morphisms \(b_A : A \to \mathbb{N}^\top, b_B : B \to \mathbb{N}^\bot\) into the terminal coalgebra are such that, for every bisimulation \(R\), \(x R y\) implies \(b_A(x) = b_B(y)\) which formalizes the idea of bisimulations ``linking'' states with the same behaviour.
 \end{example}
