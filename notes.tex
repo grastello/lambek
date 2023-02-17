@@ -2145,7 +2145,7 @@ As with algebras, coalgebras on \(F\) also form a category that we indicate with
 
 \begin{example}
   \label{ex:NDA}
-  As above let \(\Sigma\) be a set of inputs. A \textbf{non-deterministic automata} \marginnote{non-deterministic automata}, like a deterministic one, is made of a set of states \(S\) with a subset \(A\) of accepting states but the transition functions have codomain \(\mathcal{P}(S)\) i.e.
+  As above let \(\Sigma\) be a set of inputs. A \textbf{non-deterministic automata} \marginnote{non-deterministic automata}, similarly to a deterministic one, is made of a set of states \(S\) with a subset \(A\) of accepting states but the transition functions have codomain \(\mathcal{P}(S)\) i.e.
   \begin{equation*}
     \delta_s : S \to \mathcal{P}(S) \quad \text{for every \(s \in \Sigma\)}.
   \end{equation*}
@@ -2160,7 +2160,7 @@ As with algebras, coalgebras on \(F\) also form a category that we indicate with
 \begin{example}
   \label{ex:Moore}
   Given a set \(\Sigma\) of inputs and a set \(\Gamma\) of outputs a coalgebra for the functor \(FX = \Gamma \times X^\Sigma\) over \(\Set\) is called a \textbf{Moore automata} \marginnote{Moore automata}.
-  Every state \(x\) of such a coalgebra is labeled by an element \(\gamma \in \Gamma\), we say that \(x\) emits output \(\gamma\), and has next states based on inputs in \(\Sigma\) like in a deterministic automata.
+  Every state \(x\) of such a coalgebra is labeled by an element \(\gamma \in \Gamma\) (we say that \(x\) emits output \(\gamma\)) and has next states based on inputs in \(\Sigma\) like in a deterministic automata.
 \end{example}
 
 \begin{example}
