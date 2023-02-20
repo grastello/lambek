@@ -2196,22 +2196,22 @@ We have seen that the initial \(F\)-algebra is quite interesting and we will see
 
 \begin{example}
   \label{ex:terminalcoalgebra1}
-  \(FX = X + 1\) has terminal coalgebra \(\mathbb{N}^\bot\) with the following structure
+  \(FX = X + 1\) has terminal coalgebra \(\mathbb{N}^\top\) with the following structure
   \begin{center}
     \begin{tikzcd}[sep=large]
       0 & 1 \ar[l] & 2 \ar[l] & \ldots \ar[l] & \infty \ar[loop right]
     \end{tikzcd}
   \end{center}
   and \(0\) as terminal state.
-  Given any other system with termination (\(F\)-coalgebra) \(A\) we have \(b_A : A \to \mathbb{N}^\bot\) defined as follows.
+  Given any other system with termination (\(F\)-coalgebra) \(A\) we have \(b_A : A \to \mathbb{N}^\top\) defined as follows.
   For every \(x \in A\) we set
   \begin{itemize}
   \item[1.] \(b_A(x) = 0\) if \(x\) is a terminal state;
   \item[2.] \(b_A(x) = n\) if there is a finite chain \((x, x_1, x_2, \ldots, x_n)\) such that \(x_{i+1}\) is the next state of \(x_i\) and \(x_n\) is terminal;
   \item[3.] \(b_A(x) = \infty\) otherwise.
   \end{itemize}
-  This function clearly preserves terminal and next states so it is a morphism of coalgebras; moreover it is unique because \(\mathbb{N}^\bot\) has exactly one terminal state, exactly one sequence of \(n\) next states ending in a terminal state for every \(n\) and exactly one infinite sequence of next states.
-  This proves that \(\mathbb{N}^\bot\) is indeed the terminal coalgebra for \(F\).
+  This function clearly preserves terminal and next states so it is a morphism of coalgebras; moreover it is unique because \(\mathbb{N}^\top\) has exactly one terminal state, exactly one sequence of \(n\) next states ending in a terminal state for every \(n\) and exactly one infinite sequence of next states.
+  This proves that \(\mathbb{N}^\top\) is indeed the terminal coalgebra for \(F\).
   We call \(b_A(x)\) the \textbf{behaviour} of the state \(x\) of \(A\) and it corresponds with the number of iterations needed to reach a terminal state starting from \(x\) (or \(\infty\) if we cannot reach a terminal state starting from \(x\)).
 \end{example}
 
@@ -2639,15 +2639,40 @@ Adámek's Theorem \ref{teo:adamek} dualizes straightforwardly.
   Let \(\A\) be a category with a terminal object and limits of \(\omega^\op\)-chains and \(F\) an endofuctor preserving \(\omega^\op\)-limits.
   Then \(F\) has a terminal coalbegra \(\nu F = \lim_{n < \omega} F^n1\).
   The structure of \(\nu F\) is the unique \(\tau: \nu F \to F(\nu F)\) such that
-  \begin{equation*}
+  \begin{equation}
+    \label{eq:aa}
     Fl_n \circ \tau = l_{n+1}, \quad n < \omega
-  \end{equation*}
+  \end{equation}
   where \((l_n: \nu F \to F^n1)_{n < \omega}\) is the limit cone of (\ref{dia:terminal_chain}).
 \end{theorem}
 
 \begin{proof}
   Dual to that of Theorem \ref{teo:adamek}.
 \end{proof}
+
+Again this result can be used directly to prove the existence of a terminal coalgebra or [BLABLA]
+
+\begin{example}
+  Consider \(FX = X + 1\) over \(\Set\).
+  The terminal-coalgebra \(\omega^\op\)-chain for \(F\) is
+  \begin{equation*}
+    \begin{tikzcd}[sep = large]
+      1  & 1 + 1 \ar[l, "!"] & 1 + 1 + 1  \ar[l, "F!"] & 1 + 1 + 1 + 1 \ar[l, "F^2!"] & \cdots \ar[l, "F^3!"]
+    \end{tikzcd}
+  \end{equation*}
+  so the \(n\)-th object of the chain is the set \(n + 1 = \{0, 1, \ldots, n\}\) of \(n + 1\) elements and the connecting functions \(F^n! : n + 2 \to n + 1\) are such that
+  \begin{equation*}
+    F^n!(i) = 
+    \begin{cases}
+      i & \text{if } i \leq n\\
+      n & \text{if } i = n + 1
+    \end{cases}.
+  \end{equation*}
+  Then the limit is the set composed of all the elements \(x \in \prod_{n < \omega} (n + 1)\) such that \(f_n(x_{n+1}) = x_n\) by how limits are computed in \(\Set\) (see \cite[Chapter 2, Section 8]{handbook1}).
+  Such elements are either the sequence \((0,1,2,3, \ldots)\) or they have the form \((0,1, \ldots, k, k, \ldots)\).
+  Sequences of the second kind we can identity with the number \(k\) and \((0,1,2,3, \ldots)\) we call \(\infty\); this way we obtain \(\mathbb{N}^\top\).
+  By using (\ref{eq:aa}) we obtain that the coalgebra structure \(\tau: \N^\top \to \N^\top + 1\) sends \(\infty\) to itself, \(0\) to the unique point in the right hand side and \(k\) to \(k-1\); thus we have a new explanation of Exampe \ref{ex:terminalcoalgebra1}.
+\end{example}
 
 \printbibliography
 \end{document}
