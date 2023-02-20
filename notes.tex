@@ -2674,5 +2674,25 @@ Again this result can be used directly to prove the existence of a terminal coal
   By using (\ref{eq:aa}) we obtain that the coalgebra structure \(\tau: \N^\top \to \N^\top + 1\) sends \(\infty\) to itself, \(0\) to the unique point in the right hand side and \(k\) to \(k-1\); thus we have a new explanation of Exampe \ref{ex:terminalcoalgebra1}.
 \end{example}
 
+\begin{example}
+  Consider the functor \(FX = \Sigma \times X\) over \(\Set\), where \(\Sigma\) is a fixed set.
+  We can identify a set with its product with \(1\) and thus the terminal-coalgebra \(\omega^\op\)-chain is
+  \begin{equation*}
+    \begin{tikzcd}[sep = large]
+      1  & \Sigma \ar[l, "!"] & \Sigma \times \Sigma  \ar[l, "F!"] & \Sigma \times \Sigma \times \Sigma \ar[l, "F^2!"] & \cdots \ar[l, "F^3!"]
+    \end{tikzcd}
+  \end{equation*}
+  where the connecting functions are the projections onto the left-most factor.
+  The limit is the object \(\Sigma^\omega\) of \(\Sigma\)-stream with limit projections \(l_n : \Sigma^\omega \to \Sigma^\omega\) such that \(l_n\) is the left-hand projection of
+  \begin{equation*}
+    M^\omega \cong M^n \times \prod_{i \geq n}M.
+  \end{equation*}
+  The coalgebra structure \(\tau: \Sigma^\omega \to \Sigma \times \Sigma^\omega\) is given by \(\tau = \intoprod{\head}{\tail}\) with
+  \begin{itemize}
+  \item \(\head(x_1, x_2, x_3, \ldots) = x_1\);
+  \item \(\tail(x_1, x_2, x_3, \ldots) = (x_2, x_3, \ldots)\).
+  \end{itemize}
+\end{example}
+
 \printbibliography
 \end{document}
