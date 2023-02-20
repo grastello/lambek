@@ -1027,6 +1027,7 @@ We call subalgebras subobjects in \(\alg F\).
 \end{proof}
 
 \chapter{Initial algebras from finitary iteration}
+\label{ch:initial_algebras_iteration}
 \newpage
 
 \section{Adámek's Theorem}
@@ -2601,6 +2602,52 @@ Finally we can state and prove the coinduction principle.
 
 The coinduction principle ties into our interpretation of bisimulations linking states that have the same behaviour by saying that no two states in the terminal coalgebra have the same behaviour.
 Terminal coalgebras we can thus think of as containing all possible behaviours ``exactly once''.
+
+\chapter{Iteration for Coalgebras}
+\newpage
+
+\section{Terminal Coalgebras from Finitary Iteration}
+
+The goal of this section is to dualize to coalgebras what has been done in Section \ref{ch:initial_algebras_iteration}.
+[WRITE SOME MORE?]
+Through this section we assume to be working in a category \(\A\) with a terminal object \(1\).
+
+\begin{definition}
+  The \textbf{terminal-coalgebra \(\omega^{\op}\)-chain}\marginnote{terminal-algebra \(\omega^\op\)-chain} is the diagram
+    \begin{equation}
+    \label{dia:terminal_chain}
+    \begin{tikzcd}[sep = large]
+      1  & F1 \ar[l, "!"] & F^21  \ar[l, "F!"] & F^31 \ar[l, "F^2!"] & \cdots  \ar[l, "F^3!"]
+    \end{tikzcd}
+    \end{equation}
+    where \(!\) is the unique arrow into the terminal object.
+\end{definition}
+
+\begin{remark}
+  Every coalgebra \(\alpha : A \to FA\) induces a canonical cone \((\alpha_n : A \to F^n1)_{n < \omega}\) over (\ref{dia:terminal_chain}) defined by the following
+  \begin{align*}
+    \alpha_0 &=\ ! \\
+    \alpha_{n+1} &= A \xrightarrow{\alpha} FA \xrightarrow{F\alpha_n}.
+  \end{align*}
+  Proof that this is really a cone is dual to Remark \ref{rem:induced_cocone}.
+\end{remark}
+
+Adámek's Theorem \ref{teo:adamek} dualizes straightforwardly.
+
+\begin{theorem}
+  \label{teo:coadamek}
+  Let \(\A\) be a category with a terminal object and limits of \(\omega^\op\)-chains and \(F\) an endofuctor preserving \(\omega^\op\)-limits.
+  Then \(F\) has a terminal coalbegra \(\nu F = \lim_{n < \omega} F^n1\).
+  The structure of \(\nu F\) is the unique \(\tau: \nu F \to F(\nu F)\) such that
+  \begin{equation*}
+    Fl_n \circ \tau = l_{n+1}, \quad n < \omega
+  \end{equation*}
+  where \((l_n: \nu F \to F^n1)_{n < \omega}\) is the limit cone of (\ref{dia:terminal_chain}).
+\end{theorem}
+
+\begin{proof}
+  Dual to that of Theorem \ref{teo:adamek}.
+\end{proof}
 
 \printbibliography
 \end{document}
