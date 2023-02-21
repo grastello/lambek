@@ -2610,11 +2610,10 @@ Terminal coalgebras we can thus think of as containing all possible behaviours `
 \section{Terminal Coalgebras from Finitary Iteration}
 
 The goal of this section is to dualize to coalgebras what has been done in Section \ref{ch:initial_algebras_iteration}.
-[WRITE SOME MORE?]
 Through this section we assume to be working in a category \(\A\) with a terminal object \(1\).
 
 \begin{definition}
-  The \textbf{terminal-coalgebra \(\omega^{\op}\)-chain}\marginnote{terminal-algebra \(\omega^\op\)-chain} is the diagram
+  The \textbf{terminal-coalgebra} \(\omega^{\op}\)\textbf{-chain}\marginnote{terminal-algebra \(\omega^\op\)-chain} is the diagram
     \begin{equation}
     \label{dia:terminal_chain}
     \begin{tikzcd}[sep = large]
@@ -2712,6 +2711,35 @@ To achieve this goal we begin by giving a [BLA BLA BLA]
 
   The connecting functions \(H^{n + 1}_\Sigma(1) \to H^n_\Sigma(1)\) cut out the layer of \(\bot\)-labeled leaves and re-label every leave at height \(n\) with \(\bot\).
 \end{remark}
+
+\begin{proof}[Alternative proof of Proposition \ref{prop:trees_coalgebras}]
+  Since \(H_\Sigma\) preserves limits of \(\omega^\op\)-chains we have that \(\nu H_\Sigma = \lim_{n < \omega}H^n_\Sigma(1)\).
+  Let \(v_{n, m} : H^{n}_\Sigma(1) \to H^{m}_\Sigma(1)\) for \(m \leq n < \omega\) be the connecting functions of the terminal coalgebra \(\omega^\op\)-chain.
+
+  We shall first prove that \(\lim_{n < \omega}H^n_\Sigma(1)\) is the set \(T_\Sigma\) of all \(\Sigma\)-trees with projections \(l_n: T_\Sigma \to H^n_\Sigma(1)\) that cut a tree at height \(n\) and re-label every leave at level \(n\) with \(\bot\).
+  In order to do so we just need to show that for every sequence \((t_n: t_n \in H^n_\Sigma(1))_{n<\omega}\) such that
+  \begin{equation}
+    \label{eq:compatibility}
+    v_{n, m}(t_n) = t_m, \quad m \leq n < \omega
+  \end{equation}
+  there is a unique \(t \in T_\Sigma\) such that \(l_n(t) = t_n\) for every \(n<\omega\).
+  Such \(t\) is constructed inductively as follows:
+  \begin{itemize}
+  \item the root of \(t\) is the root of \(t_1\) which, by (\ref{eq:compatibility}), is also the root of \(t_m\) for all \(1 \leq m\);
+  \item the \(n\)-th layer of \(t\) is labeled as the \(n\)-th layer of \(t_{n + 1}\) which, by (\ref{eq:compatibility}), is the same as the \(n\)-th layer of every \(t_m\) for \(n \leq m\);
+  \end{itemize}
+  and it is unique since the condition \(l_n(t) = t_n\) (for all \(n < \omega\)) forces \(t\) and \(t_n\) to agree on all layers of height less than \(n\).
+
+  The coalgebra structure \(\tau: T_\Sigma \to H_\Sigma T_\Sigma\) is, by (\ref{eq:aa}), the unique function such that
+  \begin{equation*}
+    \label{eq:treetuplingcondition}
+    l_{m + 1} = H_\Sigma l_m \circ \tau, \quad m < \omega.
+  \end{equation*}
+  Tree-tupling \(\overline{\tau}: H_\Sigma T_\Sigma \to H_\Sigma\) satisfies \(l_{m + 1} \circ \overline{\tau} = H_\Sigma l_m\) because cutting a tree-tupling at the \((m + 1)\)-th layer and re-labeling the leaves (this is \(l_{m +1} \circ \overline{\tau}\)) is the same as cutting and re-labeling maximal subtress at their \(m\)-th layer (this is \(H_\Sigma l_m\)).
+  This gives us that \(\tau\) is the inverse of \(\overline{\tau}\).
+\end{proof}
+
+
 
 \printbibliography
 \end{document}
