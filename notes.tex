@@ -2592,8 +2592,8 @@ An example should clarify the matter.
 
 \begin{remark}
   The diagonal subobject \(\Delta_A\) is always a bisimulation on any coalgebra \((A, \alpha)\).
-  A bisibulation not contained in \(\Delta_A\) is a \textbf{proper bisimulation}\marginnote{proper bisimulation}.
-  Moreover notice that a relation \(\intoprod{r_1}{r_2}: R \rightarrowtail A \times A\) is proper if \(r_1 = r_2\).
+  A bisibulation not contained in \(\Delta_A\) is a \textbf{proper bisimulation}\marginnote{proper/improper bisimulation} while one contained in \(\Delta_A\) is \textbf{improper}.
+  Moreover notice that a relation \(\intoprod{r_1}{r_2}: R \rightarrowtail A \times A\) is improper if \(r_1 = r_2\).
 \end{remark}
 
 Finally we can state and prove the coinduction principle.
@@ -2605,7 +2605,7 @@ Finally we can state and prove the coinduction principle.
 
 \begin{proof}
   Let \(r = \intoprod{r_1}{r_2}: R \rightarrowtail \nu F \times \nu F\) be a bisimulation i.e. \(R\) has a coalgebra structure such that \(r_1\) and \(r_2\) are coalgebra morphisms.
-  By terminality of \(\nu F\) we must have \(r_1 = r_2\) and thus the bisimulation is proper.
+  By terminality of \(\nu F\) we must have \(r_1 = r_2\) and thus the bisimulation is improper.
 \end{proof}
 
 The coinduction principle ties into our interpretation of bisimulations linking states that have the same behaviour by saying that no two states in the terminal coalgebra have the same behaviour.
