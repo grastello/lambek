@@ -1568,7 +1568,7 @@ This sequence is clearly a chain.
   So \(f(f^j(\bot)) = f^{j+1}(\bot) = f^j(\bot)\) hence \(f^j(\bot)\) is a fixed point.
 
   Now let \(x = f(x)\) be another fixed point.
-  By transfinite induction we can prove \(x \geq f^i(\bot)\) for all \(i \in \Ord\) (similarly to what we did in Theorem \ref{teo:kleene})\footnote{\color{teal} Ora abbiamo richiamato nel paragrafo precedente che \(\bot\) è il bottom e che \(P\) ne è dotato perché chain-complete. È necessario ribadirlo qui?} thus when \(i = j\) we obtain \(x \geq f^j(\bot)\).
+  By transfinite induction we can prove \(x \geq f^i(\bot)\) for all \(i \in \Ord\) (similarly to what we did in Theorem \ref{teo:kleene}) thus when \(i = j\) we obtain \(x \geq f^j(\bot)\).
   This proves that \(f^j(\bot)\) is indeed the least fixed point of \(f\).
 \end{proof}
 
@@ -1894,7 +1894,7 @@ However, in the case of \(\Set\), we have the following result that, together wi
   Now we can prove that the initial-algebra chain converges.
 
   Since \(\alpha_\omega\) is injective and has non-empty domain there is a function  \(\beta : A \to W_\omega\) such that \(\beta \circ \alpha_\omega  = \id_A\).
-  Because of this \(F\alpha_\omega\) is also injective (functors preserve identities and composition)\footnote{\color{teal} Qui usiamo che da \( F\beta \circ F\alpha_\omega = \id_{FA}\) segue che \(F\alpha_\omega\) deve essere iniettiva perché \(\id_{FA}\) lo è. Va detto esplicitamente o basta quanto c'è tra parentesi (con l'uguaglianza prima corretta)?} and so must be \(\alpha_{\omega + 1} = \alpha \circ F\alpha_\omega\).
+  Because of this \(F\alpha_\omega\) is also injective (functors preserve identities and composition) and so must be \(\alpha_{\omega + 1} = \alpha \circ F\alpha_\omega\).
   If we define \(v = \beta \circ \alpha_{\omega + 1}\) we obtain
   \begin{equation*}
     \alpha_\omega \circ v = \alpha_\omega \circ \beta \circ \alpha_{\omega + 1} = \alpha_{\omega + 1}
@@ -2656,6 +2656,66 @@ Adámek's Theorem \ref{teo:adamek} dualizes straightforwardly as well.
 
 Just as for algebras this result can be used directly to prove the existence of a terminal coalgebra but it also tells us that such coalgebra is a limit.
 We can often use this to our advantage to better understand the structure of the terminal coalgebra.
+
+\begin{remark}
+  Given a signature \(\Sigma\) the corresponding polynomial functor \(H_\Sigma\) over \(\Set\) preserves limits of \(\omega^\op\)-chains.
+  Recall that \(H_\Sigma\) is defined by
+  \begin{align*}
+    H_\Sigma X &= \coprod_{n < \omega} \Sigma_n \times X^n \\
+    H_\Sigma f &= \coprod_{n < \omega} \id_{\Sigma_n} \times f^n \quad \text{with } f^n = \underbrace{f \times \ldots \times f}_{\text{\(n\) times}}.
+  \end{align*}
+  Consider an \(\omega^\op\)-chain \((A_i, \alpha_i)_{i < \omega}\) and its limiting cone
+  \begin{equation*}
+    \begin{tikzcd}[sep = large]
+      & A \ar[dl, "\alpha_0"'] \ar[d, "\alpha_1"] \ar[dr, "\alpha_2"] & & \\
+      A_0 & A_1 \ar[l, "a_0"] & A_2 \ar[l, "a_1"] & \cdots \ar[l, "a_2"]
+    \end{tikzcd}
+  \end{equation*}
+  we will prove that
+  \begin{equation*}
+    \begin{tikzcd}[sep = large]
+      & H_\Sigma A \ar[dl, "H_\Sigma \alpha_0"'] \ar[d, "H_\Sigma \alpha_1"] \ar[dr, "H_\Sigma \alpha_2"] & & \\
+      H_\Sigma A_0 & H_\Sigma A_1 \ar[l, "H_\Sigma a_0"] & H_\Sigma A_2 \ar[l, "H_\Sigma a_1"] & \cdots \ar[l, "H_\Sigma a_2"]
+    \end{tikzcd}
+  \end{equation*}
+  is the limit cone of \((H_\Sigma A_i, H_\Sigma a_i)_{i < \omega}\).
+  In order to do so we need to prove that for any cone
+  \begin{equation*}
+    \begin{tikzcd}[sep = large]
+      & B \ar[dl, "\beta_0"'] \ar[d, "\beta_1"] \ar[dr, "\beta_2"] & & \\
+      H_\Sigma A_0 & H_\Sigma A_1 \ar[l, "H_\Sigma a_0"] & H_\Sigma A_2 \ar[l, "H_\Sigma a_1"] & \cdots \ar[l, "H_\Sigma a_2"]
+    \end{tikzcd}
+  \end{equation*}
+  there is a unique \(f : B \to H_\Sigma A\) such that \(\beta_i = H_\Sigma \alpha_i \circ f\) for every \(i < \omega\).
+
+  Fix \(x \in B\) and notice that \(H_\Sigma A_0 = \coprod_{n<\omega} \Sigma_n \times A_0^n\) so \(\beta_0(x) \in \Sigma_m \times A_0^m\) for a unique \(m < \omega\).
+  Moreover since \((B, \beta_i)_{i<\omega}\) is a cone and \(H_\Sigma a_i = \coprod_{n<\omega}\id_{\Sigma_n} \times a_i^n\) we must have \(\beta_i(x) \in \Sigma_m \times A_i^m\) for every \(i<\omega\) and the same \(m\).
+  This means that we can write \(B\) as \(\coprod_{n<\omega}B_n\) with
+  \begin{equation*}
+    B_n = \{x \in B: \beta_0(x) \in \Sigma_n \times A_0^n\}.
+  \end{equation*}
+  Fixing \(n < \omega\) we obtain that
+  \begin{equation*}
+    \begin{tikzcd}[sep = large]
+      & B_n \ar[dl, "\beta_0"'] \ar[d, "\beta_1"] \ar[dr, "\beta_2"] & & \\
+      \Sigma_n \times A_0^n & \Sigma_n \times A_1^n \ar[l, "\id_{\Sigma_n} \times a_0^n"] & \Sigma_n \times A_2^n \ar[l, "\id_{\Sigma_n} \times a_1^n"] & \cdots \ar[l, "\id_{\Sigma_n} \times a_2^n"]
+    \end{tikzcd}
+  \end{equation*}
+  is a cone over \((\Sigma_n \times A_i^n, \id_{\Sigma_n} \times a_i^n)_{i<\omega}\) that has limit \((\Sigma_n \times A^n, \id_{\Sigma_n} \times \alpha_i^n)_{i<\omega}\) because the functor \(GX = \Sigma_n \times X^n\) preserves limits of \(\omega^\op\)-chains.
+  Thus there is a unique \(f_n:B_n \to \Sigma_n \times A^n\) such that
+  \begin{equation}
+    \label{eq:cccc}
+    \beta_i = (\id_{\Sigma_n} \times \alpha_i^n) \circ f_n.
+  \end{equation}
+
+  Finally we can define \(f: B \to H_\Sigma A\) by
+  \begin{equation*}
+    f(x) = f_n(x) \quad \text{when \(x \in B_n\)}.
+  \end{equation*}
+  This function is such that \(\beta_i = H_\Sigma \alpha_i \circ f\) for every \(i < \omega\) since \(B = \coprod_{n < \omega}B_n\) and we have (\ref{eq:cccc}) for every \(n < \omega\).
+  Moreover if \(g : B \to H_\Sigma A\) is such that \(\beta_i = H_\Sigma \alpha_i \circ g\) for every \(i < \omega\) then it's restriction \(g_{\upharpoonright B_n}\) satisfies \(\beta_i = (\id_{\Sigma_n} \times \alpha_i^n) \circ g_{\upharpoonright B_n}\) for every \(i < \omega\) but then \(g_{\upharpoonright B_n} = f_n\) by uniqueness of \(f_n\).
+  Thus \(g\) and \(f\) agree on every \(B_n\) and so we must have \(f = g\).
+\end{remark}
 
 \begin{example}
   Consider \(FX = X + 1\) over \(\Set\).
