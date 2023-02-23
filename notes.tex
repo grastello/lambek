@@ -2135,7 +2135,7 @@ As with algebras, coalgebras on \(F\) also form a category that we indicate with
 \begin{example}
   \label{ex:deterministic-automata}
   Let \(\Sigma\) be a set of inputs.
-  A \textbf{deterministic automata}\marginnote{deterministic automata} is composed of a set \(S\) of states, a transition function \(\delta_s : S \to S\) for every \(s \in \Sigma\) and a set \(A \subset S\) of accepting states.
+  A \textbf{deterministic automata}\marginnote{deterministic automata} is composed of a set \(S\) of states, a transition function \(\delta_s : S \to S\) for every \(s \in \Sigma\) and a set \(A \subset S\) of \textbf{accepting states} \marginnote{accepting state}.
   In order to obtain deterministic automata as coalgebras for a functor we group the \(\delta_s\)'s into a single function \(\delta:S \to S^\Sigma\) assigning to a state \(t\) the map \(s \mapsto \delta_s(t)\) and consider the characteristic function \(\chi : S \to \{0, 1\}\) of \(A\).
   So deterministic automata are coalgebras for the functor
   \begin{equation*}
@@ -2264,21 +2264,21 @@ We have seen that the initial \(F\)-algebra is quite interesting and we will see
   \begin{equation}
     \label{eq:sequence}
     \begin{tikzcd}[sep=normal]
-      x_0 \ar[r, "\delta_{w_1}"] & x_1 \ar[r, "\delta_{w_2}"] & \ldots \ar[r, "\delta_{w_{n}}"] & x_n
+      x_0 \ar[r, mapsto, "\delta_{w_1}"] & x_1 \ar[r, mapsto, "\delta_{w_2}"] & \ldots \ar[r, mapsto, "\delta_{w_{n}}"] & x_n
     \end{tikzcd}
   \end{equation}
-  ends in a terminal state.
+  ends in an accepting state.
   We notice that
   \begin{itemize}
-  \item[1.] \(L(x)\) is accepting in \(\mathcal{P}(\Sigma^*)\) if and only if \(x\) is accepting in \(A\);
+  \item[1.] \(L(x)\) is accepting in \(\mathcal{P}(\Sigma^*)\) if and only if \(x\) is accepting in \(A\)\footnote{\color{teal} qui per ``\(x\) accepting in \(A\)'' si intende che lo stato \(x\) nell'automa \(A\) è accepting, è stato definito in \ref{ex:deterministic-automata}};
   \item[2.] for every input \(s \in \Sigma\) if \(y = \delta_s(x)\) then \(L(y) = s^{-1}L(x)\);
   \end{itemize}
   so \(L: A \to \mathcal{P}(\Sigma^*)\) is a morphism of coalgebras. Moreover \(L\) is unique: let \(f: A \to \mathcal{P}(\Sigma^*)\) be a morphism of coalgebras; the following points show that \(f(x_0) \subseteq L(x_0)\) and \(L(x_0) \subseteq f(x_0)\) for a fixed \(x_0 \in A\). Thus \(f(x_0) = L(x_0)\) for every \(x_0 \in A\) and \(f = L\).
   We have that \(\mathcal{P}(\Sigma^*)\) is the terminal coalgebra for \(F\).
   \begin{itemize}
-  \item[a.] Let \(w_1\ldots w_n = w \in f(x_0)\); in order to prove that \(w \in L(x_0)\) we need to show that (\ref{eq:sequence}) ends in a terminal state.
+  \item[a.] Let \(w_1\ldots w_n = w \in f(x_0)\); in order to prove that \(w \in L(x_0)\) we need to show that (\ref{eq:sequence}) ends in an accepting state.
     We have that \(f(x_1) = f(\delta_{w_1}(x_0)) = w_1^{-1}f(x_0)\) because \(f\) is a morphism and, by iterating, we obtain \(f(x_n) = w_n^{-1}\ldots w_1^{-1}f(x_0)\).
-    Finally since \(w \in f(x_0)\) we have \(\varepsilon \in f(x_n)\) so \(x_n\) is accepting again because \(f\) is a morphism.
+    Finally since \(w \in f(x_0)\) we get \(\varepsilon \in f(x_n)\) i.e. \(f(x_n)\) is accepting in \(\mathcal{P}(\Sigma^*)\) and so must be \(x_n\) in \(A\) because \(f\) is a morphism.
   \item[b.] Let \(w_1\ldots w_n = w \in L(x_0)\) thus we know that (\ref{eq:sequence}) ends in an accepting state; \(x_n\) accepting gives \(f(x_n)\) accepting, because \(f\) is a morphism, and thus \(\varepsilon \in f(x_n)\).
     Moreover, again because \(f\) is a morphism, we have \(f(x_n) = f(\delta_{w_{n}}(x_{n-1})) = w_n^{-1}f(x_{n-1})\) and, since \(\varepsilon \in f(x_n)\), we obtain \(w_n \in f(x_{n-1})\).
     Iteration of this argument gives \(w_1 \ldots w_n = w \in f(x_0)\).
