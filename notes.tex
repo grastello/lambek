@@ -2136,7 +2136,7 @@ As with algebras, coalgebras on \(F\) also form a category that we indicate with
   \label{ex:deterministic-automata}
   Let \(\Sigma\) be a set of inputs.
   A \textbf{deterministic automata}\marginnote{deterministic automata} is composed of a set \(S\) of states, a transition function \(\delta_s : S \to S\) for every \(s \in \Sigma\) and a set \(A \subset S\) of accepting states.
-  In order to obtain deterministic automata as coalgebras for a functor we curry the \(\delta_s\)'s into a single function \(\delta:S \to S^\Sigma\) and consider the characteristic function \(\chi : S \to \{0, 1\}\) of \(A\).
+  In order to obtain deterministic automata as coalgebras for a functor we group the \(\delta_s\)'s into a single function \(\delta:S \to S^\Sigma\) assigning to a state \(t\) the map \(s \mapsto \delta_s(t)\) and consider the characteristic function \(\chi : S \to \{0, 1\}\) of \(A\).
   So deterministic automata are coalgebras for the functor
   \begin{equation*}
     FX = \{0, 1\} \times X^\Sigma
