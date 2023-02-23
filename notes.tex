@@ -2404,7 +2404,8 @@ Lambeck's Lemma for coalgebras can be interpreted as a generalization of an orde
 The Knaster-Tarski Theorem \ref{teo:knaster_tarski} obviously follows from this version of the lemma as well since the hypothesis guarantees the existence of the join of \(A\).
 
 \begin{remark}
-  By Theorem \ref{teo:set_lambeck_converse} and Lambeck's Lemma we have that, for functors over \(\Set\), the existence of a terminal coalgebra implies the existence of an initial algebra.
+  For functors over \(\Set\), the existence of a terminal coalgebra implies the existence of an initial algebra.
+  Indeed if \(F\) is an endofunctor over \(\Set\) with terminal coalgebra \(\nu F\) then by Lambeck's Lemma \ref{lemma:colambeck} \(\nu F\) is a fixed point and now Theorem \ref{teo:set_lambeck_converse} guarantees the existence of the initial algebra \(\mu F\).
   The converse is false since, as it was found in \cite[Example 3.14]{Adamek-2016} by Adámek, Koubek and Palm, there are two set functors that coincide on all objects (but not all morphisms) such that one has a terminal coalgebra and the other one does not (we shall see this in Section [TO DO]).
   Thus the existence of a terminal coalgebra, even for set functors, is a more complicated matter than the existence of an initial algebra.
 \end{remark}
