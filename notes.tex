@@ -2459,12 +2459,14 @@ Instead of coinduction we will discuss bisimulation, a concept that has many app
   \end{equation*}
   Since \(\Sigma^\omega\) is the terminal coalgebra there is a unique \(h : 2 \to \Sigma^\omega\) such that
   \begin{equation*}
-    \intoprod{\head}{\tail} \circ h = (\id \times h) \circ \alpha
+    \intoprod{\head}{\tail} \circ h = (\id_\Sigma \times h) \circ \alpha.
   \end{equation*}
-  from which we obtain the following relations
+  If we write \(h(0) = (a_0, a_1, a_2, \ldots)\) and \(h(1) = (b_0, b_1, b_2, \ldots)\) from the above we obtain
   \begin{itemize}
-  \item[1.] \(\head(h(0)) = \alpha(0) = x\) and \(\head(h(1)) = \alpha(1) = y\);
-  \item[2.] \(\tail(h(0)) = h(\alpha(0)) = h(1)\) and \(\tail(h(1)) = h(\alpha(1)) = h(0)\);
+  \item[1.] \(\head(h(0)) = (\pi_\Sigma \circ (\id_\Sigma \times h))(\alpha(0))\) hence \(a_0 = x\);
+  \item[2.] \(\head(h(1)) = (\pi_\Sigma \circ (\id_\Sigma \times h))(\alpha(1))\) hence \(b_0 = y\);
+  \item[3.] \(\tail(h(0)) = (\pi_{\Sigma^\omega} \circ (\id_\Sigma \times h))(\alpha(0)) = h(1)\) hence \((a_1, a_2, \ldots) = (b_0, b_1, \ldots)\);
+  \item[4.] \(\tail(h(1)) = (\pi_{\Sigma^\omega} \circ (\id_\Sigma \times h))(\alpha(1)) = h(0)\) hence \((b_1, b_2, \ldots) = (a_0, a_1, \ldots)\)
   \end{itemize}
   and thus we must have
   \begin{equation*}
