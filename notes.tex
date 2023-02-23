@@ -2196,7 +2196,7 @@ We have seen that the initial \(F\)-algebra is quite interesting and we will see
 
 \begin{example}
   \label{ex:terminalcoalgebra1}
-  \(FX = X + 1\) has terminal coalgebra \(\mathbb{N}^\top\) with the following structure
+  \(FX = X + 1\) has terminal coalgebra \((\mathbb{N}^\top, \tau)\) with structure \(\tau\) given by the following
   \begin{center}
     \begin{tikzcd}[sep=large]
       0 & 1 \ar[l] & 2 \ar[l] & \ldots \ar[l] & \infty \ar[loop right]
@@ -2433,7 +2433,7 @@ Instead of coinduction we will discuss bisimulation, a concept that has many app
     \begin{equation*}
       \alpha(x, y) =
       \begin{cases}
-        (0, \tau(y)) & \text{if } x = 0\\
+        (0, \tau(y)) & \text{if } x = 0 \text{ (hence \(y \neq 0\))}\\
         (\tau(x), y) & \text{if } x \neq 0
       \end{cases}.
     \end{equation*}
