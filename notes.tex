@@ -1637,7 +1637,7 @@ We now generalize Remark \ref{rem:induced_cocone} to the transfinite case.
 \begin{definition}
   We say that the inital-algebra chain \textbf{converges}
   \marginnote{convergence of the initial-algebra chain}
-  in \(\lambda\) steps if \(w_{\lambda, \lambda+1}\) is an isomorphism and that it converges in \textbf{exactly} \(\lambda\) steps when \(\lambda\) is the least such ordinal.
+  \textbf{in} \(\lambda\) \textbf{steps} if \(w_{\lambda, \lambda+1}\) is an isomorphism and that it converges in \textbf{exactly} \(\lambda\) \textbf{steps} when \(\lambda\) is the least such ordinal.
 \end{definition}
 
 We are now ready to state and prove the transfinite version of Adámek's Theorem.
@@ -2840,6 +2840,11 @@ This includes the limit of the empty chain, so \(\A\) must have a terminal objec
   and, for limit ordinals \(j\), \(\alpha_j: A \to V_j\) is the unique factorization arrow such that \(v_{j, i} \circ \alpha_j = \alpha_i\) for all \(i < j\) obtained using the universal property of \(V_j\).
   Proof that this is well-defined is dual to what we did in Remark \ref{rem:induce-transfinite-cocone}.
 \end{remark}
+
+\begin{definition}
+  We say that the terminal-coalgebra chain \textbf{converges in} \(\lambda\) \textbf{steps}\marginnote{convergence of the terminal-coalgebra chain} if \(v_{\lambda + 1, \lambda}\) is an isomorphism.
+  It converges in \textbf{exactly } \(\lambda\) \textbf{steps} if \(\lambda\) is the least such ordinal.
+\end{definition}
 
 \printbibliography
 \end{document}
