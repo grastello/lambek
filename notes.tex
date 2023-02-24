@@ -1501,6 +1501,7 @@ The theorem was first proven by Adámek and Koubek in \cite{Adamek-Koubek-1979} 
 \newpage
 
 \section{Colimits of chains}
+\label{sec:colimits_of_chains}
 
 Through this chapter we regard ordinals \(j \in \Ord\) as linear orders and thus as categories.
 A \(j\)-chain in some category \(\A\) is a functor \(C : j \to \A \)\marginnote{\(j\)-chain}; we denote the elements of the chain by \(C_i\), for \(i \in j\), and its arrows by \(c_{i,i'} : C_i \to C_{i'}\) for \(i \leq i' < j\).
@@ -2807,7 +2808,38 @@ To achieve this goal we begin by giving a [BLA BLA BLA]
   This gives us that \(\tau\) is the inverse of \(\overline{\tau}\).
 \end{proof}
 
+\section{Terminal Coalgebras from Infinitary Iteration}
 
+[BLABLA]
+We work with functors from \(\Ord^\op\) into a given category \(\A\).
+Such diagrams should in theory be called \textit{cochains}, being the dual of chains as defined in Section \ref{sec:colimits_of_chains}; however it is customary to simply call them \textbf{chains} as the context is generally enough to differentiate between the two kinds.
+With this in mind a category \(\A\) is said to have limits of chains if for all \(j \in \Ord\) all diagrams \(j^\op \to \A\) have a limit.
+This includes the limit of the empty chain, so \(\A\) must have a terminal object \(1\).
+
+\begin{definition}
+  Let \(\A\) be a category with limits of chains and \(F\) an endofunctor over \(\A\).
+  The \textbf{terminal-coalgebra chain}\marginnote{terminal-coalgebra chain} is the \(\Ord^\op\)-chain in \(\A\) with objects \(V_j\) and arrows \(v_{j,i}\) (with \(j \geq i\)) defined by transfinite recursion as follows.
+  \begin{align*}
+    V_0 = 0 && \text{base case};\\
+    V_{j+1} = FV_j && \text{for all ordinals \(j\)};\\
+    V_j = \lim_{i < j}V_i && \text{for all limit ordinals \(j\)};
+  \end{align*}
+  As for arrows we proceed by dualizing what we have done for the initial-algebra chain: \(v_{1, 0}\) is the unique arrow \(V_1 \to 1\) and \(v_{i+1, j+1} = F v_{i, j}\) for every \(i \geq j\) in \(\Ord\).
+  When \(j\) is a limit ordinal we let \(\{v_{j, i}\}_{i < j}\) be the limit cone of \(W_j\) and, finally, \(v_{j+1, j}\) is obtained as the unique factorization arrow such that
+  \begin{equation*}
+    v_{j, i + 1} \circ v_{j+1, j} = Fv_{j, i} \quad \text{for all \(i < j\)}.
+  \end{equation*}
+\end{definition}
+
+\begin{remark}
+  Dual to Remark \ref{rem:induce-transfinite-cocone} every \(F\)-coalgebra \((A, \alpha)\) induces a canonical cone \((\alpha_i : A \to V_i)_{i\in\Ord}\) over the terminal-coalgebra chain given by
+  \begin{align*}
+    \alpha_0 &=\ ! && \text{base case};\\
+    \alpha_{i+1} &= F\alpha_i \circ \alpha && \text{for all ordinals i};
+  \end{align*}
+  and, for limit ordinals \(j\), \(\alpha_j: A \to V_j\) is the unique factorization arrow such that \(v_{j, i} \circ \alpha_j = \alpha_i\) for all \(i < j\) obtained using the universal property of \(V_j\).
+  Proof that this is well-defined is dual to what we did in Remark \ref{rem:induce-transfinite-cocone}.
+\end{remark}
 
 \printbibliography
 \end{document}
