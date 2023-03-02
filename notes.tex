@@ -2408,10 +2408,11 @@ Lambeck's Lemma for coalgebras can be interpreted as a generalization of an orde
 The Knaster-Tarski Theorem \ref{teo:knaster_tarski} obviously follows from this version of the lemma as well since the hypothesis guarantees the existence of the join of \(A\).
 
 \begin{remark}
+  \label{rem:tcoalgebra-implies-ialgebra}
   For functors over \(\Set\), the existence of a terminal coalgebra implies the existence of an initial algebra.
   Indeed if \(F\) is an endofunctor over \(\Set\) with terminal coalgebra \(\nu F\) then by Lambeck's Lemma \ref{lemma:colambeck} \(\nu F\) is a fixed point and now Theorem \ref{teo:set_lambeck_converse} guarantees the existence of the initial algebra \(\mu F\).
-  The converse is false since, as it was found in \cite[Example 3.14]{Adamek-2016} by Adámek, Koubek and Palm, there are two set functors that coincide on all objects (but not all morphisms) such that one has a terminal coalgebra and the other one does not (we shall see this in Section [TO DO]).
-  Thus the existence of a terminal coalgebra, even for set functors, is a more complicated matter than the existence of an initial algebra.
+  The converse is false since, as it was found in \cite[Example 7]{Admek1995OnTG} by Adámek and Koubek, there is a set functor that has a fixed point (and thus an initial algebra) but does not have a terminal coalgebra (we shall see this in Example \ref{ex:coalgebra-bad}).
+  Thus the existence of a terminal coalgebra, even for set functors, is a more complicated matter than the existence of an initial algebra and a version of the Initial Algebra Theorem \ref{teo:initial-algebra-theorem} for coalgebras is not possible, even for \(\Set\).
 \end{remark}
 
 \section{Corecursion and Bisimulation}
@@ -2908,8 +2909,9 @@ We can think of a \(\lambda\)-accessible functor as of a functor whose behaviour
 \end{example}
 
 \begin{example}
+  \label{ex:powerset_lambda}
   The power-set functor \(\mathcal{P}\) is not accessible for any regular cardinal.
-  This is, in hindsight, because of Theorem \ref{} and Remark \ref{rem:powset-no-term-coalgebra} but can be proved directly.
+  This is, in hindsight, because of Theorem \ref{teo:accessible-implies-terminal-coalgebra} and Remark \ref{rem:powset-no-term-coalgebra} but can be proved directly.
   Indeed let \(\lambda\) be a regular cardinal and \(X\) a set of cardinality \(\lambda\).
   Then if \(m: M \rightarrowtail X\) is a subset of \(X\) such that \(X \in \im(\mathcal{P}m)\) then we must have \(M = X\) so \(|M| = \lambda\) and thus \(\mathcal{P}\) is not \(\lambda\)-accessible.
 
@@ -2922,12 +2924,25 @@ We can think of a \(\lambda\)-accessible functor as of a functor whose behaviour
 \end{example}
 
 \begin{example}
+  \label{ex:polynomial-accessible}
   The functor \(FX = X^n\) is \(\lambda\)-accessible for every cardinal \(n < \lambda\).
   Moreover one can prove that the coproduct of accessible functors is itself accessible so a polynomial functor \(H_\Sigma\) is \(\lambda\)-accessible provided that all arities of the symbols of the signature \(\Sigma\) are less than \(\lambda\).
 \end{example}
 
+In order to prove that being \(\lambda\)-accessible implies existence of a terminal coalgebra we need the following lemma on set functors.
+
+\begin{lemma}
+  \label{lemma:preserve-finite-intersections}
+  Every functor \(F\) over \(\Set\) preserves non-empty finite intersections.
+\end{lemma}
+
+\begin{proof}
+  Refer to \cite[Theorem B.2.2]{coalgebrabook}.
+\end{proof}
+
 \begin{theorem}
-  Given a regular cardinal \(\lambda\) the terminal coalgebra chain of a \(\lambda\)-accessible functor \(F\) over \(\Set\) converges in \(\lambda + \lambda\) steps.
+  \label{teo:accessible-implies-terminal-coalgebra}
+  Given a regular cardinal \(\lambda\) the terminal-coalgebra chain of a \(\lambda\)-accessible functor \(F\) over \(\Set\) converges in \(\lambda + \lambda\) steps.
 \end{theorem}
 
 \begin{proof}
@@ -2978,10 +2993,166 @@ We can think of a \(\lambda\)-accessible functor as of a functor whose behaviour
       \end{tikzcd}
     \end{equation*}
     commutes so \(u \cap v_i\) is non-empty as well; we let \(u_i\) be \(u \cap v_i\).
-    Now from \(u_i = u \cap v_i\) being non-empty, \(x \in \im(Fu)\), \(x \in \im(Fv_i)\) (which we have from definition of \(U\) and hypothesis on \(x\)) and Lemma \ref{} we obtain that \(x\in\im(Fu_i)\) for all \(i < \lambda\).
+    Now from \(u_i = u \cap v_i\) being non-empty, \(x \in \im(Fu)\), \(x \in \im(Fv_i)\) (which we have from definition of \(U\) and hypothesis on \(x\)) and Lemma \ref{lemma:preserve-finite-intersections} we obtain that \(x\in\im(Fu_i)\) for all \(i < \lambda\).
     Finally notice that \((u_i)_{i < \lambda}\) is a decreasing \(\lambda\)-chain of subsets of \(U\) thus, since \(|U| < \lambda\), it must converge at some \(i_0 < \lambda\).
     For that ordinal \(i_0\) we have \(u_{i_0} = u_\lambda = u \cap v_\lambda \subseteq v_{\lambda}\) so \(\im(Fu_0) \subseteq \im(Fv_{\lambda})\) and this gives that \(x \in \im(Fv_{\lambda})\).
   \end{itemize}
+\end{proof}
+
+\begin{remark}
+  Worrell proved in \cite{Worrell2005OnTF} that there is a functor \(F\) over \(\Set\) whose terminal-coalgebra chain converges in \(\omega + \omega\) steps but is not finitary.
+  Thus the condition of Theorem \ref{teo:accessible-implies-terminal-coalgebra} is not necessary.
+\end{remark}
+
+\begin{example}
+  By Example \ref{ex:finitepowset} and Example \ref{ex:powerset_lambda} the functors \(\mathcal{P}_\lambda\) all have a terminal coalgebra as well as polynomial functors by Example \ref{ex:polynomial-accessible} (but we already knew that).
+\end{example}
+
+As we hinted in Remark \ref{rem:tcoalgebra-implies-ialgebra} there is a functor with an initial algebra which does not have a terminal coalgebra.
+With the knowledge that \(\mathcal{P}_{\textsf{f}}\) has a terminal coalgebra and the following proposition we can construct directly such functor.
+
+\begin{proposition}
+  \label{prop:subfunctor}
+  Let \(\A\) be a complete and well-powered category and \(G\) an endofunctor over \(\A\) preserving monomorphisms and having a terminal coalgebra \(\nu G\).
+  Then every subfunctor \(F\) of \(G\) has a terminal coalgebra \(\nu F\) which is always a subobject of \(\nu G\).
+\end{proposition}
+
+\begin{proof}
+  See \cite[Corollary 7.2.10]{coalgebrabook}.
+\end{proof}
+
+\begin{example}
+  \label{ex:coalgebra-bad}
+  Consider the functor \(\mathcal{P}_{-\aleph_0}(X)\) over \(\Set\) defined by
+  \begin{equation*}
+    \mathcal{P}_{-\aleph_0}(X) = \{Y \subseteq X : \text{\(Y\) is finite or uncountable}\}
+  \end{equation*}
+  on objects and such that if \(f: X \to Y\) is a function then \(\mathcal{P}_{-\aleph_0}f: \mathcal{P}_{-\aleph_0}(X) \to \mathcal{P}_{-\aleph_0}(Y)\) is defined by
+  \begin{equation*}
+    (\mathcal{P}_{-\aleph_0}f)(A) = 
+    \begin{cases}
+      f(A) & \text{if \(A\) is finite or \(f_{\upharpoonright A}\) is injective}\\
+      \emptyset & \text{otherwise}
+    \end{cases}
+  \end{equation*}
+  for \(A \in \mathcal{P}_{-\aleph_0}(X)\).
+
+  This functor has \(\mathbb{N}\) as fixed point since \(\mathcal{P}_{-\aleph_0}(\mathbb{N})\) is a countable set.
+  Then by Theorem \ref{teo:set_lambeck_converse} has an initial algebra; we shall now see that it does not have a terminal coalgebra.
+
+  Note that \(\mathcal{P}_\lambda\) is a subfuctor of \(\mathcal{P}_{-\aleph_0}\) so Proposition \ref{prop:subfunctor} applies: if \(\nu \mathcal{P}_{-\aleph_0}\) exists then it is at least as large as \(\nu \mathcal{P}_{\textsf{f}}\) which is uncountable (prove it?).
+  By Lambeck's Lemma \ref{lemma:colambeck} we know that \(\nu\mathcal{P}_{-\aleph_0}\) must be a fixed point of \(\mathcal{P}_{-\aleph_0}\) but \(\mathcal{P}_{-\aleph_0}\) has no uncountable fixed points.
+  
+  Indeed let \(A\) be an uncountable set, \(B\) the set of all countably infinite subsets of \(A\) and \(C = \mathcal{P}_{-\aleph_0}(A)\); then
+  \begin{equation*}
+    |B \cup C| = |\mathcal{P}(A)| > |A|
+  \end{equation*}
+  by Cantor's Theorem.
+  The map \(X \mapsto A \setminus X\) is an injection of type \(\mathcal{P}(A) \rightarrowtail \mathcal{P}(A)\) and, since \(A\) is uncountable, it restricts to an injection \(B \rightarrowtail C\) which gives \(|B| \leq |C|\).
+  Now we have
+  \begin{equation*}
+    |C| = |B| + |C| = |\mathcal{P}(A)|
+  \end{equation*}
+  that implies \(|A| < |\mathcal{P}(A)| = |C| = |\mathcal{P}_{-\aleph_0}(A)|\) so \(\mathcal{P}_{-\aleph_0}\) has no uncountale fixed points.
+\end{example}
+
+The previous example shows, as already observed, that there is no Theorem \ref{} for \(\Set\).
+There is, however, another sufficient condition [BLA BLA BLA].
+
+\begin{definition}
+  \label{def:fixed-point-pair}
+  A set functor \(F\) has a \textbf{fixed point pair}\marginnote{fixed point pair} if there is a regular cardinal \(\lambda\) such that \(F\) has a fixed point of cardinality \(\lambda\) and one of cardinality \(\lambda^+\) (the smallest cardinal bigger than \(\lambda\)).
+\end{definition}
+
+For our sufficient condition we will need to assume the Generalized Continuum Hypothesis which is independent from ZFC.
+
+\begin{remark}
+  \label{rem:gch}
+  Recall that the \textbf{Generalized Continuum Hypothesis (GCH)} is the statement that, for every infinite cardinal \(\lambda\), \(\lambda^+ = 2^\lambda\) where with \(2^\lambda\) we indicate the power-set of \(\lambda\).
+  Under this hypothesis if \(k < \lambda\) and \(\lambda\) is a regular cardinal then \(\lambda^k = \lambda\) (see \cite[Theorem 5.15 (iii)]{jech}).
+  Moreover we recall that we have \(\lambda^\lambda = 2^\lambda\) for every infinite cardinal regardless of GCH.
+\end{remark}
+
+[???]
+
+\begin{lemma}
+  \label{lemma:pseudo-accessability}
+  Let \(Z\) be an infinite pre-fixed point of a functor \(F\) over \(\Set\) and \(X\) be any set such that \(|X| \leq |Z|\) and \(|X|, |Z|\) have the same cofinality.
+  Then for every \(x \in FX\) there is a subset \(y : Y \rightarrowtail X\) such that \(|Y| < |X|\) and \(x \in \im(Fm)\).
+\end{lemma}
+
+\begin{proof}
+  Refer to \cite[Lemma B.4.8]{coalgebrabook}.
+\end{proof}
+
+\begin{theorem}
+  \label{teo:GCH}
+  Assuming GCH every functor \(F\) with a fixed point pair has a terminal coalgebra.
+\end{theorem}
+
+\begin{proof}
+  Let \(\lambda\) be the regular cardinal of Definition \ref{def:fixed-point-pair}.
+  We shall prove that for every element \(x \in V_{\lambda + 1}\) there is a subset \(m : M \rightarrowtail V_\lambda\) such that \(x \in \im(Fm)\) and \(|M| < \lambda\).
+  This is enough to perform (1) and (2) from the proof of Theorem \ref{teo:accessible-implies-terminal-coalgebra} (as if \(F\) were \(\lambda\)-accessible) and hence establish the existence of the terminal coalgebra by convergence of the terminal-coalgebra chain.
+  Moreover, again as in proof of Theorem \ref{teo:accessible-implies-terminal-coalgebra}, we can assume \(F1 \neq \emptyset\) thus \(V_i \neq \emptyset\) for every \(i \in \Ord\).
+  The proof proceeds in three steps.
+  \begin{itemize}
+  \item[(1)]
+    We show that \(|V_j| \leq \lambda\) for every \(j < \lambda\) with a transfinite induction.
+    \begin{itemize}
+    \item[\(\bullet\)] The base case in trivial.
+    \item[\(\bullet\)] For the successor step notice  that if \(|V_j| \leq \lambda\) then there is an injection \(m : V_j \rightarrowtail \lambda\) which splits (since \(V_j \neq \emptyset\)).
+      Thus \(Fm : FV_j \rightarrowtail F\lambda\) also splits (thus is mono) and we have
+      \begin{equation*}
+        |V_{j + 1}| = |FV_j| \leq |F\lambda| =\lambda;
+      \end{equation*}
+      where the final equation is guaranteed by \(F\) having a fixed point of cardinality \(\lambda\).
+    \item[\(\bullet\)] For the limit step let \(j < \lambda\) be a limit ordinal and assume \(|V_i| \leq \lambda\) for every \(i < \lambda\).
+      Let \(\kappa < \lambda\) be the cardinality of \(j\).
+      Then from \(V_j = \lim_{i < j}V_j\) and how limits are computed in \(\Set\) we obtain that \(V_j\) has cardinality at most that of \(\prod_{i < j}V_i\) which, by induction hypothesis, is at most \(\lambda^\kappa\).
+      But \(\lambda^\kappa = \lambda\) by Remark \ref{rem:gch}.
+    \end{itemize}
+  \item[(2)]
+    Now, since \(V_\lambda = \lim_{j < \lambda}V_j\), we have
+    \begin{equation*}
+      |V_\lambda| \leq |\prod_{j < \lambda} V_j| \leq \lambda^\lambda = 2^\lambda = \lambda^+
+    \end{equation*}
+    by computation of limits in \(\Set\), step (1) and GCH.
+    This means that there is a monomorphism \(m : V_\lambda \to \lambda^+\) which splits, hence \(Fm\) is also a monomorphism and we have \(|FV_\lambda| = |V_{\lambda + 1}| \leq |F\lambda^+| = \lambda^+\) because \(F\) has a fixed point of cardinality \(\lambda^+\).
+  \item[(3)]
+    Fix \(x \in V_{\lambda + 1} = FV_\lambda\).
+    We apply Lemma \ref{lemma:pseudo-accessability} to the fixed point \(Z = \lambda^+\) and \(X = V_\lambda\) to obtain a subset \(m_0 : M_0 \rightarrowtail V_\lambda\) such that \(|M_0| < \lambda^+\) and \(x \in \im(Fm_0)\).
+    Now let \(x_0 \in FM_0\) be such that \(Fm_0(x_0) = x\) and notice that \(|M_0| < \lambda^+\) implies \(|M_0| \leq \lambda\); we can now apply Lemma \ref{lemma:pseudo-accessability} to the fixed point \(Z = \lambda\) and the set \(M_0\) to obtain a subset \(m_1: M_1 \rightarrowtail M_0\) with \(x_0 \in \im(Fm_1)\) and \(|M_1| < \lambda\).
+
+    Finally \(m = m_0 \circ m_1 : M_1 \rightarrowtail V_\lambda\) is a subset of \(V_\lambda\) such that \(|M_1| < \lambda\) and \(x \in \im(Fm)\) since \(x_0 \in \im(Fm_1)\) and \(x = Fm_0(x_0)\).
+  \end{itemize}
+\end{proof}
+
+But even assuming GCH is insufficient to get a sufficient and necessary condition.
+
+\begin{example}
+  Consider the set functor defined by
+  \begin{equation*}
+    FX = X + 1 + \{M \subseteq X : \text{\(X\) uncountable}\}
+  \end{equation*}
+  on objects and naturally on arrows.
+  Notice that \(F\) has the same terminal-coalgebra chain as \(GX = X + 1\) so it has a countable terminal coalgebra.
+  By an argument similar to that of Example \ref{ex:coalgebra-bad} we have that \(F\) does not have uncountable fixed points and hence it has a terminal coalgebra but no fixed point pair.
+\end{example}
+
+\begin{proposition}
+  The Continuum Hypothesis \(\aleph_1 = 2^{\aleph_0}\) holds if and only if every set functor with fixed point pair \(\aleph_0, \aleph_1\) has a terminal coalgebra.
+\end{proposition}
+
+\begin{proof}
+  The ``if'' direction is clear from Theorem \ref{teo:GCH}.
+  For the reverse assume that \(\aleph_1 < 2^{\aleph_0}\) and consider the functor \(\mathcal{P}_{-\aleph_0,\aleph_1}\) defined as
+  \begin{equation*}
+    \mathcal{P}_{-\aleph_0, \aleph_1}(X) = \{Y \subseteq X : |Y| \neq \aleph_0, \aleph_1\}
+  \end{equation*}
+  on objects and naturally on arrows.
+  Now if \(X\) has cardinality \(\aleph_0\) or \(\aleph_1\) then \(\mathcal{-\aleph_0, \aleph_1}(X) = \mathcal{P}_{\textsf{f}}(X)\) which gives that both \(\aleph_0\) and \(\aleph_1\) are fixed points; hence \(\mathcal{P}_{-\aleph_0, \aleph_1}\) has a fixed point pair.
+  But, by working as in Example \ref{ex:coalgebra-bad}, we can prove that \(\mathcal{P}_{-\aleph_0, \aleph_1}\) has no terminal coalgebra.
 \end{proof}
 
 \printbibliography
