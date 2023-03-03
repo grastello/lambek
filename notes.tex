@@ -2770,7 +2770,7 @@ We can often use this to our advantage to better understand the structure of the
 \end{example}
 
 We can use Theorem \ref{teo:coadamek} to obtain an alternative proof of Proposition \ref{prop:trees_coalgebras}.
-To achieve this goal we begin by giving a [BLA BLA BLA]
+To achieve this goal we begin by giving an explicit description of the terminal-coalgebra \(\omega^\op\)-chain of a polynomial fuctor.
 
 \begin{remark}
   Let \(\Sigma\) be a signature, \(H_\Sigma\) a the corresponding polynomial functor (over \(\Set\)) and \(\Sigma_\bot\) a new signature obtained by adding to \(\Sigma\) a new constant symbol \(\bot\).
@@ -2778,11 +2778,10 @@ To achieve this goal we begin by giving a [BLA BLA BLA]
   \begin{equation*}
     H^n_\Sigma(1) = \{ T : \text{\(T\) is a \(\Sigma_\bot\)-tree of height at most \(n\) and all leaves at height \(n\) labeled by \(\bot\)}\}.
   \end{equation*}
-  In order to show this we begin by identifying \(1 = \{*\} = H^0_\Sigma(1)\) with the \(\Sigma_\bot\) tree formed by a single node (the root) labeled by \(\bot\).
+  In order to prove it we begin by identifying \(1 = \{*\} = H^0_\Sigma(1)\) with the \(\Sigma_\bot\) tree formed by a single node (the root) labeled by \(\bot\).
   Now \(H^1_\Sigma(1) = \coprod_{k}\Sigma_k \times 1^k\) can be identified with the set of all \(\Sigma_\bot\) trees of height at most 1 that have the root labeled by some \(k\)-ary symbol of \(\Sigma\) and the \(k\) leaves (that are at height 1) labeled by \(\bot\).
   Similarly \(H^2_\Sigma(1) = \coprod_k \Sigma_k \times (H^1_\Sigma(1))^k\) can be identified with the set of \(\Sigma_\bot\)-trees that have root labeled by a \(k\)-ary symbol of \(\Sigma\) and whose \(k\) subtrees are picked from \(H^1_\Sigma(1)\); thus elements of \(H^2_\Sigma(1)\) have height at most 2 and leaves at height 2 (if any) all labeled by \(\bot\).
   By iterating we obtain that \(H^n_\Sigma(1)\) is precisely the set of all \(\Sigma_\bot\)-trees of height at most \(n\) with leaves at height \(n\) labeled by \(\bot\).
-
   The connecting functions \(H^{n + 1}_\Sigma(1) \to H^n_\Sigma(1)\) cut out the layer of \(\bot\)-labeled leaves and re-label every leave at height \(n\) with \(\bot\).
 \end{remark}
 
@@ -2809,7 +2808,7 @@ To achieve this goal we begin by giving a [BLA BLA BLA]
     \label{eq:treetuplingcondition}
     l_{m + 1} = H_\Sigma l_m \circ \tau, \quad m < \omega.
   \end{equation*}
-  Tree-tupling \(\overline{\tau}: H_\Sigma T_\Sigma \to H_\Sigma\) satisfies \(l_{m + 1} \circ \overline{\tau} = H_\Sigma l_m\) because cutting a tree-tupling at the \((m + 1)\)-th layer and re-labeling the leaves (this is \(l_{m +1} \circ \overline{\tau}\)) is the same as cutting and re-labeling maximal subtress at their \(m\)-th layer (this is \(H_\Sigma l_m\)).
+  Tree-tupling \(\overline{\tau}: H_\Sigma T_\Sigma \to H_\Sigma\) satisfies \(l_{m + 1} \circ \overline{\tau} = H_\Sigma l_m\) because cutting a tree-tupling at the \((m + 1)\)-th layer and re-labeling the leaves (this is \(l_{m +1} \circ \overline{\tau}\)) is the same as cutting and re-labeling every maximal subtree at their \(m\)-th layer (this is \(H_\Sigma l_m\)).
   This gives us that \(\tau\) is the inverse of \(\overline{\tau}\).
 \end{proof}
 
