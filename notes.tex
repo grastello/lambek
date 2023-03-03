@@ -2639,7 +2639,7 @@ Through this section we assume to be working in a category \(\A\) with a termina
   Every coalgebra \(\alpha : A \to FA\) induces a canonical cone \((\alpha_n : A \to F^n1)_{n < \omega}\) over (\ref{dia:terminal_chain}) defined as following
   \begin{align*}
     \alpha_0 &=\ ! \\
-    \alpha_{n+1} &= A \xrightarrow{\alpha} FA \xrightarrow{F\alpha_n}.
+    \alpha_{n+1} &= A \xrightarrow{\alpha} FA \xrightarrow{F\alpha_n} F^{n+1}1.
   \end{align*}
   Proof that this is really a cone is dual to Remark \ref{rem:induced_cocone}.
 \end{remark}
@@ -2649,7 +2649,7 @@ Adámek's Theorem \ref{teo:adamek} dualizes straightforwardly as well.
 \begin{theorem}
   \label{teo:coadamek}
   Let \(\A\) be a category with a terminal object and limits of \(\omega^\op\)-chains and \(F\) an endofuctor preserving \(\omega^\op\)-limits.
-  Then \(F\) has a terminal coalbegra \(\nu F = \lim_{n < \omega} F^n1\).
+  Then \(F\) has terminal coalbegra \(\nu F = \lim_{n < \omega} F^n1\).
   The structure of \(\nu F\) is the unique \(\tau: \nu F \to F(\nu F)\) such that
   \begin{equation}
     \label{eq:aa}
@@ -2688,7 +2688,7 @@ We can often use this to our advantage to better understand the structure of the
     \end{tikzcd}
   \end{equation*}
   is the limit cone of \((H_\Sigma A_i, H_\Sigma a_i)_{i < \omega}\).
-  In order to do so we need to prove that for any cone
+  In order to do so we need to show that for any cone
   \begin{equation*}
     \begin{tikzcd}[sep = large]
       & B \ar[dl, "\beta_0"'] \ar[d, "\beta_1"] \ar[dr, "\beta_2"] & & \\
@@ -2717,7 +2717,7 @@ We can often use this to our advantage to better understand the structure of the
     \beta_i = (\id_{\Sigma_n} \times \alpha_i^n) \circ f_n.
   \end{equation}
 
-  Finally we can define \(f: B \to H_\Sigma A\) by
+  Finally we can define \(f: B \to H_\Sigma A\) by setting
   \begin{equation*}
     f(x) = f_n(x) \quad \text{when \(x \in B_n\)}.
   \end{equation*}
