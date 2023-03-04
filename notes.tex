@@ -2894,7 +2894,7 @@ However for functors over \(\Set\) there is another condition which guarantees c
 
 \begin{notation}
   Until the end of the section we will, for the sake of brevity, deliberately confuse a subset \(Y \subseteq X\) with its inclusion function \(y: Y \rightarrowtail X\).
-  We shall also write \(z \cap y\) for the inclusion \(z \cap y : Z \cap Y \rightarrowtail X\) of the intersection of two subsets \(z : Z \rightarrowtail X\) and \(y: Y \rightarrowtail X\).
+  We shall also write \(z \cap y\) for the inclusion \(z \cap y : Z \cap Y \rightarrowtail X\) of the intersection of two subsets \(z : Z \rightarrowtail X, y: Y \rightarrowtail X\); and similarly for the union of subsets.
 \end{notation}
 
 \begin{definition}
@@ -2956,7 +2956,7 @@ In order to prove that being \(\lambda\)-accessible implies existence of a termi
   The proof proceeds in two steps: in (1) we prove that every \(v_{j,i}:V_j \to V_i\) for \(j \geq i \geq \lambda\) is a monomorphism and in (2) that \(v_{\lambda+\lambda + 1, \lambda + \lambda}\) is an isomorphism, thus the terminal-coalgebra chain converges in \(\lambda+\lambda\) steps.
   \begin{itemize}
   \item[(1)]
-    It is sufficient to prove that \(v_{\lambda + 1, \lambda}\) is mono since, in \(\Set\), every mono with non-empty domain splits so \(FV_{\lambda+1, \lambda} = v_{\lambda + 2, \lambda +1}\) is mono as well and we can conclude that every \(v_{i, \lambda}\) with \(i \geq \lambda\) is a monomorphism through a transfinite induction.
+    It is sufficient to prove that \(v_{\lambda + 1, \lambda}\) is mono since, in \(\Set\), every mono with non-empty domain splits so \(Fv_{\lambda+1, \lambda} = v_{\lambda + 2, \lambda +1}\) is mono as well and we can conclude that every \(v_{i, \lambda}\) with \(i \geq \lambda\) is a monomorphism through a transfinite induction.
     This gives that all \(v_{j, i}\) with \(j \geq i \geq \lambda\) are mono.
     
     To prove that \(v_{\lambda+1, \lambda}\) is a monomorphism we shall see that two distinct elements \(x, y \in V_{\lambda + 1}\) remain distinct under application of \(v_{\lambda+1, \lambda}\).
@@ -2964,11 +2964,11 @@ In order to prove that being \(\lambda\)-accessible implies existence of a termi
     \begin{equation*}
       u_x : U_x \rightarrowtail V_\lambda,\quad  u_y : U_y \rightarrowtail V_\lambda
     \end{equation*}
-    of \(X\) such that \(|U_x|, |U_y| < \lambda\) and \(x \in \im Fu_x, y \in \im Fu_y\).
-    If \(u : U \rightarrowtail V_\lambda\) is the union of \(U_x, U_y\) then we have \(|U| < \lambda\) and \(x, y \in \im Fu\).
-    Moreover \((v_{\lambda, i})_{i < \lambda}\) is a limit cone so, by the universal property, every pair of distinct elements of the vertex \(a,b \in V_\lambda\) (and particularly if \(a,b \in U\)) remain distinct under \(v_{\lambda, i}\) for at least one \(i < \lambda\); this is true for every kind of limit cone, but for ones over \(\omega^\op\) it is also the case that \(a, b\) remain distinct under every \(v_{\lambda, j}\) for \(i \leq j < \lambda\). Now let us chose for every pair \((a, b)\) of distinct elements of \(U\) an ordinal \(i_{(a, b)} < \lambda\) such that \(v_{\lambda, i_{(a, b)}}\) keeps \(a, b\) distinct; the set of such ordinals has cardinality at most \(|U \times U| < \lambda\) and thus can't be cofinal because \(\lambda\) is a regular cardinal. This means that there is a \(i_0 < \lambda\) such that every pair of distinct elements of \(U\) remains distinct under \(v_{\lambda, i_0}\) i.e. \(v_{\lambda, i_0} \circ u\) is a monomorphisms.
+    of \(V_\lambda\) such that \(|U_x|, |U_y| < \lambda\) and \(x \in \im (Fu_x), y \in \im (Fu_y)\).
+    If \(u : U \rightarrowtail V_\lambda\) is the union of \(U_x, U_y\) then we have \(|U| < \lambda\) and \(x, y \in \im (Fu)\).
+    Moreover \((v_{\lambda, i})_{i < \lambda}\) is a limit cone so, by the universal property, every pair of distinct elements of the vertex \(a,b \in V_\lambda\) (and particularly if \(a,b \in U\)) remain distinct under \(v_{\lambda, i}\) for at least one \(i < \lambda\); this is true for every kind of limit cone in \(\Set\), but for ones over \(\omega^\op\) it is also the case that \(a, b\) remain distinct under every \(v_{\lambda, j}\) for \(i \leq j < \lambda\). Now let us chose for every pair \((a, b)\) of distinct elements of \(U\) an ordinal \(i_{(a, b)} < \lambda\) such that \(v_{\lambda, i_{(a, b)}}\) keeps \(a\) and \(b\) distinct; the set of such ordinals has cardinality at most \(|U \times U| < \lambda\) and thus can't be cofinal because \(\lambda\) is a regular cardinal. This means that there is \(i_0 < \lambda\) such that every pair of distinct elements of \(U\) remains distinct under \(v_{\lambda, i_0}\) i.e. \(v_{\lambda, i_0} \circ u\) is a monomorphism.
 
-    Now, since \(U \neq \emptyset\), \(v_{\lambda, i_0} \circ u\) splits and we have that \(Fv_{\lambda, i_0} \circ Fu\) is a monomorphisms as well thus, as \(x, y \in \im Fu\), \(x\) and \(y\) are kept distinct by \(Fv_{\lambda, i_0}\).
+    Now, since \(U \neq \emptyset\), \(v_{\lambda, i_0} \circ u\) splits and we have that \(Fv_{\lambda, i_0} \circ Fu\) is a monomorphism as well thus, as \(x, y \in \im (Fu)\), \(x\) and \(y\) are kept distinct by \(Fv_{\lambda, i_0}\).
     Finally
     \begin{equation*}
       Fv_{\lambda, i_0} = v_{\lambda + 1, i_0 + 1} = v_{\lambda, i_0 + 1} \circ v_{\lambda + 1, \lambda}
@@ -2976,19 +2976,19 @@ In order to prove that being \(\lambda\)-accessible implies existence of a termi
     gives that \(v_{\lambda + 1, \lambda}\) must keep \(x\) and \(y\) distinct too.
   \item[(2)]
     To prove that \(v_{\lambda + \lambda + 1, \lambda}\) is an isomorphism it is enough to prove that \(F\) preserves the limit \(V_{\lambda + \lambda}\) of the chain \((V_i)_{i < \lambda + \lambda}\).
-    This because the chains \((V_i)_{i < \lambda + \lambda}\) and \((FV_i)_{i < \lambda + \lambda}\) have the same limit by the dual of Remark \ref{lemma:final_functors}.
-    By the same remark we can disregard the first \(\lambda\) members of this chain and write
+    This because the chains \((V_i)_{i < \lambda + \lambda}\) and \((FV_i)_{i < \lambda + \lambda}\) have the same limit by the dual of Lemma \ref{lemma:final_functors}.
+    By the same lemma we can disregard the first \(\lambda\) members of this chain and write
     \begin{equation*}
       V_{\lambda + \lambda} = \lim_{i < \lambda} V_{\lambda + i}
     \end{equation*}
-    and so by (1) the connecting morphisms as well as the ones forming the cone are all mono.
+    and so by (1) the connecting morphisms as well as the ones forming the limiting cone are all mono.
     Let us write \(v_i\) for \(v_{\lambda + i, \lambda}\) and particularly \(v_\lambda\) for \(v_{\lambda + \lambda, \lambda}\).
     Since we are working in \(\Set\) the limit of such a chain is the intersection, thus \(V_{\lambda + \lambda} = \bigcap_{i < \lambda} V_{\lambda + i}\).
     We shall now prove that \(F\) preserves this intersection i.e. that given an \(x \in FV_\lambda\) such that \(x\) lies in the image of \(Fv_i\) for all \(i < \lambda\) then \(x\) must lie in the image of \(Fv_\lambda\) as well.
 
     Fix an \(x \in FV_\lambda\) such that \(x \in \im(Fv_i)\) for every \(i < \lambda\).
     Since \(F\) is \(\lambda\)-accessible there is a subset \(u : U \rightarrowtail V_\lambda\) of \(V_\lambda\) such that \(|U| < \lambda\) and \(x \in \im(Fu)\).
-    We can assume that \(u \cap v_\lambda\) is non-empty since we can take any element of \(V_{\lambda + \lambda}\) and add it to \(U\) without changing its cardinality.
+    We can assume that \(u \cap v_\lambda\) is non-empty since we can take any element of \(V_{\lambda + \lambda}\) and add it to \(U\) without making its cardinality \(\lambda\) or more.
     Now for every \(i < \lambda\) we have a mono \(v_{\lambda + \lambda, \lambda + i}\) and
     \begin{equation*}
       \begin{tikzcd}[sep=large]
@@ -2997,9 +2997,9 @@ In order to prove that being \(\lambda\)-accessible implies existence of a termi
       \end{tikzcd}
     \end{equation*}
     commutes so \(u \cap v_i\) is non-empty as well; we let \(u_i\) be \(u \cap v_i\).
-    Now from \(u_i = u \cap v_i\) being non-empty, \(x \in \im(Fu)\), \(x \in \im(Fv_i)\) (which we have from definition of \(U\) and hypothesis on \(x\)) and Lemma \ref{lemma:preserve-finite-intersections} we obtain that \(x\in\im(Fu_i)\) for all \(i < \lambda\).
+    Now from \(u_i = u \cap v_i\) being non-empty, \(x \in \im(Fu)\), \(x \in \im(Fv_i)\) (which we have from choice of \(U\) and hypothesis on \(x\)) and Lemma \ref{lemma:preserve-finite-intersections} we obtain that \(x\in\im(Fu_i)\) for all \(i < \lambda\).
     Finally notice that \((u_i)_{i < \lambda}\) is a decreasing \(\lambda\)-chain of subsets of \(U\) thus, since \(|U| < \lambda\), it must converge at some \(i_0 < \lambda\).
-    For that ordinal \(i_0\) we have \(u_{i_0} = u_\lambda = u \cap v_\lambda \subseteq v_{\lambda}\) so \(\im(Fu_0) \subseteq \im(Fv_{\lambda})\) and this gives that \(x \in \im(Fv_{\lambda})\).
+    For that ordinal \(i_0\) we have \(u_{i_0} = u_\lambda = u \cap v_\lambda \subseteq v_{\lambda}\) so \(\im(Fu_{i_0}) \subseteq \im(Fv_{\lambda})\) and this gives that \(x \in \im(Fv_{\lambda})\).
   \end{itemize}
 \end{proof}
 
