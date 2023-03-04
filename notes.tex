@@ -3001,6 +3001,7 @@ In order to prove that being \(\lambda\)-accessible implies existence of a termi
     Finally notice that \((u_i)_{i < \lambda}\) is a decreasing \(\lambda\)-chain of subsets of \(U\) thus, since \(|U| < \lambda\), it must converge at some \(i_0 < \lambda\).
     For that ordinal \(i_0\) we have \(u_{i_0} = u_\lambda = u \cap v_\lambda \subseteq v_{\lambda}\) so \(\im(Fu_{i_0}) \subseteq \im(Fv_{\lambda})\) and this gives that \(x \in \im(Fv_{\lambda})\).
   \end{itemize}
+  This concludes the proof.
 \end{proof}
 
 \begin{remark}
@@ -3107,17 +3108,17 @@ For our goals we need the following technical lemma.
   \item[(1)]
     We show that \(|V_j| \leq \lambda\) for every \(j < \lambda\) with a transfinite induction.
     \begin{itemize}
-    \item[\(\bullet\)] The base case in trivial.
+    \item[\(\bullet\)] The base case is trivial.
     \item[\(\bullet\)] For the successor step notice  that if \(|V_j| \leq \lambda\) then there is an injection \(m : V_j \rightarrowtail \lambda\) which splits (since \(V_j \neq \emptyset\)).
       Thus \(Fm : FV_j \rightarrowtail F\lambda\) also splits (thus is mono) and we have
       \begin{equation*}
         |V_{j + 1}| = |FV_j| \leq |F\lambda| =\lambda;
       \end{equation*}
       where the final equation is guaranteed by \(F\) having a fixed point of cardinality \(\lambda\).
-    \item[\(\bullet\)] For the limit step let \(j < \lambda\) be a limit ordinal and assume \(|V_i| \leq \lambda\) for every \(i < \lambda\).
+    \item[\(\bullet\)] For the limit step let \(j < \lambda\) be a limit ordinal and assume \(|V_i| \leq \lambda\) for every \(i < j\).
       Let \(\kappa < \lambda\) be the cardinality of \(j\).
       Then from \(V_j = \lim_{i < j}V_j\) and how limits are computed in \(\Set\) we obtain that \(V_j\) has cardinality at most that of \(\prod_{i < j}V_i\) which, by induction hypothesis, is at most \(\lambda^\kappa\).
-      But \(\lambda^\kappa = \lambda\) by Remark \ref{rem:gch}.
+      But \(\lambda^\kappa = \lambda\) because we are assuming GCH (Remark \ref{rem:gch}).
     \end{itemize}
   \item[(2)]
     Now, since \(V_\lambda = \lim_{j < \lambda}V_j\), we have
@@ -3129,10 +3130,11 @@ For our goals we need the following technical lemma.
   \item[(3)]
     Fix \(x \in V_{\lambda + 1} = FV_\lambda\).
     We apply Lemma \ref{lemma:pseudo-accessability} to the fixed point \(Z = \lambda^+\) and \(X = V_\lambda\) to obtain a subset \(m_0 : M_0 \rightarrowtail V_\lambda\) such that \(|M_0| < \lambda^+\) and \(x \in \im(Fm_0)\).
-    Now let \(x_0 \in FM_0\) be such that \(Fm_0(x_0) = x\) and notice that \(|M_0| < \lambda^+\) implies \(|M_0| \leq \lambda\); we can now apply Lemma \ref{lemma:pseudo-accessability} to the fixed point \(Z = \lambda\) and the set \(M_0\) to obtain a subset \(m_1: M_1 \rightarrowtail M_0\) with \(x_0 \in \im(Fm_1)\) and \(|M_1| < \lambda\).
+    Now let \(x_0 \in FM_0\) be such that \((Fm_0)(x_0) = x\) and notice that \(|M_0| < \lambda^+\) implies \(|M_0| \leq \lambda\); we can now apply Lemma \ref{lemma:pseudo-accessability} to the fixed point \(Z = \lambda\) and the set \(M_0\) to obtain a subset \(m_1: M_1 \rightarrowtail M_0\) with \(x_0 \in \im(Fm_1)\) and \(|M_1| < |M_0| \leq \lambda\).
 
-    Finally \(m = m_0 \circ m_1 : M_1 \rightarrowtail V_\lambda\) is a subset of \(V_\lambda\) such that \(|M_1| < \lambda\) and \(x \in \im(Fm)\) since \(x_0 \in \im(Fm_1)\) and \(x = Fm_0(x_0)\).
+    Finally \(m = m_0 \circ m_1 : M_1 \rightarrowtail V_\lambda\) is a subset of \(V_\lambda\) such that \(|M_1| < \lambda\) and \(x \in \im(Fm)\) since \(x_0 \in \im(Fm_1)\) and \(x = (Fm_0)(x_0)\).
   \end{itemize}
+  This concludes the proof.
 \end{proof}
 
 But even assuming GCH is insufficient to get a sufficient and necessary condition.
@@ -3147,8 +3149,10 @@ But even assuming GCH is insufficient to get a sufficient and necessary conditio
   By an argument similar to that of Example \ref{ex:coalgebra-bad} we have that \(F\) does not have uncountable fixed points and hence it has a terminal coalgebra but no fixed point pair.
 \end{example}
 
+Moreover trying to force an analogous of Theorem \ref{teo:set_lambeck_converse} for terminal coalgebras and fixed point pairs creates conditions independent from ZFC as in the following proposition.
+
 \begin{proposition}
-  The Continuum Hypothesis \(\aleph_1 = 2^{\aleph_0}\) holds if and only if every set functor with fixed point pair \(\aleph_0, \aleph_1\) has a terminal coalgebra.
+  The Continuum Hypothesis \(\aleph_1 = 2^{\aleph_0}\) holds if and only if every set functor with fixed point pair \((\aleph_0, \aleph_1)\) has a terminal coalgebra.
 \end{proposition}
 
 \begin{proof}
@@ -3158,7 +3162,7 @@ But even assuming GCH is insufficient to get a sufficient and necessary conditio
     \mathcal{P}_{-\aleph_0, \aleph_1}(X) = \{Y \subseteq X : |Y| \neq \aleph_0, \aleph_1\}
   \end{equation*}
   on objects and naturally on arrows.
-  Now if \(X\) has cardinality \(\aleph_0\) or \(\aleph_1\) then \(\mathcal{-\aleph_0, \aleph_1}(X) = \mathcal{P}_{\textsf{f}}(X)\) which gives that both \(\aleph_0\) and \(\aleph_1\) are fixed points; hence \(\mathcal{P}_{-\aleph_0, \aleph_1}\) has a fixed point pair.
+  Now if \(X\) has cardinality \(\aleph_0\) or \(\aleph_1\) then \(\mathcal{P}_{-\aleph_0, \aleph_1}(X) = \mathcal{P}_{\textsf{f}}(X)\) which gives that both \(\aleph_0\) and \(\aleph_1\) are fixed points; hence \(\mathcal{P}_{-\aleph_0, \aleph_1}\) has fixed point pair \((\aleph_), \aleph_1\).
   But, by working as in Example \ref{ex:coalgebra-bad}, we can prove that \(\mathcal{P}_{-\aleph_0, \aleph_1}\) has no terminal coalgebra.
 \end{proof}
 
