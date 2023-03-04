@@ -2899,7 +2899,7 @@ However for functors over \(\Set\) there is another condition which guarantees c
 
 \begin{definition}
   \label{def:accessible}
-  Given a regular cardinal \(\lambda\) we say that a functor \(F\) over \(\Set\) is \textbf{\(\lambda\)-accessible}\footnote{\color{teal} Questa teoricamente è la definizione di funtore \(\lambda\)-bound mentre \(\lambda\)-accessible significa che il funtore preserva colimiti \(\lambda\)-filtrati (ed è una condizione che si può definire per categorie oltre a \(\Set\)). Tuttavia nel caso di funtori su \(\Set\) le due condizioni sono equivalenti e dunque usiamo \(\lambda\)-accessible perché è il nome più comune in letteratura. È meglio precisare questa cosa o semplicemente usare ``\(\lambda\)-accessible'' come se nulla fosse (considerando che comunque non usiamo mai che un \(\lambda\)-accessible preserva colimiti \(\lambda\)-filtrati direttamente, ma usiamo solo la condizione equivalente in Definizione \ref{def:accessible})?} if for every set \(X\) and \(x \in FX\) there is a subset \(m : M \rightarrowtail X, |M| < \lambda\) such that \(x \in \im (Fm)\).
+  Given a regular cardinal \(\lambda\) we say that a functor \(F\) over \(\Set\) is \textbf{\(\lambda\)-accessible}\footnote{\color{teal} Questa teoricamente è la definizione di funtore ``\(\lambda\)-bound'' mentre ``\(\lambda\)-accessible'' significa che il funtore preserva colimiti \(\lambda\)-filtrati (ed è una condizione che si può definire per categorie oltre a \(\Set\)). Tuttavia nel caso di funtori su \(\Set\) le due condizioni sono equivalenti e dunque usiamo ``\(\lambda\)-accessible'' perché è il nome più comune nella letteratura recente. È meglio precisare questa cosa o semplicemente usare ``\(\lambda\)-accessible'' come se nulla fosse (considerando che comunque non usiamo mai che un \(\lambda\)-accessible preserva colimiti \(\lambda\)-filtrati direttamente, ma usiamo solo la condizione equivalente in Definizione \ref{def:accessible})?} if for every set \(X\) and \(x \in FX\) there is a subset \(m : M \rightarrowtail X, |M| < \lambda\) such that \(x \in \im (Fm)\).
 \end{definition}
 
 We can think of a \(\lambda\)-accessible functor as of a functor whose behaviour is determined by its action on sets of cardinality less than \(\lambda\).
@@ -2907,9 +2907,9 @@ We can think of a \(\lambda\)-accessible functor as of a functor whose behaviour
 \begin{example}
   \label{ex:finitepowset}
   Functors that are \(\aleph_0\)-accessible are also called \textbf{finitary set functors}.
-  An example of a finitary set functor is \(\mathcal{P}_{\textsf{f}}\), the finite power-set function.
+  An example of a finitary set functor is \(\mathcal{P}_{\textsf{f}}\), the finite power-set functor.
   Indeed let \(X\) be a set and \(x \in \mathcal{P}_{\textsf{f}}(X)\); this means that \(x\) is a finite subset of \(X\) so let us consider \(m : x \rightarrowtail X\).
-  It is clear that \(x \in \im(\mathcal{P}_{\textsf{f}}m)\) so we have that \(\mathcal{P}_{\textsf{f}}\) is a finitary functor.
+  It is clear that \(x \in \im(\mathcal{P}_{\textsf{f}}m)\) so we have that \(\mathcal{P}_{\textsf{f}}\) is finitary.
 \end{example}
 
 \begin{example}
@@ -2923,7 +2923,7 @@ We can think of a \(\lambda\)-accessible functor as of a functor whose behaviour
   \begin{equation*}
     \mathcal{P}_\lambda(X) = \{Y \subseteq X : |Y| < \lambda\}
   \end{equation*}
-  with the obvious action on arrows is \(\lambda\)-accessible.
+  with the natural assignment on arrows is \(\lambda\)-accessible.
   Proving this is similar to what we have done for the finite power-set functor in Example \ref{ex:finitepowset}.
 \end{example}
 
