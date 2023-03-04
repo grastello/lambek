@@ -3045,7 +3045,7 @@ With the knowledge that \(\mathcal{P}_{\textsf{f}}\) has a terminal coalgebra an
   This functor has \(\mathbb{N}\) as fixed point since \(\mathcal{P}_{-\aleph_0}(\mathbb{N})\) is a countable set.
   Then by Theorem \ref{teo:set_lambeck_converse} has an initial algebra; we shall now see that it does not have a terminal coalgebra.
 
-  Note that \(\mathcal{P}_\lambda\) is a subfuctor of \(\mathcal{P}_{-\aleph_0}\) so Proposition \ref{prop:subfunctor} applies: if \(\nu \mathcal{P}_{-\aleph_0}\) exists then it is at least as large as \(\nu \mathcal{P}_{\textsf{f}}\) which is uncountable (prove it?).
+  Note that \(\mathcal{P}_\textsf{f}\) is a subfuctor of \(\mathcal{P}_{-\aleph_0}\) so Proposition \ref{prop:subfunctor} applies: if \(\nu \mathcal{P}_{-\aleph_0}\) exists then it is at least as large as \(\nu \mathcal{P}_{\textsf{f}}\) which is uncountable.
   By Lambeck's Lemma \ref{lemma:colambeck} we know that \(\nu\mathcal{P}_{-\aleph_0}\) must be a fixed point of \(\mathcal{P}_{-\aleph_0}\) but \(\mathcal{P}_{-\aleph_0}\) has no uncountable fixed points.
   
   Indeed let \(A\) be an uncountable set, \(B\) the set of all countably infinite subsets of \(A\) and \(C = \mathcal{P}_{-\aleph_0}(A)\); then
@@ -3061,29 +3061,31 @@ With the knowledge that \(\mathcal{P}_{\textsf{f}}\) has a terminal coalgebra an
   that implies \(|A| < |\mathcal{P}(A)| = |C| = |\mathcal{P}_{-\aleph_0}(A)|\) so \(\mathcal{P}_{-\aleph_0}\) has no uncountale fixed points.
 \end{example}
 
-The previous example shows, as already observed, that there is no Theorem \ref{} for \(\Set\).
-There is, however, another sufficient condition [BLA BLA BLA].
+The previous example shows, as already observed, that there is no coalgebraic version of Theorem \ref{teo:set_lambeck_converse} for \(\Set\).
+There is, however, a condition concerning the fixed points of a set functor which implies existence of a terminal coalgebra.
+Unfortunately it requires us to make assumptions independent from ZFC.
 
 \begin{definition}
   \label{def:fixed-point-pair}
   A set functor \(F\) has a \textbf{fixed point pair}\marginnote{fixed point pair} if there is a regular cardinal \(\lambda\) such that \(F\) has a fixed point of cardinality \(\lambda\) and one of cardinality \(\lambda^+\) (the smallest cardinal bigger than \(\lambda\)).
 \end{definition}
 
-For our sufficient condition we will need to assume the Generalized Continuum Hypothesis which is independent from ZFC.
-
 \begin{remark}
   \label{rem:gch}
-  Recall that the \textbf{Generalized Continuum Hypothesis (GCH)} is the statement that, for every infinite cardinal \(\lambda\), \(\lambda^+ = 2^\lambda\) where with \(2^\lambda\) we indicate the power-set of \(\lambda\).
-  Under this hypothesis if \(k < \lambda\) and \(\lambda\) is a regular cardinal then \(\lambda^k = \lambda\) (see \cite[Theorem 5.15 (iii)]{jech}).
-  Moreover we recall that we have \(\lambda^\lambda = 2^\lambda\) for every infinite cardinal regardless of GCH.
+  Recall that the \textbf{Generalized Continuum Hypothesis (GCH)} is the statement that, for every infinite cardinal \(\lambda\), \(\lambda^+ = 2^\lambda\); where with \(2^\lambda\) we indicate the power-set of \(\lambda\).
+  The case when \(\lambda = \aleph_0\) is referred to simply as the \textbf{Continuum Hypothesis (CH)}.
+  Both of these hypothesis are independent from ZFC.
+  
+  Under GCH if \(k < \lambda\) and \(\lambda\) is a regular cardinal then \(\lambda^k = \lambda\) (see \cite[Theorem 5.15 (iii)]{jech}).
+  Moreover we recall that we have \(\lambda^\lambda = 2^\lambda\) for every infinite cardinal \(\lambda\) regardless of GCH.
 \end{remark}
 
-[???]
+For our goals we need the following technical lemma.
 
 \begin{lemma}
   \label{lemma:pseudo-accessability}
   Let \(Z\) be an infinite pre-fixed point of a functor \(F\) over \(\Set\) and \(X\) be any set such that \(|X| \leq |Z|\) and \(|X|, |Z|\) have the same cofinality.
-  Then for every \(x \in FX\) there is a subset \(y : Y \rightarrowtail X\) such that \(|Y| < |X|\) and \(x \in \im(Fm)\).
+  Then for every \(x \in FX\) there is a subset \(y : Y \rightarrowtail X\) such that \(|Y| < |X|\) and \(x \in \im(Fy)\).
 \end{lemma}
 
 \begin{proof}
