@@ -1500,6 +1500,7 @@ The theorem was first proven by Adámek and Koubek in \cite{Adamek-Koubek-1979} 
 \end{proof}
 
 \chapter{Initial algebras from transfinite iteration}
+\label{ch:algebras-transfinite-iteration}
 \newpage
 
 \section{Colimits of chains}
@@ -2621,7 +2622,7 @@ Terminal coalgebras we can thus think of as containing all possible behaviours `
 
 \section{Terminal Coalgebras from Finitary Iteration}
 
-The goal of this section is to dualize to coalgebras what has been done in Section \ref{ch:initial_algebras_iteration}.
+The goal of this section is to dualize to coalgebras what has been done in Chapter \ref{ch:initial_algebras_iteration}.
 Through this section we assume to be working in a category \(\A\) with a terminal object \(1\).
 
 \begin{definition}
@@ -2814,7 +2815,10 @@ To achieve this goal we begin by giving an explicit description of the terminal-
 
 \section{Terminal Coalgebras from Infinitary Iteration}
 
-[BLABLA]
+We shall now look at dualization of the results from Chapter \ref{ch:algebras-transfinite-iteration}.
+As mentioned in Remark \ref{rem:tcoalgebra-implies-ialgebra}, even for \(\Set\), the existence of a terminal coalgebra is a more complicated matter than the existence of an initial algebra so we should not expect coalgebraic versions of Theorem \ref{teo:set_lambeck_converse} or of Theorem \ref{teo:initial-algebra-theorem}.
+We will, however, present some conditions that guarantee a terminal coalgebra for functors over \(\Set\); these conditions require non-trivial set-theoretic machinery or even the Generalized Continuum Hypothesis (GCH).
+
 We work with functors from \(\Ord^\op\) into a given category \(\A\).
 Such diagrams should in theory be called \textit{cochains}, being the dual of chains as defined in Section \ref{sec:colimits_of_chains}; however it is customary to simply call them \textbf{chains} as the context is generally enough to differentiate between the two kinds.
 With this in mind a category \(\A\) is said to have limits of chains if for all \(j \in \Ord\) all diagrams \(j^\op \to \A\) have a limit.
@@ -2824,7 +2828,7 @@ This includes the limit of the empty chain, so \(\A\) must have a terminal objec
   Let \(\A\) be a category with limits of chains and \(F\) an endofunctor over \(\A\).
   The \textbf{terminal-coalgebra chain}\marginnote{terminal-coalgebra chain} is the \(\Ord^\op\)-chain in \(\A\) with objects \(V_j\) and arrows \(v_{j,i}\) (with \(j \geq i\)) defined by transfinite recursion as follows.
   \begin{align*}
-    V_0 = 0 && \text{base case};\\
+    V_0 = 1 && \text{base case};\\
     V_{j+1} = FV_j && \text{for all ordinals \(j\)};\\
     V_j = \lim_{i < j}V_i && \text{for all limit ordinals \(j\)};
   \end{align*}
@@ -2880,7 +2884,7 @@ This includes the limit of the empty chain, so \(\A\) must have a terminal objec
 \end{remark}
 
 We now have a condition, preservation of limits \(\lambda^\op\)-chain for some limit ordinal \(\lambda\), which implies convergence of the terminal-coalgebra chain and thus existence of a terminal coalgebra.
-However this condition isn't satisfied by many everyday functors (e.g. the finite power-set functor \(\mathcal{P}_\textsf{f}\) does not preserve limits of \(\omega^\op\)-chains but, as we shall see [??], it has a terminal coalgeebra).
+However this condition isn't satisfied by many common functors (e.g. the finite power-set functor \(\mathcal{P}_\textsf{f}\) does not preserve limits of \(\omega^\op\)-chains but, as we shall see in Example \ref{ex:limitedpowset-have-tcoalgebra}, it has a terminal coalgebra).
 However for functors over \(\Set\) there is another condition which guarantees convergence of the terminal-coalgebra chain; in order to study it we need to recall some set-theoretic machinery.
 
 \begin{definition}
@@ -2890,6 +2894,7 @@ However for functors over \(\Set\) there is another condition which guarantees c
 
 \begin{notation}
   Until the end of the section we will, for the sake of brevity, deliberately confuse a subset \(Y \subseteq X\) with its inclusion function \(y: Y \rightarrowtail X\).
+  We shall also write \(z \cap y\) for the inclusion \(z \cap y : Z \cap Y \rightarrowtail X\) of the intersection of two subsets \(z : Z \rightarrowtail X\) and \(y: Y \rightarrowtail X\).
 \end{notation}
 
 \begin{definition}
@@ -3004,6 +3009,7 @@ In order to prove that being \(\lambda\)-accessible implies existence of a termi
 \end{remark}
 
 \begin{example}
+  \label{ex:limitedpowset-have-tcoalgebra}
   By Example \ref{ex:finitepowset} and Example \ref{ex:powerset_lambda} the functors \(\mathcal{P}_\lambda\) all have a terminal coalgebra as well as polynomial functors by Example \ref{ex:polynomial-accessible} (but we already knew that).
 \end{example}
 
