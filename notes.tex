@@ -2775,7 +2775,7 @@ We can use Theorem \ref{teo:coadamek} to obtain an alternative proof of Proposit
 To achieve this goal we begin by giving an explicit description of the terminal-coalgebra \(\omega^\op\)-chain of a polynomial fuctor.
 
 \begin{remark}
-  Let \(\Sigma\) be a signature, \(H_\Sigma\) a the corresponding polynomial functor (over \(\Set\)) and \(\Sigma_\bot\) a new signature obtained by adding to \(\Sigma\) a new constant symbol \(\bot\).
+  Let \(\Sigma\) be a signature, \(H_\Sigma\) the corresponding polynomial functor (over \(\Set\)) and \(\Sigma_\bot\) a new signature obtained by adding to \(\Sigma\) a new constant symbol \(\bot\).
   We shall see that the \(n\)-th object of the termial-coalgebra \(\omega^\op\)-chain is
   \begin{equation*}
     H^n_\Sigma(1) = \{ T : \text{\(T\) is a \(\Sigma_\bot\)-tree of height at most \(n\) and all leaves at height \(n\) labeled by \(\bot\)}\}.
@@ -2784,14 +2784,14 @@ To achieve this goal we begin by giving an explicit description of the terminal-
   Now \(H^1_\Sigma(1) = \coprod_{k}\Sigma_k \times 1^k\) can be identified with the set of all \(\Sigma_\bot\) trees of height at most 1 that have the root labeled by some \(k\)-ary symbol of \(\Sigma\) and the \(k\) leaves (that are at height 1) labeled by \(\bot\).
   Similarly \(H^2_\Sigma(1) = \coprod_k \Sigma_k \times (H^1_\Sigma(1))^k\) can be identified with the set of \(\Sigma_\bot\)-trees that have root labeled by a \(k\)-ary symbol of \(\Sigma\) and whose \(k\) subtrees are picked from \(H^1_\Sigma(1)\); thus elements of \(H^2_\Sigma(1)\) have height at most 2 and leaves at height 2 (if any) all labeled by \(\bot\).
   By iterating we obtain that \(H^n_\Sigma(1)\) is precisely the set of all \(\Sigma_\bot\)-trees of height at most \(n\) with leaves at height \(n\) labeled by \(\bot\).
-  The connecting functions \(H^{n + 1}_\Sigma(1) \to H^n_\Sigma(1)\) cut out the layer of \(\bot\)-labeled leaves and re-label every leave at height \(n\) with \(\bot\).
+  The connecting functions \(H^{n + 1}_\Sigma(1) \to H^n_\Sigma(1)\) cut out the layer of \(\bot\)-labeled leaves and re-label every leaf at height \(n\) with \(\bot\).
 \end{remark}
 
 \begin{proof}[Alternative proof of Proposition \ref{prop:trees_coalgebras}]
   Since \(H_\Sigma\) preserves limits of \(\omega^\op\)-chains we have that \(\nu H_\Sigma = \lim_{n < \omega}H^n_\Sigma(1)\).
   Let \(v_{n, m} : H^{n}_\Sigma(1) \to H^{m}_\Sigma(1)\) for \(m \leq n < \omega\) be the connecting functions of the terminal coalgebra \(\omega^\op\)-chain.
 
-  We shall first prove that \(\lim_{n < \omega}H^n_\Sigma(1)\) is the set \(T_\Sigma\) of all \(\Sigma\)-trees with projections \(l_n: T_\Sigma \to H^n_\Sigma(1)\) that cut a tree at height \(n\) and re-label every leave at level \(n\) with \(\bot\).
+  We shall first prove that \(\lim_{n < \omega}H^n_\Sigma(1)\) is the set \(T_\Sigma\) of all \(\Sigma\)-trees with projections \(l_n: T_\Sigma \to H^n_\Sigma(1)\) that cut a tree at height \(n\) and re-label every leaf at level \(n\) with \(\bot\).
   In order to do so we just need to show that for every sequence \((t_n: t_n \in H^n_\Sigma(1))_{n<\omega}\) such that
   \begin{equation}
     \label{eq:compatibility}
