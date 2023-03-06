@@ -2472,9 +2472,10 @@ Instead of coinduction we will discuss bisimulation, a concept that has many app
   \item[1.] \(\head(h(0)) = (\pi_\Sigma \circ (\id_\Sigma \times h))(\alpha(0))\) hence \(a_0 = x\);
   \item[2.] \(\head(h(1)) = (\pi_\Sigma \circ (\id_\Sigma \times h))(\alpha(1))\) hence \(b_0 = y\);
   \item[3.] \(\tail(h(0)) = (\pi_{\Sigma^\omega} \circ (\id_\Sigma \times h))(\alpha(0)) = h(1)\) hence \((a_1, a_2, \ldots) = (b_0, b_1, \ldots)\);
-  \item[4.] \(\tail(h(1)) = (\pi_{\Sigma^\omega} \circ (\id_\Sigma \times h))(\alpha(1)) = h(0)\) hence \((b_1, b_2, \ldots) = (a_0, a_1, \ldots)\)
+  \item[4.] \(\tail(h(1)) = (\pi_{\Sigma^\omega} \circ (\id_\Sigma \times h))(\alpha(1)) = h(0)\) hence \((b_1, b_2, \ldots) = (a_0, a_1, \ldots)\);
   \end{itemize}
-  and thus we must have
+  where \(\pi_\Sigma, \pi_{\Sigma^\omega}\) are the projections of \(\Sigma \times \Sigma^\omega\).
+  Thus we must have
   \begin{equation*}
     h(0) = (x, y, x, y, \ldots) \text{ and } h(1) = (y, x, y, x, \ldots).
   \end{equation*}
