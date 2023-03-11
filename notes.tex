@@ -2274,7 +2274,7 @@ We have seen that the initial \(F\)-algebra is quite interesting and we will see
   ends in an accepting state.
   We notice that
   \begin{itemize}
-  \item[1.] \(L(x)\) is accepting in \(\mathcal{P}(\Sigma^*)\) if and only if \(x\) is accepting in \(A\)\footnote{\color{teal} qui per ``\(x\) accepting in \(A\)'' si intende che lo stato \(x\) nell'automa \(A\) è accepting, è stato definito in \ref{ex:deterministic-automata}};
+  \item[1.] \(L(x)\) is accepting in \(\mathcal{P}(\Sigma^*)\) if and only if \(x\) is accepting in \(A\) (see Example \ref{ex:deterministic-automata});
   \item[2.] for every input \(s \in \Sigma\) if \(y = \delta_s(x)\) then \(L(y) = s^{-1}L(x)\);
   \end{itemize}
   so \(L: A \to \mathcal{P}(\Sigma^*)\) is a morphism of coalgebras. Moreover \(L\) is unique: let \(f: A \to \mathcal{P}(\Sigma^*)\) be a morphism of coalgebras; the following points show that \(f(x_0) \subseteq L(x_0)\) and \(L(x_0) \subseteq f(x_0)\) for a fixed \(x_0 \in A\). Thus \(f(x_0) = L(x_0)\) for every \(x_0 \in A\) and \(f = L\).
