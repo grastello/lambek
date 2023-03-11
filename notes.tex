@@ -2752,17 +2752,14 @@ We can often use this to our advantage to better understand the structure of the
 
 \begin{example}
   Consider the functor \(FX = \Sigma \times X\) over \(\Set\), where \(\Sigma\) is a fixed set.
-  We can identify a set with its product with \(1\) and thus the terminal-coalgebra \(\omega^\op\)-chain is
+  We can identify \(F\Sigma = \Sigma \times 1\) with \(\Sigma\) and thus the terminal-coalgebra \(\omega^\op\)-chain is
   \begin{equation*}
     \begin{tikzcd}[sep = large]
       1  & \Sigma \ar[l, "!"] & \Sigma \times \Sigma  \ar[l, "F!"] & \Sigma \times \Sigma \times \Sigma \ar[l, "F^2!"] & \cdots \ar[l, "F^3!"]
     \end{tikzcd}
   \end{equation*}
   where the connecting functions are the projections onto the left-most factor.
-  The limit is the object \(\Sigma^\omega\) of \(\Sigma\)-streams with limit projections \(l_n : \Sigma^\omega \to \Sigma^\omega\) such that \(l_n\) is the left-hand projection of
-  \begin{equation*}
-    M^\omega \cong M^n \times \prod_{i > n}M.
-  \end{equation*}
+  The limit is the object \(\Sigma^\omega\) of \(\Sigma\)-streams with limit projections \(l_n : \Sigma^\omega \to \Sigma^n\) such that \(l_n\) is the projection on the first \(n\)-th entries of a \(\Sigma\)-stream.
   The coalgebra structure \(\tau: \Sigma^\omega \to \Sigma \times \Sigma^\omega\) is given by \(\tau = \intoprod{\head}{\tail}\) with
   \begin{itemize}
   \item \(\head(x_0, x_1, x_2, x_3, \ldots) = x_0\);
