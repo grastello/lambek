@@ -3088,17 +3088,17 @@ With the knowledge that \(\mathcal{P}_{\textsf{f}}\) has a terminal coalgebra an
   \end{equation*}
   for \(A \in \mathcal{P}_{-\aleph_0}(X)\).
 
-  This functor has \(\mathbb{N}\) as fixed point since \(\mathcal{P}_{-\aleph_0}(\mathbb{N})\) is a countable set.
-  Then by Theorem \ref{teo:set_lambeck_converse} has an initial algebra; we shall now see that it does not have a terminal coalgebra.
+  This functor has \(\mathbb{N}\) as fixed point since \(\mathcal{P}_{-\aleph_0}(\mathbb{N})\) is a countable set\footnote{\color{teal} Qui non penso sia necessaria alcuna referenza; semplicemente si nota che \(\mathcal{P}_{-\aleph_0}(\mathbb{N}) = \mathcal{P}_\textsf{f}(\mathbb{N})\) siccome \(\mathbb{N}\) non ha sottoinsiemi non-numerabili e poi \(\mathcal{P}_\textsf{f}(\mathbb{N})\) è numerabile.}.
+  Then by Theorem \ref{teo:set_lambeck_converse} it has an initial algebra; we shall now see that it does not have a terminal coalgebra.
 
   Note that \(\mathcal{P}_\textsf{f}\) is a subfuctor of \(\mathcal{P}_{-\aleph_0}\) so Proposition \ref{prop:subfunctor} applies: if \(\nu \mathcal{P}_{-\aleph_0}\) exists then it is at least as large as \(\nu \mathcal{P}_{\textsf{f}}\) which is uncountable.
   By Lambeck's Lemma \ref{lemma:colambeck} we know that \(\nu\mathcal{P}_{-\aleph_0}\) must be a fixed point of \(\mathcal{P}_{-\aleph_0}\) but \(\mathcal{P}_{-\aleph_0}\) has no uncountable fixed points.
   
-  Indeed let \(A\) be an uncountable set, \(B\) the set of all countably infinite subsets of \(A\) and \(C = \mathcal{P}_{-\aleph_0}(A)\); then
+  Indeed let \(A\) be an uncountable set, \(B\) the set of all countably infinite subsets of \(A\) and \(C = \mathcal{P}_{-\aleph_0}(A)\); then \(B \cup C = \mathcal{P}(A)\) and
   \begin{equation*}
     |B \cup C| = |\mathcal{P}(A)| > |A|
   \end{equation*}
-  by Cantor's Theorem.
+  follows from Cantor's Theorem.
   The map \(X \mapsto A \setminus X\) is an injection of type \(\mathcal{P}(A) \rightarrowtail \mathcal{P}(A)\) and, since \(A\) is uncountable, it restricts to an injection \(B \rightarrowtail C\) which gives \(|B| \leq |C|\).
   Now we have
   \begin{equation*}
