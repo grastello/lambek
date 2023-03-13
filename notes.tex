@@ -2840,7 +2840,7 @@ To achieve this goal we begin by giving an explicit description of the terminal-
   Such \(t\) is constructed inductively as follows:
   \begin{itemize}
   \item the root of \(t\) is the root of \(t_1\) which, by (\ref{eq:compatibility}), is also the root of \(t_m\) for all \(1 \leq m\);
-  \item the \(n\)-th layer of \(t\) is labeled as the \(n\)-th layer of \(t_{n + 1}\) which, by (\ref{eq:compatibility}), is the same as the \(n\)-th layer of every \(t_m\) for \(n \leq m\);
+  \item the \(n\)-th layer of \(t\) is labeled as the \(n\)-th layer of \(t_{n + 1}\) which, by (\ref{eq:compatibility}), is the same as the \(n\)-th layer of every \(t_m\) for \(n + 1 \leq m\);
   \end{itemize}
   and it is unique since the condition \(l_n(t) = t_n\) (for all \(n < \omega\)) forces \(t\) and \(t_n\) to agree on all layers of height less than \(n\).
 
@@ -2924,7 +2924,7 @@ This includes the limit of the empty chain, so \(\A\) must have a terminal objec
 \end{remark}
 
 We now have a condition, preservation of limits \(\lambda^\op\)-chain for some limit ordinal \(\lambda\), which implies convergence of the terminal-coalgebra chain and thus existence of a terminal coalgebra.
-However this condition isn't satisfied by many common functors (e.g. the finite power-set functor \(\mathcal{P}_\textsf{f}\) does not preserve limits of \(\omega^\op\)-chains but, as we shall see in Example \ref{ex:limitedpowset-have-tcoalgebra}, it has a terminal coalgebra).
+However this condition is not satisfied by many common functors (e.g. the finite power-set functor \(\mathcal{P}_\textsf{f}\) does not preserve limits of \(\omega^\op\)-chains but, as we shall see in Example \ref{ex:limitedpowset-have-tcoalgebra}, it has a terminal coalgebra).
 However for functors over \(\Set\) there is another condition which guarantees convergence of the terminal-coalgebra chain; in order to study it we need to recall some set-theoretic machinery.
 
 \begin{definition}
