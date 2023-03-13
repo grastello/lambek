@@ -2669,19 +2669,20 @@ We can often use this to our advantage to better understand the structure of the
 
 \begin{remark}
   \label{rem:polynomial-preserve-limits}
-  Given a signature \(\Sigma\) the corresponding polynomial functor \(H_\Sigma\) over \(\Set\) preserves limits of \(\omega^\op\)-chains.
+  Given a signature \(\Sigma\) the corresponding polynomial functor \(H_\Sigma\) over \(\Set\) preserves limits of \(\omega^\op\)-chains .
   Recall that \(H_\Sigma\) is defined by
   \begin{align*}
     H_\Sigma X &= \coprod_{n < \omega} \Sigma_n \times X^n \\
     H_\Sigma f &= \coprod_{n < \omega} \id_{\Sigma_n} \times f^n \quad \text{with } f^n = \underbrace{f \times \ldots \times f}_{\text{\(n\) times}}.
   \end{align*}
   Consider an \(\omega^\op\)-chain \((A_i, \alpha_i)_{i < \omega}\) with limiting cone
-  \begin{equation*}
+  \begin{equation}
+    \label{eq:omega-chain-ex}
     \begin{tikzcd}[sep = large]
       & A \ar[dl, "\alpha_0"'] \ar[d, "\alpha_1"] \ar[dr, "\alpha_2"] & & \\
       A_0 & A_1 \ar[l, "a_0"] & A_2 \ar[l, "a_1"] & \cdots \ar[l, "a_2"]
     \end{tikzcd}
-  \end{equation*}
+  \end{equation}
   we will prove that
   \begin{equation*}
     \begin{tikzcd}[sep = large]
@@ -2712,7 +2713,7 @@ We can often use this to our advantage to better understand the structure of the
       \Sigma_n \times A_0^n & \Sigma_n \times A_1^n \ar[l, "\id_{\Sigma_n} \times a_0^n"] & \Sigma_n \times A_2^n \ar[l, "\id_{\Sigma_n} \times a_1^n"] & \cdots \ar[l, "\id_{\Sigma_n} \times a_2^n"]
     \end{tikzcd}
   \end{equation*}
-  is a cone over \((\Sigma_n \times A_i^n, \id_{\Sigma_n} \times a_i^n)_{i<\omega}\) that has limit \((\Sigma_n \times A^n, \id_{\Sigma_n} \times \alpha_i^n)_{i<\omega}\) because the functor \(GX = \Sigma_n \times X^n\) preserves limits of \(\omega^\op\)-chains.
+  is a cone over \((\Sigma_n \times A_i^n, \id_{\Sigma_n} \times a_i^n)_{i<\omega}\) that has limit \((\Sigma_n \times A^n, \id_{\Sigma_n} \times \alpha_i^n)_{i<\omega}\) because the functor \(GX = \Sigma_n \times X^n\) preserves limits of \(\omega^\op\)-chains (it is easy to check that \((\Sigma_n \times A^n, \id_{\Sigma_n} \times \alpha_i^n)_{i < \omega}\) is the limit of the diagram obtained by applying \(G\) to (\ref{eq:omega-chain-ex}) by using the universal property of \((A, \alpha_i)_{i<\omega}\)).
   Thus there is a unique \(f_n:B_n \to \Sigma_n \times A^n\) such that
   \begin{equation}
     \label{eq:cccc}
