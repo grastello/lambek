@@ -2939,14 +2939,19 @@ However for functors over \(\Set\) there is another condition which guarantees c
 
 \begin{definition}
   \label{def:accessible}
-  Given a regular cardinal \(\lambda\) we say that a functor \(F\) over \(\Set\) is \textbf{\(\lambda\)-accessible}\footnote{\color{teal} Questa teoricamente è la definizione di funtore ``\(\lambda\)-bound'' mentre ``\(\lambda\)-accessible'' significa che il funtore preserva colimiti \(\lambda\)-filtrati (ed è una condizione che si può definire per categorie oltre a \(\Set\)). Tuttavia nel caso di funtori su \(\Set\) le due condizioni sono equivalenti e dunque usiamo ``\(\lambda\)-accessible'' perché è il nome più comune nella letteratura recente. È meglio precisare questa cosa o semplicemente usare ``\(\lambda\)-accessible'' come se nulla fosse (considerando che comunque non usiamo mai che un \(\lambda\)-accessible preserva colimiti \(\lambda\)-filtrati direttamente, ma usiamo solo la condizione equivalente in Definizione \ref{def:accessible})?} if for every set \(X\) and \(x \in FX\) there is a subset \(m : M \rightarrowtail X, |M| < \lambda\) such that \(x \in \im (Fm)\).
+  Given a regular cardinal \(\lambda\) we say that a functor \(F\) over \(\Set\) is \textbf{\(\lambda\)-accessible} \marginnote{\(\lambda\)-accessible functor} if for every set \(X\) and \(x \in FX\) there is a subset \(m : M \rightarrowtail X, |M| < \lambda\) such that \(x \in \im (Fm)\).
 \end{definition}
+
+\begin{remark}
+  To be more precise Definition \ref{def:accessible} is that of a \textbf{\(\lambda\)-bound} set functor while \(\lambda\)-accessible is usually reserved for functors that preserve \(\lambda\)-filtered colimits (this can be useful for categories other than \(\Set\)).
+  However, for set functors, the two conditions are equivalent and we will thus use ``\(\lambda\)-accessible'' since it is most common in recent literature.
+\end{remark}
 
 We can think of a \(\lambda\)-accessible functor as of a functor whose behaviour is determined by its action on sets of cardinality less than \(\lambda\).
 
 \begin{example}
   \label{ex:finitepowset}
-  Functors that are \(\aleph_0\)-accessible are also called \textbf{finitary set functors}.
+  Functors that are \(\aleph_0\)-accessible are also called \textbf{finitary set functors}\marginnote{finitary set functor}.
   An example of a finitary set functor is \(\mathcal{P}_{\textsf{f}}\), the finite power-set functor.
   Indeed let \(X\) be a set and \(x \in \mathcal{P}_{\textsf{f}}(X)\); this means that \(x\) is a finite subset of \(X\) so let us consider \(m : x \rightarrowtail X\).
   It is clear that \(x \in \im(\mathcal{P}_{\textsf{f}}m)\) so we have that \(\mathcal{P}_{\textsf{f}}\) is finitary.
@@ -2970,7 +2975,7 @@ We can think of a \(\lambda\)-accessible functor as of a functor whose behaviour
 \begin{example}
   \label{ex:polynomial-accessible}
   The functor \(FX = X^n\) is \(\lambda\)-accessible for every cardinal \(n < \lambda\).
-  Moreover one can prove that the coproduct of accessible functors is itself accessible so a polynomial functor \(H_\Sigma\) is \(\lambda\)-accessible provided that all arities of the symbols of the signature \(\Sigma\) are less than \(\lambda\).
+  Moreover one can prove that the coproduct of accessible functors is itself accessible\footnote{\color{teal} Il libro non offre alcuna referenza esplicita ma, se \(F = \coprod_i F_i\), usando la Proposizione 2.15.1 (dualizzata) del Borceaux (volume 1) otteniamo che \(F\) si computa puntualmente cioè \(F(X)\) è il coprodotto degli \(\{F_i(X)\}_i\). A questo punto se \(x \in F(X)\) so che \(x \in F_i(X)\) per qualche \(i\) e ottengo il sottoinsieme che mi serve usando che \(F_i\) è \(\lambda\)-accessibile. Lo scriviamo esplicitamente o semplicemnte puntiamo il lettore alla proposizione del Borceaux?} so a polynomial functor \(H_\Sigma\) is \(\lambda\)-accessible provided that all arities of the symbols of the signature \(\Sigma\) are less than \(\lambda\).
 \end{example}
 
 In order to prove that being \(\lambda\)-accessible implies existence of a terminal coalgebra we need the following lemma on set functors.
