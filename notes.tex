@@ -2745,7 +2745,11 @@ We can often use this to our advantage to better understand the structure of the
       n & \text{if } i = n + 1
     \end{cases}.
   \end{equation*}
-  Then the limit is the set containing all the elements \(x \in \prod_{n < \omega} (n + 1)\) such that \((F^n!)(x_{n+1}) = x_n\) by how limits are computed in \(\Set\) (see \cite[Chapter 2, Section 8]{handbook1}).
+  Then the limit is the set containing all the elements \(x \in \prod_{n < \omega} (n + 1)\) such that
+  \begin{equation*}
+    (F^n!)(x_{n+1}) = x_n \quad \text{for every \(n < \omega\)}
+  \end{equation*}
+  by how limits are computed in \(\Set\) (see \cite[Chapter 2, Section 8]{handbook1}).
   Such elements are either the sequence \((0,1,2,3, \ldots)\) or they have the form \((0,1, \ldots, k, k, \ldots)\).
   Sequences of the second kind we identify with the number \(k\) and \((0,1,2,3, \ldots)\) we call \(\infty\); this way we obtain \(\mathbb{N}^\top\).
   By using (\ref{eq:aa}) we obtain that the coalgebra structure \(\tau: \N^\top \to \N^\top + 1\) sends \(\infty\) to itself, \(0\) to the unique point in the right hand side and \(k\) to \(k-1\); thus we have a new explanation of Exampe \ref{ex:terminalcoalgebra1}.
