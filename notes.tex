@@ -1,5 +1,3 @@
-%% TODO: coalgebra examples on CPO
-
 \documentclass[letterpaper, 11pt, oneside]{memoir}
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
@@ -79,7 +77,9 @@
 \usepackage[
   backend=biber,
   style=alphabetic,
-  sorting=ynt
+  sorting=nyt,
+  doi=false,
+  isbn=false
 ]{biblatex}
 \addbibresource{refs.bib}
 \nocite{*}
@@ -2948,8 +2948,10 @@ However for functors over \(\Set\) there is another condition which guarantees c
 \end{definition}
 
 \begin{remark}
+  \label{rem:true-definition}
   To be more precise Definition \ref{def:accessible} is that of a \textbf{\(\lambda\)-bound} set functor while \(\lambda\)-accessible is usually reserved for functors that preserve \(\lambda\)-filtered colimits (this can be useful for categories other than \(\Set\)).
-  However, for set functors, the two conditions are equivalent and we will thus use ``\(\lambda\)-accessible'' since it is most common in recent literature.
+  However, in the case of set functors, the two conditions are equivalent (see \cite[Proposition B.7.1]{coalgebrabook}).
+  We will use ``\(\lambda\)-accessible'' since it is most common in recent literature.
 \end{remark}
 
 We can think of a \(\lambda\)-accessible functor as of a functor whose behaviour is determined by its action on sets of cardinality less than \(\lambda\).
@@ -2980,7 +2982,10 @@ We can think of a \(\lambda\)-accessible functor as of a functor whose behaviour
 \begin{example}
   \label{ex:polynomial-accessible}
   The functor \(FX = X^n\) is \(\lambda\)-accessible for every cardinal \(n < \lambda\).
-  Moreover one can prove that the coproduct of accessible functors is itself accessible\footnote{\color{teal} Il libro non offre alcuna referenza esplicita ma, se \(F = \coprod_i F_i\), usando la Proposizione 2.15.1 (dualizzata) del Borceaux (volume 1) otteniamo che \(F\) si computa puntualmente cioè \(F(X)\) è il coprodotto degli \(\{F_i(X)\}_i\). A questo punto se \(x \in F(X)\) so che \(x \in F_i(X)\) per qualche \(i\) e ottengo il sottoinsieme che mi serve usando che \(F_i\) è \(\lambda\)-accessibile. Lo scriviamo esplicitamente o semplicemnte puntiamo il lettore alla proposizione del Borceaux?} so a polynomial functor \(H_\Sigma\) is \(\lambda\)-accessible provided that all arities of the symbols of the signature \(\Sigma\) are less than \(\lambda\).
+  Moreover one can prove that the coproduct of \(\lambda\)-accessible set functors is itself accessible\footnote{By (the dual of) \cite[Proposition 2.15.1]{handbook1} we have that if \(F\) is the coproduct of some \(\lambda\)-accessible set functors, i.e. \(F = \coprod_i F_i\), then for a set \(X\) we have \(F(X) = \coprod_i F_i(X)\).
+  Now from \(x \in F(X)\) follows \(x \in F_i(X)\) for some index \(i\) and we obtain the subset of \(X\) that we need to prove that \(F\) is \(\lambda\)-accessible by using that \(F_i\) is \(\lambda\)-accessible.
+  This is not unique to set functors.
+  It remains true for general \(\lambda\)-accessible functors over categories other than \(\Set\) (see Remark \ref{rem:true-definition}) and even in the case of colimits other than just coproducts; see \cite[Proposition 2.4.5]{Makkai1989AccessibleC}} so a polynomial functor \(H_\Sigma\) is \(\lambda\)-accessible provided that all arities of the symbols of the signature \(\Sigma\) are less than \(\lambda\).
 \end{example}
 
 In order to prove that being \(\lambda\)-accessible implies existence of a terminal coalgebra we need the following lemma on set functors.
@@ -3093,7 +3098,7 @@ With the knowledge that \(\mathcal{P}_{\textsf{f}}\) has a terminal coalgebra an
   \end{equation*}
   for \(A \in \mathcal{P}_{-\aleph_0}(X)\).
 
-  This functor has \(\mathbb{N}\) as fixed point since \(\mathcal{P}_{-\aleph_0}(\mathbb{N})\) is a countable set\footnote{\color{teal} Qui non penso sia necessaria alcuna referenza; semplicemente si nota che \(\mathcal{P}_{-\aleph_0}(\mathbb{N}) = \mathcal{P}_\textsf{f}(\mathbb{N})\) siccome \(\mathbb{N}\) non ha sottoinsiemi non-numerabili e poi \(\mathcal{P}_\textsf{f}(\mathbb{N})\) è numerabile.}.
+  This functor has \(\mathbb{N}\) as fixed point since \(\mathcal{P}_{-\aleph_0}(\mathbb{N})\) is a countable set\footnote{Since \(\mathbb{N}\) does not have uncountable subsets we have \(\mathcal{P}_{-\aleph_0}(\mathbb{N}) = \mathcal{P}_\textsf{f}(\mathbb{N})\) and since \(\mathbb{N}\) is an infinite set \(\mathcal{P}_\textsf{f}(\mathbb{N})\) has the same cardinality of \(\mathbb{N}\).}.
   Then by Theorem \ref{teo:set_lambeck_converse} it has an initial algebra; we shall now see that it does not have a terminal coalgebra.
 
   Note that \(\mathcal{P}_\textsf{f}\) is a subfuctor of \(\mathcal{P}_{-\aleph_0}\) so Proposition \ref{prop:subfunctor} applies: if \(\nu \mathcal{P}_{-\aleph_0}\) exists then it is at least as large as \(\nu \mathcal{P}_{\textsf{f}}\) which is uncountable.
@@ -3206,7 +3211,7 @@ Moreover trying to force an analogous of Theorem \ref{teo:set_lambeck_converse} 
 \end{proposition}
 
 \begin{proof}
-  For the ``only if'' direction notice that when \(F\) has fixed point pair \((\aleph_0, \aleph_1)\) then one can repeat the proof of Theorem \ref{teo:GCH} (we only need \(\lambda^+ = 2^\lambda\) for the \(\lambda\) such that \((\lambda, \lambda^+)\) is a fixed point pair to do so; in this case \(\lambda = \aleph_0\)).
+  For the ``only if'' direction notice that when a functor \(F\) has fixed point pair \((\aleph_0, \aleph_1)\) then one can adapt the proof of Theorem \ref{teo:GCH} (we only need \(\lambda^+ = 2^\lambda\) for the \(\lambda\) such that \((\lambda, \lambda^+)\) is a fixed point pair to do so; in this case \(\lambda = \aleph_0\)).
 
   For the reverse assume that \(\aleph_1 < 2^{\aleph_0}\) and consider the functor \(\mathcal{P}_{-\aleph_0,\aleph_1}\) defined as
   \begin{equation*}
