@@ -1,6 +1,8 @@
-\documentclass[letterpaper, 11pt, oneside]{memoir}
+\documentclass[a4, 11pt, twoside]{memoir}
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
+
+\usepackage{pdfpages}
 
 % Margins and margin notes.
 %% \setlrmargins{3cm}{*}{*}
@@ -122,15 +124,74 @@
 % The document.
 \begin{document}
 
-\title{Notes on Initial Algebras and Terminal Coalgebras}
-\author{Gabriele Rastello}
-\maketitle
+\frontmatter
+\includepdf{titlepage.pdf}
 
+\newpage
+\thispagestyle{empty}
+\mbox{}
+\newpage
+
+% \thispagestyle{plain}
+\tableofcontents*
+\newpage
+\thispagestyle{empty}
+\mbox{}
+
+\newpage
+\section*{Introduction}
+\addcontentsline{toc}{chapter}{\protect\numberline{}Introduction}
+\markboth{}{}
+One of the most celebrated aspects of Category Theory is its strength as a generalization tool as well as its ability to single out similarities between different mathematical phenomena, allowing us to group them under the umbrella of more general concepts. 
+This thesis testifies for both: we develop the theory of \(F\)-algebras and \(F\)-coalgebras as a generalization of Order Theory and we show how different kinds of induction (on the natural numbers and on trees, for instance) and coinduction descend from initial algebras and terminal coalgebras.
+Let \((P, \sqsubseteq)\) be a partially ordered set and \(f: P \to P\) a monotone function.
+A pre-fixed point of \(f\) is an element \(x\) of \(P\) such that \(f(x) \sqsubseteq x\).
+It is known (and not hard to prove) that the following order theoretic lemma holds.
+
+\begin{quote}
+  \textbf{Lemma 1.}
+  If \(A\) is the set of all pre-fixed points of \(f\) and \(A\) has a meet \(\overline{a}\) then \(\overline{a}\) is the least fixed point of \(f\).
+\end{quote}
+
+A second version of the lemma exists.
+
+\begin{quote}
+  \textbf{Lemma 2.}
+  If \(B\) is the set of all post-fixed points of \(f\) (i.e. all elements \(x \in P\) such that \(x \sqsubseteq f(x)\)) and \(B\) has a join \(\overline{b}\) then \(\overline{b}\) is the biggest fixed point of \(f\).
+\end{quote}
+
+From any of the above lemmas follows the celebrated Knaster-Tarski Fixed Point Theorem \ref{teo:knaster_tarski}.
+Beginning from the observation that partially ordered sets can be thought of as particular categories one can generalize \(P\) to a category \(\A\) and \(f\) to an endofunctor \(F: \A \to \A\).
+In this way we obtain the theory of \(F\)-algebras (from generalization of pre-fixed points) and \(F\)-coalgebras (from generalization of post-fixed points); the elements \(\overline{a}\) and \(\overline{b}\) of the above lemmas become, respectively, the initial algebra of \(F\) and the terminal coalgebra of \(F\).
+The study of initial algebras and terminal coalgebras allows one to generalize the concept of (co)recursion and (co)induction to categories other than \(\Set\) and has many applications, for instance, in computer science.\\
+
+In Chapter \ref{ch:1} we recall some notions of category theory that we will use through the thesis, and establish some notation.
+It can be skipped if the reader is familiar with (co)limits.
+
+Chapter \ref{ch:2} is dedicated to the generalization of pre-fixed points to \(F\)-algebras.
+Many examples are presented (with particular attention to the case when \(F\) is a polynbomial functor) and {initial algebras} are defined.
+Key results of the chapter are Lambeck's Lemma \ref{lemma:lambeck}, which generalizes Lemma 1 above, the Primitive Recursion Theorem \ref{teo:primitive_recursion} and the Induction Principle \ref{th:induction_principle} which show that initial algebras capture and generalize the concepts of recursion and induction.
+
+Questions regarding the existence of an initial algebra are tackled in Chapters \ref{ch:2} and \ref{ch:initial_algebras_iteration}.
+The first sufficient condition that we shall see is that of Adámek's Theorem \ref{teo:adamek}: under appropriate conditions the initial algebra of \(F\) is obtained as the colimit of a diagram, the initial-algebra \(\omega\)-chain, constructed by countable iteration of \(F\).
+Iteration can be pushed into transfinite territory and yields a stronger sufficient condition (Theorem \ref{teo:adamek_transfinite}).
+Moreover, in the case of categories ``sufficiently like \(\Set\)'', many implications can be reversed and we obtain the Initial Algebra Theorem \ref{teo:initial-algebra-theorem} which gives many equivalent conditions for the existence of an initial algebra.
+
+Post-fixed points are generalized to \(F\)-coalgebras in Chapter \ref{ch:5}.
+We study with care the dual concept of initial algebras: terminal coalgebras.
+Many results can be straightforwardly dualized from the algebraic case such as Lambeck's Lemma \ref{lemma:colambeck} (which generalizes Lemma 2 above) and the Primitive Corecursion Theorem \ref{th:primitive_corecursion}; others, such as the Coinduction Principle \ref{teo:coinduction_principle}, are presented from scratch.
+
+In Chapter \ref{ch:6} we turn to iteration for coalgebras.
+As before the main results that hold for algebras can be dualized, but the resulting theorems (Theorems \ref{teo:coadamek} and Corollary \ref{coroll:coadamek_transfinite}) have hypothesis which everyday functors are less likely to satisfy than their algebraic counterparts.
+We shall see (Remark \ref{rem:tcoalgebra-implies-ialgebra}) that, even in the case of \(\Set\), there is no coalgebraic version of the Initial Algebra Theorem.
+Sufficient conditions for the existence of a terminal coalgebra exist in the case of endofunctors over \(\Set\), but they require some set-theoretical machinery (Theorem \ref{teo:accessible-implies-terminal-coalgebra}) or even the Generalized Continuum Hypothesis (Theorem \ref{teo:GCH}).
+
+\newpage
+\mainmatter
 \pagestyle{mypagestyle}
 
-\tableofcontents
-
 \chapter{Preliminaries}
+\label{ch:1}
 \newpage
 
 \section{Limits and colimits}
@@ -333,6 +394,7 @@ We will be interested in functors that preserve \(\omega\)-(co)limits where \(\o
 \end{notation}
 
 \chapter{Algebras for endofunctors}
+\label{ch:2}
 \newpage
 
 \section{\(F\)-algebras}
@@ -1499,6 +1561,11 @@ The theorem was first proven by Adámek and Koubek in \cite{Adamek-Koubek-1979} 
   Now Lambeck's Lemma (see Lemma \ref{lemma:lambeck}) gives that \(F\) has no initial algebra thus \(\A\) is not algebraically complete; contradiction.
 \end{proof}
 
+\newpage
+\thispagestyle{empty}
+\mbox{}
+
+
 \chapter{Initial algebras from transfinite iteration}
 \label{ch:algebras-transfinite-iteration}
 \newpage
@@ -2075,7 +2142,12 @@ Finally we can put all the work we have done so far into a single theorem, the I
   Finally 4 implies 1 is exactly Theorem \ref{teo:M-pre-fixed} and from its proof we obtain that \(\mu F\) is an \(\mathcal{M}\)-subobject of every \(\mathcal{M}\)-pre-fixed point of \(F\).
 \end{proof}
 
+\newpage
+\thispagestyle{empty}
+\mbox{}
+
 \chapter{Coalgebras for endofunctors}
+\label{ch:5}
 \newpage
 
 \section{\(F\)-coalgebras}
@@ -2519,10 +2591,6 @@ Instead of coinduction we will discuss bisimulation, a concept that has many app
   Dual to that of Theorem \ref{teo:primitive_recursion}.
 \end{proof}
 
-\begin{example}
-  
-\end{example}
-
 \begin{definition}
   \label{def:bisimulation}
   Let \((A, \alpha)\) and \((B, \beta)\) be two \(F\)-coalgebras for a functor \(F\) over a category \(\A\) with binary products.
@@ -2606,6 +2674,7 @@ An example should clarify the matter.
 Finally we can state and prove the coinduction principle.
 
 \begin{theorem}[Coinduction Principle]
+  \label{teo:coinduction_principle}
   Let \(F\) be an endofunctor with a terminal coalgebra \(\nu F\).
   There are no proper bisimulations on \(\nu F\).
 \end{theorem}
@@ -2619,6 +2688,7 @@ The coinduction principle ties into our interpretation of bisimulations linking 
 Terminal coalgebras we can thus think of as containing all possible behaviours ``exactly once''.
 
 \chapter{Iteration for Coalgebras}
+\label{ch:6}
 \newpage
 
 \section{Terminal Coalgebras from Finitary Iteration}
@@ -2996,7 +3066,7 @@ In order to prove that being \(\lambda\)-accessible implies existence of a termi
 \end{lemma}
 
 \begin{proof}
-  Refer to \cite[Theorem B.2.2]{coalgebrabook}.
+  Refer to \cite[Proposition 2.1]{Trnková1969}.
 \end{proof}
 
 \begin{theorem}
@@ -3221,6 +3291,10 @@ Moreover trying to force an analogous of Theorem \ref{teo:set_lambeck_converse} 
   Now if \(X\) has cardinality \(\aleph_0\) or \(\aleph_1\) then \(\mathcal{P}_{-\aleph_0, \aleph_1}(X) = \mathcal{P}_{\textsf{f}}(X)\) which gives that both \(\aleph_0\) and \(\aleph_1\) are fixed points; hence \(\mathcal{P}_{-\aleph_0, \aleph_1}\) has fixed point pair \((\aleph_0, \aleph_1)\).
   But, by working as in Example \ref{ex:coalgebra-bad}, we can prove that \(\mathcal{P}_{-\aleph_0, \aleph_1}\) has no terminal coalgebra.
 \end{proof}
+
+\newpage
+\thispagestyle{empty}
+\mbox{}
 
 \printbibliography
 \end{document}
