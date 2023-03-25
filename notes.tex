@@ -142,18 +142,18 @@
 \section*{Introduction}
 \addcontentsline{toc}{chapter}{\protect\numberline{}Introduction}
 \markboth{}{}
-One of the most celebrated aspects of Category Theory is its strength as a generalization tool as well as its ability to single out similarities between different mathematical phenomena, allowing us to group them under the umbrella of more general concepts. 
-This thesis testifies for both: we develop the theory of \(F\)-algebras and \(F\)-coalgebras as a generalization of Order Theory and we show how different kinds of induction (on the natural numbers and on trees, for instance) and coinduction descend from initial algebras and terminal coalgebras.
-Let \((P, \sqsubseteq)\) be a partially ordered set and \(f: P \to P\) a monotone function.
+One of the main features of Category Theory is its strength as a generalization tool as well as its effectiveness in identifying similarities between different mathematical phenomena, allowing us to group them under the umbrella of more general concepts. 
+The theory of \(F\)-algebras and \(F\)-coalgebras was developed, starting from the 1970's, as a categorical generalization of Order Theory and allows for different kinds of induction (on the natural numbers and on trees, for instance) and coinduction to be recognized as descending from initial algebras and terminal coalgebras.
+To illustrate this let \((P, \sqsubseteq)\) be a partially ordered set and \(f: P \to P\) a monotone function.
 A pre-fixed point of \(f\) is an element \(x\) of \(P\) such that \(f(x) \sqsubseteq x\).
-It is known (and not hard to prove) that the following order theoretic lemma holds.
+It is known (see Lemma \ref{lemma:order_theory}) that the following order theoretic lemma holds.
 
 \begin{quote}
   \textbf{Lemma 1.}
   If \(A\) is the set of all pre-fixed points of \(f\) and \(A\) has a meet \(\overline{a}\) then \(\overline{a}\) is the least fixed point of \(f\).
 \end{quote}
 
-A second version of the lemma exists.
+A second, dual, version of the lemma exists (see Lemma \ref{lemma:order_theory_ii}).
 
 \begin{quote}
   \textbf{Lemma 2.}
@@ -161,15 +161,15 @@ A second version of the lemma exists.
 \end{quote}
 
 From any of the above lemmas follows the celebrated Knaster-Tarski Fixed Point Theorem \ref{teo:knaster_tarski}.
-Beginning from the observation that partially ordered sets can be thought of as particular categories one can generalize \(P\) to a category \(\A\) and \(f\) to an endofunctor \(F: \A \to \A\).
-In this way we obtain the theory of \(F\)-algebras (from generalization of pre-fixed points) and \(F\)-coalgebras (from generalization of post-fixed points); the elements \(\overline{a}\) and \(\overline{b}\) of the above lemmas become, respectively, the initial algebra of \(F\) and the terminal coalgebra of \(F\).
+Starting from the observation that partially ordered sets can be thought of as particular categories one can generalize \(P\) to a category \(\A\) and \(f\) to an endofunctor \(F: \A \to \A\).
+In this way one obtains the theory of \(F\)-algebras (from generalization of pre-fixed points) and \(F\)-coalgebras (from generalization of post-fixed points); the elements \(\overline{a}\) and \(\overline{b}\) of the above lemmas become, respectively, the initial algebra of \(F\) and the terminal coalgebra of \(F\).
 The study of initial algebras and terminal coalgebras allows one to generalize the concept of (co)recursion and (co)induction to categories other than \(\Set\) and has many applications, for instance, in computer science.\\
 
 In Chapter \ref{ch:1} we recall some notions of category theory that we will use through the thesis, and establish some notation.
 It can be skipped if the reader is familiar with (co)limits.
 
 Chapter \ref{ch:2} is dedicated to the generalization of pre-fixed points to \(F\)-algebras.
-Many examples are presented (with particular attention to the case when \(F\) is a polynbomial functor) and {initial algebras} are defined.
+Many examples are presented (with particular attention to the case when \(F\) is a polynomial functor) and {initial algebras} are defined.
 Key results of the chapter are Lambeck's Lemma \ref{lemma:lambeck}, which generalizes Lemma 1 above, the Primitive Recursion Theorem \ref{teo:primitive_recursion} and the Induction Principle \ref{th:induction_principle} which show that initial algebras capture and generalize the concepts of recursion and induction.
 
 Questions regarding the existence of an initial algebra are tackled in Chapters \ref{ch:2} and \ref{ch:initial_algebras_iteration}.
@@ -179,7 +179,7 @@ Moreover, in the case of categories ``sufficiently like \(\Set\)'', many implica
 
 Post-fixed points are generalized to \(F\)-coalgebras in Chapter \ref{ch:5}.
 We study with care the dual concept of initial algebras: terminal coalgebras.
-Many results can be straightforwardly dualized from the algebraic case such as Lambeck's Lemma \ref{lemma:colambeck} (which generalizes Lemma 2 above) and the Primitive Corecursion Theorem \ref{th:primitive_corecursion}; others, such as the Coinduction Principle \ref{teo:coinduction_principle}, are presented from scratch.
+Many results can be straightforwardly dualized from the algebraic case such as Lambeck's Lemma \ref{lemma:colambeck} (which generalizes Lemma 2 above) and the Primitive Corecursion Theorem \ref{th:primitive_corecursion}; others, such as the Coinduction Principle \ref{teo:coinduction_principle}, are presented independently from their algebraic version.
 
 In Chapter \ref{ch:6} we turn to iteration for coalgebras.
 As before the main results that hold for algebras can be dualized, but the resulting theorems (Theorems \ref{teo:coadamek} and Corollary \ref{coroll:coadamek_transfinite}) have hypothesis which everyday functors are less likely to satisfy than their algebraic counterparts.
@@ -202,17 +202,16 @@ We also introduce some notation.
 For detailed proofs see \cite[Chapter 2]{handbook1}.
 
 \begin{definition}
-  Given a functor \(F \colon \mathscr{D} \to \A\) a \textbf{cone} \marginnote{cone} on \(F\) is an object \(C \in \A\) and a family of arrows \(\left(\pi_D \colon C \to FD\right)_{D \in \mathscr{D}}\) such that for every arrow \(d \colon D_1 \to D_2\) of \(\mathscr{D}\) we have
+  Given a functor \(F \colon \mathscr{D} \to \A\) a \textbf{cone} on \(F\) is an object \(C \in \A\) and a family of arrows \(\left(\pi_D \colon C \to FD\right)_{D \in \mathscr{D}}\) such that for every arrow \(d \colon D_1 \to D_2\) of \(\mathscr{D}\) we have
   \begin{equation}
     \label{eq:cone}
     Fd \circ \pi_{D_1} = \pi_{D_2}.
   \end{equation}
   The arrows \(\pi_D\) are called \textbf{projections} of the cone, the object \(C\) the \textbf{vertex}.
-  \marginnote{projection, vertex}
-\end{definition}
+  \end{definition}
 
 \begin{definition}
-  Given a functor \(F \colon \mathscr{D} \to \A\) a \textbf{limit} \marginnote{limit} of \(F\) is a cone \((L, (\pi_D)_{D \in \mathscr{D}})\) such that for every other cone \((C, (\rho_D)_{D \in \mathscr{D}})\) there is a unique arrow \(m \colon C \to L\) such that
+  Given a functor \(F \colon \mathscr{D} \to \A\) a \textbf{limit} of \(F\) is a cone \((L, (\pi_D)_{D \in \mathscr{D}})\) such that for every other cone \((C, (\rho_D)_{D \in \mathscr{D}})\) there is a unique arrow \(m \colon C \to L\) such that
   \begin{equation*}
     \rho_D = \pi_D \circ m \quad \text{for every \(D \in \mathscr{D}\)}.
   \end{equation*}
@@ -235,17 +234,16 @@ It is most useful when working in abstract categories where arrows are not (gene
 The definitions of cone and of limit are dualized to yield those of cocone and colimit.
 
 \begin{definition}
-  Given a functor \(F \colon \mathscr{D} \to \A\) a \textbf{cocone} \marginnote{cocone} on \(F\) is an object \(C \in \A\) and a family of arrows \(\left(\sigma_D \colon FD \to C \right)_{D \in \mathscr{D}}\) such that for every arrow \(d \colon D_1 \to D_2\) of \(\mathscr{D}\) we have
+  Given a functor \(F \colon \mathscr{D} \to \A\) a \textbf{cocone} on \(F\) is an object \(C \in \A\) and a family of arrows \(\left(\sigma_D \colon FD \to C \right)_{D \in \mathscr{D}}\) such that for every arrow \(d \colon D_1 \to D_2\) of \(\mathscr{D}\) we have
   \begin{equation}
     \label{eq:cocone}
     \sigma_{D_2} \circ Fd = \sigma_{D_1}.
   \end{equation}
   The arrows \(\sigma_D\) are called \textbf{coprojections} of the cocone.
-  \marginnote{coprojection}
-\end{definition}
+  \end{definition}
 
 \begin{definition}
-  Given a functor \(F \colon \mathscr{D} \to \A\) a \textbf{colimit} \marginnote{colimit} of \(F\) is a cocone \((L, (\sigma_D)_{D \in \mathscr{D}})\) such that for every other cocone \((C, (\tau_D)_{D \in \mathscr{D}})\) there is a unique arrow \(m \colon L \to C\) such that
+  Given a functor \(F \colon \mathscr{D} \to \A\) a \textbf{colimit} of \(F\) is a cocone \((L, (\sigma_D)_{D \in \mathscr{D}})\) such that for every other cocone \((C, (\tau_D)_{D \in \mathscr{D}})\) there is a unique arrow \(m \colon L \to C\) such that
   \begin{equation*}
     \tau_D = m \circ \sigma_D \quad \text{for every \(D \in \mathscr{D}\)}.
   \end{equation*}
@@ -271,7 +269,6 @@ Recall that a discrete category is a category that has no non-identity arrow.
 
 \begin{definition}
   Given a functor \(F \colon \mathscr{D} \to \A\) where \(\mathscr{D}\) is some discrete category a limit of \(F\) is called a \textbf{product} while a colimit a \textbf{coproduct}.
-  \marginnote{product, coproduct}
 \end{definition}
 
 \begin{notation}
@@ -321,8 +318,7 @@ In light of this proposition we write \(A \times B \times C\) and \(A + B + C\) 
   Let \(A,B,C,D\) be objects of \(\A\) such that \(A \times B, C \times D\) exist and let \(f \colon A \to C, g \colon B \to D\) be arrows.
   With reference to the following diagram we denote \(\langle f \circ \pi_1, g \circ \pi_2\rangle\) by \(f \times g\).
   Dually if \(A + B, C + D\) exist we denote \([\sigma_1 \circ f, \sigma_2 \circ g]\) by \(f + g\).
-  \marginnote{\(f \times g\), \(f + g\)}
-  \begin{center}
+    \begin{center}
     \begin{tikzcd}[sep = large]
       A \ar[r, "f"]& C \\
       A \times B \ar[u, "\pi_1"] \ar[d, "\pi_2"] \ar[r, dashed, "f \times g"] & C \times D \ar[u] \ar[d]\\
@@ -363,8 +359,8 @@ It is most useful for performing calculations; we will use it without explicit r
 \subsection{Initial and terminal objects}
 
 \begin{definition}
-  An \textbf{initial object} \marginnote{initial object} for a category \(\A\) is an object \(0 \in \A\) such that for every other object \(A \in \A\) there is exactly one arrow from \(0\) to \(\A\).
-  Dually a \textbf{terminal object} \marginnote{terminal object} for \(\A\) is an object \(1 \in \A\) such that for every other object \(A \in \A\) there is exactly one arrow from \(A\) to \(1\).
+  An \textbf{initial object} for a category \(\A\) is an object \(0 \in \A\) such that for every other object \(A \in \A\) there is exactly one arrow from \(0\) to \(\A\).
+  Dually a \textbf{terminal object} for \(\A\) is an object \(1 \in \A\) such that for every other object \(A \in \A\) there is exactly one arrow from \(A\) to \(1\).
 \end{definition}
 
 \begin{remark}
@@ -375,9 +371,9 @@ It is most useful for performing calculations; we will use it without explicit r
 \subsection{(Co)limit-preserving functors}
 
 \begin{definition}
-  A functor \(G \colon \A \to \B\) \textbf{preserve limits} \marginnote{limit preservation} if, for every small category \(\D\) and functor \(F \colon \D \to \A\), when the limit of \(F\) exists the limit of \(G \circ F\) is obtained by applying \(G\) to the limit cone.
+  A functor \(G \colon \A \to \B\) \textbf{preserve limits} if, for every small category \(\D\) and functor \(F \colon \D \to \A\), when the limit of \(F\) exists the limit of \(G \circ F\) is obtained by applying \(G\) to the limit cone.
   That is: if \((L, (\pi_D)_{D \in \D})\) is the limit of \(F\) then \((GL, (G\pi_D)_{D \in \D})\) is the limit of \(G \circ F\).
-  As expected \(G\) \marginnote{colimit preservation} is said to preserve colimits when, for every small category \(\D\) and functor \(F \colon \D \to \A\), when the colimit of \(F\) exists then the colimit of \(G \circ F\) is the image through \(G\) of the colimit cocone.
+  As expected \(G\) is said to preserve colimits when, for every small category \(\D\) and functor \(F \colon \D \to \A\), when the colimit of \(F\) exists then the colimit of \(G \circ F\) is the image through \(G\) of the colimit cocone.
 \end{definition}
 
 By restricting the definition above to a specific small category \(\D\) we obtain the notion of a functor that preserves \(\D\)-(co)limits.
@@ -402,7 +398,7 @@ We will be interested in functors that preserve \(\omega\)-(co)limits where \(\o
 Though this section let \(\mathscr{A}\) be an arbitrary category that we call the \textbf{base category} and \(F \colon \mathscr{A} \to \mathscr{A}\) an endofunctor.
 
 \begin{definition}
-  An \textbf{algebra} for \(F\) (or an \textbf{\(F\)-algebra}) is a pair \((A, \alpha)\) where \(A\) is an object of \(\mathscr{A}\) (that we call the \textbf{carrier} or \textbf{base object}) \marginnote{\(F\)-algebra} and \(\alpha\) is an arrow of type \(FA \to A\) (that we call the \textbf{structure} of the algebra).
+  An \textbf{algebra} for \(F\) (or an \textbf{\(F\)-algebra}) is a pair \((A, \alpha)\) where \(A\) is an object of \(\mathscr{A}\) (that we call the \textbf{carrier} or \textbf{base object}) and \(\alpha\) is an arrow of type \(FA \to A\) (that we call the \textbf{structure} of the algebra).
 \end{definition}
 
 As one should expect \(F\)-algebras form a category of their own.
@@ -424,7 +420,6 @@ As one should expect \(F\)-algebras form a category of their own.
 \end{remark}
 
 We denote the category of \(F\)-algebras and morphisms of \(F\)-algebras by \(\alg F\).
-\marginnote{\(\alg F\)}
 
 \begin{example}
   \label{ex:prepoly1}
@@ -471,14 +466,12 @@ This captures the idea of a \(\Sigma\)-algebra from universal algebra and provid
 
 \begin{definition}
   A \textbf{signature} \(\Sigma\) is a collection of sets \((\Sigma_n)_{n < \omega}\) where \(\Sigma_n\) is called the set of \(n\)-ary symbols.
-  \marginnote{signature}
   The symbols in \(\Sigma_0\) are also called constant symbols (or symbols for constants).
 \end{definition}
 
 \begin{definition}
   \label{def:sigma-algebra}
   Given a signature \(\Sigma\) a \textbf{\(\Sigma\)-algebra} is a set \(A\) together with interpretations for every symbol of \(\Sigma\).
-  \marginnote{\(\Sigma\)-algebra}
   That is: to every \(\sigma \in \Sigma_0\) we associate a fixed element of \(A\) and to every \(\sigma \in \Sigma_n\) an \(n\)-ary function on \(A\).
   We denote the interpretation of \(\sigma\) in \(A\) by \(\sigma^A\).
 
@@ -496,7 +489,7 @@ This captures the idea of a \(\Sigma\)-algebra from universal algebra and provid
 \end{definition}
 
 We will now observe how \(\Sigma\)-algebras can be realized as algebras for specific endofuctors.
-To every signature we associate a \textbf{polynomial functor} \marginnote{polynomial functor} \(H_\Sigma \colon \Set \to \Set\) that operates as follows on objects \(X\) and arrows \(f\).
+To every signature we associate a \textbf{polynomial functor} \(H_\Sigma \colon \Set \to \Set\) that operates as follows on objects \(X\) and arrows \(f\).
 \begin{align*}
   H_\Sigma X &= \coprod_{n < \omega} \Sigma_n \times X^n \\
   H_\Sigma f &= \coprod_{n < \omega} \id_{\Sigma_n} \times \underbrace{f \times \ldots \times f}_{\text{\(n\) times}}
@@ -537,12 +530,12 @@ Since the diagonal of the square is an arrow out of a coproduct we know from Pro
 We now turn to continous algebras.
 
 \begin{definition}
-  A \textbf{complete partial order} \marginnote{complete partial order} (or a \textbf{CPO}) is a poset \((A, \sqsubseteq)\) in which all \(\omega\)-chains
+  A \textbf{complete partial order} (or a \textbf{CPO}) is a poset \((A, \sqsubseteq)\) in which all \(\omega\)-chains
   \begin{equation*}
     a_1 \sqsubseteq a_2 \sqsubseteq a_3 \sqsubseteq \ldots
   \end{equation*}
   have a join i.e. a least upper bound; we denote it by \(\bigvee_{n < \omega}a_n\).
-  A function \(f \colon (A, \sqsubseteq) \to (B, \sqsubseteq)\) is \textbf{continous} \marginnote{continous function} if
+  A function \(f \colon (A, \sqsubseteq) \to (B, \sqsubseteq)\) is \textbf{continous} if
   \begin{itemize}
   \item[1.] it is monotone i.e. \(a \sqsubseteq b\) in \(A\) implies \(f(a) \sqsubseteq f(b)\) in \(B\);
   %% \item[2.] if \(\overline{a}\) is the join of \(a_1 \sqsubseteq a_2 \sqsubseteq \ldots\) in \(A\) then \(f(\overline{a})\) is the join of \(f(a_1) \sqsubseteq f(a_2) \sqsubseteq \ldots\) in B.
@@ -586,7 +579,6 @@ We now turn to continous algebras.
 \end{example}
 
 Finally let \(\CPO_\bot\) be the category of CPOs with a bottom element and continous functions that preserve the bottom i.e. such that \(f(\bot) = \bot\).
-\marginnote{strict continous function}
 We call such functions \textbf{strict continous functions}.
 
 \begin{remark}
@@ -604,7 +596,6 @@ We call such functions \textbf{strict continous functions}.
 
 \begin{definition}
   An \textbf{initial algebra} for an endofunctor \(F\) is an initial object in \(\alg F\).
-  \marginnote{initial algebra}
   When an initial algebra exists we denote it by \((\mu F, \iota)\).
 \end{definition}
 
@@ -635,7 +626,7 @@ We will now look at some non-trivial examples of initial algebras.
 \end{example}
 
 \begin{example}
-  Let \(\mathcal{P}_\textsf{f} \colon \Set \to \Set\) be the finite power-set functor. \marginnote{finite power-set functor}
+  Let \(\mathcal{P}_\textsf{f} \colon \Set \to \Set\) be the finite power-set functor. 
   This functor sends a set \(X\) to \(\mathcal{P}_\textsf{f}X = \{Z \subseteq X \colon Z\ \text{is finite}\}\) and a function \(f \colon X \to Y\) to the function \(\mathcal{P}_\textsf{f}f\) that sends a finite subset of \(X\) to its (obviously finite) \(f\)-image in \(Y\).
   Let \(V_\omega\) be the set of hereditarily finite sets.
   That is:
@@ -685,7 +676,6 @@ Finally we describe initial algebras for polynomial functors in two equivalent w
 \begin{definition}
   Let \(\Sigma\) be a signature.
   The set of \textbf{closed term} for \(\Sigma\) is defined inductively as follows:
-  \marginnote{closed term}
   \begin{itemize}
   \item[1.] a constant symbol is a closed term;
   \item[2.] an expression of the form \(\sigma(t_1, \ldots, t_n)\) where \(\sigma \in \Sigma_n\) and \(t_1, \ldots, t_n\) are closed terms is a closed term.
@@ -758,7 +748,7 @@ Finally we describe initial algebras for polynomial functors in two equivalent w
 \begin{remark}
   \label{rem:treetupling}
   Every \(n\)-ary symbol of \(\Sigma\) defines an \(n\)-ary operation on \(\Sigma\)-trees which takes \(n\) trees to the tree obtained by connecting each root to a new node labelled by \(\sigma\), which becomes the root of a new tree.
-  We call this operation \textbf{tree-tupling} (below an example of tree-tupling induced by a 3-ary symbol \(\sigma\)).\marginnote{tree-tupling}
+  We call this operation \textbf{tree-tupling} (below an example of tree-tupling induced by a 3-ary symbol \(\sigma\)).
   Note that the order of the trees matters.
   \begin{equation*}
     \begin{tikzpicture}
@@ -944,7 +934,7 @@ Here we show how one can use the concept of an initial algebra to provide a gene
 
 \begin{definition}
   Let \(F\) be an endofuctor over \(\A\) with an initial algebra \(\mu F\).
-  A morphism \(f \colon \mu F \to A\) of \(\A\) is \textbf{recursively specified} \marginnote{recursively specified morphism} if there exists an algebra structure \(\alpha \colon FA \to A\) on \(A\) that makes \(f\) into an algebra homomorphism (actually the unique algebra homomorphism).
+  A morphism \(f \colon \mu F \to A\) of \(\A\) is \textbf{recursively specified}  if there exists an algebra structure \(\alpha \colon FA \to A\) on \(A\) that makes \(f\) into an algebra homomorphism (actually the unique algebra homomorphism).
 \end{definition}
 
 \begin{example}
@@ -1116,7 +1106,7 @@ Unsurprisingly we shall replace CPOs with bottom by categories with an initial o
 The \(\omega\)-chain used in the proof of Theorem \ref{teo:kleene} becomes a diagram and the continuity condition become a colimit-preservation one.
 
 \begin{definition}
-  The \textbf{initial-algebra \(\omega\)-chain}\marginnote{initial-algebra \(\omega\)-chain} of an endofunctor \(F\) is the diagram
+  The \textbf{initial-algebra \(\omega\)-chain} of an endofunctor \(F\) is the diagram
   \begin{equation}
     \label{dia:initial_chain}
     \begin{tikzcd}[sep = large]
@@ -1275,7 +1265,7 @@ By looking at the diagram in question (the initial-algebra \(\omega\)-chain) we 
 \end{remark}
 
 \begin{example}
-  In a category with binary coproducts and an initial object 1 the initial algebra for \(FX = X + 1\), if it exists, is called the \textbf{natural numbers object} (or \textbf{NNO}) \marginnote{natural numbers object} of the category.
+  In a category with binary coproducts and an initial object 1 the initial algebra for \(FX = X + 1\), if it exists, is called the \textbf{natural numbers object} (or \textbf{NNO})  of the category.
   Notice that a NNO, being an initial algebra, is unique so the use of ``the'' is justified.
   Explicitly a NNO is a pair \((N, \iota:N+1 \to N)\) such that for every other pair \((A, \alpha : A+1 \to A)\) there is a unique \(h:N\to A\) such that
   \begin{equation*}
@@ -1324,9 +1314,9 @@ By looking at the diagram in question (the initial-algebra \(\omega\)-chain) we 
 \end{example}
 
 \begin{definition}
-  A function \(f : M \to M'\) between metric spaces \((M, d_M), (M', d_{M'})\) is \textbf{non-expanding} \marginnote{non-expanding map} if \(d_{M'}(f(x), f(y)) \leq d_M(x,y)\) for all \(x,y \in M\).
+  A function \(f : M \to M'\) between metric spaces \((M, d_M), (M', d_{M'})\) is \textbf{non-expanding}  if \(d_{M'}(f(x), f(y)) \leq d_M(x,y)\) for all \(x,y \in M\).
   A metric space \((M, d_M)\) is \(1\)-bounded if \(d_M(x, y) \leq 1\) for all \(x,y \in M\).
-  We denote by \(\MS\) the category of \(1\)-bounded metric spaces and non-expanding maps \marginnote{\(\MS\)}.
+  We denote by \(\MS\) the category of \(1\)-bounded metric spaces and non-expanding maps .
 \end{definition}
 
 \begin{remark}
@@ -1522,7 +1512,7 @@ The next one shows that we can use it also to understand how the structure on th
 \section{Algebraically Complete Categories}
 
 \begin{definition}
-  A category \(\A\) is \textbf{algebraically complete} \marginnote{algebraically complete category} if every endofunctor on it has an initial algebra.
+  A category \(\A\) is \textbf{algebraically complete} if every endofunctor on it has an initial algebra.
 \end{definition}
 
 \begin{remark}
@@ -1574,7 +1564,7 @@ The theorem was first proven by Adámek and Koubek in \cite{Adamek-Koubek-1979} 
 \label{sec:colimits_of_chains}
 
 Through this chapter we regard ordinals \(j \in \Ord\) as linear orders and thus as categories.
-A \(j\)-chain in some category \(\A\) is a functor \(C : j \to \A \)\marginnote{\(j\)-chain}; we denote the elements of the chain by \(C_i\), for \(i \in j\), and its arrows by \(c_{i,i'} : C_i \to C_{i'}\) for \(i \leq i' < j\).
+A \(j\)-chain in some category \(\A\) is a functor \(C : j \to \A \); we denote the elements of the chain by \(C_i\), for \(i \in j\), and its arrows by \(c_{i,i'} : C_i \to C_{i'}\) for \(i \leq i' < j\).
 We say that \(\A\) has colimits of chains if for all \(j \in \Ord\) every \(j\)-chain has a colimit; this includes the existence of an initial object (as the colimit of the empty chain) but does not include colimits of \(\Ord\)-chains.
 
 \begin{lemma}
@@ -1706,7 +1696,6 @@ We now generalize Remark \ref{rem:induced_cocone} to the transfinite case.
 
 \begin{definition}
   We say that the inital-algebra chain \textbf{converges}
-  \marginnote{convergence of the initial-algebra chain}
   \textbf{in} \(\lambda\) \textbf{steps} if \(w_{\lambda, \lambda+1}\) is an isomorphism and that it converges in \textbf{exactly} \(\lambda\) \textbf{steps} when \(\lambda\) is the least such ordinal.
 \end{definition}
 
@@ -1786,8 +1775,8 @@ We now give an example of a functor that has initial-algebra convergent in more 
 
 \begin{example}
   Recall that trees are simple graphs such that every two distinct vertexes are connected by a unique path; we generally mark one vertex as the \textbf{root} of the tree and draw them with the root on top as we have been doing so far.
-  Trees with no infinite paths are called \textbf{well-founded}.\marginnote{well-founded tree}
-  When a tree \(t\) is well-founded we define its \textbf{height}\marginnote{height of a tree} by
+  Trees with no infinite paths are called \textbf{well-founded}.
+  When a tree \(t\) is well-founded we define its \textbf{height} by
   \begin{equation*}
     h(t) = \sup \{h(t') + 1 : \quad t' \text{ maximal proper subtree of \(t\)}\}.
   \end{equation*}
@@ -1984,22 +1973,22 @@ Now we'd like to generalize Theorem \ref{teo:set_lambeck_converse}.
 Notice that \(\alpha, \alpha_\omega\) and \(\alpha_{\omega + 1}\) being injective (mono) plays a crucial role in the argument above; this suggests that we should look into monomorphisms and, particularly, subobjects.
 
 \begin{definition}
-  Fixed an object \(A\) in a category \(\A\) a \textbf{subobject} of \(A\) is represented by a monomorphism \(m: B \rightarrowtail A\) \marginnote{subobject}.
+  Fixed an object \(A\) in a category \(\A\) a \textbf{subobject} of \(A\) is represented by a monomorphism \(m: B \rightarrowtail A\).
   If we have two monomorphisms \(m_B : B \rightarrowtail A, m_C : C \rightarrowtail A\) we write \(m_B \leq m_C\) if there is some \(k : B \to C\) such that \(m_B = m_C \circ k\) (notice that this \(k\) too is mono).
   When we have \(m_B \leq m_C \leq m_B\) the \(k\) above is an isomorphism and we say \(m_B\) and \(m_C\) represent the same subobject.
   Thus we can consider the collection of equivalence classes of subobjects of \(A\) that is partially ordered by \(\leq\).
-  If \(\A\) is such that every object \(A \in \A\) has only a set of subobjects then \(\A\) is called \textbf{well-powered} \marginnote{well-powered category}.
+  If \(\A\) is such that every object \(A \in \A\) has only a set of subobjects then \(\A\) is called \textbf{well-powered}.
 \end{definition}
 We can restrict ourselves to a class \(\mathcal{M}\) of monomorphisms and speak of \(\mathcal{M}\)-subobjects i.e. subobjects represented by mono in \(\mathcal{M}\).
-When a given object \(A\) has only a set of \(\mathcal{M}\)-subobjects we write \(\Sub_\mathcal{M}(A, \leq)\) \marginnote{\(\Sub_\mathcal{M}(A, \leq)\)} for the poset of \(\mathcal{M}\)-subobjects of \(A\); if \(\mathcal{M}\) is the class of all monomorphisms we also write simply \(\Sub(A, \leq)\).
+When a given object \(A\) has only a set of \(\mathcal{M}\)-subobjects we write \(\Sub_\mathcal{M}(A, \leq)\) for the poset of \(\mathcal{M}\)-subobjects of \(A\); if \(\mathcal{M}\) is the class of all monomorphisms we also write simply \(\Sub(A, \leq)\).
 Notice that we do not require the monomorphisms that witness \(\leq\) to be in \(\mathcal{M}\).
 
-From here onwards let \(\mathcal{M}\) denote \marginnote{\(\mathcal{M}\)} a class of monomorphisms (of some generic category \(\A\) or otherwise clear from the context) containing all isomorphisms and closed under composition.
+From here onwards let \(\mathcal{M}\) denote a class of monomorphisms (of some generic category \(\A\) or otherwise clear from the context) containing all isomorphisms and closed under composition.
 
 \begin{definition}
   \label{def:smooth-subobjects}
-  We say that an object \(A\) has \textbf{smooth} \(\mathcal{M}\)\textbf{-subobjects} if \(\Sub_\mathcal{M}(A, \leq)\) \marginnote{smooth\\ \(\mathcal{M}\)-subobjects} is a chain-complete poset (particularly it is a set) where joins of chains are given by colimits of the corresponding chain of subobjects.
-  We say that the class \(\mathcal{M}\) itself is \textbf{smooth} \marginnote{smooth class of monomorphisms} if every object has smooth \(\mathcal{M}\)-subobjects.
+  We say that an object \(A\) has \textbf{smooth} \(\mathcal{M}\)\textbf{-subobjects} if \(\Sub_\mathcal{M}(A, \leq)\) is a chain-complete poset (particularly it is a set) where joins of chains are given by colimits of the corresponding chain of subobjects.
+  We say that the class \(\mathcal{M}\) itself is \textbf{smooth} if every object has smooth \(\mathcal{M}\)-subobjects.
   When the class of all monomorphisms of a given category is smooth we say that the category has \textbf{smooth monomorphisms}.
 \end{definition}
 
@@ -2044,11 +2033,11 @@ From here onwards let \(\mathcal{M}\) denote \marginnote{\(\mathcal{M}\)} a clas
 We now work our way towards a sufficient condition for the convergence of the initial-algebra chain.
 
 \begin{definition}
-  Given \marginnote{\(\mathcal{M}\)-preserving functor} a category and a class \(\mathcal{M}\) of monomorphisms we say that an endofunctor \(F\) \textbf{preserves \(\mathcal{M}\)} if for every \(m \in \mathcal{M}\) we have \(Fm \in \mathcal{M}\).
+  Given a category and a class \(\mathcal{M}\) of monomorphisms we say that an endofunctor \(F\) \textbf{preserves \(\mathcal{M}\)} if for every \(m \in \mathcal{M}\) we have \(Fm \in \mathcal{M}\).
 \end{definition}
 
 \begin{definition}
-  An \textbf{\(\mathcal{M}\)-pre-fixed point}   \marginnote{\(\mathcal{M}\)-pre-fixed point} of an endofunctor \(F\) is an object \(A\) together with a monomorphism \(FA \rightarrowtail A\) in \(\mathcal{M}\).
+  An \textbf{\(\mathcal{M}\)-pre-fixed point} of an endofunctor \(F\) is an object \(A\) together with a monomorphism \(FA \rightarrowtail A\) in \(\mathcal{M}\).
 \end{definition}
 
 \begin{theorem}
@@ -2156,7 +2145,7 @@ Though this section let \(\A\) be an arbitrary base category and \(F : A → A\)
 We shall study \(F\)-coalgebras, the dual concept to \(F\)-algebras.
 
 \begin{definition}
-  A \textbf{coalgebra} for \(F\) (or a \(F\)\textbf{-coalgebra})\marginnote{\(F\)-coalgebra} is a pair \((A, \alpha)\) where \(A\) is an object of \(\A\) and \(\alpha\) is an arrow of type \(A \to FA\).
+  A \textbf{coalgebra} for \(F\) (or a \(F\)\textbf{-coalgebra}) is a pair \((A, \alpha)\) where \(A\) is an object of \(\A\) and \(\alpha\) is an arrow of type \(A \to FA\).
 \end{definition}
 
 The notion of morphism between coalgebras is as expected.
@@ -2173,11 +2162,11 @@ The notion of morphism between coalgebras is as expected.
   commutes.
 \end{definition}
 
-As with algebras, coalgebras on \(F\) also form a category that we indicate with \(\Coalg F\)\marginnote{\(\Coalg F\)}.
+As with algebras, coalgebras on \(F\) also form a category that we indicate with \(\Coalg F\).
 
 \begin{example}
   \label{ex:systems-with-termination}
-  Over \(\Set\) coalgebras for \(FX = X + 1\) are called \textbf{systems with termination}\marginnote{systems with termination}.
+  Over \(\Set\) coalgebras for \(FX = X + 1\) are called \textbf{systems with termination}.
   Given a coalgebra \(\alpha: A \to A + 1\) we think of \(A\) as a set of \textbf{states} and of \(\alpha\) as the \textbf{dynamic} of the system.
   Indeed to give an arrow \(\alpha:A \to A+1\) is, for every \(a \in A\), to deem it a \textbf{terminal state} if \(\alpha(a)\) is in the right summand or to specify a \textbf{next state} \(\alpha(a)\) in the left summand.
   We can represent such systems with directed graphs as follows, with terminal states marked as \(\bullet^T\).
@@ -2211,7 +2200,7 @@ As with algebras, coalgebras on \(F\) also form a category that we indicate with
 \begin{example}
   \label{ex:deterministic-automata}
   Let \(\Sigma\) be a set of inputs.
-  A \textbf{deterministic automata}\marginnote{deterministic automata} is composed of a set \(S\) of states, a transition function \(\delta_s : S \to S\) for every \(s \in \Sigma\) and a set \(A \subset S\) of \textbf{accepting states} \marginnote{accepting state}.
+  A \textbf{deterministic automata} is composed of a set \(S\) of states, a transition function \(\delta_s : S \to S\) for every \(s \in \Sigma\) and a set \(A \subset S\) of \textbf{accepting states}.
   In order to obtain deterministic automata as coalgebras for a functor we group the \(\delta_s\)'s into a single function \(\delta:S \to S^\Sigma\) assigning to a state \(t\) the map \(s \mapsto \delta_s(t)\) and consider the characteristic function \(\chi : S \to \{0, 1\}\) of \(A\).
   So deterministic automata are coalgebras for the functor
   \begin{equation*}
@@ -2222,7 +2211,7 @@ As with algebras, coalgebras on \(F\) also form a category that we indicate with
 
 \begin{example}
   \label{ex:NDA}
-  As above let \(\Sigma\) be a set of inputs. A \textbf{non-deterministic automata} \marginnote{non-deterministic automata}, similarly to a deterministic one, is made of a set of states \(S\) with a subset \(A\) of accepting states but the transition functions have codomain \(\mathcal{P}(S)\) i.e.
+  As above let \(\Sigma\) be a set of inputs. A \textbf{non-deterministic automata}, similarly to a deterministic one, is made of a set of states \(S\) with a subset \(A\) of accepting states but the transition functions have codomain \(\mathcal{P}(S)\) i.e.
   \begin{equation*}
     \delta_s : S \to \mathcal{P}(S) \quad \text{for every \(s \in \Sigma\)}.
   \end{equation*}
@@ -2236,7 +2225,7 @@ As with algebras, coalgebras on \(F\) also form a category that we indicate with
 
 \begin{example}
   \label{ex:Moore}
-  Given a set \(\Sigma\) of inputs and a set \(\Gamma\) of outputs a coalgebra for the functor \(FX = \Gamma \times X^\Sigma\) over \(\Set\) is called a \textbf{Moore automata} \marginnote{Moore automata}.
+  Given a set \(\Sigma\) of inputs and a set \(\Gamma\) of outputs a coalgebra for the functor \(FX = \Gamma \times X^\Sigma\) over \(\Set\) is called a \textbf{Moore automata}.
   Every state \(x\) of such a coalgebra is labeled by an element \(\gamma \in \Gamma\) (we say that \(x\) emits output \(\gamma\)) and has next states based on inputs in \(\Sigma\) like in a deterministic automata.
 \end{example}
 
@@ -2266,7 +2255,7 @@ As with algebras, coalgebras on \(F\) also form a category that we indicate with
 We have seen that the initial \(F\)-algebra is quite interesting and we will see now that its dual, the terminal \(F\)-coalgebra, is interesting as well.
 
 \begin{definition}
-  A \textbf{terminal coalgebra}\marginnote{terminal coalgebra} for an endofuctor \(F\) is a terminal object in \(\Coalg F\).
+  A \textbf{terminal coalgebra} for an endofuctor \(F\) is a terminal object in \(\Coalg F\).
   When it exists we usually denote it by \((\eta F, \tau)\).
 \end{definition}
 
@@ -2298,7 +2287,7 @@ We have seen that the initial \(F\)-algebra is quite interesting and we will see
   \begin{equation*}
     (x_n)_{n < \omega} = (x_0 = \alpha_0(x), x_1 = (\alpha_0 \circ \alpha_1)(x), x_2 = (\alpha_0 \circ \alpha_1 \circ \alpha_1)(x), \ldots)
   \end{equation*}
-  of outputs; this is an element of \(\Sigma^\omega\), the set of infinite sequences (also called \textbf{streams}\marginnote{\(\Sigma\)-streams}) over \(\Sigma\).
+  of outputs; this is an element of \(\Sigma^\omega\), the set of infinite sequences (also called \textbf{streams}) over \(\Sigma\).
   We can make \(\Sigma^\omega\) into an \(F\)-coalgebra with
   \begin{equation*}
     \tau = \intoprod{\head}{\tail} : \Sigma^\omega \to \Sigma \times \Sigma^\omega
@@ -2469,6 +2458,7 @@ Lambeck's Lemma for coalgebras can be interpreted as a generalization of an orde
 \end{definition}
 
 \begin{lemma}
+  \label{lemma:order_theory_ii}
   Given a poset \((P, \sqsubseteq)\) and a monotone function \(f: P \to P\) let \(A = \{x \in P : x \sqsubseteq f(x)\}\) be the set of post-fixed points of \(f\).
   If \(\overline{a}\) is the join of \(A\) then \(\overline{a}\) is the biggest fixed-point of \(f\).
 \end{lemma}
@@ -2496,7 +2486,7 @@ Instead of coinduction we will discuss bisimulation, a concept that has many app
 
 \begin{definition}
   Let \(F\) be an endofuctor over some category \(\A\) with a terminal coalgebra \(\nu F\).
-  A morphism \(f: A \to \nu F\) of \(\A\) is \textbf{corecursively specified} \marginnote{corecursively specified morphism} if there is a coalgebra structure \(\alpha : A \to FA\) on \(A\) that makes \(f\) into a morphism of coalgebras (actually \(f\) is unique since \(\nu F\) is terminal).
+  A morphism \(f: A \to \nu F\) of \(\A\) is \textbf{corecursively specified} if there is a coalgebra structure \(\alpha : A \to FA\) on \(A\) that makes \(f\) into a morphism of coalgebras (actually \(f\) is unique since \(\nu F\) is terminal).
 \end{definition}
 
 \begin{example}
@@ -2594,7 +2584,7 @@ Instead of coinduction we will discuss bisimulation, a concept that has many app
 \begin{definition}
   \label{def:bisimulation}
   Let \((A, \alpha)\) and \((B, \beta)\) be two \(F\)-coalgebras for a functor \(F\) over a category \(\A\) with binary products.
-  A \textbf{bisimulation} \marginnote{bisimulation} between them is a relation
+  A \textbf{bisimulation} between them is a relation
   \begin{equation*}
     \intoprod{r_A}{r_B} : R \rightarrowtail A \times B
   \end{equation*}
@@ -2662,12 +2652,12 @@ An example should clarify the matter.
 \end{example}
 
 \begin{definition}
-  The \textbf{diagonal subobject} \marginnote{diagonal subobject} \(\Delta_A\) of \(A \times A\) is the one represented by \(\intoprod{\id_A}{\id_A}: A \rightarrowtail A \times A\).
+  The \textbf{diagonal subobject} \(\Delta_A\) of \(A \times A\) is the one represented by \(\intoprod{\id_A}{\id_A}: A \rightarrowtail A \times A\).
 \end{definition}
 
 \begin{remark}
   The diagonal subobject \(\Delta_A\) is always a bisimulation on any coalgebra \((A, \alpha)\).
-  A bisibulation not contained in \(\Delta_A\) is a \textbf{proper bisimulation}\marginnote{proper/improper bisimulation} while one contained in \(\Delta_A\) is \textbf{improper}.
+  A bisibulation not contained in \(\Delta_A\) is a \textbf{proper bisimulation} while one contained in \(\Delta_A\) is \textbf{improper}.
   Moreover notice that a relation \(\intoprod{r_1}{r_2}: R \rightarrowtail A \times A\) is improper if \(r_1 = r_2\).
 \end{remark}
 
@@ -2697,7 +2687,7 @@ The goal of this section is to dualize to coalgebras what has been done in Chapt
 Towards this goal we assume to be working in a category \(\A\) with a terminal object \(1\).
 
 \begin{definition}
-  The \textbf{terminal-coalgebra} \(\omega^{\op}\)\textbf{-chain}\marginnote{terminal-algebra \(\omega^\op\)-chain} is the diagram
+  The \textbf{terminal-coalgebra} \(\omega^{\op}\)\textbf{-chain} is the diagram
     \begin{equation}
     \label{dia:terminal_chain}
     \begin{tikzcd}[sep = large]
@@ -2941,7 +2931,7 @@ This includes the limit of the empty chain, so \(\A\) must have a terminal objec
 
 \begin{definition}
   Let \(\A\) be a category with limits of chains and \(F\) an endofunctor over \(\A\).
-  The \textbf{terminal-coalgebra chain}\marginnote{terminal-coalgebra chain} is the \(\Ord^\op\)-chain in \(\A\) with objects \(V_j\) and arrows \(v_{j,i}\) (with \(j \geq i\)) defined by transfinite recursion as follows.
+  The \textbf{terminal-coalgebra chain} is the \(\Ord^\op\)-chain in \(\A\) with objects \(V_j\) and arrows \(v_{j,i}\) (with \(j \geq i\)) defined by transfinite recursion as follows.
   \begin{align*}
     V_0 = 1 && \text{base case};\\
     V_{j+1} = FV_j && \text{for all ordinals \(j\)};\\
@@ -2966,7 +2956,7 @@ This includes the limit of the empty chain, so \(\A\) must have a terminal objec
 \end{remark}
 
 \begin{definition}
-  We say that the terminal-coalgebra chain \textbf{converges in} \(\lambda\) \textbf{steps}\marginnote{convergence of the terminal-coalgebra chain} if \(v_{\lambda + 1, \lambda}\) is an isomorphism.
+  We say that the terminal-coalgebra chain \textbf{converges in} \(\lambda\) \textbf{steps} if \(v_{\lambda + 1, \lambda}\) is an isomorphism.
   It converges in \textbf{exactly } \(\lambda\) \textbf{steps} if \(\lambda\) is the least such ordinal.
 \end{definition}
 
@@ -3003,8 +2993,8 @@ However this condition is not satisfied by many common functors (e.g. the finite
 However for functors over \(\Set\) there is another condition which guarantees convergence of the terminal-coalgebra chain; in order to study it we need to recall some set-theoretic machinery.
 
 \begin{definition}
-  The \textbf{cofinality}\marginnote{cofinality} of a cardinal \(\lambda\) is the cardinality of the smallest cofinal subset of \(\lambda\).
-  If \(\lambda\) is infinite and its cofinality is \(\lambda\) itself then we say that \(\lambda\) is a \textbf{regular cardinal}\marginnote{regular cardinal}.
+  The \textbf{cofinality} of a cardinal \(\lambda\) is the cardinality of the smallest cofinal subset of \(\lambda\).
+  If \(\lambda\) is infinite and its cofinality is \(\lambda\) itself then we say that \(\lambda\) is a \textbf{regular cardinal}.
 \end{definition}
 
 \begin{notation}
@@ -3014,7 +3004,7 @@ However for functors over \(\Set\) there is another condition which guarantees c
 
 \begin{definition}
   \label{def:accessible}
-  Given a regular cardinal \(\lambda\) we say that a functor \(F\) over \(\Set\) is \textbf{\(\lambda\)-accessible} \marginnote{\(\lambda\)-accessible functor} if for every set \(X\) and \(x \in FX\) there is a subset \(m : M \rightarrowtail X, |M| < \lambda\) such that \(x \in \im (Fm)\).
+  Given a regular cardinal \(\lambda\) we say that a functor \(F\) over \(\Set\) is \textbf{\(\lambda\)-accessible} if for every set \(X\) and \(x \in FX\) there is a subset \(m : M \rightarrowtail X, |M| < \lambda\) such that \(x \in \im (Fm)\).
 \end{definition}
 
 \begin{remark}
@@ -3028,7 +3018,7 @@ We can think of a \(\lambda\)-accessible functor as of a functor whose behaviour
 
 \begin{example}
   \label{ex:finitepowset}
-  Functors that are \(\aleph_0\)-accessible are also called \textbf{finitary set functors}\marginnote{finitary set functor}.
+  Functors that are \(\aleph_0\)-accessible are also called \textbf{finitary set functors}.
   An example of a finitary set functor is \(\mathcal{P}_{\textsf{f}}\), the finite power-set functor.
   Indeed let \(X\) be a set and \(x \in \mathcal{P}_{\textsf{f}}(X)\); this means that \(x\) is a finite subset of \(X\) so let us consider \(m : x \rightarrowtail X\).
   It is clear that \(x \in \im(\mathcal{P}_{\textsf{f}}m)\) so we have that \(\mathcal{P}_{\textsf{f}}\) is finitary.
@@ -3193,13 +3183,13 @@ Unfortunately it requires us to make assumptions independent from ZFC.
 
 \begin{definition}
   \label{def:fixed-point-pair}
-  A set functor \(F\) has a \textbf{fixed point pair}\marginnote{fixed point pair} if there is a regular cardinal \(\lambda\) such that \(F\) has a fixed point of cardinality \(\lambda\) and one of cardinality \(\lambda^+\) (the smallest cardinal bigger than \(\lambda\)).
+  A set functor \(F\) has a \textbf{fixed point pair} if there is a regular cardinal \(\lambda\) such that \(F\) has a fixed point of cardinality \(\lambda\) and one of cardinality \(\lambda^+\) (the smallest cardinal bigger than \(\lambda\)).
 \end{definition}
 
 \begin{remark}
   \label{rem:gch}
-  Recall that the \textbf{Generalized Continuum Hypothesis (GCH)}\marginnote{GCH} is the statement that, for every infinite cardinal \(\lambda\) one has \(\lambda^+ = 2^\lambda\); here with \(2^\lambda\) we indicate the power-set of \(\lambda\).
-  The case when \(\lambda = \aleph_0\) is referred to simply as the \textbf{Continuum Hypothesis (CH)}\marginnote{CH}.
+  Recall that the \textbf{Generalized Continuum Hypothesis (GCH)} is the statement that, for every infinite cardinal \(\lambda\) one has \(\lambda^+ = 2^\lambda\); here with \(2^\lambda\) we indicate the power-set of \(\lambda\).
+  The case when \(\lambda = \aleph_0\) is referred to simply as the \textbf{Continuum Hypothesis (CH)}.
   Both are independent from ZFC.
   
   Under GCH if \(\kappa < \lambda\) and \(\lambda\) is a regular cardinal then \(\lambda^\kappa = \lambda\) (see \cite[Theorem 5.15 (iii)]{jech}).
